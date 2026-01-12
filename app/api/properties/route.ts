@@ -1,107 +1,125 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server'
+import { supabase } from '@/lib/supabase'
 
-// Sample property data
-const properties = [
-  {
-    id: 1,
-    type: 'rent',
-    title: 'モダンな1LDKマンション',
-    price: 85000,
-    location: '東京都渋谷区',
-    rooms: '1LDK',
-    area: 35,
-    features: ['駅近', 'ペット可', '南向き'],
-  },
-  {
-    id: 2,
-    type: 'rent',
-    title: 'ファミリー向け2LDK',
-    price: 120000,
-    location: '東京都世田谷区',
-    rooms: '2LDK',
-    area: 55,
-    features: ['駐車場あり', 'リノベーション済み'],
-  },
-  {
-    id: 3,
-    type: 'sale',
-    title: '新築マンション',
-    price: 58000000,
-    location: '東京都港区',
-    rooms: '3LDK',
-    area: 70,
-    features: ['新築', '駅近', 'オートロック'],
-  },
-  {
-    id: 4,
-    type: 'sale',
-    title: '一戸建て',
-    price: 72000000,
-    location: '神奈川県横浜市',
-    rooms: '4LDK',
-    area: 120,
-    features: ['庭付き', '駐車場2台', '南向き'],
-  },
-];
-
+// GET /api/properties - 物件一覧取得・検索
 export async function GET(request: NextRequest) {
-  const searchParams = request.nextUrl.searchParams;
-  const type = searchParams.get('type'); // rent or sale
-  const minPrice = searchParams.get('minPrice');
-  const maxPrice = searchParams.get('maxPrice');
-
-  let filteredProperties = [...properties];
-
-  // Filter by type
-  if (type) {
-    filteredProperties = filteredProperties.filter(p => p.type === type);
-  }
-
-  // Filter by price range
-  if (minPrice) {
-    const min = parseInt(minPrice);
-    filteredProperties = filteredProperties.filter(p => p.price >= min);
-  }
-
-  if (maxPrice) {
-    const max = parseInt(maxPrice);
-    filteredProperties = filteredProperties.filter(p => p.price <= max);
-  }
-
-  return NextResponse.json({
-    success: true,
-    count: filteredProperties.length,
-    properties: filteredProperties,
-  });
-}
-
-export async function POST(request: NextRequest) {
   try {
-    const body = await request.json();
-    
-    // Validate required fields
-    if (!body.title || !body.price || !body.type) {
-      return NextResponse.json(
-        { success: false, error: 'Missing required fields' },
-        { status: 400 }
-      );
+    const { searchParams } = new URL(request.url)
+    const type = searchParams.get('type')
+    const minPrice = searchParams.get('minPrice')
+    const maxPrice = searchParams.get('maxPrice')
+    const rooms = searchParams.get('rooms')
+    const status = searchParams.get('status') || 'available'
+    const search = searchParams.get('search')
+    const sort = searchParams.get('sort') || 'created_at'
+    const order = searchParams.get('order') || 'desc'
+    const page = parseInt(searchParams.get('page') || '1')
+    const limit = parseInt(searchParams.get('limit') || '20')
+    const offset = (page - 1) * limit
+
+    // クエリビルダー
+    let query = supabase
+      .from('properties')
+      .select('*', { count: 'exact' })
+      .eq('status', status)
+
+    // フィルター適用
+    if (type) {
+      query = query.eq('type', type)
+    }
+    if (minPrice) {
+      query = query.gte('price', parseFloat(minPrice))
+    }
+    if (maxPrice) {
+      query = query.lte('price', parseFloat(maxPrice))
+    }
+    if (rooms) {
+      query = query.eq('rooms', rooms)
+    }
+    if (search) {
+      query = query.or(`title.ilike.%${search}%,address.ilike.%${search}%,description.ilike.%${search}%`)
     }
 
-    // In a real app, save to database
-    const newProperty = {
-      id: properties.length + 1,
-      ...body,
-      createdAt: new Date().toISOString(),
-    };
+    // ソート
+    const ascending = order === 'asc'
+    query = query.order(sort, { ascending })
+
+    // ページネーション
+    query = query.range(offset, offset + limit - 1)
+
+    const { data, error, count } = await query
+
+    if (error) {
+      console.error('Database error:', error)
+      return NextResponse.json({ error: 'Failed to fetch properties', details: error.message }, { status: 500 })
+    }
 
     return NextResponse.json({
       success: true,
-      property: newProperty,
-    }, { status: 201 });
+      properties: data || [],
+      pagination: {
+        page,
+        limit,
+        total: count || 0,
+        totalPages: Math.ceil((count || 0) / limit)
+      }
+    })
   } catch (error) {
-    return NextResponse.json(
-      { success: false, error: 'Invalid request body' },
-      { status: 400 }
-    );
+    console.error('Server error:', error)
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
+  }
+}
+
+// POST /api/properties - 物件新規登録
+export async function POST(request: NextRequest) {
+  try {
+    const body = await request.json()
+
+    // バリデーション
+    if (!body.title || !body.price || !body.type || !body.address) {
+      return NextResponse.json(
+        { error: 'Missing required fields: title, price, type, address' },
+        { status: 400 }
+      )
+    }
+
+    // タイプのバリデーション
+    if (!['rent', 'sale', 'minpaku'].includes(body.type)) {
+      return NextResponse.json({ error: 'Invalid type. Must be rent, sale, or minpaku' }, { status: 400 })
+    }
+
+    // データ挿入
+    const { data, error } = await supabase
+      .from('properties')
+      .insert({
+        title: body.title,
+        type: body.type,
+        price: body.price,
+        monthly_rent: body.monthly_rent,
+        initial_cost: body.initial_cost,
+        address: body.address,
+        area: body.area,
+        rooms: body.rooms,
+        image_urls: body.image_urls || [],
+        description: body.description,
+        status: body.status || 'available',
+        features: body.features || [],
+        nearest_station: body.nearest_station,
+        walking_minutes: body.walking_minutes,
+        floor: body.floor,
+        building_age: body.building_age
+      })
+      .select()
+      .single()
+
+    if (error) {
+      console.error('Database error:', error)
+      return NextResponse.json({ error: 'Failed to create property', details: error.message }, { status: 500 })
+    }
+
+    return NextResponse.json({ success: true, property: data }, { status: 201 })
+  } catch (error) {
+    console.error('Server error:', error)
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
 }
