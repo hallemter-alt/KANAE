@@ -91,9 +91,9 @@ export default function Footer() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
                 <span className="text-gray-400">
-                  〒169-0075<br />
+                  〒171-0033<br />
                   東京都豊島区高田3-16-4<br />
-                  Golje Bld.6F
+                  Golje Bld. 6F
                 </span>
               </li>
               <li className="flex items-center space-x-2">

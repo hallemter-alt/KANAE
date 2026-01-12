@@ -32,17 +32,17 @@ export default function AboutPage() {
           </Heading>
           <Card padding="lg" className="max-w-4xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <InfoItem label="会社名" value="株式会社 KANAE" />
-              <InfoItem label="代表者" value="代表取締役 CEO" />
-              <InfoItem label="設立" value="2020年4月" />
-              <InfoItem label="資本金" value="1,000万円" />
+              <InfoItem label="会社名" value="株式会社ＫＡＮＡＥ" />
+              <InfoItem label="代表者" value="代表取締役 叶維舟" />
+              <InfoItem label="設立" value="令和3年7月5日（2021年7月5日）" />
+              <InfoItem label="会社法人等番号" value="0111-01-095676" />
               <InfoItem 
                 label="本社所在地" 
-                value="〒171-0014 東京都豊島区池袋2-40-13 池袋デュープレックスビズ 10階" 
+                value="〒171-0033 東京都豊島区高田3丁目16番4号 Golje Bld. 6F" 
               />
-              <InfoItem label="電話番号" value="03-XXXX-XXXX" />
-              <InfoItem label="FAX番号" value="03-XXXX-XXXX" />
-              <InfoItem label="メールアドレス" value="info@rut-tokyo.com" />
+              <InfoItem label="電話番号" value="03-6914-3633 / 080-4363-2780" />
+              <InfoItem label="メールアドレス" value="info@kanae-tokyo.com" />
+              <InfoItem label="公式サイト" value="www.kanae-tokyo.com" />
               <InfoItem 
                 label="営業時間" 
                 value="平日 9:00〜18:00 / 土曜 10:00〜17:00（日祝休業）" 
@@ -55,7 +55,7 @@ export default function AboutPage() {
               />
               <InfoItem 
                 label="許認可番号" 
-                value="宅地建物取引業 東京都知事(1)第XXXXX号" 
+                value="宅地建物取引業 東京都知事(1)第107157号" 
                 fullWidth 
               />
               <InfoItem 
@@ -222,18 +222,18 @@ export default function AboutPage() {
                   所在地
                 </Heading>
                 <Text className="mb-4">
-                  〒171-0014<br />
-                  東京都豊島区池袋2-40-13<br />
-                  池袋デュープレックスビズ 10階
+                  〒171-0033<br />
+                  東京都豊島区高田3丁目16番4号<br />
+                  Golje Bld. 6F
                 </Text>
                 <Heading level={4} className="mb-4 mt-6">
                   アクセス
                 </Heading>
                 <Text>
-                  <strong>JR・東京メトロ・西武線・東武線 池袋駅</strong><br />
-                  西口より徒歩8分<br />
-                  <strong>東京メトロ 要町駅</strong><br />
-                  1番出口より徒歩5分
+                  <strong>JR・東京メトロ 高田馬場駅</strong><br />
+                  早稲田口より徒歩約10分<br />
+                  <strong>東京メトロ副都心線 西早稲田駅</strong><br />
+                  3番出口より徒歩約8分
                 </Text>
               </div>
               <div className="bg-gray-200 rounded-lg h-80 flex items-center justify-center">
