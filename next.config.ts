@@ -8,8 +8,8 @@ const nextConfig: NextConfig = {
   },
   // Static export for Cloudflare Pages compatibility
   output: 'export',
-  // Disable trailing slash to match Cloudflare routing
-  trailingSlash: false,
+  // Enable trailing slash for proper routing on Cloudflare Pages
+  trailingSlash: true,
 };
 
 export default nextConfig;
