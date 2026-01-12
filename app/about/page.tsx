@@ -41,8 +41,8 @@ export default function AboutPage() {
                 value="〒171-0033 東京都豊島区高田3丁目16番4号 Golje Bld. 6F" 
               />
               <InfoItem label="電話番号" value="03-6914-3633 / 080-4363-2780" />
-              <InfoItem label="メールアドレス" value="info@kanae-tokyo.com" />
-              <InfoItem label="公式サイト" value="www.kanae-tokyo.com" />
+              <InfoItem label="メールアドレス" value="info@rut-tokyo.com" />
+              <InfoItem label="公式サイト" value="www.rut-tokyo.com" />
               <InfoItem 
                 label="営業時間" 
                 value="平日 9:00〜18:00 / 土曜 10:00〜17:00（日祝休業）" 
@@ -236,10 +236,17 @@ export default function AboutPage() {
                   3番出口より徒歩約8分
                 </Text>
               </div>
-              <div className="bg-gray-200 rounded-lg h-80 flex items-center justify-center">
-                <Text color="light">
-                  地図（Google Maps 埋め込み予定）
-                </Text>
+              <div className="bg-gray-200 rounded-lg h-80 overflow-hidden shadow-inner">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3239.211!2d139.7063!3d35.7165!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzXCsDQyJzU5LjQiTiAxMznCsDQyJzIyLjciRQ!5e0!3m2!1sja!2sjp!4v1620000000000!5m2!1sja!2sjp&q=35.716500,139.706300"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="株式会社KANAE 所在地 - 東京都豊島区高田3-16-4 Golje Bld. 6F"
+                ></iframe>
               </div>
             </div>
           </Card>
