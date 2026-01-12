@@ -4,9 +4,10 @@ import { supabase } from '@/lib/supabase'
 // GET /api/properties/:id - 物件詳細取得
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params
     const { data, error } = await supabase
       .from('properties')
       .select(`
@@ -17,7 +18,7 @@ export async function GET(
           customer:customers (*)
         )
       `)
-      .eq('id', params.id)
+      .eq('id', id)
       .single()
 
     if (error) {
@@ -38,9 +39,10 @@ export async function GET(
 // PUT /api/properties/:id - 物件更新
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params
     const body = await request.json()
 
     // タイプのバリデーション
@@ -74,7 +76,7 @@ export async function PUT(
         floor: body.floor,
         building_age: body.building_age
       })
-      .eq('id', params.id)
+      .eq('id', id)
       .select()
       .single()
 
@@ -96,10 +98,11 @@ export async function PUT(
 // DELETE /api/properties/:id - 物件削除
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const { error } = await supabase.from('properties').delete().eq('id', params.id)
+    const { id } = await params
+    const { error } = await supabase.from('properties').delete().eq('id', id)
 
     if (error) {
       console.error('Database error:', error)

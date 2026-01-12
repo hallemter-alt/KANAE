@@ -4,9 +4,10 @@ import { supabase } from '@/lib/supabase'
 // GET /api/inquiries/:id - 問合せ詳細取得
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params
     const { data, error } = await supabase
       .from('inquiries')
       .select(`
@@ -14,7 +15,7 @@ export async function GET(
         customer:customers (*),
         property:properties (*)
       `)
-      .eq('id', params.id)
+      .eq('id', id)
       .single()
 
     if (error) {
@@ -35,9 +36,10 @@ export async function GET(
 // PUT /api/inquiries/:id - 問合せステータス更新
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params
     const body = await request.json()
 
     // ステータスのバリデーション
@@ -50,7 +52,7 @@ export async function PUT(
     const { data, error } = await supabase
       .from('inquiries')
       .update({ status: body.status })
-      .eq('id', params.id)
+      .eq('id', id)
       .select()
       .single()
 

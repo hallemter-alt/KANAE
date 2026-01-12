@@ -65,7 +65,7 @@ interface HeadingProps {
 }
 
 export function Heading({ level = 2, children, className = '', align = 'left' }: HeadingProps) {
-  const Tag = `h${level}` as keyof JSX.IntrinsicElements
+  const Tag = `h${level}` as 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
 
   const sizeClasses = {
     1: 'text-4xl sm:text-5xl lg:text-6xl font-black',
@@ -94,9 +94,10 @@ interface TextProps {
   className?: string
   size?: 'xs' | 'sm' | 'base' | 'lg' | 'xl'
   color?: 'gray' | 'dark' | 'light' | 'primary'
+  weight?: 'normal' | 'medium' | 'bold'
 }
 
-export function Text({ children, className = '', size = 'base', color = 'gray' }: TextProps) {
+export function Text({ children, className = '', size = 'base', color = 'gray', weight = 'normal' }: TextProps) {
   const sizeClasses = {
     xs: 'text-xs',
     sm: 'text-sm',
@@ -112,8 +113,14 @@ export function Text({ children, className = '', size = 'base', color = 'gray' }
     primary: 'text-blue-600',
   }
 
+  const weightClasses = {
+    normal: 'font-normal',
+    medium: 'font-medium',
+    bold: 'font-bold',
+  }
+
   return (
-    <p className={`${sizeClasses[size]} ${colorClasses[color]} leading-relaxed ${className}`}>
+    <p className={`${sizeClasses[size]} ${colorClasses[color]} ${weightClasses[weight]} leading-relaxed ${className}`}>
       {children}
     </p>
   )
@@ -122,7 +129,7 @@ export function Text({ children, className = '', size = 'base', color = 'gray' }
 interface CardProps {
   children: React.ReactNode
   className?: string
-  padding?: 'sm' | 'md' | 'lg' | 'xl'
+  padding?: 'none' | 'sm' | 'md' | 'lg' | 'xl'
   shadow?: boolean
   hover?: boolean
 }
@@ -135,6 +142,7 @@ export function Card({
   hover = false 
 }: CardProps) {
   const paddingClasses = {
+    none: 'p-0',
     sm: 'p-4',
     md: 'p-6',
     lg: 'p-8',
