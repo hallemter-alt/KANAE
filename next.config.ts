@@ -4,10 +4,12 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   images: {
     domains: ['images.unsplash.com'],
-    unoptimized: true, // Cloudflare Pages requires this
+    unoptimized: true, // Required for Cloudflare Pages
   },
-  // Cloudflare Pages compatibility
-  output: 'standalone',
+  // Static export for Cloudflare Pages compatibility
+  output: 'export',
+  // Disable trailing slash to match Cloudflare routing
+  trailingSlash: false,
 };
 
 export default nextConfig;
