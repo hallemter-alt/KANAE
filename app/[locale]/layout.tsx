@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Noto_Sans_JP } from "next/font/google";
-import "./globals.css";
+import "../globals.css";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { translations } from "@/lib/translations";
 
@@ -23,10 +23,11 @@ export type Locale = typeof locales[number];
 export async function generateMetadata({ 
   params 
 }: { 
-  params: { locale: Locale } 
+  params: Promise<{ locale: string }>
 }): Promise<Metadata> {
-  const locale = params.locale || 'ja';
-  const t = translations[locale];
+  const { locale } = await params;
+  const currentLocale = (locale || 'ja') as Locale;
+  const t = translations[currentLocale];
   
   const titles = {
     ja: "KANAE - 物心両面の幸福と利他の心で、世界に通じる価値を創造する",
@@ -41,21 +42,21 @@ export async function generateMetadata({
   };
 
   return {
-    title: titles[locale],
-    description: descriptions[locale],
-    keywords: locale === 'ja' 
+    title: titles[currentLocale],
+    description: descriptions[currentLocale],
+    keywords: currentLocale === 'ja' 
       ? ["不動産", "賃貸", "売買", "民泊", "管理", "東京", "豊島区"]
-      : locale === 'zh'
+      : currentLocale === 'zh'
       ? ["房地产", "租赁", "买卖", "民宿", "管理", "东京", "丰岛区"]
       : ["real estate", "rental", "sales", "vacation rental", "management", "Tokyo", "Toshima"],
     openGraph: {
-      title: titles[locale],
-      description: descriptions[locale],
+      title: titles[currentLocale],
+      description: descriptions[currentLocale],
       type: "website",
-      locale: locale === 'ja' ? 'ja_JP' : locale === 'zh' ? 'zh_CN' : 'en_US',
+      locale: currentLocale === 'ja' ? 'ja_JP' : currentLocale === 'zh' ? 'zh_CN' : 'en_US',
     },
     alternates: {
-      canonical: `https://www.rut-tokyo.com/${locale}`,
+      canonical: `https://www.rut-tokyo.com/${currentLocale}`,
       languages: {
         'ja': '/ja',
         'zh': '/zh',
@@ -70,19 +71,20 @@ export async function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
   params,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-  params: { locale: Locale };
-}>) {
-  const locale = params.locale || 'ja';
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const currentLocale = (locale || 'ja') as Locale;
   
   return (
-    <html lang={locale} className={`${inter.variable} ${notoSansJP.variable}`}>
+    <html lang={currentLocale} className={`${inter.variable} ${notoSansJP.variable}`}>
       <body className="font-noto antialiased">
-        <LanguageProvider initialLocale={locale}>
+        <LanguageProvider initialLocale={currentLocale}>
           {children}
         </LanguageProvider>
       </body>
