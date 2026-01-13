@@ -1,22 +1,12 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { locale, t } = useLanguage();
-  const [currentPath, setCurrentPath] = useState('');
-
-  useEffect(() => {
-    setCurrentPath(window.location.pathname);
-  }, []);
-
-  const switchLocale = (newLocale: 'ja' | 'zh' | 'en') => {
-    const pathWithoutLocale = currentPath.replace(/^\/(ja|zh|en)/, '') || '/';
-    window.location.href = `/${newLocale}${pathWithoutLocale}`;
-  };
+  const { locale, t, setLocale } = useLanguage();
 
   return (
     <nav className="fixed w-full z-50 bg-white shadow-md transition-all duration-300">
@@ -63,7 +53,7 @@ export default function Navbar() {
           <div className="hidden md:flex items-center space-x-4">
             <div className="flex items-center space-x-2 border-r pr-4">
               <button 
-                onClick={() => switchLocale('ja')}
+                onClick={() => setLocale('ja')}
                 className={`px-2 py-1 text-sm rounded transition-colors ${
                   locale === 'ja' 
                     ? 'bg-primary-600 text-white' 
@@ -73,7 +63,7 @@ export default function Navbar() {
                 日本語
               </button>
               <button 
-                onClick={() => switchLocale('zh')}
+                onClick={() => setLocale('zh')}
                 className={`px-2 py-1 text-sm rounded transition-colors ${
                   locale === 'zh' 
                     ? 'bg-primary-600 text-white' 
@@ -83,7 +73,7 @@ export default function Navbar() {
                 中文
               </button>
               <button 
-                onClick={() => switchLocale('en')}
+                onClick={() => setLocale('en')}
                 className={`px-2 py-1 text-sm rounded transition-colors ${
                   locale === 'en' 
                     ? 'bg-primary-600 text-white' 
@@ -148,7 +138,7 @@ export default function Navbar() {
             </Link>
             <div className="flex space-x-2 px-4 pt-2">
               <button 
-                onClick={() => switchLocale('ja')}
+                onClick={() => setLocale('ja')}
                 className={`flex-1 px-3 py-2 text-sm rounded transition-colors ${
                   locale === 'ja' ? 'bg-primary-600 text-white' : 'bg-gray-100 text-gray-600'
                 }`}
@@ -156,7 +146,7 @@ export default function Navbar() {
                 日本語
               </button>
               <button 
-                onClick={() => switchLocale('zh')}
+                onClick={() => setLocale('zh')}
                 className={`flex-1 px-3 py-2 text-sm rounded transition-colors ${
                   locale === 'zh' ? 'bg-primary-600 text-white' : 'bg-gray-100 text-gray-600'
                 }`}
@@ -164,7 +154,7 @@ export default function Navbar() {
                 中文
               </button>
               <button 
-                onClick={() => switchLocale('en')}
+                onClick={() => setLocale('en')}
                 className={`flex-1 px-3 py-2 text-sm rounded transition-colors ${
                   locale === 'en' ? 'bg-primary-600 text-white' : 'bg-gray-100 text-gray-600'
                 }`}
