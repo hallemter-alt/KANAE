@@ -73,10 +73,10 @@ export default function RentPage() {
       <Section background="gradient" spacing="lg">
         <Container>
           <div className="text-center">
-            <Heading level={1} align="center" className="mb-6">
+            <Heading level={1} align="center" className="mb-6 text-white">
               賃貸物件検索
             </Heading>
-            <Text size="xl" className="max-w-3xl mx-auto">
+            <Text size="xl" className="max-w-3xl mx-auto text-white/90">
               お客様のライフスタイルに合った理想の賃貸物件をお探しします
             </Text>
           </div>

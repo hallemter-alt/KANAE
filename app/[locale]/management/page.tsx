@@ -16,10 +16,10 @@ export default function ManagementPage() {
       <Section background="gradient" spacing="lg">
         <Container>
           <div className="text-center">
-            <Heading level={1} align="center" className="mb-6">
+            <Heading level={1} align="center" className="mb-6 text-white">
               賃貸管理サービス
             </Heading>
-            <Text size="xl" className="max-w-3xl mx-auto">
+            <Text size="xl" className="max-w-3xl mx-auto text-white/90">
               オーナー様と入居者様、双方にとって最適な賃貸管理をご提供します
             </Text>
           </div>

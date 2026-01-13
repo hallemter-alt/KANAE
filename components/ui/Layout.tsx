@@ -40,7 +40,7 @@ export function Section({
     white: 'bg-white',
     gray: 'bg-gray-50',
     primary: 'bg-blue-50',
-    gradient: 'bg-gradient-to-br from-blue-50 to-purple-50',
+    gradient: 'bg-gradient-to-br from-blue-600 via-blue-700 to-purple-700 text-white',
   }
 
   const spacingClasses = {
@@ -83,7 +83,7 @@ export function Heading({ level = 2, children, className = '', align = 'left' }:
   }
 
   return (
-    <Tag className={`${sizeClasses[level]} ${alignClasses[align]} text-gray-900 ${className}`}>
+    <Tag className={`${sizeClasses[level]} ${alignClasses[align]} ${className}`}>
       {children}
     </Tag>
   )
