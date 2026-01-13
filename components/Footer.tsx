@@ -19,40 +19,40 @@ export default function Footer() {
               KANAE
             </h3>
             <p className="text-gray-400 text-sm mb-4">
-              株式会社KANAE
+              {t.footer.companyName}
             </p>
             <p className="text-gray-400 text-sm leading-relaxed">
-              物心両面の幸福と利他の心で、世界に通じる価値を創造する
+              {t.footer.slogan}
             </p>
             <div className="mt-6">
               <p className="text-xs text-gray-500">
-                東京都知事(1)第107157号
+                {t.footer.license}
               </p>
             </div>
           </div>
 
           {/* Services */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">事業内容</h4>
+            <h4 className="text-lg font-semibold mb-4">{t.footer.businessContent}</h4>
             <ul className="space-y-2">
               <li>
                 <Link href="/rent" className="text-gray-400 hover:text-primary-400 transition-colors text-sm">
-                  賃貸事業
+                  {t.footer.rentalBusiness}
                 </Link>
               </li>
               <li>
                 <Link href="/sale" className="text-gray-400 hover:text-primary-400 transition-colors text-sm">
-                  売買事業
+                  {t.footer.salesBusiness}
                 </Link>
               </li>
               <li>
                 <Link href="/management" className="text-gray-400 hover:text-primary-400 transition-colors text-sm">
-                  管理事業
+                  {t.footer.managementBusiness}
                 </Link>
               </li>
               <li>
                 <Link href="/minpaku" className="text-gray-400 hover:text-primary-400 transition-colors text-sm">
-                  民泊事業
+                  {t.footer.minpakuBusiness}
                 </Link>
               </li>
             </ul>
@@ -60,26 +60,26 @@ export default function Footer() {
 
           {/* Company Links */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">会社情報</h4>
+            <h4 className="text-lg font-semibold mb-4">{t.footer.companyInfo}</h4>
             <ul className="space-y-2">
               <li>
                 <Link href="/about" className="text-gray-400 hover:text-primary-400 transition-colors text-sm">
-                  会社概要
+                  {t.footer.aboutUs}
                 </Link>
               </li>
               <li>
                 <Link href="/philosophy" className="text-gray-400 hover:text-primary-400 transition-colors text-sm">
-                  企業理念
+                  {t.footer.philosophy}
                 </Link>
               </li>
               <li>
                 <Link href="/contact" className="text-gray-400 hover:text-primary-400 transition-colors text-sm">
-                  お問い合わせ
+                  {t.footer.contact}
                 </Link>
               </li>
               <li>
                 <Link href="/privacy" className="text-gray-400 hover:text-primary-400 transition-colors text-sm">
-                  プライバシーポリシー
+                  {t.footer.privacyPolicy}
                 </Link>
               </li>
             </ul>
@@ -87,7 +87,7 @@ export default function Footer() {
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">お問い合わせ</h4>
+            <h4 className="text-lg font-semibold mb-4">{t.footer.contactInfo}</h4>
             <ul className="space-y-3 text-sm">
               <li className="flex items-start space-x-2">
                 <svg className="w-5 h-5 text-primary-400 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -143,17 +143,17 @@ export default function Footer() {
         <div className="border-t border-gray-800 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-500 text-sm">
-              &copy; {currentYear} 株式会社KANAE. All rights reserved.
+              &copy; {currentYear} {t.footer.companyName}. {t.footer.allRightsReserved}
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <Link href="/terms" className="text-gray-500 hover:text-primary-400 text-sm transition-colors">
-                利用規約
+                {t.footer.terms}
               </Link>
               <Link href="/privacy" className="text-gray-500 hover:text-primary-400 text-sm transition-colors">
-                個人情報保護方針
+                {t.footer.privacyPolicy}
               </Link>
               <Link href="/sitemap" className="text-gray-500 hover:text-primary-400 text-sm transition-colors">
-                サイトマップ
+                {t.footer.sitemap}
               </Link>
             </div>
           </div>
