@@ -1,8 +1,9 @@
-'use client';
+'use client'
 
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import { useState } from 'react';
+import React, { useState } from 'react'
+import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
+import { Container, Section, Heading, Text, Card } from '@/components/ui/Layout'
 
 export default function MinpakuPage() {
   const [formData, setFormData] = useState({
@@ -12,24 +13,24 @@ export default function MinpakuPage() {
     nightly_rate: '',
     occupancy_rate: '70',
     management_fee: '25',
-  });
+  })
 
-  const [result, setResult] = useState<any>(null);
+  const [result, setResult] = useState<any>(null)
 
   const handleCalculate = () => {
-    const nightlyRate = parseFloat(formData.nightly_rate) || 10000;
-    const occupancyRate = parseFloat(formData.occupancy_rate) / 100;
-    const managementFeeRate = parseFloat(formData.management_fee) / 100;
+    const nightlyRate = parseFloat(formData.nightly_rate) || 10000
+    const occupancyRate = parseFloat(formData.occupancy_rate) / 100
+    const managementFeeRate = parseFloat(formData.management_fee) / 100
 
-    const monthlyNights = 30;
-    const bookedNights = monthlyNights * occupancyRate;
-    const grossRevenue = nightlyRate * bookedNights;
-    const managementFee = grossRevenue * managementFeeRate;
-    const cleaningFee = bookedNights * 5000;
-    const utilities = 10000;
-    const platformFee = grossRevenue * 0.03;
-    const totalExpenses = managementFee + cleaningFee + utilities + platformFee;
-    const netRevenue = grossRevenue - totalExpenses;
+    const monthlyNights = 30
+    const bookedNights = monthlyNights * occupancyRate
+    const grossRevenue = nightlyRate * bookedNights
+    const managementFee = grossRevenue * managementFeeRate
+    const cleaningFee = bookedNights * 5000
+    const utilities = 10000
+    const platformFee = grossRevenue * 0.03
+    const totalExpenses = managementFee + cleaningFee + utilities + platformFee
+    const netRevenue = grossRevenue - totalExpenses
 
     setResult({
       grossRevenue: Math.round(grossRevenue),
@@ -41,85 +42,95 @@ export default function MinpakuPage() {
       netRevenue: Math.round(netRevenue),
       bookedNights: Math.round(bookedNights),
       occupancyRate: formData.occupancy_rate,
-    });
-  };
+    })
+  }
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+    <main className="min-h-screen bg-gray-50">
       <Navbar />
       
-      <div className="container mx-auto px-4 py-16">
-        <div className="max-w-5xl mx-auto">
-          {/* Hero Section */}
-          <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+      {/* ヒーローセクション */}
+      <Section background="gradient" spacing="lg">
+        <Container>
+          <div className="text-center">
+            <Heading level={1} align="center" className="mb-6 text-white">
               民泊運営代行サービス
-            </h1>
-            <p className="text-xl text-gray-600">
+            </Heading>
+            <Text size="xl" className="max-w-3xl mx-auto text-white/90">
               お持ちの物件を民泊として運営し、安定した収益を実現します
-            </p>
+            </Text>
           </div>
+        </Container>
+      </Section>
 
-          {/* Service Features */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+      {/* サービス特徴 */}
+      <Section background="white" spacing="lg">
+        <Container maxWidth="lg">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
             {[
-              { title: '完全代行', desc: 'ゲスト対応から清掃まで全てお任せください' },
-              { title: '高稼働率', desc: '最適な価格設定で高い稼働率を維持' },
-              { title: '安心サポート', desc: '24時間365日のトラブル対応' },
+              { icon: '✓', title: '完全代行', desc: 'ゲスト対応から清掃まで全てお任せください' },
+              { icon: '📈', title: '高稼働率', desc: '最適な価格設定で高い稼働率を維持' },
+              { icon: '🛡️', title: '安心サポート', desc: '24時間365日のトラブル対応' },
             ].map((feature, idx) => (
-              <div key={idx} className="bg-white rounded-xl shadow-lg p-6 text-center">
-                <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl">✓</span>
+              <Card key={idx} padding="lg" hover className="text-center">
+                <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-3xl">{feature.icon}</span>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">{feature.title}</h3>
-                <p className="text-gray-600">{feature.desc}</p>
-              </div>
+                <Heading level={4} className="mb-3">{feature.title}</Heading>
+                <Text color="gray">{feature.desc}</Text>
+              </Card>
             ))}
           </div>
+        </Container>
+      </Section>
 
-          {/* Revenue Calculator */}
-          <div className="bg-white rounded-2xl shadow-xl p-8 mb-12">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">収支シミュレーター</h2>
-            
+      {/* 収支シミュレーター */}
+      <Section background="gray" spacing="lg">
+        <Container maxWidth="lg">
+          <Heading level={2} align="center" className="mb-12">
+            収支シミュレーター
+          </Heading>
+          
+          <Card padding="lg" className="shadow-xl">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-              {/* Property Type */}
+              {/* 物件種別 */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-bold text-gray-700 mb-3">
                   物件種別
                 </label>
                 <select
                   value={formData.propertyType}
                   onChange={(e) => setFormData({ ...formData, propertyType: e.target.value })}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all"
                 >
                   <option>マンション</option>
                   <option>一戸建て</option>
                 </select>
               </div>
 
-              {/* Area */}
+              {/* 面積 */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-bold text-gray-700 mb-3">
                   面積（㎡）
                 </label>
                 <input
                   type="number"
                   value={formData.area}
                   onChange={(e) => setFormData({ ...formData, area: e.target.value })}
-                  placeholder="50"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                  placeholder="例: 50"
+                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all"
                 />
               </div>
 
-              {/* Rooms */}
+              {/* 間取り */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-bold text-gray-700 mb-3">
                   間取り
                 </label>
                 <select
                   value={formData.rooms}
                   onChange={(e) => setFormData({ ...formData, rooms: e.target.value })}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all"
                 >
                   <option>1R</option>
                   <option>1K</option>
@@ -129,23 +140,23 @@ export default function MinpakuPage() {
                 </select>
               </div>
 
-              {/* Nightly Rate */}
+              {/* 1泊料金 */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-bold text-gray-700 mb-3">
                   1泊料金（円）
                 </label>
                 <input
                   type="number"
                   value={formData.nightly_rate}
                   onChange={(e) => setFormData({ ...formData, nightly_rate: e.target.value })}
-                  placeholder="10000"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                  placeholder="例: 10000"
+                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all"
                 />
               </div>
 
-              {/* Occupancy Rate */}
+              {/* 予想稼働率 */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-bold text-gray-700 mb-3">
                   予想稼働率（%）
                 </label>
                 <input
@@ -154,13 +165,13 @@ export default function MinpakuPage() {
                   onChange={(e) => setFormData({ ...formData, occupancy_rate: e.target.value })}
                   min="0"
                   max="100"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all"
                 />
               </div>
 
-              {/* Management Fee */}
+              {/* 管理手数料 */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-bold text-gray-700 mb-3">
                   管理手数料（%）
                 </label>
                 <input
@@ -169,87 +180,113 @@ export default function MinpakuPage() {
                   onChange={(e) => setFormData({ ...formData, management_fee: e.target.value })}
                   min="0"
                   max="100"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all"
                 />
               </div>
             </div>
 
             <button
               onClick={handleCalculate}
-              className="w-full bg-amber-600 text-white py-4 rounded-lg font-semibold hover:bg-amber-700 transition-colors"
+              className="w-full bg-gradient-to-r from-primary-600 to-primary-700 text-white py-4 rounded-lg font-bold text-lg hover:from-primary-700 hover:to-primary-800 transition-all transform hover:scale-[1.02] shadow-lg"
             >
               収支を計算する
             </button>
-          </div>
+          </Card>
 
-          {/* Results */}
+          {/* 計算結果 */}
           {result && (
-            <div className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl shadow-xl p-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">月次収支予想</h2>
+            <Card padding="lg" className="mt-8 bg-gradient-to-br from-primary-50 to-purple-50">
+              <Heading level={3} className="mb-6">月次収支予想</Heading>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div className="bg-white rounded-lg p-6">
-                  <h3 className="text-lg font-semibold text-gray-700 mb-4">収入</h3>
-                  <div className="space-y-2">
-                    <div className="flex justify-between">
-                      <span className="text-gray-600">総売上</span>
-                      <span className="font-semibold">¥{result.grossRevenue.toLocaleString()}</span>
+                <Card padding="md" className="bg-white">
+                  <Heading level={5} className="mb-4 text-primary-600">収入</Heading>
+                  <div className="space-y-3">
+                    <div className="flex justify-between items-center">
+                      <Text size="sm" color="gray">総売上</Text>
+                      <Text size="lg" weight="bold" color="dark">¥{result.grossRevenue.toLocaleString()}</Text>
                     </div>
-                    <div className="flex justify-between text-sm text-gray-500">
+                    <div className="flex justify-between items-center text-sm text-gray-500">
                       <span>稼働日数</span>
                       <span>{result.bookedNights}日 / 30日</span>
                     </div>
-                  </div>
-                </div>
-
-                <div className="bg-white rounded-lg p-6">
-                  <h3 className="text-lg font-semibold text-gray-700 mb-4">支出</h3>
-                  <div className="space-y-2 text-sm">
-                    <div className="flex justify-between">
-                      <span className="text-gray-600">管理手数料</span>
-                      <span>¥{result.managementFee.toLocaleString()}</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-600">清掃費</span>
-                      <span>¥{result.cleaningFee.toLocaleString()}</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-600">水道光熱費</span>
-                      <span>¥{result.utilities.toLocaleString()}</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-600">プラットフォーム手数料</span>
-                      <span>¥{result.platformFee.toLocaleString()}</span>
-                    </div>
-                    <div className="border-t pt-2 mt-2 flex justify-between font-semibold">
-                      <span>合計支出</span>
-                      <span>¥{result.totalExpenses.toLocaleString()}</span>
+                    <div className="flex justify-between items-center text-sm text-gray-500">
+                      <span>稼働率</span>
+                      <span>{result.occupancyRate}%</span>
                     </div>
                   </div>
-                </div>
+                </Card>
+
+                <Card padding="md" className="bg-white">
+                  <Heading level={5} className="mb-4 text-purple-600">支出</Heading>
+                  <div className="space-y-2">
+                    <div className="flex justify-between">
+                      <Text size="sm">管理手数料</Text>
+                      <Text size="sm" weight="medium">¥{result.managementFee.toLocaleString()}</Text>
+                    </div>
+                    <div className="flex justify-between">
+                      <Text size="sm">清掃費</Text>
+                      <Text size="sm" weight="medium">¥{result.cleaningFee.toLocaleString()}</Text>
+                    </div>
+                    <div className="flex justify-between">
+                      <Text size="sm">光熱費</Text>
+                      <Text size="sm" weight="medium">¥{result.utilities.toLocaleString()}</Text>
+                    </div>
+                    <div className="flex justify-between">
+                      <Text size="sm">プラットフォーム手数料</Text>
+                      <Text size="sm" weight="medium">¥{result.platformFee.toLocaleString()}</Text>
+                    </div>
+                    <div className="flex justify-between pt-2 border-t-2">
+                      <Text size="sm" weight="bold">合計支出</Text>
+                      <Text size="sm" weight="bold">¥{result.totalExpenses.toLocaleString()}</Text>
+                    </div>
+                  </div>
+                </Card>
               </div>
 
-              <div className="bg-white rounded-lg p-8 text-center">
-                <div className="text-sm text-gray-600 mb-2">月間純利益</div>
-                <div className="text-4xl font-bold text-amber-600">
-                  ¥{result.netRevenue.toLocaleString()}
+              <Card padding="lg" className="bg-gradient-to-r from-primary-600 to-primary-700 text-white">
+                <div className="flex justify-between items-center">
+                  <div>
+                    <Text size="sm" className="text-white/80 mb-1">月次純利益</Text>
+                    <div className="text-4xl font-black">¥{result.netRevenue.toLocaleString()}</div>
+                  </div>
+                  <div className="text-right">
+                    <Text size="sm" className="text-white/80 mb-1">年間予想収益</Text>
+                    <div className="text-2xl font-bold">¥{(result.netRevenue * 12).toLocaleString()}</div>
+                  </div>
                 </div>
-                <div className="text-sm text-gray-500 mt-2">
-                  年間予想：¥{(result.netRevenue * 12).toLocaleString()}
-                </div>
-              </div>
-
-              <div className="mt-6 text-center">
-                <button className="bg-gray-900 text-white px-8 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors">
-                  無料相談を申し込む
-                </button>
-              </div>
-            </div>
+              </Card>
+            </Card>
           )}
-        </div>
-      </div>
+        </Container>
+      </Section>
+
+      {/* 民泊運営の流れ */}
+      <Section background="white" spacing="lg">
+        <Container maxWidth="lg">
+          <Heading level={2} align="center" className="mb-12">
+            民泊運営の流れ
+          </Heading>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { step: 1, title: '物件査定', desc: '収益性を無料で診断' },
+              { step: 2, title: '準備・登録', desc: '許可申請と設備準備' },
+              { step: 3, title: '運営開始', desc: 'リスティング公開' },
+              { step: 4, title: '収益管理', desc: '月次レポート提供' },
+            ].map((item) => (
+              <Card key={item.step} padding="md" hover className="text-center">
+                <div className="w-12 h-12 bg-primary-600 text-white rounded-full flex items-center justify-center text-xl font-black mx-auto mb-3">
+                  {item.step}
+                </div>
+                <Heading level={5} className="mb-2">{item.title}</Heading>
+                <Text size="sm" color="gray">{item.desc}</Text>
+              </Card>
+            ))}
+          </div>
+        </Container>
+      </Section>
 
       <Footer />
     </main>
-  );
+  )
 }

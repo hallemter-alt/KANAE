@@ -14,10 +14,10 @@ export default function AboutPage() {
       <Section background="gradient" spacing="lg">
         <Container>
           <div className="text-center">
-            <Heading level={1} align="center" className="mb-6">
+            <Heading level={1} align="center" className="mb-6 text-white">
               会社概要
             </Heading>
-            <Text size="xl" className="max-w-3xl mx-auto">
+            <Text size="xl" className="max-w-3xl mx-auto text-white/90">
               物心両面の幸福と利他の心で、世界に通じる価値を創造する
             </Text>
           </div>
