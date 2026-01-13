@@ -1,0 +1,863 @@
+// 完全な多言語翻訳定義
+export const translations = {
+  ja: {
+    // ナビゲーション
+    nav: {
+      home: 'ホーム',
+      rent: '賃貸',
+      sale: '売買',
+      management: '管理',
+      minpaku: '民泊',
+      about: '会社概要',
+      philosophy: '企業理念',
+      contact: 'お問い合わせ',
+    },
+    
+    // ヒーローセクション
+    hero: {
+      title: '物心両面の幸福と利他の心で、',
+      subtitle: '世界に通じる価値を創造する',
+      cta: '物件を探す',
+      learnMore: '詳しく見る',
+    },
+    
+    // サービス
+    services: {
+      title: '事業内容',
+      subtitle: '4つの事業で、お客様の幸福を実現します',
+      rent: {
+        title: '賃貸事業',
+        description: 'エリア・沿線・賃料・間取りなど、お客様のニーズに合わせた物件検索サービス',
+      },
+      sale: {
+        title: '売買事業',
+        description: 'マンション・戸建・土地・投資用物件まで、幅広い不動産売買のサポート',
+      },
+      management: {
+        title: '管理事業',
+        description: '賃貸物件の総合管理サービスで、オーナー様の資産価値を守ります',
+      },
+      minpaku: {
+        title: '民泊事業',
+        description: 'OneStep PMS連動で、民泊運営を完全サポート。収益最大化を実現',
+      },
+    },
+    
+    // 企業理念
+    philosophy: {
+      motto: '誠意正心 知行合一',
+      mottoDescription: '誠実な心を正しく保ち、学んだことを必ず実践する',
+      vision: 'ビジョン',
+      visionText: '世界で戦えるブランドへの飛躍、永続的発展の実現',
+      mission: 'ミッション',
+      missionText: '他社を凌駕する速さ・安さ・便利さでお客様の笑顔を創造する',
+    },
+    
+    // 会社概要
+    about: {
+      title: '会社概要',
+      subtitle: '物心両面の幸福と利他の心で、世界に通じる価値を創造する',
+      companyInfo: '会社情報',
+      companyName: '会社名',
+      representative: '代表者',
+      established: '設立',
+      corporateNumber: '会社法人等番号',
+      address: '本社所在地',
+      phone: '電話番号',
+      email: 'メールアドレス',
+      website: '公式サイト',
+      businessHours: '営業時間',
+      businessHoursValue: '平日 9:00〜18:00 / 土曜 10:00〜17:00（日祝休業）',
+      businessContent: '事業内容',
+      businessContentValue: '不動産賃貸仲介・売買仲介・賃貸管理・民泊運営・不動産コンサルティング',
+      licenseNumber: '許認可番号',
+      licenseNumberValue: '宅地建物取引業 東京都知事(1)第107157号',
+      associations: '加盟団体',
+      associationsValue: '公益社団法人 全国宅地建物取引業協会連合会、公益社団法人 東京都宅地建物取引業協会',
+      strengths: '当社の強み',
+      strength1Title: '地域密着型の丁寧なサービス',
+      strength1Description: '東京23区を中心に、地域の特性を熟知したスタッフが、お客様一人ひとりのニーズに合わせた最適な物件をご提案いたします。',
+      strength2Title: '多言語対応（日本語・中国語・英語）',
+      strength2Description: '外国籍のお客様も安心してご利用いただけるよう、中国語・英語に対応したスタッフが在籍しております。',
+      strength3Title: '最新テクノロジーの活用',
+      strength3Description: 'AIを活用した物件マッチングシステムや、オンライン内見など、最新技術を導入し、効率的な物件探しをサポートします。',
+      strength4Title: 'ワンストップサービス',
+      strength4Description: '賃貸・売買・管理・民泊まで、不動産に関するあらゆるニーズに、一社で対応できる総合力が当社の強みです。',
+      access: 'アクセス',
+      location: '所在地',
+      accessInfo: 'アクセス情報',
+      nearStation1: 'JR・東京メトロ 高田馬場駅',
+      nearStation1Time: '早稲田口より徒歩約10分',
+      nearStation2: '東京メトロ副都心線 西早稲田駅',
+      nearStation2Time: '3番出口より徒歩約8分',
+    },
+    
+    // 賃貸検索
+    rent: {
+      title: '賃貸物件検索',
+      subtitle: 'お客様のライフスタイルに合った理想の賃貸物件をお探しします',
+      searchTitle: '物件を探す',
+      area: 'エリア',
+      areaPlaceholder: 'エリアを選択してください',
+      minRent: '賃料（下限）',
+      maxRent: '賃料（上限）',
+      layout: '間取り',
+      features: 'こだわり条件',
+      searchButton: 'この条件で検索する',
+      recommended: 'おすすめ物件',
+      perMonth: '/ 月',
+      viewDetails: '詳細を見る',
+      favorite: 'お気に入り',
+      loadMore: 'もっと見る',
+      rentalProcess: '賃貸物件ご契約の流れ',
+      step1: '物件検索',
+      step1Desc: 'ご希望の条件で物件を検索',
+      step2: '内見予約',
+      step2Desc: '気になる物件の内見を予約',
+      step3: '入居申込',
+      step3Desc: '審査のため申込書を提出',
+      step4: '契約手続き',
+      step4Desc: '重要事項説明と契約締結',
+      step5: '入居開始',
+      step5Desc: '鍵の受け渡し・入居',
+    },
+    
+    // 賃貸管理
+    management: {
+      title: '賃貸管理サービス',
+      subtitle: 'オーナー様と入居者様、双方にとって最適な賃貸管理をご提供します',
+      forOwners: 'オーナー様向け',
+      forTenants: '入居者様向け',
+      ownerServices: 'オーナー様向け管理サービス',
+      feature1: '安定した収益管理',
+      feature1Desc: '家賃の集金代行から滞納対応まで、収益を確実に確保します。',
+      feature2: '建物・設備管理',
+      feature2Desc: '定期点検からトラブル対応まで、物件の価値を維持します。',
+      feature3: '入居者管理',
+      feature3Desc: '入居者募集から契約更新まで、総合的にサポートします。',
+      rentManagement: '賃料管理サービス',
+      buildingManagement: '建物管理サービス',
+      tenantManagement: '入居者管理サービス',
+      otherServices: 'その他サービス',
+      managementFees: '管理手数料',
+      basicPlan: '基本管理プラン',
+      fullPlan: 'フル管理プラン',
+      premiumPlan: 'プレミアムプラン',
+      recommended: 'おすすめ',
+      managementStats: '管理実績',
+      properties: '管理物件数',
+      units: '管理戸数',
+      occupancyRate: '入居率',
+      avgYears: '平均管理年数',
+      tenantServices: '入居者様向けサービス',
+      comfortableSupport: '快適な住環境のサポート',
+      supportDesc: '入居中のお困りごとから退去時の手続きまで、安心してお住まいいただけるよう全力でサポートいたします。',
+      contactWindow: 'お問い合わせ窓口',
+      businessHours: '営業時間',
+      emergencyContact: '緊急連絡先（24時間）',
+      faq: 'よくあるご質問',
+    },
+    
+    // CTA（行動呼びかけ）
+    cta: {
+      title: 'あなたの夢を叶える、',
+      subtitle: '最高のパートナーがここに',
+      description: '賃貸・売買・管理・民泊まで、全ての不動産ニーズにワンストップで対応。お客様の幸福を第一に、誠実なサービスを提供します。',
+      searchProperties: '物件を探す',
+    },
+    
+    // 特徴
+    features: {
+      title: 'KANAEが選ばれる理由',
+      subtitle: 'お客様の幸福を第一に考え、質の高いサービスを提供します',
+      items: [
+        {
+          title: '多言語対応',
+          description: '日本語・中国語・英語に対応し、外国人のお客様も安心してご利用いただけます',
+          iconPath: 'M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9',
+        },
+        {
+          title: '24時間対応',
+          description: 'オンライン問い合わせは24時間受付。緊急時のサポート体制も万全です',
+          iconPath: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z',
+        },
+        {
+          title: '安心のサポート',
+          description: '宅地建物取引士・一級建築士が在籍。専門知識でお客様をサポートします',
+          iconPath: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',
+        },
+        {
+          title: 'IT化推進',
+          description: 'いえらぶ・ITANDI・OneStep PMSとの連携で、スムーズな契約と管理を実現',
+          iconPath: 'M13 10V3L4 14h7v7l9-11h-7z',
+        },
+        {
+          title: '透明な料金体系',
+          description: '初期費用・税金計算をその場で確認。隠れた費用は一切ありません',
+          iconPath: 'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z',
+        },
+        {
+          title: 'ワンストップ対応',
+          description: '賃貸・売買・管理・民泊まで、全ての不動産ニーズに一社で対応します',
+          iconPath: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z',
+        },
+      ],
+    },
+    
+    // 統計情報
+    stats: {
+      title: '数字で見るKANAE',
+      subtitle: '着実な成長と、確かな実績',
+      items: [
+        {
+          number: '30+',
+          label: '民泊運営物件',
+          description: 'OneStep PMS連動で高収益を実現',
+        },
+        {
+          number: '500+',
+          label: '賃貸・売買管理物件',
+          description: '豊富な実績で安心のサポート',
+        },
+        {
+          number: '1000+',
+          label: 'お客様の笑顔',
+          description: '満足度95%以上の評価',
+        },
+        {
+          number: '3年',
+          label: '創業からの実績',
+          description: '2021年設立、着実な成長',
+        },
+      ],
+      banksTitle: '主要取引銀行',
+      banksSubtitle: '確かな信頼関係で、安心の取引をサポート',
+      banks: [
+        'SBJ銀行',
+        'スター銀行',
+        'ソニー銀行',
+        'あすか信用組合',
+        'SMBC信託銀行',
+        '三井住友銀行',
+      ],
+    },
+    
+    // お問い合わせ
+    contact: {
+      title: 'お問い合わせ',
+      subtitle: 'お気軽にご相談ください',
+      phone: '電話でのお問い合わせ',
+      email: 'メールでのお問い合わせ',
+      businessHours: '営業時間',
+      businessHoursValue: '平日 9:00-18:00',
+      businessHoursNote: '(土日祝は予約制)',
+      address: '所在地',
+      inquiryButton: 'お問い合わせはこちら',
+      onlineNote: '※ オンライン相談・内見予約は24時間受付中',
+    },
+    
+    // フッター
+    footer: {
+      companyName: '株式会社KANAE',
+      slogan: '物心両面の幸福と利他の心で、世界に通じる価値を創造する',
+      businessContent: '事業内容',
+      companyInfo: '会社情報',
+      contactInfo: 'お問い合わせ',
+      privacyPolicy: '個人情報保護方針',
+      terms: '利用規約',
+      sitemap: 'サイトマップ',
+      allRightsReserved: 'All rights reserved.',
+    },
+    
+    // 共通
+    common: {
+      readMore: '詳しく見る',
+      backToTop: 'トップへ戻る',
+      loading: '読み込み中...',
+      error: 'エラーが発生しました',
+      success: '成功しました',
+      confirm: '確認',
+      cancel: 'キャンセル',
+      save: '保存',
+      delete: '削除',
+      edit: '編集',
+      search: '検索',
+      close: '閉じる',
+    },
+  },
+  
+  zh: {
+    // 导航
+    nav: {
+      home: '首页',
+      rent: '租赁',
+      sale: '买卖',
+      management: '管理',
+      minpaku: '民宿',
+      about: '公司简介',
+      philosophy: '企业理念',
+      contact: '联系我们',
+    },
+    
+    // 主视觉区
+    hero: {
+      title: '追求物质与精神的双重幸福，',
+      subtitle: '以利他之心创造通往世界的价值',
+      cta: '搜索房源',
+      learnMore: '了解更多',
+    },
+    
+    // 服务
+    services: {
+      title: '业务内容',
+      subtitle: '通过四大业务，实现客户的幸福',
+      rent: {
+        title: '租赁业务',
+        description: '根据地区、线路、租金、户型等，为客户提供符合需求的房源搜索服务',
+      },
+      sale: {
+        title: '买卖业务',
+        description: '从公寓、独栋、土地到投资用物业，提供全方位的房地产买卖支持',
+      },
+      management: {
+        title: '管理业务',
+        description: '提供租赁物业的综合管理服务，守护业主的资产价值',
+      },
+      minpaku: {
+        title: '民宿业务',
+        description: '通过OneStep PMS联动，全面支持民宿运营，实现收益最大化',
+      },
+    },
+    
+    // 企业理念
+    philosophy: {
+      motto: '诚意正心 知行合一',
+      mottoDescription: '保持诚实正直的心，必定实践所学',
+      vision: '愿景',
+      visionText: '成为能在世界竞争的品牌，实现永续发展',
+      mission: '使命',
+      missionText: '以超越其他公司的速度、价格和便利性，创造客户的笑容',
+    },
+    
+    // 公司简介
+    about: {
+      title: '公司简介',
+      subtitle: '追求物质与精神的双重幸福，以利他之心创造通往世界的价值',
+      companyInfo: '公司信息',
+      companyName: '公司名称',
+      representative: '代表人',
+      established: '成立日期',
+      corporateNumber: '公司法人编号',
+      address: '总公司地址',
+      phone: '电话号码',
+      email: '电子邮箱',
+      website: '官方网站',
+      businessHours: '营业时间',
+      businessHoursValue: '工作日 9:00〜18:00 / 周六 10:00〜17:00（周日及节假日休息）',
+      businessContent: '业务内容',
+      businessContentValue: '房地产租赁中介・买卖中介・租赁管理・民宿运营・房地产咨询',
+      licenseNumber: '许可证编号',
+      licenseNumberValue: '宅地建物交易业 东京都知事(1)第107157号',
+      associations: '加盟团体',
+      associationsValue: '公益社团法人 全国宅地建物交易业协会联合会、公益社团法人 东京都宅地建物交易业协会',
+      strengths: '我们的优势',
+      strength1Title: '扎根本地的细致服务',
+      strength1Description: '以东京23区为中心，熟知地区特性的员工将为每一位客户提供最符合需求的房源推荐。',
+      strength2Title: '多语言对应（日语・中文・英语）',
+      strength2Description: '为了让外籍客户也能安心使用，我们配备了中文和英文对应的员工。',
+      strength3Title: '运用最新科技',
+      strength3Description: '引入AI驱动的房源匹配系统和在线看房等最新技术，为高效找房提供支持。',
+      strength4Title: '一站式服务',
+      strength4Description: '从租赁、买卖、管理到民宿，能够一站式满足所有房地产需求是我们的综合实力优势。',
+      access: '交通方式',
+      location: '地址',
+      accessInfo: '交通信息',
+      nearStation1: 'JR・东京地铁 高田马场站',
+      nearStation1Time: '早稻田出口步行约10分钟',
+      nearStation2: '东京地铁副都心线 西早稻田站',
+      nearStation2Time: '3号出口步行约8分钟',
+    },
+    
+    // 租赁搜索
+    rent: {
+      title: '租赁房源搜索',
+      subtitle: '为您寻找符合生活方式的理想租赁房源',
+      searchTitle: '搜索房源',
+      area: '地区',
+      areaPlaceholder: '请选择地区',
+      minRent: '租金（下限）',
+      maxRent: '租金（上限）',
+      layout: '户型',
+      features: '特定条件',
+      searchButton: '按此条件搜索',
+      recommended: '推荐房源',
+      perMonth: '/ 月',
+      viewDetails: '查看详情',
+      favorite: '收藏',
+      loadMore: '查看更多',
+      rentalProcess: '租赁合同流程',
+      step1: '房源搜索',
+      step1Desc: '按照期望条件搜索房源',
+      step2: '预约看房',
+      step2Desc: '预约心仪房源的看房',
+      step3: '入住申请',
+      step3Desc: '提交申请表进行审查',
+      step4: '签约手续',
+      step4Desc: '重要事项说明与签约',
+      step5: '开始入住',
+      step5Desc: '钥匙交接・入住',
+    },
+    
+    // 租赁管理
+    management: {
+      title: '租赁管理服务',
+      subtitle: '为业主和租客双方提供最优质的租赁管理服务',
+      forOwners: '面向业主',
+      forTenants: '面向租客',
+      ownerServices: '业主管理服务',
+      feature1: '稳定的收益管理',
+      feature1Desc: '从租金代收到欠款催缴，确保收益安全。',
+      feature2: '建筑・设备管理',
+      feature2Desc: '从定期检查到故障处理，维护物业价值。',
+      feature3: '租客管理',
+      feature3Desc: '从招租到合同更新，提供全面支持。',
+      rentManagement: '租金管理服务',
+      buildingManagement: '建筑管理服务',
+      tenantManagement: '租客管理服务',
+      otherServices: '其他服务',
+      managementFees: '管理费用',
+      basicPlan: '基础管理方案',
+      fullPlan: '全面管理方案',
+      premiumPlan: '高级管理方案',
+      recommended: '推荐',
+      managementStats: '管理实绩',
+      properties: '管理物业数',
+      units: '管理户数',
+      occupancyRate: '入住率',
+      avgYears: '平均管理年数',
+      tenantServices: '租客服务',
+      comfortableSupport: '舒适居住环境支持',
+      supportDesc: '从入住期间的困扰到退租手续，全力支持让您安心居住。',
+      contactWindow: '咨询窗口',
+      businessHours: '营业时间',
+      emergencyContact: '紧急联系方式（24小时）',
+      faq: '常见问题',
+    },
+    
+    // 行动号召
+    cta: {
+      title: '实现您的梦想，',
+      subtitle: '最佳合作伙伴就在这里',
+      description: '从租赁、买卖、管理到民宿，一站式满足所有房地产需求。以客户幸福为第一，提供诚信服务。',
+      searchProperties: '搜索房源',
+    },
+    
+    // 特色优势
+    features: {
+      title: '选择KANAE的理由',
+      subtitle: '以客户幸福为首要，提供高质量服务',
+      items: [
+        {
+          title: '多语言对应',
+          description: '支持日语、中文、英语，外籍客户也可安心使用',
+          iconPath: 'M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9',
+        },
+        {
+          title: '24小时响应',
+          description: '在线咨询24小时受理，紧急时刻支援体系完善',
+          iconPath: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z',
+        },
+        {
+          title: '安心支持',
+          description: '配备宅地建物交易士・一级建筑士，以专业知识支持客户',
+          iconPath: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',
+        },
+        {
+          title: 'IT化推进',
+          description: '与いえらぶ・ITANDI・OneStep PMS联动，实现顺畅合约与管理',
+          iconPath: 'M13 10V3L4 14h7v7l9-11h-7z',
+        },
+        {
+          title: '透明收费体系',
+          description: '现场确认初期费用・税金计算，无任何隐藏费用',
+          iconPath: 'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z',
+        },
+        {
+          title: '一站式服务',
+          description: '从租赁、买卖、管理到民宿，一家公司满足所有房地产需求',
+          iconPath: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z',
+        },
+      ],
+    },
+    
+    // 统计数据
+    stats: {
+      title: '用数字看KANAE',
+      subtitle: '稳步成长，确实业绩',
+      items: [
+        {
+          number: '30+',
+          label: '民宿运营物业',
+          description: 'OneStep PMS联动实现高收益',
+        },
+        {
+          number: '500+',
+          label: '租赁・买卖管理物业',
+          description: '丰富实绩，安心支持',
+        },
+        {
+          number: '1000+',
+          label: '客户的笑容',
+          description: '满意度95%以上',
+        },
+        {
+          number: '3年',
+          label: '创业以来实绩',
+          description: '2021年成立，稳步成长',
+        },
+      ],
+      banksTitle: '主要交易银行',
+      banksSubtitle: '确实信赖关系，支持安心交易',
+      banks: [
+        'SBJ银行',
+        '星星银行',
+        '索尼银行',
+        '飞鸟信用组合',
+        'SMBC信托银行',
+        '三井住友银行',
+      ],
+    },
+    
+    // 联系我们
+    contact: {
+      title: '联系我们',
+      subtitle: '欢迎随时咨询',
+      phone: '电话咨询',
+      email: '邮件咨询',
+      businessHours: '营业时间',
+      businessHoursValue: '工作日 9:00-18:00',
+      businessHoursNote: '(周末及节假日需预约)',
+      address: '地址',
+      inquiryButton: '点击咨询',
+      onlineNote: '※ 在线咨询・看房预约24小时受理',
+    },
+    
+    // 页脚
+    footer: {
+      companyName: '株式会社KANAE',
+      slogan: '追求物质与精神的双重幸福，以利他之心创造通往世界的价值',
+      businessContent: '业务内容',
+      companyInfo: '公司信息',
+      contactInfo: '联系我们',
+      privacyPolicy: '隐私政策',
+      terms: '使用条款',
+      sitemap: '网站地图',
+      allRightsReserved: 'All rights reserved.',
+    },
+    
+    // 通用
+    common: {
+      readMore: '了解详情',
+      backToTop: '返回顶部',
+      loading: '加载中...',
+      error: '发生错误',
+      success: '成功',
+      confirm: '确认',
+      cancel: '取消',
+      save: '保存',
+      delete: '删除',
+      edit: '编辑',
+      search: '搜索',
+      close: '关闭',
+    },
+  },
+  
+  en: {
+    // Navigation
+    nav: {
+      home: 'Home',
+      rent: 'Rental',
+      sale: 'Sales',
+      management: 'Management',
+      minpaku: 'Vacation Rental',
+      about: 'About Us',
+      philosophy: 'Philosophy',
+      contact: 'Contact',
+    },
+    
+    // Hero Section
+    hero: {
+      title: 'Creating World-Class Value',
+      subtitle: 'With Pursuit of Material and Spiritual Happiness',
+      cta: 'Search Properties',
+      learnMore: 'Learn More',
+    },
+    
+    // Services
+    services: {
+      title: 'Our Services',
+      subtitle: 'Four Business Areas to Realize Customer Happiness',
+      rent: {
+        title: 'Rental Business',
+        description: 'Property search service tailored to customer needs by area, transit line, rent, layout, etc.',
+      },
+      sale: {
+        title: 'Sales Business',
+        description: 'Comprehensive support for real estate transactions from condos, houses, land to investment properties',
+      },
+      management: {
+        title: 'Management Business',
+        description: 'Comprehensive management services for rental properties to protect owner asset value',
+      },
+      minpaku: {
+        title: 'Vacation Rental Business',
+        description: 'Full support for vacation rental operations with OneStep PMS integration to maximize revenue',
+      },
+    },
+    
+    // Philosophy
+    philosophy: {
+      motto: 'Integrity & Unity of Knowledge and Action',
+      mottoDescription: 'Maintain an honest heart and always practice what we learn',
+      vision: 'Vision',
+      visionText: 'To become a globally competitive brand and achieve sustainable development',
+      mission: 'Mission',
+      missionText: 'Creating customer smiles with speed, affordability, and convenience that surpass others',
+    },
+    
+    // About Us
+    about: {
+      title: 'About Us',
+      subtitle: 'Creating world-class value with pursuit of material and spiritual happiness',
+      companyInfo: 'Company Information',
+      companyName: 'Company Name',
+      representative: 'Representative',
+      established: 'Established',
+      corporateNumber: 'Corporate Number',
+      address: 'Head Office',
+      phone: 'Phone',
+      email: 'Email',
+      website: 'Website',
+      businessHours: 'Business Hours',
+      businessHoursValue: 'Weekdays 9:00-18:00 / Saturday 10:00-17:00 (Closed Sundays & Holidays)',
+      businessContent: 'Business Content',
+      businessContentValue: 'Real Estate Rental Brokerage, Sales Brokerage, Rental Management, Vacation Rental Operations, Real Estate Consulting',
+      licenseNumber: 'License Number',
+      licenseNumberValue: 'Real Estate Transaction Business Tokyo Governor (1) No. 107157',
+      associations: 'Associations',
+      associationsValue: 'Japan Real Estate Transaction Association, Tokyo Real Estate Transaction Association',
+      strengths: 'Our Strengths',
+      strength1Title: 'Community-Based Attentive Service',
+      strength1Description: 'Our staff, knowledgeable about the Tokyo 23 wards area, propose optimal properties tailored to each customer\'s needs.',
+      strength2Title: 'Multilingual Support (Japanese, Chinese, English)',
+      strength2Description: 'We have staff proficient in Chinese and English to serve international clients with confidence.',
+      strength3Title: 'Leveraging Latest Technology',
+      strength3Description: 'We support efficient property searches with AI-powered matching systems and online viewing services.',
+      strength4Title: 'One-Stop Service',
+      strength4Description: 'Our comprehensive strength lies in handling all real estate needs - rental, sales, management, and vacation rentals - in one place.',
+      access: 'Access',
+      location: 'Location',
+      accessInfo: 'Access Information',
+      nearStation1: 'JR/Tokyo Metro Takadanobaba Station',
+      nearStation1Time: '10 min walk from Waseda Exit',
+      nearStation2: 'Tokyo Metro Fukutoshin Line Nishi-Waseda Station',
+      nearStation2Time: '8 min walk from Exit 3',
+    },
+    
+    // Rental Search
+    rent: {
+      title: 'Rental Property Search',
+      subtitle: 'Find your ideal rental property that fits your lifestyle',
+      searchTitle: 'Search Properties',
+      area: 'Area',
+      areaPlaceholder: 'Select an area',
+      minRent: 'Rent (Min)',
+      maxRent: 'Rent (Max)',
+      layout: 'Layout',
+      features: 'Special Features',
+      searchButton: 'Search with these conditions',
+      recommended: 'Recommended Properties',
+      perMonth: '/ month',
+      viewDetails: 'View Details',
+      favorite: 'Favorite',
+      loadMore: 'Load More',
+      rentalProcess: 'Rental Contract Process',
+      step1: 'Property Search',
+      step1Desc: 'Search properties with desired conditions',
+      step2: 'Viewing Reservation',
+      step2Desc: 'Schedule viewing for interesting properties',
+      step3: 'Application',
+      step3Desc: 'Submit application for screening',
+      step4: 'Contract Procedures',
+      step4Desc: 'Important matters explanation and contract signing',
+      step5: 'Move-in',
+      step5Desc: 'Key handover and move-in',
+    },
+    
+    // Management
+    management: {
+      title: 'Rental Management Service',
+      subtitle: 'Providing optimal rental management for both owners and tenants',
+      forOwners: 'For Owners',
+      forTenants: 'For Tenants',
+      ownerServices: 'Management Services for Owners',
+      feature1: 'Stable Revenue Management',
+      feature1Desc: 'Secure revenue from rent collection to delinquency handling.',
+      feature2: 'Building & Equipment Management',
+      feature2Desc: 'Maintain property value from regular inspections to trouble response.',
+      feature3: 'Tenant Management',
+      feature3Desc: 'Comprehensive support from tenant recruitment to contract renewal.',
+      rentManagement: 'Rent Management Service',
+      buildingManagement: 'Building Management Service',
+      tenantManagement: 'Tenant Management Service',
+      otherServices: 'Other Services',
+      managementFees: 'Management Fees',
+      basicPlan: 'Basic Management Plan',
+      fullPlan: 'Full Management Plan',
+      premiumPlan: 'Premium Plan',
+      recommended: 'Recommended',
+      managementStats: 'Management Track Record',
+      properties: 'Properties Managed',
+      units: 'Units Managed',
+      occupancyRate: 'Occupancy Rate',
+      avgYears: 'Average Management Years',
+      tenantServices: 'Tenant Services',
+      comfortableSupport: 'Comfortable Living Environment Support',
+      supportDesc: 'We fully support your comfortable living from troubleshooting during occupancy to move-out procedures.',
+      contactWindow: 'Contact Window',
+      businessHours: 'Business Hours',
+      emergencyContact: 'Emergency Contact (24/7)',
+      faq: 'FAQ',
+    },
+    
+    // Call to Action
+    cta: {
+      title: 'Make Your Dreams Come True,',
+      subtitle: 'Your Best Partner Is Here',
+      description: 'From rental, sales, management to vacation rental, we provide one-stop service for all real estate needs. Customer happiness is our priority, delivering honest and reliable service.',
+      searchProperties: 'Search Properties',
+    },
+    
+    // Features
+    features: {
+      title: 'Why Choose KANAE',
+      subtitle: 'Putting customer happiness first and providing high-quality services',
+      items: [
+        {
+          title: 'Multilingual Support',
+          description: 'Support in Japanese, Chinese, and English for international customers',
+          iconPath: 'M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9',
+        },
+        {
+          title: '24/7 Response',
+          description: 'Online inquiries accepted 24/7. Complete emergency support system',
+          iconPath: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z',
+        },
+        {
+          title: 'Reliable Support',
+          description: 'Qualified real estate agents and architects provide expert support',
+          iconPath: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',
+        },
+        {
+          title: 'IT Integration',
+          description: 'Seamless contract and management through integration with leading platforms',
+          iconPath: 'M13 10V3L4 14h7v7l9-11h-7z',
+        },
+        {
+          title: 'Transparent Pricing',
+          description: 'Instant verification of initial costs and tax calculations. No hidden fees',
+          iconPath: 'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z',
+        },
+        {
+          title: 'One-Stop Service',
+          description: 'All real estate needs from rental, sales, management to vacation rental under one roof',
+          iconPath: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z',
+        },
+      ],
+    },
+    
+    // Statistics
+    stats: {
+      title: 'KANAE by Numbers',
+      subtitle: 'Steady growth and proven track record',
+      items: [
+        {
+          number: '30+',
+          label: 'Vacation Rental Properties',
+          description: 'High profitability through OneStep PMS',
+        },
+        {
+          number: '500+',
+          label: 'Rental & Sales Properties',
+          description: 'Reliable support with abundant experience',
+        },
+        {
+          number: '1000+',
+          label: 'Happy Customers',
+          description: '95%+ satisfaction rating',
+        },
+        {
+          number: '3 Years',
+          label: 'Since Establishment',
+          description: 'Founded in 2021, steady growth',
+        },
+      ],
+      banksTitle: 'Major Partner Banks',
+      banksSubtitle: 'Strong partnerships for secure transactions',
+      banks: [
+        'SBJ Bank',
+        'Star Bank',
+        'Sony Bank',
+        'Asuka Credit Union',
+        'SMBC Trust Bank',
+        'Sumitomo Mitsui Banking',
+      ],
+    },
+    
+    // Contact
+    contact: {
+      title: 'Contact Us',
+      subtitle: 'Feel free to reach out',
+      phone: 'Phone Inquiry',
+      email: 'Email Inquiry',
+      businessHours: 'Business Hours',
+      businessHoursValue: 'Weekdays 9:00-18:00',
+      businessHoursNote: '(Weekends & holidays by appointment)',
+      address: 'Address',
+      inquiryButton: 'Contact Us',
+      onlineNote: '※ Online consultation and viewing reservations accepted 24/7',
+    },
+    
+    // Footer
+    footer: {
+      companyName: 'KANAE CO., LTD.',
+      slogan: 'Creating world-class value with pursuit of material and spiritual happiness',
+      businessContent: 'Business Content',
+      companyInfo: 'Company Info',
+      contactInfo: 'Contact',
+      privacyPolicy: 'Privacy Policy',
+      terms: 'Terms of Service',
+      sitemap: 'Sitemap',
+      allRightsReserved: 'All rights reserved.',
+    },
+    
+    // Common
+    common: {
+      readMore: 'Read More',
+      backToTop: 'Back to Top',
+      loading: 'Loading...',
+      error: 'An error occurred',
+      success: 'Success',
+      confirm: 'Confirm',
+      cancel: 'Cancel',
+      save: 'Save',
+      delete: 'Delete',
+      edit: 'Edit',
+      search: 'Search',
+      close: 'Close',
+    },
+  },
+};
+
+export type Locale = 'ja' | 'zh' | 'en';
+export type Translations = typeof translations.ja;

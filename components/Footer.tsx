@@ -1,9 +1,13 @@
 'use client';
 
 import Link from 'next/link';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { translations } from '@/lib/translations';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const { locale } = useLanguage();
+  const t = translations[locale];
 
   return (
     <footer className="bg-gray-900 text-white">

@@ -1,10 +1,10 @@
 'use client';
 
-import { useState } from 'react';
-import { translations } from '@/lib/i18n';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { translations } from '@/lib/translations';
 
 export default function Philosophy() {
-  const [locale] = useState<'ja' | 'zh' | 'en'>('ja');
+  const { locale } = useLanguage();
   const t = translations[locale];
 
   return (
@@ -42,7 +42,7 @@ export default function Philosophy() {
               <h3 className="text-2xl font-bold mb-2">{t.philosophy.mission}</h3>
             </div>
             <p className="text-white/90 leading-relaxed">
-              {t.philosophy.mission_text}
+              {t.philosophy.missionText}
             </p>
             <div className="mt-6 space-y-2">
               <div className="flex items-start space-x-2">
@@ -78,7 +78,7 @@ export default function Philosophy() {
               <h3 className="text-2xl font-bold mb-2">{t.philosophy.vision}</h3>
             </div>
             <p className="text-white/90 leading-relaxed">
-              {t.philosophy.vision_text}
+              {t.philosophy.visionText}
             </p>
             <div className="mt-6 space-y-2">
               <div className="flex items-start space-x-2">
@@ -116,7 +116,7 @@ export default function Philosophy() {
               {t.philosophy.motto}
             </p>
             <p className="text-white/70 text-sm leading-relaxed mb-6">
-              {t.philosophy.motto_description}
+              {t.philosophy.mottoDescription}
             </p>
             <div className="space-y-2">
               <div className="flex items-start space-x-2">

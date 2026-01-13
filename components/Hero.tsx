@@ -1,11 +1,11 @@
 'use client';
 
-import { useState } from 'react';
 import Link from 'next/link';
-import { translations } from '@/lib/i18n';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { translations } from '@/lib/translations';
 
 export default function Hero() {
-  const [locale] = useState<'ja' | 'zh' | 'en'>('ja');
+  const { locale } = useLanguage();
   const t = translations[locale];
 
   return (
@@ -49,7 +49,7 @@ export default function Hero() {
               {t.philosophy.motto}
             </p>
             <p className="text-lg text-white/70">
-              {t.philosophy.motto_description}
+              {t.philosophy.mottoDescription}
             </p>
           </div>
 
@@ -68,7 +68,7 @@ export default function Hero() {
               href="/about"
               className="group bg-white/10 backdrop-blur-sm text-white border-2 border-white/50 px-10 py-4 rounded-full text-lg font-semibold hover:bg-white/20 transition-all transform hover:scale-105 flex items-center space-x-2"
             >
-              <span>{t.hero.learn_more}</span>
+              <span>{t.hero.learnMore}</span>
               <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>

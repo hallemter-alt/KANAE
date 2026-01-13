@@ -1,11 +1,11 @@
 'use client';
 
-import { useState } from 'react';
 import Link from 'next/link';
-import { translations } from '@/lib/i18n';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { translations } from '@/lib/translations';
 
 export default function Services() {
-  const [locale] = useState<'ja' | 'zh' | 'en'>('ja');
+  const { locale } = useLanguage();
   const t = translations[locale];
 
   const services = [

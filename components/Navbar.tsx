@@ -2,12 +2,13 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { translations } from '@/lib/i18n';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { translations } from '@/lib/translations';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [locale, setLocale] = useState<'ja' | 'zh' | 'en'>('ja');
+  const { locale, setLocale } = useLanguage();
   
   const t = translations[locale];
 

@@ -1,28 +1,11 @@
 'use client';
 
+import { useLanguage } from '@/contexts/LanguageContext';
+import { translations } from '@/lib/translations';
+
 export default function Stats() {
-  const stats = [
-    {
-      number: '30+',
-      label: '民泊運営物件',
-      description: 'OneStep PMS連動で高収益を実現',
-    },
-    {
-      number: '500+',
-      label: '賃貸・売買管理物件',
-      description: '豊富な実績で安心のサポート',
-    },
-    {
-      number: '1000+',
-      label: 'お客様の笑顔',
-      description: '満足度95%以上の評価',
-    },
-    {
-      number: '3年',
-      label: '創業からの実績',
-      description: '2021年設立、着実な成長',
-    },
-  ];
+  const { locale } = useLanguage();
+  const t = translations[locale];
 
   return (
     <section className="py-20 bg-gradient-to-br from-gray-50 to-gray-100 relative overflow-hidden">
@@ -36,16 +19,16 @@ export default function Stats() {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            数字で見るKANAE
+            {t.stats.title}
           </h2>
           <p className="text-xl text-gray-600">
-            着実な成長と、確かな実績
+            {t.stats.subtitle}
           </p>
         </div>
 
         {/* Stats Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {stats.map((stat, index) => (
+          {t.stats.items.map((stat: any, index: number) => (
             <div
               key={index}
               className="bg-white rounded-2xl shadow-lg p-8 text-center transform hover:-translate-y-2 transition-all duration-300 hover:shadow-2xl"
@@ -69,21 +52,14 @@ export default function Stats() {
         <div className="mt-16 bg-white rounded-2xl shadow-xl p-8 md:p-12">
           <div className="text-center mb-8">
             <h3 className="text-3xl font-bold text-gray-900 mb-4">
-              主要取引銀行
+              {t.stats.banksTitle}
             </h3>
             <p className="text-gray-600">
-              確かな信頼関係で、安心の取引をサポート
+              {t.stats.banksSubtitle}
             </p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 text-center">
-            {[
-              'SBJ銀行',
-              'スター銀行',
-              'ソニー銀行',
-              'あすか信用組合',
-              'SMBC信託銀行',
-              '三井住友銀行',
-            ].map((bank, index) => (
+            {t.stats.banks.map((bank: string, index: number) => (
               <div key={index} className="p-4 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors">
                 <p className="text-sm font-semibold text-gray-700">{bank}</p>
               </div>
