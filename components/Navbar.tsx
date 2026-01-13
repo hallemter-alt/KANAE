@@ -3,14 +3,12 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { translations } from '@/lib/translations';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { locale, setLocale } = useLanguage();
-  
-  const t = translations[locale];
+  const { locale, t } = useLanguage();
+  const [currentPath, setCurrentPath] = useState('');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,6 +18,15 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    setCurrentPath(window.location.pathname);
+  }, []);
+
+  const switchLocale = (newLocale: 'ja' | 'zh' | 'en') => {
+    const pathWithoutLocale = currentPath.replace(/^\/(ja|zh|en)/, '') || '/';
+    window.location.href = `/${newLocale}${pathWithoutLocale}`;
+  };
+
   return (
     <nav className={`fixed w-full z-50 transition-all duration-300 ${
       isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
@@ -27,7 +34,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
+          <Link href={`/${locale}`} className="flex items-center space-x-2">
             <div className="relative">
               <div className="text-3xl font-bold bg-gradient-to-r from-primary-600 to-gold-600 bg-clip-text text-transparent">
                 KANAE
@@ -40,25 +47,25 @@ export default function Navbar() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link href="/" className={`nav-link ${isScrolled ? 'text-gray-700' : 'text-white'} hover:text-primary-600 transition-colors`}>
+            <Link href={`/${locale}`} className={`nav-link ${isScrolled ? 'text-gray-700' : 'text-white'} hover:text-primary-600 transition-colors`}>
               {t.nav.home}
             </Link>
-            <Link href="/rent" className={`nav-link ${isScrolled ? 'text-gray-700' : 'text-white'} hover:text-primary-600 transition-colors`}>
+            <Link href={`/${locale}/rent`} className={`nav-link ${isScrolled ? 'text-gray-700' : 'text-white'} hover:text-primary-600 transition-colors`}>
               {t.nav.rent}
             </Link>
-            <Link href="/sale" className={`nav-link ${isScrolled ? 'text-gray-700' : 'text-white'} hover:text-primary-600 transition-colors`}>
+            <Link href={`/${locale}/sale`} className={`nav-link ${isScrolled ? 'text-gray-700' : 'text-white'} hover:text-primary-600 transition-colors`}>
               {t.nav.sale}
             </Link>
-            <Link href="/management" className={`nav-link ${isScrolled ? 'text-gray-700' : 'text-white'} hover:text-primary-600 transition-colors`}>
+            <Link href={`/${locale}/management`} className={`nav-link ${isScrolled ? 'text-gray-700' : 'text-white'} hover:text-primary-600 transition-colors`}>
               {t.nav.management}
             </Link>
-            <Link href="/minpaku" className={`nav-link ${isScrolled ? 'text-gray-700' : 'text-white'} hover:text-primary-600 transition-colors`}>
+            <Link href={`/${locale}/minpaku`} className={`nav-link ${isScrolled ? 'text-gray-700' : 'text-white'} hover:text-primary-600 transition-colors`}>
               {t.nav.minpaku}
             </Link>
-            <Link href="/about" className={`nav-link ${isScrolled ? 'text-gray-700' : 'text-white'} hover:text-primary-600 transition-colors`}>
+            <Link href={`/${locale}/about`} className={`nav-link ${isScrolled ? 'text-gray-700' : 'text-white'} hover:text-primary-600 transition-colors`}>
               {t.nav.about}
             </Link>
-            <Link href="/philosophy" className={`nav-link ${isScrolled ? 'text-gray-700' : 'text-white'} hover:text-primary-600 transition-colors`}>
+            <Link href={`/${locale}/philosophy`} className={`nav-link ${isScrolled ? 'text-gray-700' : 'text-white'} hover:text-primary-600 transition-colors`}>
               {t.nav.philosophy}
             </Link>
           </div>
@@ -67,7 +74,7 @@ export default function Navbar() {
           <div className="hidden md:flex items-center space-x-4">
             <div className="flex items-center space-x-2 border-r pr-4">
               <button 
-                onClick={() => setLocale('ja')}
+                onClick={() => switchLocale('ja')}
                 className={`px-2 py-1 text-sm rounded transition-colors ${
                   locale === 'ja' 
                     ? 'bg-primary-600 text-white' 
@@ -77,7 +84,7 @@ export default function Navbar() {
                 日本語
               </button>
               <button 
-                onClick={() => setLocale('zh')}
+                onClick={() => switchLocale('zh')}
                 className={`px-2 py-1 text-sm rounded transition-colors ${
                   locale === 'zh' 
                     ? 'bg-primary-600 text-white' 
@@ -87,7 +94,7 @@ export default function Navbar() {
                 中文
               </button>
               <button 
-                onClick={() => setLocale('en')}
+                onClick={() => switchLocale('en')}
                 className={`px-2 py-1 text-sm rounded transition-colors ${
                   locale === 'en' 
                     ? 'bg-primary-600 text-white' 
@@ -98,7 +105,7 @@ export default function Navbar() {
               </button>
             </div>
             <Link 
-              href="/contact" 
+              href={`/${locale}/contact`}
               className="bg-gradient-to-r from-primary-600 to-primary-700 text-white px-6 py-2.5 rounded-lg font-medium hover:from-primary-700 hover:to-primary-800 transition-all transform hover:scale-105 shadow-lg hover:shadow-xl"
             >
               {t.nav.contact}
@@ -129,30 +136,30 @@ export default function Navbar() {
       {isMobileMenuOpen && (
         <div className="md:hidden bg-white shadow-lg">
           <div className="px-4 pt-2 pb-4 space-y-2">
-            <Link href="/" className="block px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors">
+            <Link href={`/${locale}`} className="block px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors">
               {t.nav.home}
             </Link>
-            <Link href="/rent" className="block px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors">
+            <Link href={`/${locale}/rent`} className="block px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors">
               {t.nav.rent}
             </Link>
-            <Link href="/sale" className="block px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors">
+            <Link href={`/${locale}/sale`} className="block px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors">
               {t.nav.sale}
             </Link>
-            <Link href="/management" className="block px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors">
+            <Link href={`/${locale}/management`} className="block px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors">
               {t.nav.management}
             </Link>
-            <Link href="/minpaku" className="block px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors">
+            <Link href={`/${locale}/minpaku`} className="block px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors">
               {t.nav.minpaku}
             </Link>
-            <Link href="/about" className="block px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors">
+            <Link href={`/${locale}/about`} className="block px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors">
               {t.nav.about}
             </Link>
-            <Link href="/philosophy" className="block px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors">
+            <Link href={`/${locale}/philosophy`} className="block px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors">
               {t.nav.philosophy}
             </Link>
             <div className="flex space-x-2 px-4 pt-2">
               <button 
-                onClick={() => setLocale('ja')}
+                onClick={() => switchLocale('ja')}
                 className={`flex-1 px-3 py-2 text-sm rounded transition-colors ${
                   locale === 'ja' ? 'bg-primary-600 text-white' : 'bg-gray-100 text-gray-600'
                 }`}
@@ -160,7 +167,7 @@ export default function Navbar() {
                 日本語
               </button>
               <button 
-                onClick={() => setLocale('zh')}
+                onClick={() => switchLocale('zh')}
                 className={`flex-1 px-3 py-2 text-sm rounded transition-colors ${
                   locale === 'zh' ? 'bg-primary-600 text-white' : 'bg-gray-100 text-gray-600'
                 }`}
@@ -168,7 +175,7 @@ export default function Navbar() {
                 中文
               </button>
               <button 
-                onClick={() => setLocale('en')}
+                onClick={() => switchLocale('en')}
                 className={`flex-1 px-3 py-2 text-sm rounded transition-colors ${
                   locale === 'en' ? 'bg-primary-600 text-white' : 'bg-gray-100 text-gray-600'
                 }`}
@@ -177,7 +184,7 @@ export default function Navbar() {
               </button>
             </div>
             <Link 
-              href="/contact" 
+              href={`/${locale}/contact`}
               className="block mx-4 mt-4 bg-gradient-to-r from-primary-600 to-primary-700 text-white text-center px-6 py-3 rounded-lg font-medium hover:from-primary-700 hover:to-primary-800 transition-all"
             >
               {t.nav.contact}
