@@ -40,7 +40,7 @@ export function Section({
     white: 'bg-white',
     gray: 'bg-gray-50',
     primary: 'bg-blue-50',
-    gradient: 'bg-gradient-to-br from-blue-600 via-blue-700 to-purple-700 text-white',
+    gradient: 'bg-gradient-to-br from-primary-900/90 via-primary-800/85 to-purple-900/90',
   }
 
   const spacingClasses = {
@@ -72,8 +72,8 @@ export function Heading({ level = 2, children, className = '', align = 'left' }:
     2: 'text-3xl sm:text-4xl lg:text-5xl font-bold',
     3: 'text-2xl sm:text-3xl lg:text-4xl font-bold',
     4: 'text-xl sm:text-2xl lg:text-3xl font-bold',
-    5: 'text-lg sm:text-xl lg:text-2xl font-medium',
-    6: 'text-base sm:text-lg lg:text-xl font-medium',
+    5: 'text-lg sm:text-xl lg:text-2xl font-semibold',
+    6: 'text-base sm:text-lg lg:text-xl font-semibold',
   }
 
   const alignClasses = {
@@ -82,8 +82,12 @@ export function Heading({ level = 2, children, className = '', align = 'left' }:
     right: 'text-right',
   }
 
+  // 如果 className 中沒有指定文字顏色，則使用默認的 text-gray-900
+  const hasTextColor = className.includes('text-');
+  const defaultColor = hasTextColor ? '' : 'text-gray-900';
+
   return (
-    <Tag className={`${sizeClasses[level]} ${alignClasses[align]} ${className}`}>
+    <Tag className={`${sizeClasses[level]} ${alignClasses[align]} ${defaultColor} ${className}`}>
       {children}
     </Tag>
   )
@@ -107,10 +111,10 @@ export function Text({ children, className = '', size = 'base', color = 'gray', 
   }
 
   const colorClasses = {
-    gray: 'text-gray-600',
+    gray: 'text-gray-700',
     dark: 'text-gray-900',
-    light: 'text-gray-400',
-    primary: 'text-blue-600',
+    light: 'text-gray-500',
+    primary: 'text-primary-600',
   }
 
   const weightClasses = {
