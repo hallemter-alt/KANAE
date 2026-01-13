@@ -5,18 +5,9 @@ import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { locale, t } = useLanguage();
   const [currentPath, setCurrentPath] = useState('');
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   useEffect(() => {
     setCurrentPath(window.location.pathname);
@@ -28,9 +19,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
-    }`}>
+    <nav className="fixed w-full z-50 bg-white shadow-md transition-all duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
@@ -47,25 +36,25 @@ export default function Navbar() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link href={`/${locale}`} className={`nav-link ${isScrolled ? 'text-gray-700' : 'text-white'} hover:text-primary-600 transition-colors`}>
+            <Link href={`/${locale}`} className="nav-link text-gray-700 hover:text-primary-600 transition-colors">
               {t.nav.home}
             </Link>
-            <Link href={`/${locale}/rent`} className={`nav-link ${isScrolled ? 'text-gray-700' : 'text-white'} hover:text-primary-600 transition-colors`}>
+            <Link href={`/${locale}/rent`} className="nav-link text-gray-700 hover:text-primary-600 transition-colors">
               {t.nav.rent}
             </Link>
-            <Link href={`/${locale}/sale`} className={`nav-link ${isScrolled ? 'text-gray-700' : 'text-white'} hover:text-primary-600 transition-colors`}>
+            <Link href={`/${locale}/sale`} className="nav-link text-gray-700 hover:text-primary-600 transition-colors">
               {t.nav.sale}
             </Link>
-            <Link href={`/${locale}/management`} className={`nav-link ${isScrolled ? 'text-gray-700' : 'text-white'} hover:text-primary-600 transition-colors`}>
+            <Link href={`/${locale}/management`} className="nav-link text-gray-700 hover:text-primary-600 transition-colors">
               {t.nav.management}
             </Link>
-            <Link href={`/${locale}/minpaku`} className={`nav-link ${isScrolled ? 'text-gray-700' : 'text-white'} hover:text-primary-600 transition-colors`}>
+            <Link href={`/${locale}/minpaku`} className="nav-link text-gray-700 hover:text-primary-600 transition-colors">
               {t.nav.minpaku}
             </Link>
-            <Link href={`/${locale}/about`} className={`nav-link ${isScrolled ? 'text-gray-700' : 'text-white'} hover:text-primary-600 transition-colors`}>
+            <Link href={`/${locale}/about`} className="nav-link text-gray-700 hover:text-primary-600 transition-colors">
               {t.nav.about}
             </Link>
-            <Link href={`/${locale}/philosophy`} className={`nav-link ${isScrolled ? 'text-gray-700' : 'text-white'} hover:text-primary-600 transition-colors`}>
+            <Link href={`/${locale}/philosophy`} className="nav-link text-gray-700 hover:text-primary-600 transition-colors">
               {t.nav.philosophy}
             </Link>
           </div>
@@ -78,7 +67,7 @@ export default function Navbar() {
                 className={`px-2 py-1 text-sm rounded transition-colors ${
                   locale === 'ja' 
                     ? 'bg-primary-600 text-white' 
-                    : isScrolled ? 'text-gray-600 hover:text-primary-600' : 'text-white hover:text-gold-400'
+                    : 'text-gray-600 hover:text-primary-600'
                 }`}
               >
                 日本語
@@ -88,7 +77,7 @@ export default function Navbar() {
                 className={`px-2 py-1 text-sm rounded transition-colors ${
                   locale === 'zh' 
                     ? 'bg-primary-600 text-white' 
-                    : isScrolled ? 'text-gray-600 hover:text-primary-600' : 'text-white hover:text-gold-400'
+                    : 'text-gray-600 hover:text-primary-600'
                 }`}
               >
                 中文
@@ -98,7 +87,7 @@ export default function Navbar() {
                 className={`px-2 py-1 text-sm rounded transition-colors ${
                   locale === 'en' 
                     ? 'bg-primary-600 text-white' 
-                    : isScrolled ? 'text-gray-600 hover:text-primary-600' : 'text-white hover:text-gold-400'
+                    : 'text-gray-600 hover:text-primary-600'
                 }`}
               >
                 EN
@@ -118,15 +107,15 @@ export default function Navbar() {
             className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
           >
             <div className="w-6 h-5 flex flex-col justify-between">
-              <span className={`block h-0.5 w-full bg-current transform transition-all ${
+              <span className="block h-0.5 w-full bg-current transform transition-all bg-gray-700 ${
                 isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''
-              } ${isScrolled ? 'bg-gray-700' : 'bg-white'}`}></span>
-              <span className={`block h-0.5 w-full bg-current transition-all ${
+              }"></span>
+              <span className="block h-0.5 w-full bg-current transition-all bg-gray-700 ${
                 isMobileMenuOpen ? 'opacity-0' : ''
-              } ${isScrolled ? 'bg-gray-700' : 'bg-white'}`}></span>
-              <span className={`block h-0.5 w-full bg-current transform transition-all ${
+              }"></span>
+              <span className="block h-0.5 w-full bg-current transform transition-all bg-gray-700 ${
                 isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''
-              } ${isScrolled ? 'bg-gray-700' : 'bg-white'}`}></span>
+              }"></span>
             </div>
           </button>
         </div>
