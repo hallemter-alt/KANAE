@@ -68,46 +68,6 @@ export default function AboutPage() {
         </Container>
       </Section>
 
-      {/* 企業理念 */}
-      <Section background="gray" spacing="lg">
-        <Container maxWidth="lg">
-          <Heading level={2} align="center" className="mb-12">
-            企業理念
-          </Heading>
-          <div className="grid md:grid-cols-2 gap-8">
-            <Card padding="lg" hover>
-              <div className="mb-4">
-                <span className="inline-block px-4 py-2 bg-blue-100 text-blue-800 rounded-full font-bold text-sm">
-                  ミッション
-                </span>
-              </div>
-              <Heading level={4} className="mb-4">
-                物心両面の幸福を追求
-              </Heading>
-              <Text>
-                お客様と従業員、そして社会全体の物質的・精神的な豊かさを実現し、
-                すべてのステークホルダーの幸福に貢献します。
-              </Text>
-            </Card>
-
-            <Card padding="lg" hover>
-              <div className="mb-4">
-                <span className="inline-block px-4 py-2 bg-purple-100 text-purple-800 rounded-full font-bold text-sm">
-                  ビジョン
-                </span>
-              </div>
-              <Heading level={4} className="mb-4">
-                利他の心で価値創造
-              </Heading>
-              <Text>
-                利他の心を持って、世界に通じる価値を創造し、
-                不動産業界のリーディングカンパニーを目指します。
-              </Text>
-            </Card>
-          </div>
-        </Container>
-      </Section>
-
       {/* 当社の強み */}
       <Section background="white" spacing="lg">
         <Container maxWidth="lg">
@@ -209,6 +169,26 @@ export default function AboutPage() {
         </Container>
       </Section>
 
+      {/* 企業理念へのリンク */}
+      <Section background="primary" spacing="md">
+        <Container>
+          <div className="text-center">
+            <Heading level={3} align="center" className="mb-4 text-gray-900">
+              私たちの理念
+            </Heading>
+            <Text size="lg" className="mb-8 max-w-2xl mx-auto">
+              物心両面の幸福と利他の心で、世界に通じる価値を創造する
+            </Text>
+            <a
+              href="/philosophy"
+              className="inline-block px-8 py-4 bg-white text-blue-600 rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors shadow-lg"
+            >
+              企業理念を見る
+            </a>
+          </div>
+        </Container>
+      </Section>
+
       {/* アクセス */}
       <Section background="gray" spacing="lg">
         <Container maxWidth="lg">
@@ -230,10 +210,12 @@ export default function AboutPage() {
                   アクセス
                 </Heading>
                 <Text>
-                  <strong>JR・東京メトロ 高田馬場駅</strong><br />
-                  早稲田口より徒歩約10分<br />
+                  <strong>東京メトロ東西線 高田馬場駅</strong><br />
+                  7番出口より徒歩約5分<br />
+                  <strong>JR山手線 高田馬場駅</strong><br />
+                  早稲田口より徒歩約7分<br />
                   <strong>東京メトロ副都心線 西早稲田駅</strong><br />
-                  3番出口より徒歩約8分
+                  3番出口より徒歩約6分
                 </Text>
               </div>
               <div className="bg-gray-200 rounded-lg h-80 overflow-hidden shadow-inner">

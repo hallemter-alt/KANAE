@@ -97,7 +97,10 @@ export default function Footer() {
                 <span className="text-gray-400">
                   〒171-0033<br />
                   東京都豊島区高田3-16-4<br />
-                  Golje Bld. 6F
+                  Golje Bld. 6F<br />
+                  <span className="text-xs mt-2 block">
+                    東京メトロ東西線 高田馬場駅 7番出口より徒歩5分
+                  </span>
                 </span>
               </li>
               <li className="flex items-center space-x-2">
