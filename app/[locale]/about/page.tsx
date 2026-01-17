@@ -42,7 +42,7 @@ export default function AboutPage() {
               />
               <InfoItem label="電話番号" value="TEL: 03-6914-3633 / FAX: 03-6457-3368" />
               <InfoItem label="メールアドレス" value="info@kanae-tokyo.com" />
-              <InfoItem label="公式サイト" value="www.rut-tokyo.com" />
+              <InfoItem label="公式サイト" value="www.kanae-tokyo.com" />
               <InfoItem 
                 label="営業時間" 
                 value="10:00〜19:00（定休日：水曜・日曜・年末年始）" 
