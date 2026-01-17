@@ -27,7 +27,7 @@ export default function PrivacyPolicyPage() {
 
       {/* プライバシーポリシー本文 */}
       <Section background="white" spacing="lg">
-        <Container maxWidth="4xl">
+        <Container maxWidth="full">
           <div className="prose prose-lg max-w-none">
             
             {/* 前文 */}
