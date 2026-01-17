@@ -56,7 +56,7 @@ export async function generateMetadata({
       locale: currentLocale === 'ja' ? 'ja_JP' : currentLocale === 'zh' ? 'zh_CN' : 'en_US',
     },
     alternates: {
-      canonical: `https://www.rut-tokyo.com/${currentLocale}`,
+      canonical: `https://www.kanae-tokyo.com/${currentLocale}`,
       languages: {
         'ja': '/ja',
         'zh': '/zh',

@@ -97,15 +97,15 @@ export default function Navbar() {
             className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
           >
             <div className="w-6 h-5 flex flex-col justify-between">
-              <span className="block h-0.5 w-full bg-current transform transition-all bg-gray-700 ${
+              <span className={`block h-0.5 w-full bg-gray-700 transform transition-all ${
                 isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''
-              }"></span>
-              <span className="block h-0.5 w-full bg-current transition-all bg-gray-700 ${
+              }`}></span>
+              <span className={`block h-0.5 w-full bg-gray-700 transition-all ${
                 isMobileMenuOpen ? 'opacity-0' : ''
-              }"></span>
-              <span className="block h-0.5 w-full bg-current transform transition-all bg-gray-700 ${
+              }`}></span>
+              <span className={`block h-0.5 w-full bg-gray-700 transform transition-all ${
                 isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''
-              }"></span>
+              }`}></span>
             </div>
           </button>
         </div>

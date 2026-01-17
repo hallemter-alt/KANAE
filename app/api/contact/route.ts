@@ -76,8 +76,8 @@ export async function POST(request: NextRequest) {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            from: 'no-reply@rut-tokyo.com',
-            to: process.env.CONTACT_EMAIL || 'info@rut-tokyo.com',
+            from: 'no-reply@kanae-tokyo.com',
+            to: process.env.CONTACT_EMAIL || 'info@kanae-tokyo.com',
             subject: `【新規問合せ】${body.name}様より`,
             html: `
               <h2>新規問合せがありました</h2>
