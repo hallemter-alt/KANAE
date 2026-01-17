@@ -40,12 +40,12 @@ export default function AboutPage() {
                 label="本社所在地" 
                 value="〒171-0033 東京都豊島区高田3丁目16番4号 Golje Bld. 6F" 
               />
-              <InfoItem label="電話番号" value="03-6914-3633 / 080-4363-2780" />
-              <InfoItem label="メールアドレス" value="info@rut-tokyo.com" />
+              <InfoItem label="電話番号" value="TEL: 03-6914-3633 / FAX: 03-6457-3368" />
+              <InfoItem label="メールアドレス" value="info@kanae-tokyo.com" />
               <InfoItem label="公式サイト" value="www.rut-tokyo.com" />
               <InfoItem 
                 label="営業時間" 
-                value="平日 9:00〜18:00 / 土曜 10:00〜17:00（日祝休業）" 
+                value="10:00〜19:00（定休日：水曜・日曜・年末年始）" 
                 fullWidth 
               />
               <InfoItem 
