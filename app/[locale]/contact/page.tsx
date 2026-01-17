@@ -185,13 +185,13 @@ export default function ContactPage() {
                     onChange={handleChange}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors text-gray-900 bg-white"
                   >
-                    <option value="general">一般的なお問い合わせ</option>
-                    <option value="viewing">内見予約</option>
-                    <option value="rent">賃貸物件について</option>
-                    <option value="sale">売買物件について</option>
-                    <option value="management">管理について</option>
-                    <option value="minpaku">民泊について</option>
-                    <option value="other">その他</option>
+                    <option value="general" className="text-gray-900">一般的なお問い合わせ</option>
+                    <option value="viewing" className="text-gray-900">内見予約</option>
+                    <option value="rent" className="text-gray-900">賃貸物件について</option>
+                    <option value="sale" className="text-gray-900">売買物件について</option>
+                    <option value="management" className="text-gray-900">管理について</option>
+                    <option value="minpaku" className="text-gray-900">民泊について</option>
+                    <option value="other" className="text-gray-900">その他</option>
                   </select>
                 </div>
 
