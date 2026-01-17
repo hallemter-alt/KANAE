@@ -58,7 +58,7 @@ export default function SalePage() {
                 <label className="block text-sm font-bold text-gray-700 mb-3">
                   エリア
                 </label>
-                <select className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all text-base">
+                <select className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all text-base text-gray-900 bg-white">
                   <option>エリアを選択してください</option>
                   <option>東京都</option>
                   <option>神奈川県</option>
@@ -76,7 +76,7 @@ export default function SalePage() {
                   <input
                     type="number"
                     placeholder="例: 30000000"
-                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all text-base"
+                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all text-base text-gray-900 bg-white"
                   />
                 </div>
                 <div>
@@ -86,7 +86,7 @@ export default function SalePage() {
                   <input
                     type="number"
                     placeholder="例: 100000000"
-                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all text-base"
+                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all text-base text-gray-900 bg-white"
                   />
                 </div>
               </div>

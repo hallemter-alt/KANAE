@@ -98,7 +98,7 @@ export default function RentPage() {
                 <select
                   value={selectedArea}
                   onChange={(e) => setSelectedArea(e.target.value)}
-                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-base"
+                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-base text-gray-900 bg-white"
                 >
                   <option value="">エリアを選択してください</option>
                   <option value="tokyo23">東京23区</option>
@@ -124,7 +124,7 @@ export default function RentPage() {
                     value={minRent}
                     onChange={(e) => setMinRent(e.target.value)}
                     placeholder="例: 50000"
-                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-base"
+                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-base text-gray-900 bg-white"
                   />
                 </div>
                 <div>
@@ -136,7 +136,7 @@ export default function RentPage() {
                     value={maxRent}
                     onChange={(e) => setMaxRent(e.target.value)}
                     placeholder="例: 200000"
-                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-base"
+                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-base text-gray-900 bg-white"
                   />
                 </div>
               </div>
