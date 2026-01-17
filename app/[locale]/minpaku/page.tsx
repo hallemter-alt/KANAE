@@ -101,7 +101,7 @@ export default function MinpakuPage() {
                 <select
                   value={formData.propertyType}
                   onChange={(e) => setFormData({ ...formData, propertyType: e.target.value })}
-                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all"
+                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all text-gray-900 bg-white"
                 >
                   <option>マンション</option>
                   <option>一戸建て</option>
@@ -118,7 +118,7 @@ export default function MinpakuPage() {
                   value={formData.area}
                   onChange={(e) => setFormData({ ...formData, area: e.target.value })}
                   placeholder="例: 50"
-                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all"
+                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all text-gray-900 bg-white"
                 />
               </div>
 
@@ -130,7 +130,7 @@ export default function MinpakuPage() {
                 <select
                   value={formData.rooms}
                   onChange={(e) => setFormData({ ...formData, rooms: e.target.value })}
-                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all"
+                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all text-gray-900 bg-white"
                 >
                   <option>1R</option>
                   <option>1K</option>
@@ -150,7 +150,7 @@ export default function MinpakuPage() {
                   value={formData.nightly_rate}
                   onChange={(e) => setFormData({ ...formData, nightly_rate: e.target.value })}
                   placeholder="例: 10000"
-                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all"
+                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all text-gray-900 bg-white"
                 />
               </div>
 
@@ -165,7 +165,7 @@ export default function MinpakuPage() {
                   onChange={(e) => setFormData({ ...formData, occupancy_rate: e.target.value })}
                   min="0"
                   max="100"
-                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all"
+                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all text-gray-900 bg-white"
                 />
               </div>
 
