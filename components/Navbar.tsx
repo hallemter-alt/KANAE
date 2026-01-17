@@ -9,11 +9,11 @@ export default function Navbar() {
   const { locale, t, setLocale } = useLanguage();
 
   return (
-    <nav className="fixed w-full z-50 bg-white shadow-md transition-all duration-300">
+    <nav className="fixed w-full z-50 bg-white shadow-md transition-all duration-300" role="navigation" aria-label="Main navigation">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <Link href={`/${locale}`} className="flex items-center space-x-2">
+          <Link href={`/${locale}`} className="flex items-center space-x-2" aria-label="KANAE ホームページ">
             <div className="relative">
               <div className="text-3xl font-bold bg-gradient-to-r from-primary-600 to-gold-600 bg-clip-text text-transparent">
                 KANAE
@@ -94,7 +94,10 @@ export default function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
+            className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+            aria-label={isMobileMenuOpen ? 'メニューを閉じる' : 'メニューを開く'}
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-menu"
           >
             <div className="w-6 h-5 flex flex-col justify-between">
               <span className={`block h-0.5 w-full bg-gray-700 transform transition-all ${
@@ -113,7 +116,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-white shadow-lg">
+        <div id="mobile-menu" className="md:hidden bg-white shadow-lg" role="menu">
           <div className="px-4 pt-2 pb-4 space-y-2">
             <Link href={`/${locale}`} className="block px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors">
               {t.nav.home}
