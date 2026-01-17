@@ -59,11 +59,11 @@ export default function SalePage() {
                   エリア
                 </label>
                 <select className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all text-base text-gray-900 bg-white">
-                  <option>エリアを選択してください</option>
-                  <option>東京都</option>
-                  <option>神奈川県</option>
-                  <option>千葉県</option>
-                  <option>埼玉県</option>
+                  <option className="text-gray-900">エリアを選択してください</option>
+                  <option className="text-gray-900">東京都</option>
+                  <option className="text-gray-900">神奈川県</option>
+                  <option className="text-gray-900">千葉県</option>
+                  <option className="text-gray-900">埼玉県</option>
                 </select>
               </div>
 

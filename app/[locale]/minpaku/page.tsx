@@ -103,8 +103,8 @@ export default function MinpakuPage() {
                   onChange={(e) => setFormData({ ...formData, propertyType: e.target.value })}
                   className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all text-gray-900 bg-white"
                 >
-                  <option>マンション</option>
-                  <option>一戸建て</option>
+                  <option className="text-gray-900">マンション</option>
+                  <option className="text-gray-900">一戸建て</option>
                 </select>
               </div>
 
@@ -132,11 +132,11 @@ export default function MinpakuPage() {
                   onChange={(e) => setFormData({ ...formData, rooms: e.target.value })}
                   className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all text-gray-900 bg-white"
                 >
-                  <option>1R</option>
-                  <option>1K</option>
-                  <option>1LDK</option>
-                  <option>2LDK</option>
-                  <option>3LDK</option>
+                  <option className="text-gray-900">1R</option>
+                  <option className="text-gray-900">1K</option>
+                  <option className="text-gray-900">1LDK</option>
+                  <option className="text-gray-900">2LDK</option>
+                  <option className="text-gray-900">3LDK</option>
                 </select>
               </div>
 

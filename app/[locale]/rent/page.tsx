@@ -100,16 +100,16 @@ export default function RentPage() {
                   onChange={(e) => setSelectedArea(e.target.value)}
                   className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-base text-gray-900 bg-white"
                 >
-                  <option value="">エリアを選択してください</option>
-                  <option value="tokyo23">東京23区</option>
-                  <option value="shibuya">渋谷区</option>
-                  <option value="minato">港区</option>
-                  <option value="shinjuku">新宿区</option>
-                  <option value="setagaya">世田谷区</option>
-                  <option value="meguro">目黒区</option>
-                  <option value="kanagawa">神奈川県</option>
-                  <option value="chiba">千葉県</option>
-                  <option value="saitama">埼玉県</option>
+                  <option value="" className="text-gray-900">エリアを選択してください</option>
+                  <option value="tokyo23" className="text-gray-900">東京23区</option>
+                  <option value="shibuya" className="text-gray-900">渋谷区</option>
+                  <option value="minato" className="text-gray-900">港区</option>
+                  <option value="shinjuku" className="text-gray-900">新宿区</option>
+                  <option value="setagaya" className="text-gray-900">世田谷区</option>
+                  <option value="meguro" className="text-gray-900">目黒区</option>
+                  <option value="kanagawa" className="text-gray-900">神奈川県</option>
+                  <option value="chiba" className="text-gray-900">千葉県</option>
+                  <option value="saitama" className="text-gray-900">埼玉県</option>
                 </select>
               </div>
 
@@ -153,7 +153,7 @@ export default function RentPage() {
                       className={`flex items-center justify-center space-x-2 p-3 border-2 rounded-lg cursor-pointer transition-all ${
                         selectedRooms.includes(type)
                           ? 'bg-blue-50 border-blue-500 text-blue-700 font-bold'
-                          : 'border-gray-300 hover:bg-gray-50'
+                          : 'border-gray-300 hover:bg-gray-50 text-gray-700'
                       }`}
                     >
                       <input 
@@ -162,7 +162,7 @@ export default function RentPage() {
                         onChange={() => handleRoomToggle(type)}
                         className="rounded text-blue-600 focus:ring-blue-500" 
                       />
-                      <span className="text-base">{type}</span>
+                      <span className="text-base font-medium">{type}</span>
                     </label>
                   ))}
                 </div>
@@ -177,10 +177,10 @@ export default function RentPage() {
                   {['駅近（徒歩5分以内）', 'ペット可', 'バス・トイレ別', 'オートロック', '築浅（5年以内）', '駐車場あり'].map((condition) => (
                     <label 
                       key={condition} 
-                      className="flex items-center space-x-2 p-3 border-2 border-gray-300 rounded-lg hover:bg-gray-50 cursor-pointer transition-all"
+                      className="flex items-center space-x-2 p-3 border-2 border-gray-300 rounded-lg hover:bg-gray-50 cursor-pointer transition-all text-gray-700"
                     >
                       <input type="checkbox" className="rounded text-blue-600 focus:ring-blue-500" />
-                      <span className="text-sm">{condition}</span>
+                      <span className="text-sm font-medium">{condition}</span>
                     </label>
                   ))}
                 </div>
