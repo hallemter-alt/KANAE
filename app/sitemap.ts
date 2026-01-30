@@ -1,40 +1,44 @@
 import { MetadataRoute } from 'next'
-import { SITE_CONFIG } from '@/lib/constants'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = SITE_CONFIG.url
-  const locales = SITE_CONFIG.locales
-  
-  // 静的ページのパス
-  const routes = [
-    '',
+  const baseUrl = 'https://www.rut-tokyo.com'
+  const locales = ['ja', 'zh', 'en']
+  const lastModified = new Date()
+
+  // 定義所有頁面路徑
+  const pages = [
+    '', // 首頁
     '/about',
     '/philosophy',
     '/rent',
-    '/sale',
     '/management',
+    '/sale',
     '/minpaku',
-    '/contact',
   ]
-  
-  // 各ロケールと各ルートの組み合わせでURLを生成
-  const sitemap: MetadataRoute.Sitemap = []
-  
-  locales.forEach((locale) => {
-    routes.forEach((route) => {
-      sitemap.push({
-        url: `${baseUrl}/${locale}${route}`,
-        lastModified: new Date(),
-        changeFrequency: route === '' ? 'daily' : 'weekly',
-        priority: route === '' ? 1.0 : 0.8,
+
+  // 為每個語言生成所有頁面的 sitemap 條目
+  const sitemapEntries: MetadataRoute.Sitemap = []
+
+  locales.forEach(locale => {
+    pages.forEach(page => {
+      const url = `${baseUrl}/${locale}${page}`
+      
+      // 為每個 URL 添加條目
+      sitemapEntries.push({
+        url,
+        lastModified,
+        changeFrequency: page === '' ? 'daily' : 'weekly',
+        priority: page === '' ? 1.0 : 0.8,
         alternates: {
-          languages: Object.fromEntries(
-            locales.map((loc) => [loc, `${baseUrl}/${loc}${route}`])
-          ),
+          languages: {
+            ja: `${baseUrl}/ja${page}`,
+            zh: `${baseUrl}/zh${page}`,
+            en: `${baseUrl}/en${page}`,
+          },
         },
       })
     })
   })
-  
-  return sitemap
+
+  return sitemapEntries
 }

@@ -1,0 +1,14 @@
+# Allow all search engines to crawl
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.rut-tokyo.com/sitemap.xml
+
+# Disallow admin and API routes
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1

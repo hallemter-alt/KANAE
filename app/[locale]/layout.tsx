@@ -3,6 +3,7 @@ import { Inter, Noto_Sans_JP } from "next/font/google";
 import "../globals.css";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { translations } from "@/lib/translations";
+import { generateOrganizationSchema } from "@/lib/seo-schema";
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -81,8 +82,16 @@ export default async function RootLayout({
   const { locale } = await params;
   const currentLocale = (locale || 'ja') as Locale;
   
+  const organizationSchema = generateOrganizationSchema();
+  
   return (
     <html lang={currentLocale} className={`${inter.variable} ${notoSansJP.variable}`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+      </head>
       <body className="font-noto antialiased">
         <LanguageProvider initialLocale={currentLocale}>
           {children}
