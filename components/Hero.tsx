@@ -92,9 +92,12 @@ export default function Hero() {
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-transparent text-gray-900 bg-white"
                 />
               </div>
-              <button className="bg-gradient-to-r from-primary-600 to-primary-700 text-white px-8 py-3 rounded-lg font-semibold hover:from-primary-700 hover:to-primary-800 transition-all transform hover:scale-105 shadow-lg">
+              <Link
+                href={`/${locale}/premium-properties`}
+                className="bg-gradient-to-r from-primary-600 to-primary-700 text-white px-8 py-3 rounded-lg font-semibold hover:from-primary-700 hover:to-primary-800 transition-all transform hover:scale-105 shadow-lg flex items-center justify-center"
+              >
                 検索
-              </button>
+              </Link>
             </div>
           </div>
         </div>

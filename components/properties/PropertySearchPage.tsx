@@ -1,11 +1,10 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Building2, MapPin, TrendingUp, Maximize2, Search, Filter, X } from 'lucide-react';
+import { Building2, MapPin, TrendingUp, Maximize2, Search, Filter } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { translations } from '@/lib/translations';
 import PropertyCard from './PropertyCard';
-import SearchFilters from './SearchFilters';
 import WardView from './WardView';
 
 interface Property {
@@ -31,7 +30,6 @@ interface Property {
 export default function PropertySearchPage() {
   const [properties, setProperties] = useState<Property[]>([]);
   const [loading, setLoading] = useState(true);
-  const [showFilters, setShowFilters] = useState(false);
   const [searchParams, setSearchParams] = useState<any>({});
   const [viewMode, setViewMode] = useState<'properties' | 'wards'>('properties');
   const [pagination, setPagination] = useState({
@@ -76,7 +74,6 @@ export default function PropertySearchPage() {
   const handleSearch = (filters: any) => {
     setSearchParams(filters);
     searchProperties(filters, 1);
-    setShowFilters(false);
   };
 
   // ページ変更
@@ -133,7 +130,7 @@ export default function PropertySearchPage() {
                   />
                 </div>
                 <button
-                  onClick={() => setShowFilters(!showFilters)}
+                  onClick={() => window.location.href = `/${locale}/premium-properties`}
                   className="px-6 py-3 bg-gradient-to-r from-primary-600 to-primary-700 text-white rounded-lg font-semibold hover:from-primary-700 hover:to-primary-800 transition-all transform hover:scale-105 shadow-lg flex items-center justify-center space-x-2"
                 >
                   <Filter className="w-5 h-5" />
@@ -158,29 +155,6 @@ export default function PropertySearchPage() {
           </div>
         </div>
       </section>
-
-      {/* Search Filters Modal */}
-      {showFilters && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden relative flex flex-col">
-            {/* Modal Header */}
-            <div className="flex items-center justify-between p-6 border-b border-gray-200 flex-shrink-0">
-              <h3 className="text-2xl font-bold text-gray-900">詳細検索</h3>
-              <button
-                onClick={() => setShowFilters(false)}
-                className="p-2 hover:bg-gray-100 rounded-full transition-colors"
-              >
-                <X className="w-6 h-6 text-gray-600" />
-              </button>
-            </div>
-            
-            {/* Scrollable Content */}
-            <div className="overflow-y-auto flex-1">
-              <SearchFilters onSearch={handleSearch} />
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* Results Section */}
       <section className="py-12 bg-gray-50">
