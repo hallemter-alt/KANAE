@@ -1,0 +1,546 @@
+[
+  {
+    "id": "84af24d2cb7d",
+    "name": "西早稲田",
+    "type": "一棟収益マンション",
+    "address": {
+      "full": "東京都新宿区西早稲田",
+      "prefecture": "東京都",
+      "city_ward": "新宿区",
+      "rest": "西早稲田",
+      "chiban": null
+    },
+    "transport": null,
+    "price_yen": 598074074,
+    "price_display": "推定 598,074,074円",
+    "yield_percent": 4.05,
+    "annual_income_yen": 24222000,
+    "annual_expense_yen": null,
+    "noi_yen": null,
+    "land_area_sqm": null,
+    "building_area_sqm": null,
+    "structure": "・規模 /RC造 地上6階建",
+    "floors": 6,
+    "built_date": "/1985年2月",
+    "units": 16,
+    "zoning": "商業地域",
+    "coverage_ratio_percent": 80,
+    "far_ratio_percent": 500,
+    "occupancy_status": "賃貸中",
+    "source": {
+      "document": "zmn_list_20260131223902_1.pdf",
+      "pages": [
+        3
+      ]
+    }
+  },
+  {
+    "id": "37cb2fc60ba3",
+    "name": "ロングウッドヒル中井",
+    "type": null,
+    "address": {
+      "full": "東京都新宿区中井２丁目29-5",
+      "prefecture": "東京都",
+      "city_ward": "新宿区",
+      "rest": "中井２丁目29-5",
+      "chiban": null
+    },
+    "transport": [
+      "都営大江戸線「中井」駅 徒歩11分（約850m）",
+      "西武新宿線「中井」駅 徒歩12分(約900ｍ）",
+      "西武新宿線「新井薬師前」駅 徒歩12分（約900ｍ）"
+    ],
+    "price_yen": 318000000,
+    "price_display": "318,000,000円",
+    "yield_percent": 4.26,
+    "annual_income_yen": 13561200,
+    "annual_expense_yen": 2042646,
+    "noi_yen": 11434554,
+    "land_area_sqm": 282.04,
+    "building_area_sqm": 271.67,
+    "structure": "鉄筋コンクリート造陸屋根地下1階付2階建",
+    "floors": 2,
+    "built_date": "平成16年2月",
+    "units": null,
+    "zoning": "指定 建ぺい率 ／ 容積率",
+    "coverage_ratio_percent": null,
+    "far_ratio_percent": null,
+    "occupancy_status": "賃貸中",
+    "source": {
+      "document": "zmn_list_20260131223902_1.pdf",
+      "pages": [
+        4
+      ]
+    }
+  },
+  {
+    "id": "305fd62cb826",
+    "name": "新大久保1棟収益ビル",
+    "type": "1棟収益ビル",
+    "address": {
+      "full": "新宿区百人町1丁目",
+      "prefecture": null,
+      "city_ward": null,
+      "rest": "新宿区百人町1丁目",
+      "chiban": "JR総武線『大久保』駅 徒步2分"
+    },
+    "transport": [
+      "JR山手線『新大久保』駅 徒歩7分",
+      "京王線・小田急線・東京メトロ丸の内線『新宿駅』徒歩12分"
+    ],
+    "price_yen": null,
+    "price_display": null,
+    "yield_percent": null,
+    "annual_income_yen": 14191200,
+    "annual_expense_yen": null,
+    "noi_yen": null,
+    "land_area_sqm": null,
+    "building_area_sqm": 226.11,
+    "structure": "鉄筋コンクリート造陸屋根4階建て ·詳細な物件情報については、別途守秘義務誓約書等をご提出いただいた上で、開示できる場合があります。",
+    "floors": 4,
+    "built_date": "1991年2月",
+    "units": null,
+    "zoning": "近隣商業地域",
+    "coverage_ratio_percent": 80,
+    "far_ratio_percent": 240,
+    "occupancy_status": "一括賃貸中 ・現況私道提供部分約20.2㎡、建て替え時約0.8㎡のセットバック必要",
+    "source": {
+      "document": "zmn_list_20260131223902_1.pdf",
+      "pages": [
+        5
+      ]
+    }
+  },
+  {
+    "id": "310233a7e591",
+    "name": "レイアス西新宿",
+    "type": null,
+    "address": {
+      "full": "東京都新宿区西新宿4-21-5",
+      "prefecture": "東京都",
+      "city_ward": "新宿区",
+      "rest": "西新宿4-21-5",
+      "chiban": null
+    },
+    "transport": null,
+    "price_yen": 588000000,
+    "price_display": "58800万円",
+    "yield_percent": null,
+    "annual_income_yen": null,
+    "annual_expense_yen": null,
+    "noi_yen": null,
+    "land_area_sqm": 194.16,
+    "building_area_sqm": null,
+    "structure": "RC造地下1地上3階建て (2口IHコンロ) 現況利回り",
+    "floors": 3,
+    "built_date": null,
+    "units": null,
+    "zoning": "：第2種中高層住居専用地域 ■宅配BOX",
+    "coverage_ratio_percent": null,
+    "far_ratio_percent": null,
+    "occupancy_status": "を優先します。",
+    "source": {
+      "document": "zmn_list_20260131223902_1.pdf",
+      "pages": [
+        6
+      ]
+    }
+  },
+  {
+    "id": "796c1ca72b35",
+    "name": "西落合ビラサンテ",
+    "type": null,
+    "address": {
+      "full": "東京都新宿区西落合2-5-11",
+      "prefecture": "東京都",
+      "city_ward": "新宿区",
+      "rest": "西落合2-5-11",
+      "chiban": "東京都新宿区西落合2丁目443-3"
+    },
+    "transport": [
+      "西武新宿線 「新井薬師前」駅徒歩14分"
+    ],
+    "price_yen": 208000000,
+    "price_display": "208,000,000円",
+    "yield_percent": 6.34,
+    "annual_income_yen": 13200000,
+    "annual_expense_yen": null,
+    "noi_yen": null,
+    "land_area_sqm": null,
+    "building_area_sqm": null,
+    "structure": "なし",
+    "floors": 4,
+    "built_date": null,
+    "units": null,
+    "zoning": "近隣商業地域",
+    "coverage_ratio_percent": null,
+    "far_ratio_percent": null,
+    "occupancy_status": "を優先するものとします。無断転載禁止",
+    "source": {
+      "document": "zmn_list_20260131223902_1.pdf",
+      "pages": [
+        7
+      ]
+    }
+  },
+  {
+    "id": "ab9eb4992ff8",
+    "name": "大久保事務所レジ(建物名:ヴィラ・ラツィアンカ北新宿)",
+    "type": null,
+    "address": {
+      "full": "新宿区北新宿1-9-10",
+      "prefecture": null,
+      "city_ward": null,
+      "rest": "新宿区北新宿1-9-10",
+      "chiban": "新宿区北新宿1丁目353番90"
+    },
+    "transport": [
+      "権利形態 所有権",
+      "宅地"
+    ],
+    "price_yen": 360000000,
+    "price_display": "360,000,000円",
+    "yield_percent": 3.72,
+    "annual_income_yen": 134160000,
+    "annual_expense_yen": null,
+    "noi_yen": null,
+    "land_area_sqm": null,
+    "building_area_sqm": null,
+    "structure": "なし",
+    "floors": 3,
+    "built_date": null,
+    "units": null,
+    "zoning": "第一種住居地域",
+    "coverage_ratio_percent": null,
+    "far_ratio_percent": null,
+    "occupancy_status": "を優先するものとします。無断転載禁止",
+    "source": {
+      "document": "zmn_list_20260131223902_1.pdf",
+      "pages": [
+        8
+      ]
+    }
+  },
+  {
+    "id": "a07023e1c244",
+    "name": "JASPER Nishiochiai",
+    "type": null,
+    "address": {
+      "full": "新宿区西落合2-15-10",
+      "prefecture": null,
+      "city_ward": null,
+      "rest": "新宿区西落合2-15-10",
+      "chiban": "新宿区西落合二丁目353番11 徒歩約 分 徒歩約 分 徒歩約 分"
+    },
+    "transport": [
+      "西武鉄道 新宿線 「新井薬師前」駅 約1000ｍ 徒歩 13分",
+      "西武鉄道 池袋線 「東長崎」駅 約1300ｍ 徒歩 17分",
+      "接道 北側約15ｍ公道"
+    ],
+    "price_yen": null,
+    "price_display": null,
+    "yield_percent": 4.15,
+    "annual_income_yen": null,
+    "annual_expense_yen": null,
+    "noi_yen": null,
+    "land_area_sqm": 109.47,
+    "building_area_sqm": null,
+    "structure": "鉄筋コンクリ―ト造5階建 建築確認番号 完成済み",
+    "floors": 5,
+    "built_date": null,
+    "units": 13,
+    "zoning": "①第一種住居 ②近隣商業 指定建ぺい率 ①60％ ②80％ 都営地下鉄大江戸線 落合南長崎駅より",
+    "coverage_ratio_percent": null,
+    "far_ratio_percent": null,
+    "occupancy_status": "に相違がある場合は、現況を",
+    "source": {
+      "document": "zmn_list_20260131223902_1.pdf",
+      "pages": [
+        11,
+        12,
+        14
+      ]
+    }
+  },
+  {
+    "id": "3aea9cf7064d",
+    "name": "レグルス下落合",
+    "type": "1棟MS",
+    "address": {
+      "full": "東京都新宿区下落合4-4-32",
+      "prefecture": "東京都",
+      "city_ward": "新宿区",
+      "rest": "下落合4-4-32",
+      "chiban": "東京都新宿区下落合843番9 固都税 新築の為未定"
+    },
+    "transport": [
+      "西武新宿線 【下落合駅】 徒歩3分 JR山手線 【高田馬場駅】14分 利 回 実質利回り 表面利回り 4.06%"
+    ],
+    "price_yen": 520000000,
+    "price_display": "520,000,000円",
+    "yield_percent": 4.06,
+    "annual_income_yen": null,
+    "annual_expense_yen": null,
+    "noi_yen": null,
+    "land_area_sqm": null,
+    "building_area_sqm": 417.22,
+    "structure": "鉄筋コンクリート造陸屋地下1階付き2階建",
+    "floors": 2,
+    "built_date": "日 令和6年7月 現 況 満室 備 考 ※管理料（3％）",
+    "units": 11,
+    "zoning": "第一種低層住居地域・第一種住居地域・近隣商業地域 東京都目黒区自由が丘2-14-9 The Gold Coast 2F",
+    "coverage_ratio_percent": null,
+    "far_ratio_percent": null,
+    "occupancy_status": "満室 備 考 ※管理料（3％）",
+    "source": {
+      "document": "zmn_list_20260131223902_1.pdf",
+      "pages": [
+        15
+      ]
+    }
+  },
+  {
+    "id": "2c8a6a92335a",
+    "name": "東京都新宿区西早稲田2-17-19 中古集合住宅",
+    "type": null,
+    "address": {
+      "full": "東京都新宿区西早稲田2-17-19",
+      "prefecture": "東京都",
+      "city_ward": "新宿区",
+      "rest": "西早稲田2-17-19",
+      "chiban": null
+    },
+    "transport": [
+      "都営大江戸線 牛込柳町駅 徒歩8分",
+      "土地面積 168.17㎡(50.87坪) 面積基準 実測",
+      "私道面積 344㎡ セットバック有 面積3.72㎡",
+      "駐車場 地目 宅地",
+      "土地権利 所有権",
+      "接道状況 一方 私道 東 3.15m 接4.72m",
+      "構造 鉄骨造 3階建",
+      "築年月 1991年03月 間取",
+      "現況 賃貸中",
+      "ガス：都市ガス,水道：公営水道,汚水：公共下水,雑排水：公共下水,平",
+      "坦地,市街地が近い,駅まで平坦,2沿線以上利用可,日当り良好,電気,エア",
+      "コン,給湯,シャワールーム,宅配ボックス,リノベーション済,オーナーチ",
+      "設備 ェンジ",
+      "都市計画 市街化区域",
+      "用途地域 商業地域",
+      "建ぺい率 80% 容積率 500%",
+      "地域地区 防火地域",
+      "引渡時期 相談 取引態様 売主",
+      "都心5駅徒歩圏。フルリニューアル。ミニマル区画。スーパー徒歩1分",
+      "。内外装一新。",
+      "備考",
+      "※図面と現況が異なる場合は現況を優先させていただきます。",
+      "センチュリー21 日信興業 市ヶ谷店",
+      "■TEL. 03-3261-6261",
+      "取引態様 売主",
+      "センチュリー21加盟店 日信興業株式会社 ■FAX. 03-3261-6310",
+      "国土交通大臣(1)第10233号 ■URL: http://www.c21n.jp/",
+      "日信興業 手数料 3.0%",
+      "〒1020074 東京都千代田区九段南４丁目7-19ツボヤビル１階 ■Email:ichigaya@nisshin21.co.jp",
+      "センチュリー21の加盟店は、すべて独立・自営です。"
+    ],
+    "price_yen": 298000000,
+    "price_display": "29800万円",
+    "yield_percent": 3.91,
+    "annual_income_yen": null,
+    "annual_expense_yen": null,
+    "noi_yen": null,
+    "land_area_sqm": 168.17,
+    "building_area_sqm": 330.18,
+    "structure": "鉄骨造",
+    "floors": 3,
+    "built_date": "1991年03月 間取",
+    "units": null,
+    "zoning": "商業地域",
+    "coverage_ratio_percent": null,
+    "far_ratio_percent": 500,
+    "occupancy_status": "が異なる場合は、現況優先とします。",
+    "source": {
+      "document": "zmn_list_20260131223902_1.pdf",
+      "pages": [
+        16,
+        17,
+        18,
+        19
+      ]
+    }
+  },
+  {
+    "id": "02da6dde8b2e",
+    "name": "新宿区大久保一丁目PJ 種 別 テナント一棟収益ビル",
+    "type": null,
+    "address": {
+      "full": "東京都新宿区大久保一丁目7番29号",
+      "prefecture": "東京都",
+      "city_ward": "新宿区",
+      "rest": "大久保一丁目7番29号",
+      "chiban": "新宿区大久保一丁目255番6"
+    },
+    "transport": [
+      "JR山手線「新大久保」駅 徒歩9分",
+      "JR中央・総武線「大久保」駅 徒歩12分",
+      "権 利 所有権 地 目 宅地",
+      "公簿面積 208.82㎡ 63.17坪 実測面積 208.82㎡ 63.17坪"
+    ],
+    "price_yen": 650000000,
+    "price_display": "650,000,000円",
+    "yield_percent": null,
+    "annual_income_yen": null,
+    "annual_expense_yen": null,
+    "noi_yen": null,
+    "land_area_sqm": null,
+    "building_area_sqm": 241.08,
+    "structure": "・規模 鉄骨造2階建 築 年 月 2014年10月31日",
+    "floors": 2,
+    "built_date": "2014年10月31日",
+    "units": null,
+    "zoning": "第一種住居地域",
+    "coverage_ratio_percent": null,
+    "far_ratio_percent": null,
+    "occupancy_status": "賃貸中(満室稼働中)",
+    "source": {
+      "document": "zmn_list_20260131223902_1.pdf",
+      "pages": [
+        21
+      ]
+    }
+  },
+  {
+    "id": "203ea8ee7549",
+    "name": "収益物件 ベルヴィル神楽坂",
+    "type": null,
+    "address": {
+      "full": "東京都新宿区横寺町37番45号",
+      "prefecture": "東京都",
+      "city_ward": "新宿区",
+      "rest": "横寺町37番45号",
+      "chiban": "）"
+    },
+    "transport": [
+      "：都営大江戸線「牛込神楽坂」駅 徒歩2分",
+      "土",
+      "西 東京メトロ東西線「神楽坂」駅 徒歩5分",
+      "地積：【公簿】172.92㎡（52.31坪）／【 実測】172.92㎡（52.31坪）",
+      "線"
+    ],
+    "price_yen": null,
+    "price_display": null,
+    "yield_percent": 6.24,
+    "annual_income_yen": null,
+    "annual_expense_yen": null,
+    "noi_yen": null,
+    "land_area_sqm": null,
+    "building_area_sqm": 489.69,
+    "structure": "鉄筋コンクリート造 地上4階地下1階建",
+    "floors": 5,
+    "built_date": "2023年4月",
+    "units": 9,
+    "zoning": "：第一種住居地域・（商業地域）",
+    "coverage_ratio_percent": null,
+    "far_ratio_percent": 400,
+    "occupancy_status": "：賃貸中",
+    "source": {
+      "document": "zmn_list_20260131223902_1.pdf",
+      "pages": [
+        23,
+        24,
+        26
+      ]
+    }
+  },
+  {
+    "id": "8bb2235c1617",
+    "name": "サウンドプルーフプロ北新宿",
+    "type": null,
+    "address": {
+      "full": "新宿区北新宿4丁目16-2",
+      "prefecture": null,
+      "city_ward": null,
+      "rest": "新宿区北新宿4丁目16-2",
+      "chiban": "新宿区北新宿4丁目16-8"
+    },
+    "transport": [
+      "JR総武 線 大久保 駅 徒歩 9 分",
+      "JR山手 線 新大久保 駅 徒歩 13 分",
+      "面積 公簿 116.56 ㎡ （ 35.25 坪 ）",
+      "実測 116.47 ㎡ （ 35.23 坪 ）",
+      "土地 権利 所有権 地目 宅地"
+    ],
+    "price_yen": 844800000,
+    "price_display": "844,800,000円",
+    "yield_percent": 3.8,
+    "annual_income_yen": 2200552200000000,
+    "annual_expense_yen": null,
+    "noi_yen": null,
+    "land_area_sqm": null,
+    "building_area_sqm": 536.1,
+    "structure": "鉄筋コンクリート造8階建て 種類 共同住宅",
+    "floors": 8,
+    "built_date": "2025年8月 竣工 建築確認番号 第JAIC2023X0930A1号",
+    "units": null,
+    "zoning": "第一種住居地域 日影規制 ー",
+    "coverage_ratio_percent": null,
+    "far_ratio_percent": 400,
+    "occupancy_status": "完成済み 引渡し 即可",
+    "source": {
+      "document": "zmn_list_20260131223902_1.pdf",
+      "pages": [
+        31,
+        32
+      ]
+    }
+  },
+  {
+    "id": "afdf5d250e66",
+    "name": "BABA188ビル",
+    "type": null,
+    "address": {
+      "full": "東京都新宿区高田馬場1丁目３-12",
+      "prefecture": "東京都",
+      "city_ward": "新宿区",
+      "rest": "高田馬場1丁目３-12",
+      "chiban": "（東京都新宿区高田馬場一丁目78番1）"
+    },
+    "transport": [
+      "東京メトロ東西線 「早稲田」駅 徒歩 １ 分",
+      "(現状満室)",
+      "（年間） 29,839,656円",
+      "権 利 形 態 所有権",
+      "5.00%",
+      "表面利回り 地 積 249.47㎡ （75.46坪）",
+      "土",
+      "地"
+    ],
+    "price_yen": null,
+    "price_display": null,
+    "yield_percent": null,
+    "annual_income_yen": 12594000,
+    "annual_expense_yen": null,
+    "noi_yen": null,
+    "land_area_sqm": 185.31,
+    "building_area_sqm": 851.63,
+    "structure": "鉄骨造陸屋根3階建",
+    "floors": 4,
+    "built_date": "昭和58年1月新築",
+    "units": null,
+    "zoning": "商業地域",
+    "coverage_ratio_percent": 60,
+    "far_ratio_percent": 600,
+    "occupancy_status": "満室",
+    "source": {
+      "document": "zmn_list_20260131223902_1.pdf",
+      "pages": [
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39
+      ]
+    }
+  }
+]
