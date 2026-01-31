@@ -1,205 +1,268 @@
+/**
+ * Premium Property Card Component
+ * Displays high-end investment property with Japanese real estate marketing style
+ */
+
 'use client';
 
+import React from 'react';
 import Link from 'next/link';
-import { Building2, MapPin, TrendingUp, Maximize2, Calendar, Train } from 'lucide-react';
+import { MapPin, TrendingUp, Building2, Calendar, Users } from 'lucide-react';
+import type { PremiumProperty } from '@/lib/types/premium-property';
 
 interface PropertyCardProps {
-  property: any;
+  property: PremiumProperty;
+  language?: 'ja' | 'en' | 'zh';
+  showBadges?: boolean;
+  showYield?: boolean;
+  showLocation?: boolean;
 }
 
-export default function PropertyCard({ property }: PropertyCardProps) {
-  // 価格をフォーマット（万円表示）
-  const formatPrice = (price: number) => {
-    if (!price) return '価格応談';
-    const manYen = price / 10000;
-    if (manYen >= 10000) {
-      return `${(manYen / 10000).toFixed(2)}億円`;
-    }
-    return `${manYen.toLocaleString()}万円`;
-  };
-
-  // 面積をフォーマット
-  const formatArea = (sqm: number, tsubo: number) => {
-    if (!sqm) return '-';
-    return (
-      <>
-        {sqm.toFixed(2)}㎡
-        {tsubo && <span className="text-gray-500"> ({tsubo.toFixed(2)}坪)</span>}
-      </>
-    );
-  };
-
-  // 築年数を計算
-  const getAge = (constructionDate: string) => {
-    if (!constructionDate) return '-';
-    const year = new Date(constructionDate).getFullYear();
-    const age = new Date().getFullYear() - year;
-    return `築${age}年`;
-  };
-
-  // 最寄り駅を取得
-  const getPrimaryStation = () => {
-    const stations = property.property_stations || [];
-    if (stations.length === 0) return null;
+export default function PropertyCard({
+  property,
+  language = 'ja',
+  showBadges = true,
+  showYield = true,
+  showLocation = true,
+}: PropertyCardProps) {
+  const formatPrice = (price: number): string => {
+    const oku = Math.floor(price / 100000000);
+    const man = Math.floor((price % 100000000) / 10000);
     
-    // is_primary がある駅を探す
-    const primary = stations.find((ps: any) => ps.is_primary);
-    return primary || stations[0];
+    if (oku > 0) {
+      return `${oku}億${man > 0 ? `${man}万` : ''}円`;
+    }
+    return `${man}万円`;
   };
 
-  const primaryStation = getPrimaryStation();
+  const formatYield = (yield_value?: number): string => {
+    return yield_value ? `${yield_value.toFixed(2)}%` : '—';
+  };
+
+  const getPropertyName = () => {
+    switch (language) {
+      case 'en': return property.name_en || property.name;
+      case 'zh': return property.name_zh || property.name;
+      default: return property.name;
+    }
+  };
+
+  const getDescription = () => {
+    switch (language) {
+      case 'en': return property.description_en || property.description;
+      case 'zh': return property.description_zh || property.description;
+      default: return property.description_ja || property.description;
+    }
+  };
+
+  const getHeadline = () => {
+    switch (language) {
+      case 'en': return property.headline_en;
+      case 'zh': return property.headline_zh;
+      default: return property.headline_ja;
+    }
+  };
+
+  const getFeatures = () => {
+    switch (language) {
+      case 'en': return property.features_en;
+      case 'zh': return property.features_zh;
+      default: return property.features_ja;
+    }
+  };
+
+  const getBadgeColor = (feature: string): string => {
+    if (feature.includes('IoT') || feature.includes('スマート') || feature.includes('智能')) return 'bg-blue-100 text-blue-800';
+    if (feature.includes('民泊') || feature.includes('Minpaku') || feature.includes('民宿')) return 'bg-amber-100 text-amber-800';
+    if (feature.includes('防音') || feature.includes('Soundproof') || feature.includes('隔音')) return 'bg-purple-100 text-purple-800';
+    if (feature.includes('RC') || feature.includes('構造')) return 'bg-gray-100 text-gray-800';
+    if (feature.includes('公園') || feature.includes('Park') || feature.includes('环境')) return 'bg-green-100 text-green-800';
+    return 'bg-sky-100 text-sky-800';
+  };
+
+  const headline = getHeadline();
+  const features = getFeatures();
 
   return (
     <Link href={`/properties/${property.id}`}>
-      <div className="bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden cursor-pointer group">
-        {/* 画像 */}
-        <div className="relative h-48 bg-gradient-to-br from-gray-200 to-gray-300 overflow-hidden">
-          {property.images && property.images.length > 0 ? (
+      <div className="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden h-full flex flex-col">
+        {/* Image Section */}
+        <div className="relative aspect-[16/10] overflow-hidden bg-gradient-to-br from-sky-100 to-blue-100">
+          {property.image_urls && property.image_urls.length > 0 ? (
             <img
-              src={property.images[0]}
-              alt={property.property_name || '物件画像'}
-              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+              src={property.image_urls[0]}
+              alt={property.name}
+              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
             />
           ) : (
             <div className="w-full h-full flex items-center justify-center">
-              <Building2 className="w-16 h-16 text-gray-400" />
+              <Building2 className="w-20 h-20 text-sky-300" />
             </div>
           )}
           
-          {/* 物件タイプバッジ */}
-          <div className="absolute top-3 left-3">
-            <span className="px-3 py-1 bg-primary-600 text-white text-sm font-medium rounded-full">
-              {property.property_type || '一棟収益'}
-            </span>
-          </div>
-          
-          {/* 利回りバッジ */}
-          {property.yield_surface && (
-            <div className="absolute top-3 right-3">
-              <div className="px-3 py-1 bg-gradient-to-r from-gold-500 to-gold-600 text-white text-sm font-bold rounded-full flex items-center gap-1">
-                <TrendingUp className="w-4 h-4" />
-                {property.yield_surface.toFixed(2)}%
-              </div>
+          {/* Premium Badge */}
+          {property.is_premium && (
+            <div className="absolute top-4 left-4 bg-gradient-to-r from-amber-500 to-yellow-600 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
+              {language === 'ja' && 'プレミアム'}
+              {language === 'en' && 'PREMIUM'}
+              {language === 'zh' && '高端'}
+            </div>
+          )}
+
+          {/* Status Badge */}
+          {property.status === 'coming_soon' && (
+            <div className="absolute top-4 right-4 bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
+              {language === 'ja' && '近日公開'}
+              {language === 'en' && 'COMING SOON'}
+              {language === 'zh' && '即将推出'}
+            </div>
+          )}
+
+          {/* Featured Star */}
+          {property.is_featured && (
+            <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full p-2 shadow-lg">
+              <span className="text-amber-500 text-xl">⭐</span>
             </div>
           )}
         </div>
 
-        {/* コンテンツ */}
-        <div className="p-4">
-          {/* 価格 */}
-          <div className="mb-3">
-            <span className="text-2xl font-bold text-primary-600">
-              {formatPrice(property.price)}
-            </span>
+        {/* Content Section */}
+        <div className="p-5 flex-1 flex flex-col">
+          {/* Property ID */}
+          <div className="text-xs font-mono text-gray-500 mb-2">
+            {property.id}
           </div>
 
-          {/* 物件名 */}
-          {property.property_name && (
-            <h3 className="text-lg font-bold text-gray-900 mb-2 line-clamp-1 group-hover:text-primary-600 transition-colors">
-              {property.property_name}
-            </h3>
+          {/* Property Name */}
+          <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-sky-600 transition-colors line-clamp-1">
+            {getPropertyName()}
+          </h3>
+
+          {/* Headline */}
+          {headline && (
+            <div className="mb-3 text-sm font-semibold text-sky-700 line-clamp-2">
+              {headline}
+            </div>
           )}
 
-          {/* 所在地 */}
-          <div className="flex items-start gap-2 text-gray-600 mb-3">
-            <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" />
-            <span className="text-sm line-clamp-2">
-              {property.address_full || `${property.address_city || ''}`}
-            </span>
+          {/* Location */}
+          {showLocation && (
+            <div className="flex items-start gap-2 mb-3 text-sm text-gray-600">
+              <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0 text-gray-400" />
+              <span className="line-clamp-1">{property.location}</span>
+            </div>
+          )}
+
+          {/* Key Metrics */}
+          <div className="grid grid-cols-2 gap-3 mb-4 py-3 border-t border-b border-gray-100">
+            {/* Price */}
+            <div>
+              <div className="text-xs text-gray-500 mb-1">
+                {language === 'ja' && '販売価格'}
+                {language === 'en' && 'Price'}
+                {language === 'zh' && '售价'}
+              </div>
+              <div className="text-lg font-bold text-gray-900">
+                {formatPrice(property.price_jpy)}
+              </div>
+            </div>
+
+            {/* Yield */}
+            {showYield && property.yield_expected && (
+              <div>
+                <div className="text-xs text-gray-500 mb-1">
+                  {language === 'ja' && '期待利回り'}
+                  {language === 'en' && 'Yield'}
+                  {language === 'zh' && '预期收益'}
+                </div>
+                <div className="text-lg font-bold text-green-600 flex items-center gap-1">
+                  <TrendingUp className="w-4 h-4" />
+                  {formatYield(property.yield_expected)}
+                </div>
+              </div>
+            )}
           </div>
 
-          {/* 最寄り駅 */}
-          {primaryStation && (
-            <div className="flex items-center gap-2 text-gray-600 mb-3 pb-3 border-b border-gray-200">
-              <Train className="w-4 h-4 flex-shrink-0" />
-              <div className="text-sm line-clamp-1">
-                <span className="font-medium" style={{ color: primaryStation.line?.line_color }}>
-                  {primaryStation.line?.line_name}
+          {/* Structure & Completion */}
+          <div className="flex items-center gap-4 mb-3 text-xs text-gray-600">
+            <div className="flex items-center gap-1">
+              <Building2 className="w-3.5 h-3.5" />
+              <span>{property.structure}</span>
+            </div>
+            <div className="flex items-center gap-1">
+              <Calendar className="w-3.5 h-3.5" />
+              <span>{property.completion_year}年</span>
+            </div>
+          </div>
+
+          {/* Feature Badges */}
+          {showBadges && features && features.length > 0 && (
+            <div className="flex flex-wrap gap-2 mb-4">
+              {features.slice(0, 3).map((feature, index) => (
+                <span
+                  key={index}
+                  className={`px-2 py-1 rounded-full text-xs font-medium ${getBadgeColor(feature)}`}
+                >
+                  {feature}
                 </span>
-                <span className="mx-1">「{primaryStation.station?.station_name}」</span>
-                <span className="text-gray-500">徒歩{primaryStation.walk_time}分</span>
-              </div>
+              ))}
+              {features.length > 3 && (
+                <span className="px-2 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-600">
+                  +{features.length - 3}
+                </span>
+              )}
             </div>
           )}
 
-          {/* 物件情報グリッド */}
-          <div className="grid grid-cols-2 gap-3 text-sm">
-            {/* 土地面積 */}
-            <div>
-              <div className="text-gray-500 text-xs mb-1">土地面積</div>
-              <div className="font-medium text-gray-900">
-                {formatArea(property.land_area_sqm, property.land_area_tsubo)}
-              </div>
-            </div>
+          {/* Description */}
+          <p className="text-sm text-gray-600 line-clamp-2 mb-4 flex-1">
+            {getDescription()}
+          </p>
 
-            {/* 建物面積 */}
-            <div>
-              <div className="text-gray-500 text-xs mb-1">建物面積</div>
-              <div className="font-medium text-gray-900">
-                {formatArea(property.building_area_sqm, property.building_area_tsubo)}
-              </div>
-            </div>
-
-            {/* 構造 */}
-            {property.building_structure && (
-              <div>
-                <div className="text-gray-500 text-xs mb-1">構造</div>
-                <div className="font-medium text-gray-900 truncate">
-                  {property.building_structure}
-                </div>
-              </div>
-            )}
-
-            {/* 築年数 */}
-            {property.construction_date && (
-              <div>
-                <div className="text-gray-500 text-xs mb-1">築年数</div>
-                <div className="font-medium text-gray-900">
-                  {getAge(property.construction_date)}
-                </div>
-              </div>
-            )}
-
-            {/* 総戸数 */}
-            {property.total_units && (
-              <div>
-                <div className="text-gray-500 text-xs mb-1">総戸数</div>
-                <div className="font-medium text-gray-900">
-                  {property.total_units}戸
-                </div>
-              </div>
-            )}
-
-            {/* 稼働状況 */}
-            {property.occupancy_status && (
-              <div>
-                <div className="text-gray-500 text-xs mb-1">稼働状況</div>
-                <div className="font-medium">
-                  <span className={`
-                    px-2 py-0.5 rounded text-xs
-                    ${property.occupancy_status === '満室' 
-                      ? 'bg-green-100 text-green-800' 
-                      : property.occupancy_status === '賃貸中'
-                      ? 'bg-blue-100 text-blue-800'
-                      : 'bg-gray-100 text-gray-800'
-                    }
-                  `}>
-                    {property.occupancy_status}
-                  </span>
-                </div>
-              </div>
-            )}
-          </div>
-
-          {/* 詳細を見るボタン */}
-          <div className="mt-4 pt-4 border-t border-gray-200">
-            <div className="text-primary-600 font-medium text-sm flex items-center justify-between group-hover:text-primary-700">
-              <span>詳細を見る</span>
-              <span className="group-hover:translate-x-1 transition-transform">→</span>
-            </div>
-          </div>
+          {/* Action Button */}
+          <button className="w-full py-3 bg-gradient-to-r from-sky-600 to-blue-600 text-white font-semibold rounded-lg hover:from-sky-700 hover:to-blue-700 transition-all duration-300 shadow-md hover:shadow-lg group-hover:scale-[1.02]">
+            {language === 'ja' && '詳細を見る'}
+            {language === 'en' && 'View Details'}
+            {language === 'zh' && '查看详情'}
+          </button>
         </div>
       </div>
     </Link>
+  );
+}
+
+/**
+ * Property Card Skeleton for loading state
+ */
+export function PropertyCardSkeleton() {
+  return (
+    <div className="bg-white rounded-xl shadow-lg overflow-hidden h-full animate-pulse">
+      <div className="aspect-[16/10] bg-gray-200" />
+      <div className="p-5 space-y-4">
+        <div className="h-4 bg-gray-200 rounded w-1/4" />
+        <div className="h-6 bg-gray-200 rounded w-3/4" />
+        <div className="h-4 bg-gray-200 rounded w-full" />
+        <div className="grid grid-cols-2 gap-3 py-3">
+          <div className="space-y-2">
+            <div className="h-3 bg-gray-200 rounded w-full" />
+            <div className="h-5 bg-gray-200 rounded w-3/4" />
+          </div>
+          <div className="space-y-2">
+            <div className="h-3 bg-gray-200 rounded w-full" />
+            <div className="h-5 bg-gray-200 rounded w-3/4" />
+          </div>
+        </div>
+        <div className="flex gap-2">
+          <div className="h-6 bg-gray-200 rounded-full w-16" />
+          <div className="h-6 bg-gray-200 rounded-full w-16" />
+          <div className="h-6 bg-gray-200 rounded-full w-16" />
+        </div>
+        <div className="space-y-2">
+          <div className="h-3 bg-gray-200 rounded w-full" />
+          <div className="h-3 bg-gray-200 rounded w-5/6" />
+        </div>
+        <div className="h-10 bg-gray-200 rounded-lg" />
+      </div>
+    </div>
   );
 }
