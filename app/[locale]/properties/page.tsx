@@ -1,4 +1,6 @@
 import { Metadata } from 'next';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 import PropertySearchPage from '@/components/properties/PropertySearchPage';
 
 export const metadata: Metadata = {
@@ -8,5 +10,11 @@ export const metadata: Metadata = {
 };
 
 export default function PropertiesPage() {
-  return <PropertySearchPage />;
+  return (
+    <main className="min-h-screen">
+      <Navbar />
+      <PropertySearchPage />
+      <Footer />
+    </main>
+  );
 }

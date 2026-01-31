@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import { Building2, MapPin, TrendingUp, Maximize2, Search, Filter, X } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { translations } from '@/lib/translations';
 import PropertyCard from './PropertyCard';
 import SearchFilters from './SearchFilters';
 
@@ -36,6 +38,8 @@ export default function PropertySearchPage() {
     total: 0,
     totalPages: 0,
   });
+  const { locale } = useLanguage();
+  const t = translations[locale];
 
   // 物件を検索
   const searchProperties = async (params: any = {}, page: number = 1) => {
@@ -80,228 +84,227 @@ export default function PropertySearchPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* ヘッダー */}
-      <div className="bg-gradient-to-r from-primary-600 to-primary-800 text-white py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl font-bold mb-4">投資収益物件検索</h1>
-          <p className="text-xl text-primary-100">
-            東京都内の優良投資物件を多数掲載。エリア・路線・価格・利回りで検索
-          </p>
-          
-          {/* クイック検索バー */}
-          <div className="mt-8 bg-white rounded-lg shadow-lg p-6">
-            <div className="flex flex-wrap gap-4 mb-4">
-              <div className="flex-1 min-w-[200px]">
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  エリア
-                </label>
-                <select 
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-gray-900"
-                  onChange={(e) => {
-                    if (e.target.value) {
-                      handleSearch({ ...searchParams, city: e.target.value });
-                    }
-                  }}
-                >
-                  <option value="">すべて</option>
-                  <option value="新宿区">新宿区</option>
-                  <option value="渋谷区">渋谷区</option>
-                  <option value="港区">港区</option>
-                  <option value="中央区">中央区</option>
-                  <option value="千代田区">千代田区</option>
-                </select>
-              </div>
-              
-              <div className="flex-1 min-w-[200px]">
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  価格帯
-                </label>
-                <select 
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-gray-900"
-                  onChange={(e) => {
-                    const [min, max] = e.target.value.split('-').map(v => parseInt(v) * 10000000);
-                    if (min) {
-                      handleSearch({ ...searchParams, minPrice: min, maxPrice: max });
-                    }
-                  }}
-                >
-                  <option value="">すべて</option>
-                  <option value="0-30">3,000万円以下</option>
-                  <option value="30-50">3,000万円～5,000万円</option>
-                  <option value="50-100">5,000万円～1億円</option>
-                  <option value="100-">1億円以上</option>
-                </select>
-              </div>
-              
-              <div className="flex-1 min-w-[200px]">
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  利回り
-                </label>
-                <select 
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-gray-900"
-                  onChange={(e) => {
-                    if (e.target.value) {
-                      handleSearch({ ...searchParams, minYield: parseFloat(e.target.value) });
-                    }
-                  }}
-                >
-                  <option value="">すべて</option>
-                  <option value="3">3%以上</option>
-                  <option value="4">4%以上</option>
-                  <option value="5">5%以上</option>
-                  <option value="6">6%以上</option>
-                </select>
-              </div>
-            </div>
-            
-            <button
-              onClick={() => setShowFilters(!showFilters)}
-              className="w-full sm:w-auto px-6 py-3 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors flex items-center justify-center gap-2"
-            >
-              <Filter className="w-5 h-5" />
-              詳細条件で検索
-            </button>
-          </div>
-        </div>
-      </div>
+    <div className="min-h-screen bg-gray-50 pt-20">
+      {/* Hero Section - Matching existing design */}
+      <section className="relative bg-gradient-to-br from-primary-900/90 via-primary-800/85 to-gold-900/90 text-white py-20 overflow-hidden">
+        {/* Background Pattern */}
+        <div 
+          className="absolute inset-0 opacity-10"
+          style={{
+            backgroundImage: `url('data:image/svg+xml,%3Csvg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z" fill="%23ffffff" fill-opacity="0.05" fill-rule="evenodd"/%3E%3C/svg%3E')`
+          }}
+        ></div>
 
-      {/* 詳細検索フィルター */}
-      {showFilters && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 overflow-y-auto">
-          <div className="min-h-screen px-4 py-8">
-            <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-xl">
-              <div className="p-6 border-b border-gray-200 flex justify-between items-center">
-                <h2 className="text-2xl font-bold text-gray-900">詳細検索条件</h2>
-                <button
-                  onClick={() => setShowFilters(false)}
-                  className="text-gray-400 hover:text-gray-600"
-                >
-                  <X className="w-6 h-6" />
-                </button>
-              </div>
-              <div className="p-6">
-                <SearchFilters 
-                  onSearch={handleSearch}
-                  initialFilters={searchParams}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight">
+              投資収益物件検索
+            </h1>
+            <p className="text-xl md:text-2xl text-white/90">
+              東京都内の投資収益物件を簡単検索
+            </p>
+          </div>
+
+          {/* Quick Search Bar */}
+          <div className="max-w-4xl mx-auto bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl p-6">
+            <div className="flex flex-col md:flex-row gap-4">
+              <div className="flex-1">
+                <input
+                  type="text"
+                  placeholder="エリア、沿線、駅名で検索"
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-transparent text-gray-900 bg-white"
+                  onKeyPress={(e) => {
+                    if (e.key === 'Enter') {
+                      searchProperties({ keyword: e.currentTarget.value }, 1);
+                    }
+                  }}
                 />
               </div>
+              <button
+                onClick={() => setShowFilters(!showFilters)}
+                className="px-6 py-3 bg-gradient-to-r from-primary-600 to-primary-700 text-white rounded-lg font-semibold hover:from-primary-700 hover:to-primary-800 transition-all transform hover:scale-105 shadow-lg flex items-center justify-center space-x-2"
+              >
+                <Filter className="w-5 h-5" />
+                <span>詳細検索</span>
+              </button>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Search Filters Modal */}
+      {showFilters && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-start justify-center overflow-y-auto pt-20 pb-10">
+          <div className="bg-white rounded-2xl shadow-2xl max-w-4xl w-full mx-4 relative">
+            <button
+              onClick={() => setShowFilters(false)}
+              className="absolute top-4 right-4 p-2 hover:bg-gray-100 rounded-full transition-colors"
+            >
+              <X className="w-6 h-6 text-gray-600" />
+            </button>
+            <SearchFilters onSearch={handleSearch} />
           </div>
         </div>
       )}
 
-      {/* メインコンテンツ */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* 検索結果サマリー */}
-        <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
-          <div className="text-lg text-gray-700">
-            <span className="font-bold text-2xl text-primary-600">{pagination.total}</span>
-            <span className="ml-2">件の物件が見つかりました</span>
-          </div>
-          
-          <div className="flex items-center gap-4">
-            <select 
-              className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-gray-900"
-              onChange={(e) => {
-                const [sortBy, sortOrder] = e.target.value.split('-');
-                handleSearch({ ...searchParams, sortBy, sortOrder });
-              }}
-            >
-              <option value="created_at-desc">新着順</option>
-              <option value="price-asc">価格が安い順</option>
-              <option value="price-desc">価格が高い順</option>
-              <option value="yield_surface-desc">利回りが高い順</option>
-              <option value="land_area_sqm-desc">土地面積が大きい順</option>
-            </select>
-          </div>
-        </div>
-
-        {/* ローディング */}
-        {loading ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[...Array(6)].map((_, i) => (
-              <div key={i} className="bg-white rounded-lg shadow-md h-96 animate-pulse">
-                <div className="h-48 bg-gray-200 rounded-t-lg"></div>
-                <div className="p-4 space-y-3">
-                  <div className="h-4 bg-gray-200 rounded w-3/4"></div>
-                  <div className="h-4 bg-gray-200 rounded w-1/2"></div>
-                  <div className="h-4 bg-gray-200 rounded w-2/3"></div>
-                </div>
+      {/* Results Section */}
+      <section className="py-12 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Results Summary */}
+          <div className="bg-white rounded-xl shadow-sm p-6 mb-8">
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+              <div>
+                <h2 className="text-2xl font-bold text-gray-900 mb-1">
+                  検索結果
+                </h2>
+                <p className="text-gray-600">
+                  全 <span className="font-semibold text-primary-600">{pagination.total}</span> 件の物件が見つかりました
+                </p>
               </div>
-            ))}
+
+              {/* Sort Options */}
+              <div className="flex items-center space-x-3">
+                <label className="text-sm font-medium text-gray-700">
+                  並び替え:
+                </label>
+                <select
+                  className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-gray-900 bg-white"
+                  onChange={(e) => {
+                    const [sortBy, sortOrder] = e.target.value.split('-');
+                    searchProperties({ ...searchParams, sortBy, sortOrder }, 1);
+                  }}
+                >
+                  <option value="price-asc">価格: 安い順</option>
+                  <option value="price-desc">価格: 高い順</option>
+                  <option value="yield_surface-desc">利回り: 高い順</option>
+                  <option value="yield_surface-asc">利回り: 低い順</option>
+                  <option value="land_area_sqm-desc">土地面積: 広い順</option>
+                  <option value="construction_date-desc">築年数: 新しい順</option>
+                </select>
+              </div>
+            </div>
+
+            {/* Quick Stats */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6 pt-6 border-t">
+              <div className="text-center">
+                <div className="text-2xl font-bold text-primary-600 mb-1">
+                  {properties.filter(p => p.property_type === '一棟マンション').length}
+                </div>
+                <div className="text-sm text-gray-600">一棟マンション</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-primary-600 mb-1">
+                  {properties.filter(p => p.property_type === '一棟ビル').length}
+                </div>
+                <div className="text-sm text-gray-600">一棟ビル</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-primary-600 mb-1">
+                  {properties.length > 0 
+                    ? Math.round(properties.reduce((sum, p) => sum + (p.yield_surface || 0), 0) / properties.length * 10) / 10
+                    : 0}%
+                </div>
+                <div className="text-sm text-gray-600">平均利回り</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-primary-600 mb-1">
+                  {properties.length > 0
+                    ? Math.round(properties.reduce((sum, p) => sum + (p.price || 0), 0) / properties.length / 10000000) / 10
+                    : 0}億
+                </div>
+                <div className="text-sm text-gray-600">平均価格</div>
+              </div>
+            </div>
           </div>
-        ) : properties.length === 0 ? (
-          <div className="text-center py-20">
-            <Building2 className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-            <p className="text-xl text-gray-600">条件に合う物件が見つかりませんでした</p>
-            <button
-              onClick={() => handleSearch({})}
-              className="mt-4 px-6 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700"
-            >
-              すべての物件を表示
-            </button>
-          </div>
-        ) : (
-          <>
-            {/* 物件リスト */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+          {/* Loading State */}
+          {loading && (
+            <div className="flex items-center justify-center py-20">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600"></div>
+            </div>
+          )}
+
+          {/* Properties Grid */}
+          {!loading && properties.length > 0 && (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
               {properties.map((property) => (
                 <PropertyCard key={property.id} property={property} />
               ))}
             </div>
+          )}
 
-            {/* ページネーション */}
-            {pagination.totalPages > 1 && (
-              <div className="mt-12 flex justify-center">
-                <nav className="flex items-center gap-2">
-                  <button
-                    onClick={() => handlePageChange(pagination.page - 1)}
-                    disabled={pagination.page === 1}
-                    className="px-4 py-2 border border-gray-300 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50"
-                  >
-                    前へ
-                  </button>
-                  
-                  {[...Array(pagination.totalPages)].map((_, i) => {
-                    const page = i + 1;
-                    if (
-                      page === 1 ||
-                      page === pagination.totalPages ||
-                      (page >= pagination.page - 2 && page <= pagination.page + 2)
-                    ) {
-                      return (
-                        <button
-                          key={page}
-                          onClick={() => handlePageChange(page)}
-                          className={`px-4 py-2 border rounded-lg ${
-                            page === pagination.page
-                              ? 'bg-primary-600 text-white border-primary-600'
-                              : 'border-gray-300 hover:bg-gray-50'
-                          }`}
-                        >
-                          {page}
-                        </button>
-                      );
-                    } else if (page === pagination.page - 3 || page === pagination.page + 3) {
-                      return <span key={page} className="px-2">...</span>;
-                    }
-                    return null;
-                  })}
-                  
-                  <button
-                    onClick={() => handlePageChange(pagination.page + 1)}
-                    disabled={pagination.page === pagination.totalPages}
-                    className="px-4 py-2 border border-gray-300 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50"
-                  >
-                    次へ
-                  </button>
-                </nav>
+          {/* No Results */}
+          {!loading && properties.length === 0 && (
+            <div className="text-center py-20">
+              <div className="mb-4">
+                <Building2 className="w-16 h-16 text-gray-300 mx-auto" />
               </div>
-            )}
-          </>
-        )}
-      </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                物件が見つかりませんでした
+              </h3>
+              <p className="text-gray-600 mb-6">
+                検索条件を変更して再度お試しください
+              </p>
+              <button
+                onClick={() => {
+                  setSearchParams({});
+                  searchProperties({}, 1);
+                }}
+                className="px-6 py-3 bg-gradient-to-r from-primary-600 to-primary-700 text-white rounded-lg font-semibold hover:from-primary-700 hover:to-primary-800 transition-all"
+              >
+                すべての物件を表示
+              </button>
+            </div>
+          )}
+
+          {/* Pagination */}
+          {!loading && pagination.totalPages > 1 && (
+            <div className="flex items-center justify-center space-x-2">
+              <button
+                onClick={() => handlePageChange(pagination.page - 1)}
+                disabled={pagination.page === 1}
+                className="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors text-gray-700"
+              >
+                前へ
+              </button>
+
+              {[...Array(pagination.totalPages)].map((_, i) => {
+                const page = i + 1;
+                if (
+                  page === 1 ||
+                  page === pagination.totalPages ||
+                  (page >= pagination.page - 1 && page <= pagination.page + 1)
+                ) {
+                  return (
+                    <button
+                      key={page}
+                      onClick={() => handlePageChange(page)}
+                      className={`px-4 py-2 rounded-lg transition-colors ${
+                        pagination.page === page
+                          ? 'bg-gradient-to-r from-primary-600 to-primary-700 text-white'
+                          : 'border border-gray-300 hover:bg-gray-50 text-gray-700'
+                      }`}
+                    >
+                      {page}
+                    </button>
+                  );
+                } else if (page === pagination.page - 2 || page === pagination.page + 2) {
+                  return <span key={page} className="text-gray-400">...</span>;
+                }
+                return null;
+              })}
+
+              <button
+                onClick={() => handlePageChange(pagination.page + 1)}
+                disabled={pagination.page === pagination.totalPages}
+                className="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors text-gray-700"
+              >
+                次へ
+              </button>
+            </div>
+          )}
+        </div>
+      </section>
     </div>
   );
 }
