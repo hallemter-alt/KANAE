@@ -176,7 +176,9 @@ export default function PropertyFilters({
               <div className="flex items-center gap-2">
                 <span>{preset.icon}</span>
                 <span className="font-medium">
-                  {preset[`name_${language}` as keyof typeof preset]}
+                  {language === 'ja' && preset.name_ja}
+                  {language === 'en' && preset.name_en}
+                  {language === 'zh' && preset.name_zh}
                 </span>
               </div>
             </button>

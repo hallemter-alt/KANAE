@@ -16,7 +16,10 @@ import type {
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+// Only create client if env vars are available
+export const supabase = (supabaseUrl && supabaseAnonKey) 
+  ? createClient(supabaseUrl, supabaseAnonKey)
+  : null;
 
 /**
  * Get all premium properties with optional filtering and pagination
@@ -24,6 +27,18 @@ export const supabase = createClient(supabaseUrl, supabaseAnonKey);
 export async function getPremiumProperties(
   filters: PropertyFilterParams = {}
 ): Promise<PropertySearchResult> {
+  // Return empty result if Supabase is not configured
+  if (!supabase) {
+    return {
+      properties: [],
+      total_count: 0,
+      page: 1,
+      limit: 12,
+      total_pages: 0,
+      filters_applied: filters,
+    };
+  }
+
   const {
     price_min,
     price_max,
@@ -127,7 +142,7 @@ export async function getPremiumProperties(
       query = query.order('price_jpy', { ascending: false });
       break;
     case 'yield_desc':
-      query = query.order('yield_expected', { ascending: false, nullsLast: true });
+      query = query.order('yield_expected', { ascending: false });
       break;
     case 'completion_desc':
       query = query.order('completion_date', { ascending: false });
@@ -170,6 +185,8 @@ export async function getPremiumProperties(
  * Get a single premium property by ID
  */
 export async function getPremiumPropertyById(id: string): Promise<PremiumProperty | null> {
+  if (!supabase) return null;
+
   const { data, error } = await supabase
     .from('premium_properties')
     .select('*')
@@ -191,6 +208,8 @@ export async function getPremiumPropertyById(id: string): Promise<PremiumPropert
  * Get property with related features and categories
  */
 export async function getPremiumPropertyWithDetails(id: string) {
+  if (!supabase) return null;
+
   const property = await getPremiumPropertyById(id);
   if (!property) return null;
 
@@ -218,6 +237,8 @@ export async function getPremiumPropertyWithDetails(id: string) {
  * Get all special features reference data
  */
 export async function getSpecialFeatures(): Promise<PropertySpecialFeature[]> {
+  if (!supabase) return [];
+
   const { data, error } = await supabase
     .from('property_special_features')
     .select('*')
@@ -236,6 +257,8 @@ export async function getSpecialFeatures(): Promise<PropertySpecialFeature[]> {
  * Get all investment categories reference data
  */
 export async function getInvestmentCategories(): Promise<InvestmentCategory[]> {
+  if (!supabase) return [];
+
   const { data, error } = await supabase
     .from('investment_categories')
     .select('*')
@@ -253,6 +276,8 @@ export async function getInvestmentCategories(): Promise<InvestmentCategory[]> {
  * Increment property view count
  */
 export async function incrementPropertyView(propertyId: string): Promise<void> {
+  if (!supabase) return;
+
   const { error } = await supabase.rpc('increment_property_view', {
     property_id_param: propertyId,
   });
@@ -266,6 +291,8 @@ export async function incrementPropertyView(propertyId: string): Promise<void> {
  * Get featured properties
  */
 export async function getFeaturedProperties(limit: number = 4): Promise<PremiumProperty[]> {
+  if (!supabase) return [];
+
   const { data, error } = await supabase
     .from('premium_properties')
     .select('*')
@@ -289,6 +316,8 @@ export async function getSimilarProperties(
   propertyId: string,
   limit: number = 3
 ): Promise<PremiumProperty[]> {
+  if (!supabase) return [];
+
   const property = await getPremiumPropertyById(propertyId);
   if (!property) return [];
 
@@ -316,6 +345,8 @@ export async function getSimilarProperties(
  * Search properties by keyword (name, location, description)
  */
 export async function searchProperties(keyword: string, limit: number = 10): Promise<PremiumProperty[]> {
+  if (!supabase) return [];
+
   const { data, error } = await supabase
     .from('premium_properties')
     .select('*')
@@ -339,6 +370,8 @@ export async function recordPropertySearch(
   filters: PropertyFilterParams,
   resultCount: number
 ): Promise<void> {
+  if (!supabase) return;
+
   const { error } = await supabase
     .from('premium_property_searches')
     .insert({

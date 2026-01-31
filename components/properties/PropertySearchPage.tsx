@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { Building2, MapPin, TrendingUp, Maximize2, Search, Filter } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { translations } from '@/lib/translations';
-import PropertyCard from './PropertyCard';
+import StandardPropertyCard from './StandardPropertyCard';
 import WardView from './WardView';
 
 interface Property {
@@ -275,7 +275,7 @@ export default function PropertySearchPage() {
           {!loading && properties.length > 0 && (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
               {properties.map((property) => (
-                <PropertyCard key={property.id} property={property} />
+                <StandardPropertyCard key={property.id} property={property} />
               ))}
             </div>
           )}
