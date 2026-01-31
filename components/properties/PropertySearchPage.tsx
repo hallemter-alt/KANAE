@@ -6,6 +6,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { translations } from '@/lib/translations';
 import PropertyCard from './PropertyCard';
 import SearchFilters from './SearchFilters';
+import WardView from './WardView';
 
 interface Property {
   id: string;
@@ -32,6 +33,7 @@ export default function PropertySearchPage() {
   const [loading, setLoading] = useState(true);
   const [showFilters, setShowFilters] = useState(false);
   const [searchParams, setSearchParams] = useState<any>({});
+  const [viewMode, setViewMode] = useState<'properties' | 'wards'>('properties');
   const [pagination, setPagination] = useState({
     page: 1,
     limit: 20,
@@ -83,6 +85,15 @@ export default function PropertySearchPage() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  // 区をクリックした時の処理
+  const handleWardClick = (ward: string) => {
+    const filters = { city: ward };
+    setSearchParams(filters);
+    searchProperties(filters, 1);
+    setViewMode('properties');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div className="min-h-screen bg-gray-50 pt-20">
       {/* Hero Section - Matching existing design */}
@@ -106,26 +117,42 @@ export default function PropertySearchPage() {
           </div>
 
           {/* Quick Search Bar */}
-          <div className="max-w-4xl mx-auto bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl p-6">
-            <div className="flex flex-col md:flex-row gap-4">
-              <div className="flex-1">
-                <input
-                  type="text"
-                  placeholder="エリア、沿線、駅名で検索"
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-transparent text-gray-900 bg-white"
-                  onKeyPress={(e) => {
-                    if (e.key === 'Enter') {
-                      searchProperties({ keyword: e.currentTarget.value }, 1);
-                    }
-                  }}
-                />
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl p-6 mb-4">
+              <div className="flex flex-col md:flex-row gap-4">
+                <div className="flex-1">
+                  <input
+                    type="text"
+                    placeholder="エリア、沿線、駅名で検索"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-transparent text-gray-900 bg-white"
+                    onKeyPress={(e) => {
+                      if (e.key === 'Enter') {
+                        searchProperties({ keyword: e.currentTarget.value }, 1);
+                      }
+                    }}
+                  />
+                </div>
+                <button
+                  onClick={() => setShowFilters(!showFilters)}
+                  className="px-6 py-3 bg-gradient-to-r from-primary-600 to-primary-700 text-white rounded-lg font-semibold hover:from-primary-700 hover:to-primary-800 transition-all transform hover:scale-105 shadow-lg flex items-center justify-center space-x-2"
+                >
+                  <Filter className="w-5 h-5" />
+                  <span>詳細検索</span>
+                </button>
               </div>
+            </div>
+            
+            {/* Show All Button */}
+            <div className="text-center">
               <button
-                onClick={() => setShowFilters(!showFilters)}
-                className="px-6 py-3 bg-gradient-to-r from-primary-600 to-primary-700 text-white rounded-lg font-semibold hover:from-primary-700 hover:to-primary-800 transition-all transform hover:scale-105 shadow-lg flex items-center justify-center space-x-2"
+                onClick={() => {
+                  setSearchParams({});
+                  searchProperties({}, 1);
+                }}
+                className="px-8 py-3 bg-white/95 backdrop-blur-md text-primary-600 border-2 border-primary-600 rounded-full font-semibold hover:bg-primary-600 hover:text-white transition-all transform hover:scale-105 shadow-lg inline-flex items-center space-x-2"
               >
-                <Filter className="w-5 h-5" />
-                <span>詳細検索</span>
+                <Building2 className="w-5 h-5" />
+                <span>すべての物件を表示</span>
               </button>
             </div>
           </div>
@@ -134,15 +161,23 @@ export default function PropertySearchPage() {
 
       {/* Search Filters Modal */}
       {showFilters && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-start justify-center overflow-y-auto pt-20 pb-10">
-          <div className="bg-white rounded-2xl shadow-2xl max-w-4xl w-full mx-4 relative">
-            <button
-              onClick={() => setShowFilters(false)}
-              className="absolute top-4 right-4 p-2 hover:bg-gray-100 rounded-full transition-colors"
-            >
-              <X className="w-6 h-6 text-gray-600" />
-            </button>
-            <SearchFilters onSearch={handleSearch} />
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden relative flex flex-col">
+            {/* Modal Header */}
+            <div className="flex items-center justify-between p-6 border-b border-gray-200 flex-shrink-0">
+              <h3 className="text-2xl font-bold text-gray-900">詳細検索</h3>
+              <button
+                onClick={() => setShowFilters(false)}
+                className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+              >
+                <X className="w-6 h-6 text-gray-600" />
+              </button>
+            </div>
+            
+            {/* Scrollable Content */}
+            <div className="overflow-y-auto flex-1">
+              <SearchFilters onSearch={handleSearch} />
+            </div>
           </div>
         </div>
       )}
@@ -150,6 +185,44 @@ export default function PropertySearchPage() {
       {/* Results Section */}
       <section className="py-12 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* View Mode Toggle */}
+          <div className="mb-8 flex items-center justify-center space-x-4">
+            <button
+              onClick={() => setViewMode('properties')}
+              className={`px-6 py-3 rounded-lg font-semibold transition-all ${
+                viewMode === 'properties'
+                  ? 'bg-gradient-to-r from-primary-600 to-primary-700 text-white shadow-lg'
+                  : 'bg-white text-gray-700 hover:bg-gray-50 shadow-sm'
+              }`}
+            >
+              <div className="flex items-center space-x-2">
+                <Building2 className="w-5 h-5" />
+                <span>物件一覧</span>
+              </div>
+            </button>
+            <button
+              onClick={() => setViewMode('wards')}
+              className={`px-6 py-3 rounded-lg font-semibold transition-all ${
+                viewMode === 'wards'
+                  ? 'bg-gradient-to-r from-primary-600 to-primary-700 text-white shadow-lg'
+                  : 'bg-white text-gray-700 hover:bg-gray-50 shadow-sm'
+              }`}
+            >
+              <div className="flex items-center space-x-2">
+                <MapPin className="w-5 h-5" />
+                <span>エリア別検索</span>
+              </div>
+            </button>
+          </div>
+
+          {/* Ward View */}
+          {viewMode === 'wards' && (
+            <WardView onWardClick={handleWardClick} />
+          )}
+
+          {/* Properties View */}
+          {viewMode === 'properties' && (
+            <>
           {/* Results Summary */}
           <div className="bg-white rounded-xl shadow-sm p-6 mb-8">
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
@@ -302,6 +375,8 @@ export default function PropertySearchPage() {
                 次へ
               </button>
             </div>
+          )}
+          </>
           )}
         </div>
       </section>
