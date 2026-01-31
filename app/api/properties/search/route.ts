@@ -147,7 +147,8 @@ export async function GET(request: NextRequest) {
     
     // ソート
     const ascending = params.sortOrder === 'asc';
-    query = query.order(params.sortBy, { ascending });
+    const sortBy = params.sortBy || 'created_at';
+    query = query.order(sortBy, { ascending });
     
     // ページネーション
     const from = (params.page! - 1) * params.limit!;
