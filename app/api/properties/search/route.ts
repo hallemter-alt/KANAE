@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
-const supabase = createClient(supabaseUrl, supabaseKey);
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
+const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
+const supabase = supabaseUrl && supabaseKey ? createClient(supabaseUrl, supabaseKey) : null;
 
 export interface PropertySearchParams {
   // エリア検索
@@ -46,6 +46,13 @@ export interface PropertySearchParams {
 
 export async function GET(request: NextRequest) {
   try {
+    if (!supabase) {
+      return NextResponse.json(
+        { error: 'データベース設定が完了していません。環境変数を確認してください。' },
+        { status: 503 }
+      );
+    }
+    
     const searchParams = request.nextUrl.searchParams;
     
     // パラメータを取得
