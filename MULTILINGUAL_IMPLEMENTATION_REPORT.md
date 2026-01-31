@@ -328,7 +328,7 @@ Message: feat: Implement complete multilingual support with synchronized languag
 ### Vercel 自动部署
 - 🔄 Vercel 将自动检测新提交
 - ⏱️ 预计部署时间：2-3 分钟
-- 🌐 部署后 URL：https://www.rut-tokyo.com
+- 🌐 部署后 URL：https://www.kanae-tokyo.com
 
 ---
 
@@ -442,7 +442,7 @@ setLocale(browserLang as Locale);
 ### 部署后验证清单
 
 1. **访问主页**
-   - [ ] 打开 https://www.rut-tokyo.com
+   - [ ] 打开 https://www.kanae-tokyo.com
    - [ ] 检查页面是否正常加载
 
 2. **测试语言切换**

@@ -11,7 +11,7 @@
 ```
 問題: Google 搜索"KANAE 株式会社"時顯示舊網址
 舊網址: www.kanae-tokyo.com
-新網址: www.rut-tokyo.com
+新網址: www.kanae-tokyo.com
 原因: Google 索引尚未更新
 ```
 
@@ -29,13 +29,13 @@
     {
       "source": "/:path*",
       "has": [{"type": "host", "value": "kanae-tokyo.com"}],
-      "destination": "https://www.rut-tokyo.com/:path*",
+      "destination": "https://www.kanae-tokyo.com/:path*",
       "permanent": true  // 301 重定向
     },
     {
       "source": "/:path*",
       "has": [{"type": "host", "value": "www.kanae-tokyo.com"}],
-      "destination": "https://www.rut-tokyo.com/:path*",
+      "destination": "https://www.kanae-tokyo.com/:path*",
       "permanent": true
     }
   ]
@@ -43,8 +43,8 @@
 ```
 
 **效果**：
-- ✅ 訪問 `kanae-tokyo.com` → 自動跳轉到 `www.rut-tokyo.com`
-- ✅ 訪問 `www.kanae-tokyo.com` → 自動跳轉到 `www.rut-tokyo.com`
+- ✅ 訪問 `kanae-tokyo.com` → 自動跳轉到 `www.kanae-tokyo.com`
+- ✅ 訪問 `www.kanae-tokyo.com` → 自動跳轉到 `www.kanae-tokyo.com`
 - ✅ Google 爬蟲會識別 301 重定向並更新索引
 
 ---
@@ -64,18 +64,18 @@
 
 **生成的 Sitemap URL**：
 ```
-https://www.rut-tokyo.com/sitemap.xml
+https://www.kanae-tokyo.com/sitemap.xml
 ```
 
 **包含的頁面**：
 ```
-✅ https://www.rut-tokyo.com/ja/
-✅ https://www.rut-tokyo.com/ja/about
-✅ https://www.rut-tokyo.com/ja/philosophy
-✅ https://www.rut-tokyo.com/ja/rent
-✅ https://www.rut-tokyo.com/ja/management
-✅ https://www.rut-tokyo.com/ja/sale
-✅ https://www.rut-tokyo.com/ja/minpaku
+✅ https://www.kanae-tokyo.com/ja/
+✅ https://www.kanae-tokyo.com/ja/about
+✅ https://www.kanae-tokyo.com/ja/philosophy
+✅ https://www.kanae-tokyo.com/ja/rent
+✅ https://www.kanae-tokyo.com/ja/management
+✅ https://www.kanae-tokyo.com/ja/sale
+✅ https://www.kanae-tokyo.com/ja/minpaku
 （同樣包含 /zh/ 和 /en/ 版本）
 ```
 
@@ -89,7 +89,7 @@ https://www.rut-tokyo.com/sitemap.xml
 User-agent: *
 Allow: /
 
-Sitemap: https://www.rut-tokyo.com/sitemap.xml
+Sitemap: https://www.kanae-tokyo.com/sitemap.xml
 
 Disallow: /api/
 Disallow: /_next/
@@ -115,7 +115,7 @@ Crawl-delay: 1
   "@context": "https://schema.org",
   "@type": "RealEstateAgent",
   "name": "株式会社KANAE",
-  "url": "https://www.rut-tokyo.com",
+  "url": "https://www.kanae-tokyo.com",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "高田3-16-4 Golje Bld. 6F",
@@ -148,7 +148,7 @@ Crawl-delay: 1
 每個頁面都包含正確的 canonical URL：
 
 ```html
-<link rel="canonical" href="https://www.rut-tokyo.com/ja/" />
+<link rel="canonical" href="https://www.kanae-tokyo.com/ja/" />
 ```
 
 **效果**：
@@ -163,9 +163,9 @@ Crawl-delay: 1
 每個頁面都包含語言替代標記：
 
 ```html
-<link rel="alternate" hreflang="ja" href="https://www.rut-tokyo.com/ja/" />
-<link rel="alternate" hreflang="zh" href="https://www.rut-tokyo.com/zh/" />
-<link rel="alternate" hreflang="en" href="https://www.rut-tokyo.com/en/" />
+<link rel="alternate" hreflang="ja" href="https://www.kanae-tokyo.com/ja/" />
+<link rel="alternate" hreflang="zh" href="https://www.kanae-tokyo.com/zh/" />
+<link rel="alternate" hreflang="en" href="https://www.kanae-tokyo.com/en/" />
 ```
 
 **效果**：
@@ -186,15 +186,15 @@ Crawl-delay: 1
 1. 訪問: https://search.google.com/search-console
 2. 點擊「添加資源」
 3. 選擇「網域」方式
-4. 輸入: rut-tokyo.com
+4. 輸入: kanae-tokyo.com
 5. 按照指示驗證域名所有權（通過 DNS TXT 記錄）
 ```
 
 #### 步驟 1.2：提交 Sitemap
 ```
-1. 在 Google Search Console 中選擇 rut-tokyo.com
+1. 在 Google Search Console 中選擇 kanae-tokyo.com
 2. 左側選單 → Sitemap
-3. 輸入: https://www.rut-tokyo.com/sitemap.xml
+3. 輸入: https://www.kanae-tokyo.com/sitemap.xml
 4. 點擊「提交」
 ```
 
@@ -202,7 +202,7 @@ Crawl-delay: 1
 ```
 1. 在 Google Search Console 中
 2. 左側選單 → URL 檢查
-3. 輸入: https://www.rut-tokyo.com/ja/
+3. 輸入: https://www.kanae-tokyo.com/ja/
 4. 點擊「請求索引」
 5. 對重要頁面重複此操作：
    - /ja/about
@@ -216,7 +216,7 @@ Crawl-delay: 1
 1. 在 Google Search Console 中
 2. 選擇舊資源 (kanae-tokyo.com)
 3. 左側選單 → 設定 → 地址變更
-4. 選擇新資源 (rut-tokyo.com)
+4. 選擇新資源 (kanae-tokyo.com)
 5. 提交變更通知
 ```
 
@@ -229,8 +229,8 @@ Crawl-delay: 1
 ```
 1. 訪問 Vercel 專案設定
 2. Domains → 添加域名
-3. 添加: www.rut-tokyo.com
-4. 添加: rut-tokyo.com（重定向到 www）
+3. 添加: www.kanae-tokyo.com
+4. 添加: kanae-tokyo.com（重定向到 www）
 5. 配置 DNS 記錄（如果尚未配置）
 ```
 

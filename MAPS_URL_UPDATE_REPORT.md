@@ -51,10 +51,10 @@
 #### 変更内容
 ```diff
 - www.kanae-tokyo.com
-+ www.rut-tokyo.com
++ www.kanae-tokyo.com
 
 - info@kanae-tokyo.com
-+ info@rut-tokyo.com
++ info@kanae-tokyo.com
 ```
 
 #### 更新されたファイル
@@ -63,11 +63,11 @@
 ```typescript
 // 公式サイト
 - value="www.kanae-tokyo.com"
-+ value="www.rut-tokyo.com"
++ value="www.kanae-tokyo.com"
 
 // メールアドレス
 - value="info@kanae-tokyo.com"
-+ value="info@rut-tokyo.com"
++ value="info@kanae-tokyo.com"
 ```
 
 ##### 2. `components/Footer.tsx`
@@ -75,8 +75,8 @@
 // フッターのメールアドレス
 - <a href="mailto:info@kanae-tokyo.com">
 -   info@kanae-tokyo.com
-+ <a href="mailto:info@rut-tokyo.com">
-+   info@rut-tokyo.com
++ <a href="mailto:info@kanae-tokyo.com">
++   info@kanae-tokyo.com
 ```
 
 ##### 3. `components/CTA.tsx`
@@ -84,8 +84,8 @@
 // CTAセクションのメールアドレス
 - <a href="mailto:info@kanae-tokyo.com">
 -   info@kanae-tokyo.com
-+ <a href="mailto:info@rut-tokyo.com">
-+   info@rut-tokyo.com
++ <a href="mailto:info@kanae-tokyo.com">
++   info@kanae-tokyo.com
 ```
 
 ---
@@ -139,8 +139,8 @@ className="shadow-inner"    // 視覚的な深度
 
 ### 更新後
 ```
-ウェブサイト: www.rut-tokyo.com
-メール: info@rut-tokyo.com
+ウェブサイト: www.kanae-tokyo.com
+メール: info@kanae-tokyo.com
 ```
 
 ### 一貫性の確認
@@ -205,7 +205,7 @@ https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3239.211!2d139.7063!3d35.7
 ### Vercel
 - 🔄 **自動デプロイ**: 進行中
 - ⏱️ **予想時間**: 2〜3分
-- 🌐 **本番URL**: https://www.rut-tokyo.com/about
+- 🌐 **本番URL**: https://www.kanae-tokyo.com/about
 
 ---
 
@@ -213,7 +213,7 @@ https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3239.211!2d139.7063!3d35.7
 
 ### ブラウザで確認
 ```
-https://www.rut-tokyo.com/about
+https://www.kanae-tokyo.com/about
 ```
 
 ### 確認項目
@@ -224,8 +224,8 @@ https://www.rut-tokyo.com/about
    - [ ] 住所情報が正確
 
 2. **連絡先情報**
-   - [ ] ウェブサイト: www.rut-tokyo.com
-   - [ ] メール: info@rut-tokyo.com
+   - [ ] ウェブサイト: www.kanae-tokyo.com
+   - [ ] メール: info@kanae-tokyo.com
    - [ ] 全ページで統一されている
 
 ---
@@ -286,12 +286,12 @@ referrerPolicy="no-referrer-when-downgrade"
 ### 確認コマンド
 ```bash
 # ページステータス確認
-curl -s -o /dev/null -w "%{http_code}" https://www.rut-tokyo.com/about
+curl -s -o /dev/null -w "%{http_code}" https://www.kanae-tokyo.com/about
 ```
 
 ### ブラウザ確認
 ```
-https://www.rut-tokyo.com/about
+https://www.kanae-tokyo.com/about
 ```
 
 ---
@@ -336,8 +336,8 @@ https://www.rut-tokyo.com/about
 ### 達成内容
 ✅ Google Maps埋め込み完了  
 ✅ インタラクティブな地図表示  
-✅ ウェブサイトURLの統一（rut-tokyo.com）  
-✅ メールアドレスの統一（info@rut-tokyo.com）  
+✅ ウェブサイトURLの統一（kanae-tokyo.com）  
+✅ メールアドレスの統一（info@kanae-tokyo.com）  
 ✅ 全ページでの情報一貫性確保  
 ✅ パフォーマンス最適化（lazy loading）  
 ✅ アクセシビリティ対応  

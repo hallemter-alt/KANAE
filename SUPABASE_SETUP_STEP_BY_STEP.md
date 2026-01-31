@@ -144,7 +144,7 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6...（長�
 2. 以下を入力：
    ```
    Key: NEXT_PUBLIC_APP_URL
-   Value: https://www.rut-tokyo.com
+   Value: https://www.kanae-tokyo.com
    ```
 3. Environment: **すべて選択**
 4. **「Save」** をクリック
@@ -179,7 +179,7 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6...（長�
 
 ### 6-1. ブラウザで確認
 ```
-https://www.rut-tokyo.com/api/crm/customers
+https://www.kanae-tokyo.com/api/crm/customers
 ```
 
 **期待される結果**:
@@ -216,7 +216,7 @@ https://www.rut-tokyo.com/api/crm/customers
 
 ### 6-2. 物件一覧を確認
 ```
-https://www.rut-tokyo.com/api/properties
+https://www.kanae-tokyo.com/api/properties
 ```
 
 **期待される結果**:
@@ -245,13 +245,13 @@ https://www.rut-tokyo.com/api/properties
 ### 6-3. コマンドラインで確認（オプション）
 ```bash
 # 顧客一覧取得
-curl https://www.rut-tokyo.com/api/crm/customers | jq
+curl https://www.kanae-tokyo.com/api/crm/customers | jq
 
 # 物件一覧取得（賃貸のみ）
-curl "https://www.rut-tokyo.com/api/properties?type=rent" | jq
+curl "https://www.kanae-tokyo.com/api/properties?type=rent" | jq
 
 # 問合せ送信テスト
-curl -X POST https://www.rut-tokyo.com/api/contact \
+curl -X POST https://www.kanae-tokyo.com/api/contact \
   -H "Content-Type: application/json" \
   -d '{
     "name": "テスト太郎",
@@ -350,7 +350,7 @@ Supabase セットアップが完了しました！
 
 **確認方法**:
 ```
-https://www.rut-tokyo.com/api/crm/customers
+https://www.kanae-tokyo.com/api/crm/customers
 ```
 
 上記 URL でサンプルデータが表示されれば成功です 🚀

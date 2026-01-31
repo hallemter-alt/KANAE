@@ -187,9 +187,9 @@ useEffect(() => {
 
 **1. 訪問任意頁面檢查 Navbar**
 ```
-https://www.rut-tokyo.com/ja/rent
-https://www.rut-tokyo.com/ja/management
-https://www.rut-tokyo.com/ja/about
+https://www.kanae-tokyo.com/ja/rent
+https://www.kanae-tokyo.com/ja/management
+https://www.kanae-tokyo.com/ja/about
 ```
 
 **2. 確認項目**

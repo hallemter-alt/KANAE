@@ -147,7 +147,7 @@ Install Command: npm install ✓
 - [ ] CNAME 値を取得
 - [ ] 会社に DNS 設定を依頼
 - [ ] DNS 伝播を確認
-- [ ] `www.rut-tokyo.com` で動作確認
+- [ ] `www.kanae-tokyo.com` で動作確認
 
 ---
 

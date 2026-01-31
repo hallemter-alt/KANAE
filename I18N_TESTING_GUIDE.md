@@ -24,7 +24,7 @@
 - [ ] 清除 cookie 後，根據 `Accept-Language` header 自動檢測
 
 #### 4. 深連結（Direct Link）
-- [ ] 直接訪問 `https://www.rut-tokyo.com/en/about` 顯示英文
+- [ ] 直接訪問 `https://www.kanae-tokyo.com/en/about` 顯示英文
 - [ ] 分享 `/zh/rent` 鏈接給朋友，朋友打開是中文
 - [ ] 從搜索引擎進入 `/ja/philosophy` 是日文
 
@@ -51,12 +51,12 @@
 **步驟**:
 1. 清除所有 cookie 和 localStorage
 2. 設置瀏覽器語言為「英語」
-3. 訪問 `https://www.rut-tokyo.com`
+3. 訪問 `https://www.kanae-tokyo.com`
 
 **預期結果**:
 - 自動重定向到 `/en/`
 - 顯示英文內容
-- URL 是 `https://www.rut-tokyo.com/en/`
+- URL 是 `https://www.kanae-tokyo.com/en/`
 
 ---
 
@@ -93,7 +93,7 @@
 
 **步驟**:
 1. 用隱私模式打開瀏覽器（無歷史記錄）
-2. 直接訪問 `https://www.rut-tokyo.com/zh/philosophy`
+2. 直接訪問 `https://www.kanae-tokyo.com/zh/philosophy`
 3. 檢查頁面
 
 **預期結果**:
@@ -182,7 +182,7 @@
 **步驟**:
 1. 設置瀏覽器語言為「日語」
 2. 手動設置 cookie: `NEXT_LOCALE=zh`
-3. 訪問 `https://www.rut-tokyo.com`
+3. 訪問 `https://www.kanae-tokyo.com`
 
 **預期結果**:
 - 重定向到 `/zh/`（cookie 優先於瀏覽器語言）
@@ -225,10 +225,10 @@ npm run dev
 ### 生產環境測試
 ```bash
 # 部署後訪問
-https://www.rut-tokyo.com/
-https://www.rut-tokyo.com/ja/about
-https://www.rut-tokyo.com/zh/about
-https://www.rut-tokyo.com/en/about
+https://www.kanae-tokyo.com/
+https://www.kanae-tokyo.com/ja/about
+https://www.kanae-tokyo.com/zh/about
+https://www.kanae-tokyo.com/en/about
 ```
 
 ---

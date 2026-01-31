@@ -282,13 +282,13 @@ Content sections (gray-900 on white):
 
 **1. 訪問所有頁面**
 ```
-https://www.rut-tokyo.com/ja/
-https://www.rut-tokyo.com/ja/about
-https://www.rut-tokyo.com/ja/philosophy
-https://www.rut-tokyo.com/ja/rent
-https://www.rut-tokyo.com/ja/management
-https://www.rut-tokyo.com/ja/sale
-https://www.rut-tokyo.com/ja/minpaku
+https://www.kanae-tokyo.com/ja/
+https://www.kanae-tokyo.com/ja/about
+https://www.kanae-tokyo.com/ja/philosophy
+https://www.kanae-tokyo.com/ja/rent
+https://www.kanae-tokyo.com/ja/management
+https://www.kanae-tokyo.com/ja/sale
+https://www.kanae-tokyo.com/ja/minpaku
 ```
 
 **2. 確認 Hero Section 一致性**

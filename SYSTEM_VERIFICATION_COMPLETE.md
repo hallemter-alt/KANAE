@@ -228,7 +228,7 @@ Net Addition: ~1,500 lines
 ✅ Framework: Next.js
 ✅ Git Integration: Enabled
 ✅ Auto Deploy: main branch
-✅ Domain: www.rut-tokyo.com
+✅ Domain: www.kanae-tokyo.com
 ✅ SSL: Auto (Let's Encrypt)
 ```
 
@@ -344,9 +344,9 @@ Net Addition: ~1,500 lines
 ### 部署後驗證
 ```bash
 # 檢查以下 URL
-https://www.rut-tokyo.com/ja/
-https://www.rut-tokyo.com/zh/
-https://www.rut-tokyo.com/en/
+https://www.kanae-tokyo.com/ja/
+https://www.kanae-tokyo.com/zh/
+https://www.kanae-tokyo.com/en/
 
 # 驗證項目
 - [ ] 所有頁面可訪問

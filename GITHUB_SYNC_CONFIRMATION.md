@@ -138,7 +138,7 @@ e4ed850 fix: Fix navbar text color visibility on all pages
 觸發器: Git push to main
 狀態: 🚀 自動部署中
 環境: Production
-URL: https://www.rut-tokyo.com
+URL: https://www.kanae-tokyo.com
 預計時間: 2-3 分鐘
 ```
 
@@ -214,13 +214,13 @@ main (當前分支)
 ### 1. 驗證部署（2-3 分鐘後）
 ```bash
 # 檢查頁面
-- https://www.rut-tokyo.com/ja/
-- https://www.rut-tokyo.com/ja/about
-- https://www.rut-tokyo.com/ja/philosophy
-- https://www.rut-tokyo.com/ja/rent
-- https://www.rut-tokyo.com/ja/management
-- https://www.rut-tokyo.com/ja/sale
-- https://www.rut-tokyo.com/ja/minpaku
+- https://www.kanae-tokyo.com/ja/
+- https://www.kanae-tokyo.com/ja/about
+- https://www.kanae-tokyo.com/ja/philosophy
+- https://www.kanae-tokyo.com/ja/rent
+- https://www.kanae-tokyo.com/ja/management
+- https://www.kanae-tokyo.com/ja/sale
+- https://www.kanae-tokyo.com/ja/minpaku
 ```
 
 ### 2. 視覺驗證

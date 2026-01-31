@@ -227,8 +227,8 @@ app/[locale]/management/page.tsx:
 
 **1. 訪問修復的頁面**
 ```
-https://www.rut-tokyo.com/ja/rent
-https://www.rut-tokyo.com/ja/management
+https://www.kanae-tokyo.com/ja/rent
+https://www.kanae-tokyo.com/ja/management
 ```
 
 **2. 確認項目**

@@ -56,7 +56,7 @@ Deployments → ⋮ → Redeploy
 ./verify-supabase-setup.sh
 
 # または手動確認
-curl https://www.rut-tokyo.com/api/crm/customers
+curl https://www.kanae-tokyo.com/api/crm/customers
 ```
 
 ---
@@ -122,4 +122,4 @@ curl https://www.rut-tokyo.com/api/crm/customers
 
 **所要時間**: 10〜15 分  
 **難易度**: ⭐⭐☆☆☆（簡単）  
-**最終確認**: https://www.rut-tokyo.com/api/crm/customers
+**最終確認**: https://www.kanae-tokyo.com/api/crm/customers

@@ -1,5 +1,11 @@
 # Vercel Deployment Fix - 完了報告
 
+## プロジェクト情報
+
+**会社名**: 株式会社KANAE  
+**ウェブサイト**: https://www.kanae-tokyo.com  
+**事業内容**: 不動産（投資物件、賃貸、売買、管理、民泊）
+
 ## 🎉 問題解決完了
 
 Vercelのデプロイメントエラーを修正しました。
@@ -193,10 +199,10 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
 
 #### 1. アクセス確認
 ```
-https://www.rut-tokyo.com
-https://www.rut-tokyo.com/ja/properties
-https://www.rut-tokyo.com/zh/properties
-https://www.rut-tokyo.com/en/properties
+https://www.kanae-tokyo.com
+https://www.kanae-tokyo.com/ja/properties
+https://www.kanae-tokyo.com/zh/properties
+https://www.kanae-tokyo.com/en/properties
 ```
 
 #### 2. 物件検索ページ

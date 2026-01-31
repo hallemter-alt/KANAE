@@ -175,17 +175,17 @@ export const supabase = createClient(supabaseUrl, supabaseAnonKey)
 
 ### 修正前（404エラー）
 ```
-❌ https://www.rut-tokyo.com/about      → 404 Not Found
-❌ https://www.rut-tokyo.com/management → 404 Not Found
+❌ https://www.kanae-tokyo.com/about      → 404 Not Found
+❌ https://www.kanae-tokyo.com/management → 404 Not Found
 ```
 
 ### 修正後（正常動作）
 ```
-✅ https://www.rut-tokyo.com/about      → 200 OK
-✅ https://www.rut-tokyo.com/management → 200 OK
-✅ https://www.rut-tokyo.com/rent       → 200 OK
-✅ https://www.rut-tokyo.com/sale       → 200 OK
-✅ https://www.rut-tokyo.com/minpaku    → 200 OK
+✅ https://www.kanae-tokyo.com/about      → 200 OK
+✅ https://www.kanae-tokyo.com/management → 200 OK
+✅ https://www.kanae-tokyo.com/rent       → 200 OK
+✅ https://www.kanae-tokyo.com/sale       → 200 OK
+✅ https://www.kanae-tokyo.com/minpaku    → 200 OK
 ✅ All API routes functional
 ```
 
@@ -242,7 +242,7 @@ async function handler(req, { params }) {
 ### Vercel
 - 🔄 **自動デプロイ**: 進行中
 - ⏱️ **予想時間**: 2〜3分
-- 🌐 **本番URL**: https://www.rut-tokyo.com
+- 🌐 **本番URL**: https://www.kanae-tokyo.com
 
 ---
 
@@ -252,17 +252,17 @@ async function handler(req, { params }) {
 デプロイ完了後（2〜3分後）、以下のURLにアクセス：
 
 ```
-✅ https://www.rut-tokyo.com/about
-✅ https://www.rut-tokyo.com/management
+✅ https://www.kanae-tokyo.com/about
+✅ https://www.kanae-tokyo.com/management
 ```
 
 ### curlで確認
 ```bash
 # 会社概要ページ
-curl -s -o /dev/null -w "%{http_code}" https://www.rut-tokyo.com/about
+curl -s -o /dev/null -w "%{http_code}" https://www.kanae-tokyo.com/about
 
 # 賃貸管理ページ
-curl -s -o /dev/null -w "%{http_code}" https://www.rut-tokyo.com/management
+curl -s -o /dev/null -w "%{http_code}" https://www.kanae-tokyo.com/management
 
 # 期待される結果: 200
 ```
@@ -308,7 +308,7 @@ Vercelダッシュボードで以下を設定してください：
 ```env
 NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
-NEXT_PUBLIC_APP_URL=https://www.rut-tokyo.com
+NEXT_PUBLIC_APP_URL=https://www.kanae-tokyo.com
 ```
 
 ### 設定方法

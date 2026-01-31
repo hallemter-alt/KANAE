@@ -24,7 +24,7 @@
 主要語言：日文
 ```
 
-### www.rut-tokyo.com（RUT 株式会社）
+### www.kanae-tokyo.com（RUT 株式会社）
 ```
 行業：一般貿易
 業務：
@@ -69,7 +69,7 @@
 
 ### ⚠️ 當前問題
 
-**rut-tokyo.com 目前的內容**：
+**kanae-tokyo.com 目前的內容**：
 ```
 ❌ 賃貸物件搜索（不動產）
 ❌ 售賣物件（不動產）
@@ -145,7 +145,7 @@
 
 ---
 
-### www.rut-tokyo.com（貿易公司網站）
+### www.kanae-tokyo.com（貿易公司網站）
 
 #### 建議的頁面結構：
 ```
@@ -302,7 +302,7 @@ Logo 風格：
   "@type": "Organization",
   "name": "株式会社RUT",
   "alternateName": "RUT Trading Co., Ltd.",
-  "url": "https://www.rut-tokyo.com",
+  "url": "https://www.kanae-tokyo.com",
   "description": "天然精油・香料・化粧品原料の国際貿易会社",
   "address": {
     "@type": "PostalAddress",
@@ -345,9 +345,9 @@ Logo 風格：
     }
   ],
   "sameAs": [
-    "https://www.rut-tokyo.com/ja",
-    "https://www.rut-tokyo.com/zh",
-    "https://www.rut-tokyo.com/en"
+    "https://www.kanae-tokyo.com/ja",
+    "https://www.kanae-tokyo.com/zh",
+    "https://www.kanae-tokyo.com/en"
   ]
 }
 ```
@@ -358,7 +358,7 @@ Logo 風格：
 
 ### 階段 1：內容調整（本週）🔴
 
-**rut-tokyo.com 需要更新**：
+**kanae-tokyo.com 需要更新**：
 
 1. **刪除所有不動產相關內容**
    - [ ] 移除租賃物件頁面
@@ -397,7 +397,7 @@ Logo 風格：
 4. 設置關鍵詞：不動產相關
 ```
 
-**rut-tokyo.com**：
+**kanae-tokyo.com**：
 ```
 1. 添加到 Google Search Console
 2. 驗證所有權
@@ -452,7 +452,7 @@ RUT:
 
 ### 立即需要（我可以幫您）：
 
-1. **調整 rut-tokyo.com 的內容**
+1. **調整 kanae-tokyo.com 的內容**
    - 從不動產改為貿易/精油
    - 創建新的頁面結構
    - 更新所有文字內容
@@ -485,12 +485,12 @@ RUT:
 
 ---
 
-**準備好開始調整 rut-tokyo.com 的內容嗎？請告訴我產品詳情，我會立即開始！** 🚀
+**準備好開始調整 kanae-tokyo.com 的內容嗎？請告訴我產品詳情，我會立即開始！** 🚀
 
 ---
 
 **當前狀態**：
 - ✅ 策略已明確
 - ✅ 301 重定向已移除
-- 🔄 準備調整 rut-tokyo.com 內容
+- 🔄 準備調整 kanae-tokyo.com 內容
 - ⏳ 等待產品資訊以創建內容

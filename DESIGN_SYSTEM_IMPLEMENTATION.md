@@ -51,7 +51,7 @@
 #### 追加・改善した内容
 - **会社基本情報の拡充**
   - 営業時間の追加
-  - メールアドレスの更新（info@rut-tokyo.com）
+  - メールアドレスの更新（info@kanae-tokyo.com）
   - 許認可番号の明記
   - 加盟団体の追加（全国宅地建物取引業協会連合会、東京都宅地建物取引業協会）
 
@@ -279,7 +279,7 @@ h6: 1rem                        - 16px
 
 ## 🔗 リンク
 
-- **本番サイト**: https://www.rut-tokyo.com
+- **本番サイト**: https://www.kanae-tokyo.com
 - **GitHub リポジトリ**: https://github.com/hallemter-alt/KANAE
 - **最新コミット**: bcd665e
 

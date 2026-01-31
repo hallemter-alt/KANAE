@@ -191,7 +191,7 @@ git push origin feature/new-feature
 ### 次の作業
 
 - **Task 0-3**: ドメイン接続（DNS 設定完了後）
-  - `www.rut-tokyo.com` を Vercel に接続
+  - `www.kanae-tokyo.com` を Vercel に接続
   - CNAME レコードを設定
   - SSL 証明書の発行
 

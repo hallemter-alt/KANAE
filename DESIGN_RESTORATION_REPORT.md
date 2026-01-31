@@ -336,10 +336,10 @@ Gradient 背景文字 (white on primary-900):
 
 **1. 訪問主要頁面**
 ```
-https://www.rut-tokyo.com/ja/
-https://www.rut-tokyo.com/ja/rent
-https://www.rut-tokyo.com/ja/management
-https://www.rut-tokyo.com/ja/about
+https://www.kanae-tokyo.com/ja/
+https://www.kanae-tokyo.com/ja/rent
+https://www.kanae-tokyo.com/ja/management
+https://www.kanae-tokyo.com/ja/about
 ```
 
 **2. 確認設計風格**

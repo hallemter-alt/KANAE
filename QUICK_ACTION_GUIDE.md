@@ -6,7 +6,7 @@
 
 ```
 ✅ 301 重定向 → 舊網址自動跳轉到新網址
-✅ Sitemap.xml → https://www.rut-tokyo.com/sitemap.xml
+✅ Sitemap.xml → https://www.kanae-tokyo.com/sitemap.xml
 ✅ Robots.txt → 指導搜索引擎爬取
 ✅ 結構化數據 → Google 能識別公司資訊
 ✅ SEO Metadata → 完整優化
@@ -33,29 +33,29 @@
 2. **添加新網站**
    - 點擊「添加資源」
    - 選擇「網域」方式
-   - 輸入：`rut-tokyo.com`
+   - 輸入：`kanae-tokyo.com`
    - 按照指示驗證（DNS TXT 記錄）
 
 3. **提交 Sitemap**
-   - 選擇 rut-tokyo.com 資源
+   - 選擇 kanae-tokyo.com 資源
    - 左側選單 → Sitemap
-   - 輸入：`https://www.rut-tokyo.com/sitemap.xml`
+   - 輸入：`https://www.kanae-tokyo.com/sitemap.xml`
    - 點擊「提交」
 
 4. **請求重新索引**
    使用「URL 檢查」工具，為以下頁面請求索引：
    ```
-   ✓ https://www.rut-tokyo.com/ja/
-   ✓ https://www.rut-tokyo.com/ja/about
-   ✓ https://www.rut-tokyo.com/ja/philosophy
-   ✓ https://www.rut-tokyo.com/ja/rent
-   ✓ https://www.rut-tokyo.com/ja/management
+   ✓ https://www.kanae-tokyo.com/ja/
+   ✓ https://www.kanae-tokyo.com/ja/about
+   ✓ https://www.kanae-tokyo.com/ja/philosophy
+   ✓ https://www.kanae-tokyo.com/ja/rent
+   ✓ https://www.kanae-tokyo.com/ja/management
    ```
 
 5. **設置地址變更**（如果有舊網站的 Search Console）
    - 選擇舊資源（kanae-tokyo.com）
    - 左側選單 → 設定 → 地址變更
-   - 選擇新資源（rut-tokyo.com）
+   - 選擇新資源（kanae-tokyo.com）
    - 提交變更通知
 
 ---
@@ -68,8 +68,8 @@
 
 訪問 Vercel 專案設定，確認：
 ```
-✓ www.rut-tokyo.com 已添加
-✓ rut-tokyo.com 已添加（重定向到 www）
+✓ www.kanae-tokyo.com 已添加
+✓ kanae-tokyo.com 已添加（重定向到 www）
 ✓ DNS 記錄已正確配置
 ✓ SSL 證書已啟用
 ```
@@ -130,13 +130,13 @@
 ```
 測試方法：
 1. 在瀏覽器輸入：kanae-tokyo.com
-2. 應該自動跳轉到：www.rut-tokyo.com
+2. 應該自動跳轉到：www.kanae-tokyo.com
 3. 檢查 URL 欄是否顯示新網址
 ```
 
 ### 檢查 2：Sitemap 是否可訪問
 ```
-訪問：https://www.rut-tokyo.com/sitemap.xml
+訪問：https://www.kanae-tokyo.com/sitemap.xml
 應該看到：XML 格式的網站地圖
 包含：21 個 URL（7 頁面 × 3 語言）
 ```
@@ -144,7 +144,7 @@
 ### 檢查 3：結構化數據是否有效
 ```
 工具：https://search.google.com/test/rich-results
-輸入：https://www.rut-tokyo.com/ja/
+輸入：https://www.kanae-tokyo.com/ja/
 應該看到：RealEstateAgent 組織資訊
 ```
 
@@ -201,7 +201,7 @@ A: 短期可能有小波動，長期會恢復或提升。
 
 ### 今天完成：
 - [ ] 訪問 Google Search Console
-- [ ] 添加 rut-tokyo.com 域名
+- [ ] 添加 kanae-tokyo.com 域名
 - [ ] 驗證域名所有權
 - [ ] 提交 sitemap.xml
 

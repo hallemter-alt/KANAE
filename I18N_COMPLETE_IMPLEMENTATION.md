@@ -151,7 +151,7 @@ export async function generateMetadata({
       locale: locale === 'ja' ? 'ja_JP' : locale === 'zh' ? 'zh_CN' : 'en_US',
     },
     alternates: {
-      canonical: `https://www.rut-tokyo.com/${locale}`,
+      canonical: `https://www.kanae-tokyo.com/${locale}`,
       languages: {
         'ja': '/ja',
         'zh': '/zh',
@@ -258,15 +258,15 @@ const switchLocale = (newLocale: 'ja' | 'zh' | 'en') => {
 ### 1. URL 路由测试
 ```bash
 # ✅ 测试 1: 根路径自动重定向
-访问 https://www.rut-tokyo.com/
-预期: 重定向到 https://www.rut-tokyo.com/ja/
+访问 https://www.kanae-tokyo.com/
+预期: 重定向到 https://www.kanae-tokyo.com/ja/
 
 # ✅ 测试 2: 深链接直接访问
-访问 https://www.rut-tokyo.com/en/about
+访问 https://www.kanae-tokyo.com/en/about
 预期: 直接显示英文版会社概要
 
 # ✅ 测试 3: 无效语言代码处理
-访问 https://www.rut-tokyo.com/fr/about
+访问 https://www.kanae-tokyo.com/fr/about
 预期: 重定向到 /ja/about（默认语言）
 ```
 
@@ -323,7 +323,7 @@ const switchLocale = (newLocale: 'ja' | 'zh' | 'en') => {
 
 # ✅ 测试 10: 首次渲染
 清除所有 Cookie
-访问 https://www.rut-tokyo.com/
+访问 https://www.kanae-tokyo.com/
 预期: 根据浏览器语言设置自动选择
 ```
 
@@ -375,21 +375,21 @@ const switchLocale = (newLocale: 'ja' | 'zh' | 'en') => {
 ### 部署后验证步骤
 ```bash
 # 1. 检查根路径重定向
-curl -I https://www.rut-tokyo.com/
+curl -I https://www.kanae-tokyo.com/
 # 预期: 301/302 重定向到 /ja/
 
 # 2. 检查页面内容
-curl https://www.rut-tokyo.com/en/about | grep "<html lang=\"en\">"
+curl https://www.kanae-tokyo.com/en/about | grep "<html lang=\"en\">"
 # 预期: 找到匹配
 
 # 3. 检查 OpenGraph 标签
-curl https://www.rut-tokyo.com/zh/about | grep "og:locale"
+curl https://www.kanae-tokyo.com/zh/about | grep "og:locale"
 # 预期: <meta property="og:locale" content="zh_CN" />
 
 # 4. 检查所有页面（200 状态）
 for lang in ja zh en; do
   for page in "" about philosophy rent sale management minpaku; do
-    url="https://www.rut-tokyo.com/${lang}/${page}"
+    url="https://www.kanae-tokyo.com/${lang}/${page}"
     status=$(curl -s -o /dev/null -w "%{http_code}" "$url")
     echo "$url: $status"
   done

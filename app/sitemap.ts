@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://www.rut-tokyo.com'
+  const baseUrl = 'https://www.kanae-tokyo.com'
   const locales = ['ja', 'zh', 'en']
   const lastModified = new Date()
 

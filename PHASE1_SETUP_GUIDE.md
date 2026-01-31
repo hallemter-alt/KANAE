@@ -123,7 +123,7 @@
    # RESEND_API_KEY=your-resend-api-key
 
    # アプリケーション設定
-   NEXT_PUBLIC_APP_URL=https://www.rut-tokyo.com
+   NEXT_PUBLIC_APP_URL=https://www.kanae-tokyo.com
    ```
 
 3. **Vercel に環境変数を設定**
@@ -133,7 +133,7 @@
      ```
      NEXT_PUBLIC_SUPABASE_URL=https://xxxxx.supabase.co
      NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGci...
-     NEXT_PUBLIC_APP_URL=https://www.rut-tokyo.com
+     NEXT_PUBLIC_APP_URL=https://www.kanae-tokyo.com
      ```
    - 「Save」をクリック
 
@@ -165,13 +165,13 @@ curl http://localhost:3000/api/inquiries
 #### 本番環境で確認
 ```bash
 # 顧客一覧取得
-curl https://www.rut-tokyo.com/api/crm/customers
+curl https://www.kanae-tokyo.com/api/crm/customers
 
 # 物件一覧取得
-curl https://www.rut-tokyo.com/api/properties?type=rent
+curl https://www.kanae-tokyo.com/api/properties?type=rent
 
 # 問合せ送信
-curl -X POST https://www.rut-tokyo.com/api/contact \
+curl -X POST https://www.kanae-tokyo.com/api/contact \
   -H "Content-Type: application/json" \
   -d '{
     "name": "テスト太郎",
@@ -373,7 +373,7 @@ RESEND_API_KEY=re_xxxxxxxxxxxxx
 
 ### ステップ 4：ドメイン検証（本番環境）
 1. Resend ダッシュボード →「Domains」
-2. 「Add Domain」→ `rut-tokyo.com` を入力
+2. 「Add Domain」→ `kanae-tokyo.com` を入力
 3. DNS レコードを追加（Wix DNS 設定）
 4. 検証完了後、メール送信可能
 

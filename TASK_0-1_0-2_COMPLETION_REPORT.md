@@ -220,7 +220,7 @@ da259e7  docs: Add SSR mode migration documentation
 - [ ] CNAME 値を取得
 - [ ] 会社に DNS 設定を依頼
 - [ ] DNS 伝播を確認
-- [ ] `www.rut-tokyo.com` で動作確認
+- [ ] `www.kanae-tokyo.com` で動作確認
 - [ ] SSL 証明書を確認
 
 ---

@@ -5,7 +5,7 @@
 ### Phase 0：インフラ準備
 - ✅ **Task 0-1**: Next.js SSR 化完了
 - ✅ **Task 0-2**: Vercel デプロイ完了
-- ✅ **Task 0-3**: ドメイン設定完了（https://www.rut-tokyo.com）
+- ✅ **Task 0-3**: ドメイン設定完了（https://www.kanae-tokyo.com）
 - ✅ **Task 0-4**: 全ページ 200 OK 確認済み
 
 ### Phase 1：基本機能実装
@@ -159,16 +159,16 @@
 3. 以下を追加：
    NEXT_PUBLIC_SUPABASE_URL=https://xxxxx.supabase.co
    NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGci...
-   NEXT_PUBLIC_APP_URL=https://www.rut-tokyo.com
+   NEXT_PUBLIC_APP_URL=https://www.kanae-tokyo.com
 4. Save → Deployments → Redeploy
 ```
 
 #### ステップ 5：動作確認（1分）
 ```bash
 # 本番環境で確認
-curl https://www.rut-tokyo.com/api/crm/customers
-curl https://www.rut-tokyo.com/api/properties
-curl https://www.rut-tokyo.com/api/inquiries
+curl https://www.kanae-tokyo.com/api/crm/customers
+curl https://www.kanae-tokyo.com/api/properties
+curl https://www.kanae-tokyo.com/api/inquiries
 ```
 
 **所要時間**: 約 10〜15 分
@@ -202,7 +202,7 @@ curl https://www.rut-tokyo.com/api/inquiries
 
 #### 顧客一覧取得
 ```bash
-curl https://www.rut-tokyo.com/api/crm/customers
+curl https://www.kanae-tokyo.com/api/crm/customers
 ```
 
 **期待される結果**:
@@ -220,7 +220,7 @@ curl https://www.rut-tokyo.com/api/crm/customers
 
 #### 物件一覧取得（賃貸のみ）
 ```bash
-curl "https://www.rut-tokyo.com/api/properties?type=rent"
+curl "https://www.kanae-tokyo.com/api/properties?type=rent"
 ```
 
 **期待される結果**:
@@ -239,7 +239,7 @@ curl "https://www.rut-tokyo.com/api/properties?type=rent"
 
 #### 問合せ送信
 ```bash
-curl -X POST https://www.rut-tokyo.com/api/contact \
+curl -X POST https://www.kanae-tokyo.com/api/contact \
   -H "Content-Type: application/json" \
   -d '{
     "name": "テスト太郎",
@@ -306,7 +306,7 @@ curl -X POST https://www.rut-tokyo.com/api/contact \
 
 ## 🔗 関連リンク
 
-- **本番サイト**: https://www.rut-tokyo.com
+- **本番サイト**: https://www.kanae-tokyo.com
 - **GitHub**: https://github.com/hallemter-alt/KANAE
 - **Supabase**: https://app.supabase.com
 - **Vercel**: https://vercel.com

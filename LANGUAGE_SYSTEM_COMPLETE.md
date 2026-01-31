@@ -436,7 +436,7 @@ Net Change: +548 lines
 
 1. **訪問網站**
    ```
-   https://www.rut-tokyo.com/ja/
+   https://www.kanae-tokyo.com/ja/
    ```
 
 2. **測試語言切換**

@@ -10,15 +10,15 @@
 ### 1. **301 永久重定向** ✅
 ```
 vercel.json 已配置：
-- kanae-tokyo.com → www.rut-tokyo.com
-- www.kanae-tokyo.com → www.rut-tokyo.com
+- kanae-tokyo.com → www.kanae-tokyo.com
+- www.kanae-tokyo.com → www.kanae-tokyo.com
 - 保留所有 URL 路徑
 - HTTP 狀態碼：301（永久移動）
 ```
 
 ### 2. **動態 Sitemap 生成** ✅
 ```
-生成的 URL：https://www.rut-tokyo.com/sitemap.xml
+生成的 URL：https://www.kanae-tokyo.com/sitemap.xml
 包含頁面：21 個 (7 頁面 × 3 語言)
 包含功能：
 - Hreflang 語言標記
@@ -29,7 +29,7 @@ vercel.json 已配置：
 
 ### 3. **Robots.txt 優化** ✅
 ```
-URL：https://www.rut-tokyo.com/robots.txt
+URL：https://www.kanae-tokyo.com/robots.txt
 功能：
 - 允許所有搜索引擎
 - 指向 sitemap.xml
@@ -71,33 +71,33 @@ URL：https://www.rut-tokyo.com/robots.txt
 1. 訪問：https://search.google.com/search-console
 2. 點擊「添加資源」
 3. 選擇「網域」方式
-4. 輸入：rut-tokyo.com
+4. 輸入：kanae-tokyo.com
 5. 驗證域名所有權（DNS TXT 記錄）
 ```
 
 **步驟 B：提交 Sitemap**
 ```
-1. 在 Search Console 選擇 rut-tokyo.com
+1. 在 Search Console 選擇 kanae-tokyo.com
 2. 左側選單 → Sitemap
-3. 輸入：https://www.rut-tokyo.com/sitemap.xml
+3. 輸入：https://www.kanae-tokyo.com/sitemap.xml
 4. 點擊「提交」
 ```
 
 **步驟 C：請求重新索引**
 ```
 對以下頁面請求索引：
-✅ https://www.rut-tokyo.com/ja/
-✅ https://www.rut-tokyo.com/ja/about
-✅ https://www.rut-tokyo.com/ja/philosophy
-✅ https://www.rut-tokyo.com/ja/rent
-✅ https://www.rut-tokyo.com/ja/management
+✅ https://www.kanae-tokyo.com/ja/
+✅ https://www.kanae-tokyo.com/ja/about
+✅ https://www.kanae-tokyo.com/ja/philosophy
+✅ https://www.kanae-tokyo.com/ja/rent
+✅ https://www.kanae-tokyo.com/ja/management
 ```
 
 **步驟 D：設置地址變更**
 ```
 1. 在 Search Console 選擇舊資源（kanae-tokyo.com）
 2. 左側選單 → 設定 → 地址變更
-3. 選擇新資源（rut-tokyo.com）
+3. 選擇新資源（kanae-tokyo.com）
 4. 提交變更通知
 ```
 
@@ -107,8 +107,8 @@ URL：https://www.rut-tokyo.com/robots.txt
 
 確認以下域名已正確配置：
 ```
-✅ www.rut-tokyo.com（主域名）
-✅ rut-tokyo.com（重定向到 www）
+✅ www.kanae-tokyo.com（主域名）
+✅ kanae-tokyo.com（重定向到 www）
 ✅ DNS 記錄已設置
 ✅ SSL 證書已啟用
 ```
@@ -252,11 +252,11 @@ URL：https://www.rut-tokyo.com/robots.txt
 
 ### 生成的 URL
 ```
-✅ https://www.rut-tokyo.com/sitemap.xml
-✅ https://www.rut-tokyo.com/robots.txt
-✅ https://www.rut-tokyo.com/ja/（含結構化數據）
-✅ https://www.rut-tokyo.com/zh/（含結構化數據）
-✅ https://www.rut-tokyo.com/en/（含結構化數據）
+✅ https://www.kanae-tokyo.com/sitemap.xml
+✅ https://www.kanae-tokyo.com/robots.txt
+✅ https://www.kanae-tokyo.com/ja/（含結構化數據）
+✅ https://www.kanae-tokyo.com/zh/（含結構化數據）
+✅ https://www.kanae-tokyo.com/en/（含結構化數據）
 ```
 
 ---
@@ -305,7 +305,7 @@ GOOGLE_SEARCH_SEO_FIX.md
 
 ### 今天立即執行 🔴
 - [ ] 訪問 Google Search Console
-- [ ] 添加 rut-tokyo.com 域名
+- [ ] 添加 kanae-tokyo.com 域名
 - [ ] 驗證域名所有權
 - [ ] 提交 sitemap.xml
 

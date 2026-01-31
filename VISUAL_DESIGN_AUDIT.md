@@ -324,7 +324,7 @@ e4ed850 fix: Navbar text color visibility on all pages
 ### Vercel 部署
 - **狀態**: 自動部署中
 - **預計時間**: 2-3 分鐘
-- **部署 URL**: https://www.rut-tokyo.com
+- **部署 URL**: https://www.kanae-tokyo.com
 
 ### 驗證檢查點
 - [ ] 首頁 Hero 深色漸層

@@ -50,8 +50,8 @@
 
 ### 4. ✅ ウェブサイト URL の統一
 **実施内容**:
-- `www.kanae-tokyo.com` → `www.rut-tokyo.com` へ全置換
-- `info@kanae-tokyo.com` → `info@rut-tokyo.com` へ全置換
+- `www.kanae-tokyo.com` → `www.kanae-tokyo.com` へ全置換
+- `info@kanae-tokyo.com` → `info@kanae-tokyo.com` へ全置換
 
 **更新ファイル**:
 - `app/[locale]/about/page.tsx`
@@ -151,14 +151,14 @@ app/api-test/page.tsx       → app/[locale]/api-test/page.tsx
 ## 🔗 リンク
 
 ### 本番サイト
-- **メインサイト**: https://www.rut-tokyo.com
-- **会社概要（日本語）**: https://www.rut-tokyo.com/ja/about
-- **会社概要（中国語）**: https://www.rut-tokyo.com/zh/about
-- **会社概要（英語）**: https://www.rut-tokyo.com/en/about
-- **企業理念（日本語）**: https://www.rut-tokyo.com/ja/philosophy
-- **賃貸検索（日本語）**: https://www.rut-tokyo.com/ja/rent
-- **賃貸管理（日本語）**: https://www.rut-tokyo.com/ja/management
-- **民泊事業（日本語）**: https://www.rut-tokyo.com/ja/minpaku
+- **メインサイト**: https://www.kanae-tokyo.com
+- **会社概要（日本語）**: https://www.kanae-tokyo.com/ja/about
+- **会社概要（中国語）**: https://www.kanae-tokyo.com/zh/about
+- **会社概要（英語）**: https://www.kanae-tokyo.com/en/about
+- **企業理念（日本語）**: https://www.kanae-tokyo.com/ja/philosophy
+- **賃貸検索（日本語）**: https://www.kanae-tokyo.com/ja/rent
+- **賃貸管理（日本語）**: https://www.kanae-tokyo.com/ja/management
+- **民泊事業（日本語）**: https://www.kanae-tokyo.com/ja/minpaku
 
 ### リポジトリ
 - **GitHub**: https://github.com/hallemter-alt/KANAE
@@ -199,23 +199,23 @@ app/api-test/page.tsx       → app/[locale]/api-test/page.tsx
 ### 1. 言語切替のテスト
 ```bash
 # 日本語でアクセス
-https://www.rut-tokyo.com/ja/about
+https://www.kanae-tokyo.com/ja/about
 
 # ナビゲーションバーで「中文」ボタンをクリック
-# → https://www.rut-tokyo.com/zh/about に自動遷移
+# → https://www.kanae-tokyo.com/zh/about に自動遷移
 
 # 「EN」ボタンをクリック
-# → https://www.rut-tokyo.com/en/about に自動遷移
+# → https://www.kanae-tokyo.com/en/about に自動遷移
 ```
 
 ### 2. URL ルーティングのテスト
 ```bash
 # 根パスにアクセス
-https://www.rut-tokyo.com/
+https://www.kanae-tokyo.com/
 # → 自動的に /ja/ にリダイレクト
 
 # 直接深層リンクにアクセス
-https://www.rut-tokyo.com/en/philosophy
+https://www.kanae-tokyo.com/en/philosophy
 # → 英語版の企業理念ページが表示される
 ```
 
@@ -260,18 +260,18 @@ https://www.rut-tokyo.com/en/philosophy
 
 ### Vercel 自動デプロイ
 - ⏳ **進行中**（通常 2〜3分で完了）
-- 📍 デプロイ先: https://www.rut-tokyo.com
+- 📍 デプロイ先: https://www.kanae-tokyo.com
 
 ### デプロイ後の確認項目
 ```bash
 # 1. ルートパスのリダイレクト
-curl -I https://www.rut-tokyo.com/
+curl -I https://www.kanae-tokyo.com/
 # 期待: 301/302 リダイレクト → /ja/
 
 # 2. 全ページのステータスチェック
 for lang in ja zh en; do
   for page in "" about philosophy rent sale management minpaku; do
-    url="https://www.rut-tokyo.com/${lang}/${page}"
+    url="https://www.kanae-tokyo.com/${lang}/${page}"
     status=$(curl -s -o /dev/null -w "%{http_code}" "$url")
     echo "$url: $status"
   done
@@ -279,15 +279,15 @@ done
 # 期待: すべて 200 OK
 
 # 3. アクセス情報の確認
-curl https://www.rut-tokyo.com/ja/about | grep "東京メトロ東西線 高田馬場駅 7番出口より徒歩約5分"
+curl https://www.kanae-tokyo.com/ja/about | grep "東京メトロ東西線 高田馬場駅 7番出口より徒歩約5分"
 # 期待: マッチが見つかる
 
 # 4. Google Maps の確認
-curl https://www.rut-tokyo.com/ja/about | grep "maps.google.com"
+curl https://www.kanae-tokyo.com/ja/about | grep "maps.google.com"
 # 期待: マッチが見つかる
 
 # 5. URL の統一確認
-curl https://www.rut-tokyo.com/ja/ | grep "rut-tokyo.com"
+curl https://www.kanae-tokyo.com/ja/ | grep "kanae-tokyo.com"
 # 期待: マッチが見つかる（kanae-tokyo.com は存在しない）
 ```
 
@@ -301,14 +301,14 @@ curl https://www.rut-tokyo.com/ja/ | grep "rut-tokyo.com"
 |--------|----------|------|
 | Task 0-1: Next.js を export から SSR に戻す | ✅ | SSR モードで稼働中 |
 | Task 0-2: GitHub を Vercel に接続 | ✅ | 自動デプロイ設定済み |
-| Task 0-3: ドメイン設定完了 | ✅ | www.rut-tokyo.com アクセス可能 |
+| Task 0-3: ドメイン設定完了 | ✅ | www.kanae-tokyo.com アクセス可能 |
 | Task 0-4: 全ページ 404 チェック | ✅ | 全ページ正常 |
 | **追加**: 国際化（i18n）実装 | ✅ | URL-based i18n 完了 |
 | **追加**: 会社情報の正確化 | ✅ | 法人登記簿・名刺に基づく |
 | **追加**: アクセス情報の正確化 | ✅ | 最寄り駅情報更新 |
 | **追加**: 企業理念ページ分離 | ✅ | `/philosophy` 作成 |
 | **追加**: Google Maps 埋め込み | ✅ | インタラクティブ地図 |
-| **追加**: URL 統一 | ✅ | rut-tokyo.com に統一 |
+| **追加**: URL 統一 | ✅ | kanae-tokyo.com に統一 |
 
 ### 📅 次のフェーズ（Phase 1）
 
@@ -420,7 +420,7 @@ curl https://www.rut-tokyo.com/ja/ | grep "rut-tokyo.com"
 - ✅ **アクセス情報の正確化**（最寄り駅・徒歩時間）
 - ✅ **企業理念ページの独立化**
 - ✅ **Google Maps 埋め込み**
-- ✅ **URL の統一**（rut-tokyo.com）
+- ✅ **URL の統一**（kanae-tokyo.com）
 
 ### 技術スタック
 - Next.js 15.5.9 (App Router)

@@ -194,7 +194,7 @@ fcc2fbd - feat: Implement complete multilingual support (core components)
 
 ## 🌐 部署状态
 
-**生产环境**：https://www.rut-tokyo.com  
+**生产环境**：https://www.kanae-tokyo.com  
 **状态**：✅ 在线运行  
 **最后部署**：2026-01-12  
 **Vercel 状态**：自动部署启用

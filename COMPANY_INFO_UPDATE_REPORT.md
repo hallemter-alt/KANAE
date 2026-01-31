@@ -61,7 +61,7 @@ info@kanae-tokyo.com
 #### 公式ウェブサイト
 ```
 www.kanae-tokyo.com
-https://www.rut-tokyo.com（運営サイト）
+https://www.kanae-tokyo.com（運営サイト）
 ```
 
 ---
@@ -148,7 +148,7 @@ https://www.rut-tokyo.com（運営サイト）
 |------|--------|--------|
 | 電話 | 03-XXXX-XXXX | 03-6914-3633 / 080-4363-2780 |
 | FAX | 03-XXXX-XXXX | （削除） |
-| Email | info@rut-tokyo.com | info@kanae-tokyo.com |
+| Email | info@kanae-tokyo.com | info@kanae-tokyo.com |
 
 ### 設立日
 | 項目 | 変更前 | 変更後 |

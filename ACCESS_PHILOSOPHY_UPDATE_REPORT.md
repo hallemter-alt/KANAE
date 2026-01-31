@@ -295,8 +295,8 @@ JR山手線 高田馬場駅 早稲田口より徒歩約7分
 - 🔄 **自動デプロイ**: 進行中
 - ⏱️ **予想時間**: 2〜3分
 - 🌐 **本番URL**: 
-  - https://www.rut-tokyo.com/about
-  - https://www.rut-tokyo.com/philosophy
+  - https://www.kanae-tokyo.com/about
+  - https://www.kanae-tokyo.com/philosophy
 
 ---
 
@@ -318,10 +318,10 @@ JR山手線 高田馬場駅 早稲田口より徒歩約7分
 ### ブラウザで確認
 ```
 # 会社概要ページ
-https://www.rut-tokyo.com/about
+https://www.kanae-tokyo.com/about
 
 # 企業理念ページ（新規）
-https://www.rut-tokyo.com/philosophy
+https://www.kanae-tokyo.com/philosophy
 ```
 
 ### 確認項目

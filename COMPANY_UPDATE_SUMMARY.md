@@ -144,7 +144,7 @@ Golje Bld. 6F
 ```diff
 - 電話: 03-XXXX-XXXX
 - FAX: 03-XXXX-XXXX
-- Email: info@rut-tokyo.com
+- Email: info@kanae-tokyo.com
 
 + 電話: 03-6914-3633 / 080-4363-2780
 + Email: info@kanae-tokyo.com
@@ -216,7 +216,7 @@ Golje Bld. 6F
 ### Vercelデプロイ
 - 🔄 自動デプロイ進行中
 - ⏱️ 予想完了時間: 2〜3分
-- 🌐 本番URL: https://www.rut-tokyo.com
+- 🌐 本番URL: https://www.kanae-tokyo.com
 
 ---
 
@@ -250,10 +250,10 @@ Golje Bld. 6F
 ### 確認項目
 ```bash
 # 会社概要ページの確認
-curl -s -o /dev/null -w "%{http_code}" https://www.rut-tokyo.com/about
+curl -s -o /dev/null -w "%{http_code}" https://www.kanae-tokyo.com/about
 
 # ブラウザで確認
-https://www.rut-tokyo.com/about
+https://www.kanae-tokyo.com/about
 ```
 
 ### 推奨事項（オプション）

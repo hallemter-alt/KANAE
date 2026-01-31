@@ -47,7 +47,7 @@
 **追加・改善内容:**
 - ✅ 会社基本情報の拡充
   - 営業時間の追加
-  - メールアドレス更新（info@rut-tokyo.com）
+  - メールアドレス更新（info@kanae-tokyo.com）
   - 許認可番号の明記
   - 加盟団体の追加
 
@@ -255,7 +255,7 @@ xl:  1280px（大画面）
 
 ## 🔗 リンク
 
-- **本番サイト**: https://www.rut-tokyo.com
+- **本番サイト**: https://www.kanae-tokyo.com
 - **GitHub**: https://github.com/hallemter-alt/KANAE
 - **最新コミット**: 5f0a662
 - **ブランチ**: main
@@ -293,9 +293,9 @@ xl:  1280px（大画面）
    - デプロイログの確認
 
 2. ✅ **本番環境の動作確認**
-   - https://www.rut-tokyo.com/about
-   - https://www.rut-tokyo.com/management
-   - https://www.rut-tokyo.com/rent
+   - https://www.kanae-tokyo.com/about
+   - https://www.kanae-tokyo.com/management
+   - https://www.kanae-tokyo.com/rent
 
 ### Phase 1 継続（今週）
 3. **Supabaseセットアップ完了**
@@ -333,8 +333,8 @@ xl:  1280px（大画面）
 
 ### 404エラーについて
 現在、以下のページが404を返しています：
-- https://www.rut-tokyo.com/about
-- https://www.rut-tokyo.com/management
+- https://www.kanae-tokyo.com/about
+- https://www.kanae-tokyo.com/management
 
 **原因**: Vercelの自動デプロイがまだ完了していないため  
 **解決**: デプロイ完了後、自動的に表示されます（2〜3分待機）
@@ -342,9 +342,9 @@ xl:  1280px（大画面）
 ### ページ確認方法
 ```bash
 # 全ページのステータス確認
-curl -s -o /dev/null -w "%{http_code}" https://www.rut-tokyo.com/about
-curl -s -o /dev/null -w "%{http_code}" https://www.rut-tokyo.com/management
-curl -s -o /dev/null -w "%{http_code}" https://www.rut-tokyo.com/rent
+curl -s -o /dev/null -w "%{http_code}" https://www.kanae-tokyo.com/about
+curl -s -o /dev/null -w "%{http_code}" https://www.kanae-tokyo.com/management
+curl -s -o /dev/null -w "%{http_code}" https://www.kanae-tokyo.com/rent
 ```
 
 ---

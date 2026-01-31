@@ -1,9 +1,9 @@
-# www.rut-tokyo.com を Vercel 不動産サイトに切り替える手順書
+# www.kanae-tokyo.com を Vercel 不動産サイトに切り替える手順書
 
 ## 📋 概要
 
-- **ドメイン**: `rut-tokyo.com`
-- **対象**: `www.rut-tokyo.com` を新不動産サイトで公開
+- **ドメイン**: `kanae-tokyo.com`
+- **対象**: `www.kanae-tokyo.com` を新不動産サイトで公開
 - **現状**: Wix テンプレートで公開中（置き換え予定）
 - **DNS 管理**: Wix
 - **新サイト**: Vercel にデプロイされた Next.js 不動産サイト
@@ -35,7 +35,7 @@
 ### 1-1. Wix にログイン
 1. Wix アカウントにログイン
 2. **ドメイン管理** セクションに移動
-3. `rut-tokyo.com` を選択
+3. `kanae-tokyo.com` を選択
 
 ### 1-2. 現在の DNS レコードを確認
 1. **DNS 設定** または **DNS レコードを管理** をクリック
@@ -65,14 +65,14 @@
 2. **KANAE プロジェクト** を選択
 3. **Settings** → **Domains** に移動
 4. **「Add Domain」** ボタンをクリック
-5. `www.rut-tokyo.com` を入力して **「Add」**
+5. `www.kanae-tokyo.com` を入力して **「Add」**
 
 ### 2-2. CNAME 値を取得
 
 Vercel が以下のような指示を表示します：
 
 ```
-To add www.rut-tokyo.com, add the following record to your DNS provider:
+To add www.kanae-tokyo.com, add the following record to your DNS provider:
 
 Type:  CNAME
 Name:  www
@@ -87,7 +87,7 @@ Value: cname.vercel-dns.com
 
 ---
 
-**件名**: www.rut-tokyo.com の DNS 設定変更依頼
+**件名**: www.kanae-tokyo.com の DNS 設定変更依頼
 
 **本文**:
 ```
@@ -103,7 +103,7 @@ Value: cname.vercel-dns.com
 - TTL: 自動（または 3600）
 
 【手順】
-1. Wix ドメイン管理 → rut-tokyo.com → DNS 設定
+1. Wix ドメイン管理 → kanae-tokyo.com → DNS 設定
 2. 既存の www レコードを削除または編集
 3. 上記の CNAME レコードを追加
 4. 保存後、「DNS 追加完了」とご連絡ください
@@ -123,7 +123,7 @@ Value: cname.vercel-dns.com
 
 ### 3-1. Wix DNS 設定画面で編集
 
-1. Wix ドメイン管理 → `rut-tokyo.com` → **DNS 設定**
+1. Wix ドメイン管理 → `kanae-tokyo.com` → **DNS 設定**
 2. 既存の `www` レコードを見つける
 3. **編集** または **削除** → **新規追加**
 
@@ -159,17 +159,17 @@ Value: cname.vercel-dns.com
 DNS の伝播状況を確認：
 ```bash
 # DNS の伝播状況を確認
-dig www.rut-tokyo.com CNAME
+dig www.kanae-tokyo.com CNAME
 
 # または
-nslookup www.rut-tokyo.com
+nslookup www.kanae-tokyo.com
 ```
 
 ### 4-2. Vercel で SSL 証明書のステータス確認
 
 1. Vercel ダッシュボード → KANAE プロジェクト
 2. **Settings** → **Domains**
-3. `www.rut-tokyo.com` のステータスを確認：
+3. `www.kanae-tokyo.com` のステータスを確認：
    - ✅ **Valid Configuration**: DNS 設定正常
    - ✅ **SSL Certificate: Active**: HTTPS 有効
 
@@ -179,7 +179,7 @@ nslookup www.rut-tokyo.com
 
 ```bash
 # コマンドラインで確認
-curl -I https://www.rut-tokyo.com
+curl -I https://www.kanae-tokyo.com
 
 # 期待される結果：
 # HTTP/2 200
@@ -188,7 +188,7 @@ curl -I https://www.rut-tokyo.com
 ```
 
 ブラウザで以下を確認：
-- **URL**: https://www.rut-tokyo.com
+- **URL**: https://www.kanae-tokyo.com
 - ✅ ページが正常に表示される
 - ✅ アドレスバーに 🔒（鍵マーク）が表示される
 - ✅ SSL 証明書が有効（Let's Encrypt）
@@ -203,30 +203,30 @@ curl -I https://www.rut-tokyo.com
 
 | ページ | URL | ステータス |
 |--------|-----|-----------|
-| ホーム | https://www.rut-tokyo.com/ | [ ] 200 OK |
-| 賃貸検索 | https://www.rut-tokyo.com/rent | [ ] 200 OK |
-| 売買検索 | https://www.rut-tokyo.com/sale | [ ] 200 OK |
-| 民泊サービス | https://www.rut-tokyo.com/minpaku | [ ] 200 OK |
-| API テスト | https://www.rut-tokyo.com/api-test | [ ] 200 OK |
+| ホーム | https://www.kanae-tokyo.com/ | [ ] 200 OK |
+| 賃貸検索 | https://www.kanae-tokyo.com/rent | [ ] 200 OK |
+| 売買検索 | https://www.kanae-tokyo.com/sale | [ ] 200 OK |
+| 民泊サービス | https://www.kanae-tokyo.com/minpaku | [ ] 200 OK |
+| API テスト | https://www.kanae-tokyo.com/api-test | [ ] 200 OK |
 
 ### 5-2. API エンドポイントの確認
 
 ```bash
 # Hello API
-curl https://www.rut-tokyo.com/api/hello
+curl https://www.kanae-tokyo.com/api/hello
 
 # Properties API
-curl https://www.rut-tokyo.com/api/properties
+curl https://www.kanae-tokyo.com/api/properties
 
 # Properties API (フィルタ付き)
-curl "https://www.rut-tokyo.com/api/properties?type=rent"
+curl "https://www.kanae-tokyo.com/api/properties?type=rent"
 ```
 
 ### 5-3. 自動検証スクリプトを実行
 
 ```bash
 cd /home/user/webapp
-./verify-deployment.sh https://www.rut-tokyo.com
+./verify-deployment.sh https://www.kanae-tokyo.com
 ```
 
 ---
@@ -235,7 +235,7 @@ cd /home/user/webapp
 
 ### ❌ 問題 1：DNS が伝播しない
 
-**症状**: `www.rut-tokyo.com` にアクセスしても旧 Wix サイトが表示される
+**症状**: `www.kanae-tokyo.com` にアクセスしても旧 Wix サイトが表示される
 
 **解決策**:
 1. DNS キャッシュをクリア：
@@ -259,7 +259,7 @@ cd /home/user/webapp
 **解決策**:
 1. DNS レコードが正しいことを確認：
    ```bash
-   dig www.rut-tokyo.com CNAME
+   dig www.kanae-tokyo.com CNAME
    ```
 2. Vercel で **「Refresh」** ボタンをクリック
 3. 30 分待機
@@ -269,7 +269,7 @@ cd /home/user/webapp
 
 ### ❌ 問題 3：404 エラーが表示される
 
-**症状**: `https://www.rut-tokyo.com/` は表示されるが、他のページで 404
+**症状**: `https://www.kanae-tokyo.com/` は表示されるが、他のページで 404
 
 **解決策**:
 1. Next.js ビルドが成功したことを確認：
@@ -293,13 +293,13 @@ cd /home/user/webapp
 - [ ] genspark に「DNS 追加完了」を連絡
 
 ### genspark 側（Vercel 設定）
-- [ ] Vercel に `www.rut-tokyo.com` を追加
+- [ ] Vercel に `www.kanae-tokyo.com` を追加
 - [ ] CNAME 値を取得
 - [ ] 会社に CNAME 値を連絡
 - [ ] 会社から「DNS 追加完了」の連絡を受信
 - [ ] DNS 伝播を確認（5〜15 分待機）
 - [ ] SSL 証明書が **Active** になることを確認
-- [ ] ブラウザで `https://www.rut-tokyo.com/` が表示されることを確認
+- [ ] ブラウザで `https://www.kanae-tokyo.com/` が表示されることを確認
 - [ ] 全ページの動作確認（/, /rent, /sale, /minpaku, /api-test）
 - [ ] API エンドポイントの動作確認
 
@@ -310,16 +310,16 @@ cd /home/user/webapp
 ### DNS 伝播時間
 - **通常**: 5〜15 分
 - **最大**: 24〜48 時間（TTL による）
-- **確認方法**: https://dnschecker.org で `www.rut-tokyo.com` の CNAME を確認
+- **確認方法**: https://dnschecker.org で `www.kanae-tokyo.com` の CNAME を確認
 
 ### SSL 証明書
 - **発行元**: Let's Encrypt（Vercel が自動発行）
 - **有効期間**: 90 日（自動更新）
-- **ワイルドカード**: サポートされていない（`*.rut-tokyo.com` は別途設定が必要）
+- **ワイルドカード**: サポートされていない（`*.kanae-tokyo.com` は別途設定が必要）
 
-### Apex ドメイン（rut-tokyo.com）について
-もし `rut-tokyo.com`（www なし）も Vercel に向けたい場合：
-1. Vercel で `rut-tokyo.com` を追加
+### Apex ドメイン（kanae-tokyo.com）について
+もし `kanae-tokyo.com`（www なし）も Vercel に向けたい場合：
+1. Vercel で `kanae-tokyo.com` を追加
 2. Wix DNS で以下の A レコードを追加：
    ```
    タイプ: A

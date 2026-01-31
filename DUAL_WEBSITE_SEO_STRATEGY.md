@@ -7,12 +7,12 @@
 ## 🎯 澄清需求
 
 **原本誤解**：
-- ❌ 將 kanae-tokyo.com 重定向到 rut-tokyo.com
+- ❌ 將 kanae-tokyo.com 重定向到 kanae-tokyo.com
 - ❌ 只保留一個網站
 
 **正確需求**：
 - ✅ www.kanae-tokyo.com - 獨立網站
-- ✅ www.rut-tokyo.com - 獨立網站
+- ✅ www.kanae-tokyo.com - 獨立網站
 - ✅ 兩個網站各自有獨立的 SEO
 - ✅ 搜索引擎分別顯示各自的公司信息
 
@@ -32,7 +32,7 @@
 目標客群: 日本本地客戶
 ```
 
-#### www.rut-tokyo.com  
+#### www.kanae-tokyo.com  
 ```
 公司名稱: 株式会社RUT-TOKYO
 定位: 新品牌
@@ -59,7 +59,7 @@
 語言: 主要日文
 ```
 
-#### www.rut-tokyo.com
+#### www.kanae-tokyo.com
 ```
 重點服務: 管理 + 民泊
 目標: B2B 客戶、投資者
@@ -82,7 +82,7 @@
 目標: 本地客戶
 ```
 
-#### www.rut-tokyo.com
+#### www.kanae-tokyo.com
 ```
 服務地區: 東京都 + 周邊縣（神奈川、埼玉、千葉）
 目標: 更廣區域
@@ -105,7 +105,7 @@
 #### 必須做到：
 1. **不同的頁面結構**
    - kanae-tokyo.com: 7 個頁面
-   - rut-tokyo.com: 不同的 5-6 個頁面
+   - kanae-tokyo.com: 不同的 5-6 個頁面
 
 2. **不同的文字內容**
    - 至少 30-40% 的文字差異
@@ -114,7 +114,7 @@
 
 3. **不同的目標關鍵詞**
    - kanae-tokyo.com: "東京 賃貸"、"豊島区 不動産"
-   - rut-tokyo.com: "東京 不動産管理"、"民泊 運営"
+   - kanae-tokyo.com: "東京 不動産管理"、"民泊 運営"
 
 4. **使用 Canonical 標籤**
    - 如果有相似內容，指明主要版本
@@ -123,7 +123,7 @@
 
 ## 🛠️ 技術實施建議
 
-### 當前狀態（rut-tokyo.com）
+### 當前狀態（kanae-tokyo.com）
 
 已經實施的 SEO 優化：
 ```
@@ -177,7 +177,7 @@
 }
 ```
 
-### rut-tokyo.com 策略
+### kanae-tokyo.com 策略
 
 ```json
 {
@@ -203,7 +203,7 @@
 
 **請告訴我**：
 
-1. **kanae-tokyo.com 和 rut-tokyo.com 是**：
+1. **kanae-tokyo.com 和 kanae-tokyo.com 是**：
    - [ ] 兩個完全不同的公司？
    - [ ] 同一家公司的不同品牌？
    - [ ] 同一家公司的不同業務線？
@@ -215,7 +215,7 @@
 
 3. **目標客戶**：
    - kanae-tokyo.com 主要針對：___________
-   - rut-tokyo.com 主要針對：___________
+   - kanae-tokyo.com 主要針對：___________
 
 ---
 
@@ -233,7 +233,7 @@
 - 聯絡我們
 ```
 
-#### rut-tokyo.com 頁面結構
+#### kanae-tokyo.com 頁面結構
 ```
 建議包含：
 - 首頁（重點：管理服務）
@@ -257,7 +257,7 @@
 5. 不同的 metadata
 ```
 
-#### rut-tokyo.com（當前網站）
+#### kanae-tokyo.com（當前網站）
 ```
 ✅ 已有 Sitemap
 ✅ 已有結構化數據
@@ -297,7 +297,7 @@ kanae-tokyo.com 是：
 [ ] 同公司不同品牌
 [ ] 同公司不同業務
 
-rut-tokyo.com 是：
+kanae-tokyo.com 是：
 [ ] 獨立公司
 [ ] 同公司不同品牌
 [ ] 同公司不同業務
@@ -318,7 +318,7 @@ kanae-tokyo.com：
 目標地區：___________
 主要服務：___________
 
-rut-tokyo.com：
+kanae-tokyo.com：
 主要語言：___________
 目標地區：___________
 主要服務：___________

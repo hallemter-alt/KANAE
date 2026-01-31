@@ -10,7 +10,7 @@
 
 ### 1️⃣ 访问网站
 ```
-URL: https://www.rut-tokyo.com
+URL: https://www.kanae-tokyo.com
 ```
 
 ### 2️⃣ 查找语言切换按钮
@@ -418,7 +418,7 @@ ______________________________________
 
 如果在验证过程中发现任何问题，请通过以下方式联系：
 
-**技术支持邮箱**：info@rut-tokyo.com  
+**技术支持邮箱**：info@kanae-tokyo.com  
 **GitHub Issues**：https://github.com/hallemter-alt/KANAE/issues  
 **电话**：03-6914-3633  
 

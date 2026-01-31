@@ -1,4 +1,4 @@
-# www.rut-tokyo.com ドメイン切り替え - 作業サマリー
+# www.kanae-tokyo.com ドメイン切り替え - 作業サマリー
 
 ## 📋 完了した作業
 
@@ -24,14 +24,14 @@
 #### 1-2. ドメインを追加
 1. **Settings** → **Domains** に移動
 2. **「Add Domain」** をクリック
-3. `www.rut-tokyo.com` を入力
+3. `www.kanae-tokyo.com` を入力
 4. **「Add」** をクリック
 
 #### 1-3. CNAME 値を取得
 Vercel が以下のような指示を表示します：
 
 ```
-To add www.rut-tokyo.com, add the following record to your DNS provider:
+To add www.kanae-tokyo.com, add the following record to your DNS provider:
 
 Type:  CNAME
 Name:  www
@@ -47,7 +47,7 @@ Value: cname.vercel-dns.com  ← この値をコピー
 以下のメールテンプレートを使用して、会社の担当者に連絡します：
 
 ```
-件名: www.rut-tokyo.com の DNS 設定変更依頼
+件名: www.kanae-tokyo.com の DNS 設定変更依頼
 
 お疲れ様です。
 
@@ -67,7 +67,7 @@ TTL: 3600
 ━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 1. Wix にログイン
-2. ドメイン管理 → rut-tokyo.com を選択
+2. ドメイン管理 → kanae-tokyo.com を選択
 3. DNS 設定 または DNS レコードを管理 をクリック
 4. 既存の「www」レコードを削除または編集
 5. 上記の CNAME レコードを新規追加
@@ -111,11 +111,11 @@ cd /home/user/webapp
 
 ブラウザで以下のページにアクセスして確認：
 
-- [ ] https://www.rut-tokyo.com/ （ホーム）
-- [ ] https://www.rut-tokyo.com/rent （賃貸検索）
-- [ ] https://www.rut-tokyo.com/sale （売買検索）
-- [ ] https://www.rut-tokyo.com/minpaku （民泊サービス）
-- [ ] https://www.rut-tokyo.com/api-test （API テスト）
+- [ ] https://www.kanae-tokyo.com/ （ホーム）
+- [ ] https://www.kanae-tokyo.com/rent （賃貸検索）
+- [ ] https://www.kanae-tokyo.com/sale （売買検索）
+- [ ] https://www.kanae-tokyo.com/minpaku （民泊サービス）
+- [ ] https://www.kanae-tokyo.com/api-test （API テスト）
 
 すべて正常に表示されれば、**切り替え完了です！** 🎉
 
@@ -151,7 +151,7 @@ cd /home/user/webapp
 ./verify-domain.sh
 
 # Vercel デプロイ検証スクリプト（全 API をテスト）
-./verify-deployment.sh https://www.rut-tokyo.com
+./verify-deployment.sh https://www.kanae-tokyo.com
 ```
 
 ---
@@ -165,9 +165,9 @@ sudo dscacheutil -flushcache  # macOS
 sudo killall -HUP mDNSResponder
 
 # DNS 伝播状況を確認
-dig www.rut-tokyo.com CNAME
+dig www.kanae-tokyo.com CNAME
 # または
-https://dnschecker.org/#CNAME/www.rut-tokyo.com
+https://dnschecker.org/#CNAME/www.kanae-tokyo.com
 ```
 
 ### ❌ SSL 証明書が発行されない
@@ -217,7 +217,7 @@ https://dnschecker.org/#CNAME/www.rut-tokyo.com
 
 ### 実施段階（これから）
 - [ ] Vercel にログイン
-- [ ] Vercel で `www.rut-tokyo.com` を追加
+- [ ] Vercel で `www.kanae-tokyo.com` を追加
 - [ ] CNAME 値を取得
 - [ ] 会社に CNAME 値を連絡
 - [ ] 会社から「DNS 追加完了」の連絡を受信
@@ -232,7 +232,7 @@ https://dnschecker.org/#CNAME/www.rut-tokyo.com
 
 - **リポジトリ**: https://github.com/hallemter-alt/KANAE
 - **最新コミット**: `d619c51`
-- **コミットメッセージ**: "docs: Add comprehensive domain setup guides for www.rut-tokyo.com"
+- **コミットメッセージ**: "docs: Add comprehensive domain setup guides for www.kanae-tokyo.com"
 - **追加ファイル**: 4 ファイル、863 行
 - **ブランチ**: `main`
 - **ステータス**: ✅ Push 完了
@@ -244,7 +244,7 @@ https://dnschecker.org/#CNAME/www.rut-tokyo.com
 すべての準備が完了しました！
 
 **次のアクション**:
-1. **Vercel にログイン** して `www.rut-tokyo.com` を追加
+1. **Vercel にログイン** して `www.kanae-tokyo.com` を追加
 2. **CNAME 値を取得** してメモ
 3. **会社に連絡** して DNS 設定を依頼
 4. **完了連絡を待機** してから `./verify-domain.sh` を実行
@@ -252,6 +252,6 @@ https://dnschecker.org/#CNAME/www.rut-tokyo.com
 ---
 
 **作成日**: 2026-01-12  
-**対象**: www.rut-tokyo.com → Vercel 不動産サイト  
+**対象**: www.kanae-tokyo.com → Vercel 不動産サイト  
 **ステータス**: ドキュメント作成完了、実施待ち  
 **所要時間**: 約 1 時間（DNS 伝播を含む）

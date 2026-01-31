@@ -4,8 +4,8 @@ export function generateOrganizationSchema() {
     '@type': 'RealEstateAgent',
     name: '株式会社KANAE',
     alternateName: 'KANAE Co., Ltd.',
-    url: 'https://www.rut-tokyo.com',
-    logo: 'https://www.rut-tokyo.com/logo.png',
+    url: 'https://www.kanae-tokyo.com',
+    logo: 'https://www.kanae-tokyo.com/logo.png',
     description: '不動産事業（賃貸・売買・管理・民泊）を通じて、お客様と社会の幸福を実現します。',
     address: {
       '@type': 'PostalAddress',
@@ -23,9 +23,9 @@ export function generateOrganizationSchema() {
       availableLanguage: ['Japanese', 'Chinese', 'English'],
     },
     sameAs: [
-      'https://www.rut-tokyo.com/ja',
-      'https://www.rut-tokyo.com/zh',
-      'https://www.rut-tokyo.com/en',
+      'https://www.kanae-tokyo.com/ja',
+      'https://www.kanae-tokyo.com/zh',
+      'https://www.kanae-tokyo.com/en',
     ],
     founder: {
       '@type': 'Person',
@@ -83,7 +83,7 @@ export function generateOrganizationSchema() {
 }
 
 export function generateBreadcrumbSchema(locale: string, pageName?: string) {
-  const baseUrl = 'https://www.rut-tokyo.com'
+  const baseUrl = 'https://www.kanae-tokyo.com'
   const items = [
     {
       '@type': 'ListItem',
