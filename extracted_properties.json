@@ -1,0 +1,707 @@
+{
+  "extracted_at": "2026-01-31T16:04:55.903114",
+  "source_pdf": "/home/user/uploaded_files/zmn_list_20260131223902_1.pdf",
+  "total_properties": 22,
+  "properties": [
+    {
+      "page_number": 4,
+      "property_name": null,
+      "property_type": "一棟マンション",
+      "price": null,
+      "location": {
+        "full": "東京都新宿区西早稲田",
+        "prefecture": "東京都",
+        "city": "新宿区",
+        "town": "西早稲田"
+      },
+      "access_info": null,
+      "land_area_sqm": null,
+      "land_area_tsubo": null,
+      "building_area_sqm": null,
+      "building_area_tsubo": null,
+      "structure": "RC造",
+      "construction_date": "1985-02-01",
+      "total_units": null,
+      "use_district": null,
+      "building_coverage_ratio": null,
+      "floor_area_ratio": null,
+      "annual_rent": null,
+      "yield_surface": 80.0,
+      "raw_text": "西早稲田\n1棟収益マンション\nLife Information\n■ローソン 西早稲田二丁目店\n約1分\n■セブンイレブン 新宿西早稲田３丁目店\n約3分\n■Ｓａｎｔｏｋｕ西早稲田店\n約4分\n■まいばすけっと西早稲田３丁目店\n約4分\n■新宿区立戸塚第一小学校\n約4分\n価格\n■私立学習院女子大学\n約4分\n万円\n最寄駅\nRC造 / 673㎡\n東京メトロ副都心線\n西早稲田駅 徒歩　　\n分\n年間想定賃料\n2,018,500 ×12ヶ月＝\nJR山手線\n24,222,000 円\n高田馬場駅徒歩　　\n分\n想定表面利回り\n約4.05 ％\nData\n賃貸中\n所在地\n/東京都新宿区西早稲田\n※年間予定収入は満室時における1年間の収入です。\n※表面利回りは年間予定収入における該当物件の取得対価に対する割合\nです。\n※上記予定収入は確実に得られることを保証するものでは有りません。\n※表面利回りは公租公課その他物件を維持するために必要な費用を控除前\nのものです。\n権利形態\n/所有権\n都市計画\n/市街化区域\n地域・地区\n/商業地域\n地目\n/宅地\n築年月\n/1985年2月\n土地面積\n/135.3㎡\n1階はローソン、\n2階"
+    },
+    {
+      "page_number": 5,
+      "property_name": null,
+      "property_type": "一棟マンション",
+      "price": null,
+      "location": {
+        "full": "東京都新宿区中井２丁目29-5",
+        "prefecture": "東京都",
+        "city": "新宿区",
+        "town": "中井２丁目29-5"
+      },
+      "access_info": null,
+      "land_area_sqm": null,
+      "land_area_tsubo": null,
+      "building_area_sqm": null,
+      "building_area_tsubo": null,
+      "structure": "鉄筋コンクリート造",
+      "construction_date": "2005-02-01",
+      "total_units": null,
+      "use_district": "指定　建ぺい率　／　容積率",
+      "building_coverage_ratio": null,
+      "floor_area_ratio": null,
+      "annual_rent": null,
+      "yield_surface": 50.0,
+      "raw_text": "2026/1/29現在　　　\n㎡\n（\n坪）\n㎡\n（\n坪）\n共同住宅\n自用・収益用区分\n収益用\n鉄筋コンクリート造陸屋根地下1階付2階建\n㎡\n（\n坪）\n㎡\n（\n坪）\n賃貸中\n用途地域\n指定　建ぺい率　／　容積率\n第1種低層住居専用\n／\n年間収入　　　　①\n円\n年間支出　　　　②\n円\n年間純収益 (NOI)　①-②\n円\n敷金・保証金\n円\n利回り（表面）\n備考\n地目\n宅地\n物件概要（Summary）ロングウッドヒル中井（一棟マンション）\n東京都新宿区中井２丁目29-5\n所\n在\n地住居表示\n都営大江戸線「中井」駅　徒歩11分（約850m）\n西武新宿線「中井」駅　徒歩12分(約900ｍ）\n西武新宿線「新井薬師前」駅　徒歩12分（約900ｍ）\n交\n通\n接面道路\n85.32\n建築確認\n対象面積\n建\n物主要用途\n構\n造\n延床面積\n271.67\n土\n地\n面\n積\n公簿\n282.04\n西側42条1項5号道路（幅員約3.5ｍ）に約14ｍ接道\n82.18\n280.50\n84.85\n円（税込）\n築年月\n容積不算入面積\n121.95\n36.89\n現\n況\n平成16年2月\n準防火地域\n第一種高度地区\n日影規制：３時間-"
+    },
+    {
+      "page_number": 6,
+      "property_name": "物件種別",
+      "property_type": "一棟ビル",
+      "price": 298000000,
+      "location": {
+        "full": "東京都豊島区1-51-18大塚野崎ビル502号",
+        "prefecture": "東京都",
+        "city": "豊島区",
+        "town": "1-51-18大塚野崎ビル502号"
+      },
+      "access_info": [
+        {
+          "line": "内線",
+          "station": "新宿駅",
+          "walk_time": 12
+        }
+      ],
+      "land_area_sqm": null,
+      "land_area_tsubo": null,
+      "building_area_sqm": null,
+      "building_area_tsubo": null,
+      "structure": "鉄筋コンクリート造",
+      "construction_date": "1991-02-01",
+      "total_units": null,
+      "use_district": "防火指定",
+      "building_coverage_ratio": null,
+      "floor_area_ratio": null,
+      "annual_rent": null,
+      "yield_surface": 4.66,
+      "raw_text": "株式会社スノーランド\n東京都知事(1)第111713号　公益社団法人 不動産保証協会会員\nMail:h28704001@gmail.com\nFAX:050-4561-5272\n〒170-0005  東京都豊島区1-51-18大塚野崎ビル502号\nTEL 03-6304-1888\n定休日：水・日  営業時間：10－18時  休日でも携帯まで気軽にご連絡ください\n取引態様:代理\n手数料:3％(税込)\n担当:黄(コウ)\n090-1752-7193\n1棟収益\n新宿区\n百人町1丁目\n※図面と現況が異なる場合は現況を優先いたします。\n物件概要書\n物件概要書\n物件名\n物件種別\n所　在\n交　通\n土　地\n法令上\nの制限\n建　物\n価　額\n住居表示\n地　番\n地　目\n権利形態\n面　積\n利用状况\n都市計画\n用途地域\n防火指定\n高さ制限\n建ペい率\n容積率\nその他\n日影規制\n道　路\n種　類\n築年数\n構　造\n現　況\n延　床\n新大久保1棟収益ビル\n新宿区百人町1丁目\n1棟収益ビル\nJR総武線『大久保』駅 徒步2分\nJR山手線『新大久保』駅 徒歩7分\n宅地\n所有権\n117.19㎡(約35.77坪)\n建物有り\n市街化区域\n"
+    },
+    {
+      "page_number": 7,
+      "property_name": null,
+      "property_type": "一棟マンション",
+      "price": null,
+      "location": {
+        "full": "東京都新宿区西新宿4-21-5",
+        "prefecture": "東京都",
+        "city": "新宿区",
+        "town": "西新宿4-21-5"
+      },
+      "access_info": null,
+      "land_area_sqm": null,
+      "land_area_tsubo": null,
+      "building_area_sqm": null,
+      "building_area_tsubo": null,
+      "structure": "RC造",
+      "construction_date": null,
+      "total_units": null,
+      "use_district": "第2種中高層住居専用地域",
+      "building_coverage_ratio": null,
+      "floor_area_ratio": null,
+      "annual_rent": null,
+      "yield_surface": null,
+      "raw_text": "建築\n面積108.32㎡\n大江戸線「西新宿五丁目」駅徒歩4分\n都営新宿線「新宿」駅徒歩16分\n【設備／仕様】\n【土地概要】\n　●所在地：東京都新宿区西新宿4-21-5\n　●地　目：宅地　●土地権利：所有権\n　●用途地域：第2種中高層住居専用地域\n   ●建蔽率/容積率：60％/300％\n　●防火指定：準防火地域　●高度指定：第二種高度地区\n　●接面道路：南東側公道約3.64ｍ～4.0ｍ\n　●設　備：東京電力、都市ガス、公共上下水道\n　●現　況：賃貸中  ●引渡：即時\n【建物概要】\n　●構　造：RC造地下1地上3階建て\n　●面　積：403.13㎡(約121.94坪)\n　●間取り：Atype(30.02㎡)、Btype(18.06㎡)\n　　　　　　Ctype(18.01㎡)、Dtype(17.64㎡)\n　　　　　　Etype(30.19㎡)\n   ●建築確認番号：第JTC23Y-AZ0412-00号\n   ●管理会社：株式会社アップル\n【R7.10月築マンション（写真）】\nRAYASーレイアスー\n Nishi shinjuku\n【地図／アクセス】\n　\nレイアス西新宿\n※画像は同シリーズの物"
+    },
+    {
+      "page_number": 8,
+      "property_name": "西落合ビラサンテ",
+      "property_type": "一棟収益",
+      "price": null,
+      "location": {
+        "full": "東京都新宿区西落合2-5-11",
+        "prefecture": "東京都",
+        "city": "新宿区",
+        "town": "西落合2-5-11"
+      },
+      "access_info": null,
+      "land_area_sqm": null,
+      "land_area_tsubo": null,
+      "building_area_sqm": null,
+      "building_area_tsubo": null,
+      "structure": "鉄骨造",
+      "construction_date": "1988-10-01",
+      "total_units": null,
+      "use_district": "近隣商業地域",
+      "building_coverage_ratio": null,
+      "floor_area_ratio": null,
+      "annual_rent": null,
+      "yield_surface": 6.34,
+      "raw_text": "物件概要書\n立\n地\n物件名\n西落合ビラサンテ\n住居表示\n東京都新宿区西落合2-5-11\n所在・地番\n東京都新宿区西落合2丁目443-3\n交\n通\n大江戸線\n「落合南長崎」駅徒歩7分\n西武新宿線「新井薬師前」駅徒歩14分\n権利形態\n所有権\n土\n地\n地\n目\n宅地\n面\n積\n（公簿）102.28㎡\n（実測）-\n建\n物\n種\n類\n事務所·寄宿舍\n建築時期\n昭和62年10月\n構\n造\n鉄骨造陸屋根4階建\n検査済証\nなし\n面\n積\n197.86㎡(107.56坪)\n法規\n制\n用途地域\n近隣商業地域\n建蔽率\n80 %\n容積率\n360 %\n道\n路\n東側公道6.0mに面する\n間\n口\n7.9m\nその他制限\n駐車場無し駐輪場有、準防火地域\n価\n格\n208,000,000\n円（税込）\n備\n考\n※平成30年室内フルリノベ-ション\n※令和5年屋上防水、外壁シール工事\n※表面利回り6.34%\n※年間賃料=1,100,000円(月額)*12=13,200,000円\n※上記内容並びに別紙レントロールについて変更される可能性があります。相違する場合は現況を優先するものとします。無断転載禁止\n株式会社龍雪不動産\nTEL：\n052-8"
+    },
+    {
+      "page_number": 13,
+      "property_name": "税込",
+      "property_type": "一棟収益",
+      "price": 2100000,
+      "location": {
+        "full": null,
+        "prefecture": null,
+        "city": null,
+        "town": null
+      },
+      "access_info": [
+        {
+          "line": "総武線",
+          "station": "東中野駅",
+          "walk_time": 8
+        },
+        {
+          "line": "総武線",
+          "station": "大久保駅",
+          "walk_time": 11
+        },
+        {
+          "line": "東西線",
+          "station": "落合駅",
+          "walk_time": 12
+        },
+        {
+          "line": "山手線",
+          "station": "新大久保駅",
+          "walk_time": 14
+        },
+        {
+          "line": "総武線",
+          "station": "東中野駅",
+          "walk_time": 8
+        },
+        {
+          "line": "総武線",
+          "station": "大久保駅",
+          "walk_time": 11
+        },
+        {
+          "line": "東西線",
+          "station": "落合駅",
+          "walk_time": 12
+        },
+        {
+          "line": "山手線",
+          "station": "新大久保駅",
+          "walk_time": 14
+        }
+      ],
+      "land_area_sqm": 109.47,
+      "land_area_tsubo": null,
+      "building_area_sqm": null,
+      "building_area_tsubo": null,
+      "structure": "鉄筋コンクリート造",
+      "construction_date": "2025-03-01",
+      "total_units": 9,
+      "use_district": "近隣商業地域",
+      "building_coverage_ratio": null,
+      "floor_area_ratio": null,
+      "annual_rent": null,
+      "yield_surface": 4.86,
+      "raw_text": "一棟収益\n交通\n �　JR総武線\n東中野駅\n徒歩\n8 分\n名称\n税込\n51,800\n �　JR総武線\n大久保駅\n徒歩\n11 分\n北新宿4丁目レジ\n万円\n �　東西線\n落合駅\n徒歩\n12 分\n �　JR山手線\n新大久保駅\n徒歩\n14 分\n住\n所\n新宿区北新宿4丁目12-21（旧住居表示）\n土\n　\n地\n権利形態\n所有権\n敷地面積\n109.47㎡\n容積・建蔽\n400％　・　80％\n用途地域\n近隣商業地域\n道路関係\n北側公道幅員約4ｍ間口約14.5ｍ\n防火地域\n建\n　\n物\n床面積\n1F　73.18㎡\n登記簿\n2F　73.18㎡\n3F　73.18㎡\n4F　69.38㎡\n5F　53.18㎡\n合計　342.10㎡\n総戸数\n1K×9戸　1LDK×2戸\n構造\n鉄筋コンクリート造陸屋根5階建\n築年\n2025年3月\n共用部分設備\nオートロック・宅配BOX・メールBOX\n住居部分設備\n独立洗面化粧台・温水洗浄便座・カメラ付き玄関\nインターホン・エアコン・シーリングライト（全室）\nそ\nの\n他\n賃料　210万円（税込み）／月\n利回り　4.86%\n引\n民泊会社一括借上げ！\n定期建物賃貸借契約書（事業用）賃貸中\n20"
+    },
+    {
+      "page_number": 16,
+      "property_name": "称",
+      "property_type": "一棟収益",
+      "price": null,
+      "location": {
+        "full": "東京都目黒区自由が丘2-14-9　The Gold Coast　2F",
+        "prefecture": "東京都",
+        "city": "目黒区",
+        "town": "自由が丘2-14-9　The Gold Coast　2F"
+      },
+      "access_info": null,
+      "land_area_sqm": null,
+      "land_area_tsubo": null,
+      "building_area_sqm": null,
+      "building_area_tsubo": null,
+      "structure": "鉄筋コンクリート造",
+      "construction_date": "2025-12-01",
+      "total_units": 11,
+      "use_district": "東京都目黒区自由が丘2-14-9　The Gold Coast　2F",
+      "building_coverage_ratio": null,
+      "floor_area_ratio": null,
+      "annual_rent": null,
+      "yield_surface": 4.06,
+      "raw_text": "物件名称\n物件種別\n1棟MS\n月額賃料\n住居表示\n【駐車場代、管理費含む】\n地　　番\n固都税\n新築の為未定\n交　　通\n利　　回実質利回り\n表面利回り4.06%\n地　　目\n宅地\n権　　利\n所有権\n評 価 額土　　地\n新築の為未定\n建　　物\n新築の為未定\n登記面積\n247.65㎡【登記簿】\n実測面積\n家屋番号\n価　　格520,000,000円（税込）\n取引態様\n種　　類\n共同住宅\n構　　造\n鉄筋コンクリート造陸屋地下1階付き2階建\n延床面積\n417.22㎡【登記簿】\n規　　模\n地上2階建地下1階\n築年月日\n令和6年7月\n現　　況\n満室\n総戸数\n11戸\n検査済証\n有\n接面道路\n都市計画\n株式会社プラスト\n用途地域\n東京都目黒区自由が丘2-14-9　The Gold Coast　2F\n建 蔽 率\n60%\n容 積 率\n150%\nTEL　　03-5701-6600\n防火指定\n防火地域・準防火地域\n高度地区\n30m高度地区\nFAX　　03-5701-6601\n日影規制\n有\nそ の 他\nMAIL 　 info@plust-re.co.jp\n法 規 制\n市街化区域\n第一種低層住居地域・第一種住居地域・近"
+    },
+    {
+      "page_number": 17,
+      "property_name": "所在",
+      "property_type": "一棟収益",
+      "price": null,
+      "location": {
+        "full": "東京都新宿区大久保１丁目",
+        "prefecture": "東京都",
+        "city": "新宿区",
+        "town": "大久保１丁目"
+      },
+      "access_info": null,
+      "land_area_sqm": null,
+      "land_area_tsubo": null,
+      "building_area_sqm": null,
+      "building_area_tsubo": null,
+      "structure": "木造",
+      "construction_date": "2020-05-01",
+      "total_units": 3,
+      "use_district": "第一種住居地域",
+      "building_coverage_ratio": null,
+      "floor_area_ratio": null,
+      "annual_rent": null,
+      "yield_surface": null,
+      "raw_text": "価格\n交通\n物件名\n所在\n東京都新宿区大久保１丁目\n土地\n権\n利\n所有権\n借地期間-\n借地料-\n面\n積実測152.26㎡(46.05坪)\nセットバック\n-\n私道負担\n他に私道負担13.85㎡あり\n地\n目宅地\n現況地目\n接面道路西側私道2.9m\n舗\n装\n有\n建物\n構\n造\n木造地上3階建\n築年月\n2020年5月\n建築確認番号\n1\n階\n83.82㎡\n2\n階58.35㎡\n3\n階\n54.65㎡\nその他－㎡\n合\n計196.82㎡(59.53坪)\n間取り\n制限\n都市計画\n市街化区域\n用途地域第一種住居地域\n建ぺい率60％\n容積率\n160％\nその他法令上の制限等\n準防火地域\n設備\n仕様\nガ\nス\n都市ガス\n飲用水\n上水道(公営水道)\n汚\n水下水道(公共下水)\n雑排水\n下水道(公共下水)\n給\n湯\n個別\n駐車場\n無\nエレベーター\n無\n引渡し\n現\n況\n空家\n時\n期\n相談\n備考\n間取り：ワンルーム×３戸\n現況：空き家となっておりますが､民泊営業中です｡\n旅\n館\n※賃料等の収入や利回りは､将来にわたり､確実に得られることを保証するものではありません｡\n※賃料等は､賃貸中のものについては現在の賃料等で､新築および空"
+    },
+    {
+      "page_number": 18,
+      "property_name": null,
+      "property_type": "一棟ビル",
+      "price": 0,
+      "location": {
+        "full": "東京都新宿区西早稲田2-17-19",
+        "prefecture": "東京都",
+        "city": "新宿区",
+        "town": "西早稲田2-17-19"
+      },
+      "access_info": [
+        {
+          "line": "万円",
+          "station": "西早稲田駅",
+          "walk_time": 4
+        },
+        {
+          "line": "山手線",
+          "station": "高田馬場駅",
+          "walk_time": 9
+        }
+      ],
+      "land_area_sqm": null,
+      "land_area_tsubo": null,
+      "building_area_sqm": null,
+      "building_area_tsubo": null,
+      "structure": null,
+      "construction_date": "1984-05-01",
+      "total_units": null,
+      "use_district": null,
+      "building_coverage_ratio": null,
+      "floor_area_ratio": null,
+      "annual_rent": null,
+      "yield_surface": null,
+      "raw_text": "■住\n所：東京都新宿区西早稲田2-17-19\n■土\n地：所有権\n■敷\n地\n面\n積：231.8㎡\n■構\n造：鉄骨造\n■専\n有\n面\n積：1階115.03㎡\n2階119.79㎡\n3\n階119.79㎡\n4階73.09㎡\n合計427.7㎡\n■築\n年\n数：1984年5月\n■用\n途\n地\n域：第一種中高層住宅\n■築\n年\n数：昭和59年5月8日\n■接\n道\n状\n況：東側\n私道\n幅員約4m\n接道の長さ\n約12.5ｍ\n■建\nぺ\nい\n率：60％\n■容\n積\n率：300％\n■用\n途\n地\n域：9戸（2DK*8戸\n事務所*1戸）\n■現\n況：賃貸中\n101号室空室\n満室想定年間収入\n12,452,400円\n祥龍株式会社\n〒170-0005\n東京都豊島区南大塚3-38-13正和ビル\nB1F\nTel:03-6912-6569\n定休日：毎週日曜日\nFAX\n03-6912-6589\n中古集合住宅\n取引状態：仲介\n広告料：正規手数料\n販\n売\n価\n額\nア\nク\nセ\nス\n副都心線\n部\n件\n情\n報\n東京都知事\n(4)\n第89398号\n営業時間：10：00～18：00\n万円\n「西早稲田」徒歩4分\n図面と現況が異なる場合は、現況優先とします。"
+    },
+    {
+      "page_number": 19,
+      "property_name": "Wina Cotage 市谷薬王寺",
+      "property_type": "一棟マンション",
+      "price": 298000000,
+      "location": {
+        "full": "東京都新宿区市谷薬王寺町4-27",
+        "prefecture": "東京都",
+        "city": "新宿区",
+        "town": "市谷薬王寺町4-27"
+      },
+      "access_info": [
+        {
+          "line": "都営新宿線",
+          "station": "曙橋駅",
+          "walk_time": 7
+        },
+        {
+          "line": "都営大江戸線",
+          "station": "牛込柳町駅",
+          "walk_time": 8
+        },
+        {
+          "line": "都営新宿線",
+          "station": "曙橋駅",
+          "walk_time": 7
+        },
+        {
+          "line": "都営大江戸線",
+          "station": "牛込柳町駅",
+          "walk_time": 8
+        }
+      ],
+      "land_area_sqm": 168.17,
+      "land_area_tsubo": 50.87,
+      "building_area_sqm": null,
+      "building_area_tsubo": null,
+      "structure": "鉄骨造",
+      "construction_date": "1991-03-01",
+      "total_units": null,
+      "use_district": "建ぺい率",
+      "building_coverage_ratio": null,
+      "floor_area_ratio": null,
+      "annual_rent": null,
+      "yield_surface": 3.91,
+      "raw_text": "都営新宿線\n曙橋駅\nマンション\n価格\n延床面積\n実測\nセットバック\n宅地\n所有権\n賃貸中\n設備\n市街化区域\n商業地域\n80%\n500%\n防火地域\n相談\n売主\n※図面と現況が異なる場合は現況を優先させていただきます。\n■TEL.  03-3261-6261\n売主\n■FAX. 03-3261-6310\n　日信興業\n■URL: http://www.c21n.jp/\n3.0%\n■Email:ichigaya@nisshin21.co.jp\n物件番号：046801-109590\n徒歩7分\n利回り 3.91% (満室稼働中)\n「曙橋・市ヶ谷・神楽坂」が生活圏、商業地50坪超の内外装フルリニューアル一棟\nマンション。　単身者向けのコンパクト区画。徒歩1分のスーパー“ライフ”\n29,800万円(税込)\n239.19㎡(72.35坪)\n名称\nWina Cotage 市谷薬王寺\n所在地\n東京都新宿区市谷薬王寺町4-27 \n交通\n都営新宿線 曙橋駅 徒歩7分\n都営大江戸線 牛込柳町駅 徒歩8分\n土地面積\n168.17㎡(50.87坪)\n面積基準\n私道面積\n344㎡\n有 面積3.72㎡\n駐車場\n地目\n土地権"
+    },
+    {
+      "page_number": 20,
+      "property_name": "75,000万円",
+      "property_type": "一棟収益",
+      "price": 750000000,
+      "location": {
+        "full": "東京都新宿区⻄早稻⽥1-15-8",
+        "prefecture": "東京都",
+        "city": "新宿区",
+        "town": "⻄早稻⽥1-15-8"
+      },
+      "access_info": null,
+      "land_area_sqm": null,
+      "land_area_tsubo": null,
+      "building_area_sqm": null,
+      "building_area_tsubo": null,
+      "structure": null,
+      "construction_date": null,
+      "total_units": null,
+      "use_district": null,
+      "building_coverage_ratio": 60,
+      "floor_area_ratio": 300,
+      "annual_rent": null,
+      "yield_surface": 60.0,
+      "raw_text": "❑ 閑静で快適な街\n敷地⾯積(登記簿）\n権利\n構造．階数\n延床⾯積\n建築⾯積\n総⼾数\n：14⼾\n建築年⽉ \n⽤途地域\n防⽕地域\n建ぺい率・容積率\n防⽕地域\n⽇影規制\n道路斜線制限\n⾼度地区\n   道路\n⽔道\n電気\nガス\n 排⽔施設\n予想⽉収⼊\n予想年収⼊\n予想管理費\n修繕積⽴⾦\n固都税年額\n現況\n取引\n：相談\nエレベーター\n：なし\nオートロック\n：有\n宅配ボックス\n：有\n 価格\n交通\n名称\n75,000万円\n都電荒川線 「早稲⽥」駅    徒步 2 分\n         東⻄線「早稲⽥」駅    徒歩 11 分\n⻄早稲⽥Terra\n：111.99㎡(33.87坪）\n：所有権\n：RC造 /陸屋根 /地上 5階\n東京都新宿区⻄早稻⽥1-15-8\n：（勾配1.5/1）\n：20m 第三種⾼度地区\n：330.18㎡(99.87坪）\n：75.15㎡(22.73坪）\n：R7年2⽉築\n：準⼯業地域\n：準防⽕地域\n：60% /  300%\n：準防⽕地域\n：（5-3h/6.5m）\n東京都知事(1)第109667号      公益社団法⼈不動産保証協会会員不動産協会会員 \n❑ 周辺にはスーパー・コンビニ・ド"
+    },
+    {
+      "page_number": 24,
+      "property_name": null,
+      "property_type": "一棟マンション",
+      "price": null,
+      "location": {
+        "full": "東京都新宿区横寺町37 番45 号（住居表示未指定エリア）",
+        "prefecture": "東京都",
+        "city": "新宿区",
+        "town": "横寺町37 番45 号（住居表示未指定エリア）"
+      },
+      "access_info": null,
+      "land_area_sqm": null,
+      "land_area_tsubo": null,
+      "building_area_sqm": 489.69,
+      "building_area_tsubo": 148.13,
+      "structure": "鉄筋コンクリート造",
+      "construction_date": null,
+      "total_units": 16,
+      "use_district": "第一種住居地域・（商業地域）",
+      "building_coverage_ratio": null,
+      "floor_area_ratio": null,
+      "annual_rent": null,
+      "yield_surface": 60.0,
+      "raw_text": "【最新設備導入のハイグレードマンション】\n IOT システム ／ 顔認証オートロックシステムbelle ville 神楽坂 \nベルヴィル神楽坂\n表面利回り6.24％　年間実績収入　55,413,911 円\n■ オーナーチェンジ物件 ■（民泊物件）\n※利回りは、販売価格に対する年間の賃料収入（共益費等を含む）の割合で、公租公課その他当該物件を維持する\n　ために必要な費用の控除前のものです。\n※賃料収入は将来にわたって確実に得られることを保証するものではありません。（調査日：2025 年8 月3 日）\n※自社運営、代行手数料削減で更に利回り上がります（現在、代行手数料20％＋税）。\n収益物件\n万円\n88,800\n販売価格\n神\n楽\n坂\n東\n京\nメ\nト\nロ\n東\n西\n線\n「\n神\n楽\n坂\n」\n駅\n　\n徒\n歩\n５\n分\nSPEED ESTATE 株式会社（ｽﾋﾟｰﾄﾞｴｽﾃｲﾄ）TEL：03-5794-4080　FAX ：03-5794-4090\nﾒｰﾙ  ：info@speed-e.co.jp\n取引態様：売主　担当：前田\n　(090－2711－5232）\n（公社）全日本不動産協会 （公社）不動産保証"
+    },
+    {
+      "page_number": 25,
+      "property_name": null,
+      "property_type": "一棟収益",
+      "price": 80000000,
+      "location": {
+        "full": null,
+        "prefecture": null,
+        "city": null,
+        "town": null
+      },
+      "access_info": null,
+      "land_area_sqm": null,
+      "land_area_tsubo": null,
+      "building_area_sqm": null,
+      "building_area_tsubo": null,
+      "structure": "鉄筋コンクリート造",
+      "construction_date": null,
+      "total_units": null,
+      "use_district": "／第一種住居地域　■構造／鉄筋コンクリート造　地上 5  階建",
+      "building_coverage_ratio": null,
+      "floor_area_ratio": null,
+      "annual_rent": null,
+      "yield_surface": null,
+      "raw_text": "グランドバリュー若松河田\nオーナーチェンジ物件\n※ この図面と現況が異なる場合は現況優先となります。売却済みの場合はあしからずご了承ください。　※ 賃貸中の場合、売主が賃料を保証するものではありません。\n※ 仲介物件成約の際には規定の仲介手数料を申し受けます。仲介手数料その他諸経費に対して消費税が課税されます。税込価格の場合、消費税を含む価格です。\n■所在地／東京都新宿 区\n　戸山 1  -  1  -  1  8  (  地番： 1  -  7  -  2  2  )  　■土地権利／所有権\n■土地面積： 8  7  .  6  1  ㎡　■建物面積： 2  5  8  .  6  4  ㎡【内訳】 1  F  :  5  7  .  7  7  ㎡（事務所） 3  /  4  F  :\n5 1 . 4 1 ㎡( 1 L D K ) ・5 F : 4 6 . 6 4 ㎡( 1 L D K )\n■用途地域／第一種住居地域　■構造／鉄筋コンクリート造　地上 5  階建\n■建築年月／ 1  9  9  0  年 5  月築　　■現況／満室賃貸中 ■引渡：相談\n■現況年間収入： 7  ,  "
+    },
+    {
+      "page_number": 27,
+      "property_name": null,
+      "property_type": "一棟ビル",
+      "price": null,
+      "location": {
+        "full": "東京都中央区銀座5-15-1南海東京ビルディング4F",
+        "prefecture": "東京都",
+        "city": "中央区",
+        "town": "銀座5-15-1南海東京ビルディング4F"
+      },
+      "access_info": null,
+      "land_area_sqm": null,
+      "land_area_tsubo": null,
+      "building_area_sqm": null,
+      "building_area_tsubo": null,
+      "structure": "RC造",
+      "construction_date": "2025-05-01",
+      "total_units": null,
+      "use_district": "民泊運営経費",
+      "building_coverage_ratio": null,
+      "floor_area_ratio": null,
+      "annual_rent": 38016000,
+      "yield_surface": 400.0,
+      "raw_text": "容積率\n400%\n延床面積\n279.50 ㎡ (約54.54 坪)\n民泊運営における\n想定水光熱費用\n引渡時期\n相談\n司法書士\n弊社指定\n固定資産税\n株式会社 TOYO HOMES\n担当\n取引業態\n手数料\n旧株式会社フューチャーホームズ\n東京都知事（2）102169号  東京都中央区銀座5-15-1南海東京ビルディング4F\n■公益財団法人 全日本不動産協会 ■公益財団法人 不動産保証協会\n定休日：水・日・祝/営業時間：9：30~18：30\n東京都新宿区弁天町2-14\n権利\n民泊想定収入\n所有権\n用途地域\n民泊運営経費\n(経費率約23％)\n建ぺい率\n運営経費\n差引後収入\n近隣商業地域\n80%\n構造/規模\n2025年5月築　民泊に最適物件\n利回5％でサブリース相談可\n民泊運営会社 紹介可能\n総戸数\n築年数\n地積\nRC造　地上5階建(EV無)\n9戸(1R 8戸・1LDK 1戸)\n2025年5月\n76.42㎡ (約23.11坪)\n38,016,000円/年　　\n8,743,680円/年\n29,272,320円/年　　\n·TEL:03-6264-7965\n·FAX:03-6264-7968\n·担"
+    },
+    {
+      "page_number": 32,
+      "property_name": "称",
+      "property_type": "一棟収益",
+      "price": 60000,
+      "location": {
+        "full": "東京都目黒区自由が丘1丁目4-8",
+        "prefecture": "東京都",
+        "city": "目黒区",
+        "town": "自由が丘1丁目4-8"
+      },
+      "access_info": [
+        {
+          "line": "東中野",
+          "station": "駅",
+          "walk_time": 9
+        },
+        {
+          "line": "大久保",
+          "station": "駅",
+          "walk_time": 9
+        },
+        {
+          "line": "新大久保",
+          "station": "駅",
+          "walk_time": 13
+        }
+      ],
+      "land_area_sqm": null,
+      "land_area_tsubo": null,
+      "building_area_sqm": null,
+      "building_area_tsubo": null,
+      "structure": "鉄筋コンクリート造",
+      "construction_date": "2025-08-01",
+      "total_units": null,
+      "use_district": "第一種住居地域",
+      "building_coverage_ratio": null,
+      "floor_area_ratio": null,
+      "annual_rent": null,
+      "yield_surface": 3.8,
+      "raw_text": "物件概要書\n住居表示\n新宿区北新宿4丁目16-2\n地番\n新宿区北新宿4丁目16-8\nJR総武\n線\n東中野\n駅\n徒歩\n9\n分\nJR総武\n線\n大久保\n駅\n徒歩\n9\n分\nJR山手\n線\n新大久保\n駅\n徒歩\n13\n分\n面積\n公簿\n㎡（\n坪）\n実測\n㎡（\n坪）\n権利\n所有権\n地目\n宅地\n道路\n南西側公道\n幅員\n約\nｍ\n南東側公道\n幅員\n約\nｍ\n構造\n鉄筋コンクリート造8階建て種類\n共同住宅\n建築面積\n83.21㎡\n延床面積\n536.10㎡\n建築年月\n2025年8月 竣工\n建築確認番号第JAIC2023X0930A1号\n公営水道、公共下水、電気、都市ガス\n完成済み\n引渡し\n即可\n区域区分\n市街化区域\n防火指定\n防火地域\n用途地域\n第一種住居地域\n日影規制\nー\n建ぺい率\nその他\n景観計画区域\n容積率\n第2種中高層階住居専用地区\n高度地区\n30m高度地区\n年額収入 32,106,000円（満室時想定利回り 3.80%）\n建物管理\n契約期間：２年間\n受託会社：ツナガルデザイン（株）\n管理料率：賃料収入（管理費等含む）の5％（税別）\n敷金：オーナー預かり\n礼金：ツナガルデザイン（株）取得\n満室保証\n保証期間"
+    },
+    {
+      "page_number": 33,
+      "property_name": null,
+      "property_type": "一棟マンション",
+      "price": null,
+      "location": {
+        "full": "東京都新宿区富久町2 9 - 9 （住居表⽰）",
+        "prefecture": "東京都",
+        "city": "新宿区",
+        "town": "富久町2 9 - 9 （住居表⽰）"
+      },
+      "access_info": null,
+      "land_area_sqm": null,
+      "land_area_tsubo": null,
+      "building_area_sqm": null,
+      "building_area_tsubo": null,
+      "structure": "鉄筋コンクリート造",
+      "construction_date": null,
+      "total_units": null,
+      "use_district": null,
+      "building_coverage_ratio": null,
+      "floor_area_ratio": null,
+      "annual_rent": null,
+      "yield_surface": 3.97,
+      "raw_text": "⼀棟売\nマンション\n東京都新宿区富久町2 9 - 9 （住居表⽰）\n東京都新宿区富久町5 9 - 3 3 （地番）\n：  鉄筋コンクリート造陸屋根4 階建\n：  令和6 年2 ⽉\n：  3 2 5 . 3 6 ㎡（9 8 . 4 2 坪）\n：  共同住宅1 2 ⼾\n：  5 東防建確第0 0 1 1 号の1\n：  佐久間徹設計事務所㈱/ ㈱アルコ建築\n・\n・\n・\n・\n・\n・\n構造/ 規模\n竣⼯年⽉\n延床⾯積\n総\n⼾\n数\n検査済証番号\n設計/ 施⼯\n公簿⾯積\n実測⾯積\n権利/ 地⽬\n接\n道\n・\n・\n・\n・\n：  1 0 3 . 2 4 ㎡（3 1 . 2 3 坪）\n：  1 0 3 . 2 4 ㎡（3 1 . 2 3 坪）\n：  所有権/ 宅地\n：  北側公道約4m、東側公道約4ｍ、南東側公道約27m\n・\n・\n・\n・\n・\n⽤途地域\n建\n蔽\n率\n容\n積\n率\n⽇影規制\n⾼度/ 防⽕\n：  第⼀種中⾼層住居専⽤地域\n：  60%（80％）\n：  300％\n：  3 h - 2 h / 4 m\n：  第⼆種⾼度地区/ 準防⽕地域\n517,000,000 円（税込）\n⼟\n地\n所\n在\n法\n規\n制\n等"
+    },
+    {
+      "page_number": 34,
+      "property_name": "称",
+      "property_type": "一棟収益",
+      "price": 335000000,
+      "location": {
+        "full": "東京都新宿区北新宿四丁目14番7号",
+        "prefecture": "東京都",
+        "city": "新宿区",
+        "town": "北新宿四丁目14番7号"
+      },
+      "access_info": null,
+      "land_area_sqm": 125.88,
+      "land_area_tsubo": null,
+      "building_area_sqm": null,
+      "building_area_tsubo": null,
+      "structure": "鉄骨造",
+      "construction_date": "1995-07-01",
+      "total_units": 6,
+      "use_district": null,
+      "building_coverage_ratio": null,
+      "floor_area_ratio": null,
+      "annual_rent": null,
+      "yield_surface": 4.0,
+      "raw_text": "NOMA北新宿I\n東京都新宿区北新宿四丁目14番7号\nJR総武線「東中野」駅徒歩8分　　　　JR総武線「大久保」駅徒歩10分\n東西線「落合」駅徒歩10分　　　　　　JR山手線「新大久保」駅徒歩14分\n西側6m公道、接道約8.47m　　　北側6m公道、接道約1.61m\n敷地面積\n: 125.88㎡(38.08坪)　2筆合計\n地目\n: 宅地\n権利\n: 所有権\n構造\n: 鉄骨造スレート葺3階建\n築年月\n: 1995年7月\n延床面積\n: 214.02㎡\n種別\n: 居宅・車庫\n戸数\n: 6戸\n間取り\n: 1R\n現状\n: 旅館運営中、空室引渡し相談\n物件名称\n所在地\n交通\n道路\n土地\n建物\n備考\n　物件価格\n33,500 万円（税込）\n　想定年間収入\n　想定利回り\n5, 150万円\n1 5. 4%\n約\n  大人気「新大久保・韓国街」\n旅館許可取得済\n運営会社\n「新宿エリア」観光需要の高い\n  生活利便性抜群の環境、都市中心部優れた希少立地\n\u0002\n\u0000\u0001\n\u0002\n\u0000\u0001\n\u0002\n\u0000\u0001\n"
+    },
+    {
+      "page_number": 36,
+      "property_name": null,
+      "property_type": "一棟ビル",
+      "price": 97000000,
+      "location": {
+        "full": "東京都千代田区有楽町一丁目1番2号東京ミッドタウン日比谷32階",
+        "prefecture": "東京都",
+        "city": "千代田区",
+        "town": "有楽町一丁目1番2号東京ミッドタウン日比谷32階"
+      },
+      "access_info": null,
+      "land_area_sqm": null,
+      "land_area_tsubo": null,
+      "building_area_sqm": null,
+      "building_area_tsubo": null,
+      "structure": "鉄筋コンクリート造",
+      "construction_date": "1982-08-01",
+      "total_units": null,
+      "use_district": null,
+      "building_coverage_ratio": null,
+      "floor_area_ratio": null,
+      "annual_rent": null,
+      "yield_surface": 400.0,
+      "raw_text": "建\n物\n都\n市\n計\n画\nそ　 の　 他\n防火地域、最高限高度30ｍ、第２種中高層階\n住居専用地域、第２種文教地区\n種　　　　 類\n築　 年　 月\n規 模・構 造\n宅地\n事務所\n１９８２年8月　（築43年）\n鉄筋コンクリート造陸屋根地下２階付４階建て\n延 床 面 積\n東京メトロ東西線　「早稲田」駅　徒歩 １ 分\n交　　　　 通\n物\n件\n概\n要\n道　　　　 路\n南側：幅員　約5.99ｍ\n・図面と現況が異なる場合は現況を優先するものとします。\n400%\n地　　　　 番\n所　 在 　地\n土\n地\n用 途 地 域\n第２種住居地域\n建　 蔽　 率\n貸床総面積\n地　　　　 目\n地　　　　 積\n権 利 形 態\n備\n考\n新宿区早稲田町７５－２\n新宿区早稲田町７５番２、７５番６\n北西側：幅員　約8.06ｍ\n249.47㎡　 （75.46坪）\n所有権\n727.51㎡　（220.07坪）\n容　 積　 率\n60%\n851.63㎡　（257.62坪）\nMail：pm-kanri@j1planning.co.jp\n東京都知事免許（５）第８０６７５号\n〒100-0006 東京都千代田区有楽町一丁目1番2号東京ミッドタウ"
+    },
+    {
+      "page_number": 37,
+      "property_name": null,
+      "property_type": "一棟ビル",
+      "price": 280000000,
+      "location": {
+        "full": "東京都新宿区弁天町98‐3",
+        "prefecture": "東京都",
+        "city": "新宿区",
+        "town": "弁天町98‐3"
+      },
+      "access_info": [
+        {
+          "line": "都営大江戸線",
+          "station": "牛込柳町駅",
+          "walk_time": 5
+        },
+        {
+          "line": "東西線",
+          "station": "早稲田駅",
+          "walk_time": 9
+        }
+      ],
+      "land_area_sqm": null,
+      "land_area_tsubo": null,
+      "building_area_sqm": 299.05,
+      "building_area_tsubo": null,
+      "structure": "鉄筋コンクリート造",
+      "construction_date": "1984-04-01",
+      "total_units": 10,
+      "use_district": null,
+      "building_coverage_ratio": null,
+      "floor_area_ratio": null,
+      "annual_rent": 12594000,
+      "yield_surface": 80.0,
+      "raw_text": "グランツ神楽坂\n■売一棟収益物件\n早稲田・神楽坂エリアにほど近く\n　静かな住宅街と都心の利便性を兼ね備えた\n28,000\n28,000 万円\n価格\n<<物件概要>>\n●所在：東京都新宿区弁天町98‐3\n●交通：都営大江戸線「牛込柳町駅」徒歩5分\n　　　　東京メトロ東西線「早稲田駅」徒歩9分\n●土地：76.42㎡(23.11坪)\n●建物面積：299.05㎡\n　１F：58.29㎡　２～５F：60.19㎡\n●道路関係：西側公道　幅約16ｍ　\n●構造・階数：鉄筋コンクリート造陸屋根5階建\n●建ぺい率：80%　容積率：400%\n●市街化地域/近隣商業地域/防火地域\n●築年月：1984年4月\n●土地権利：所有権\n●現況：賃貸中(満室)　\n●取引態様：専任\nビーヴィエステート株式会社\n東京都台東区浅草橋5-1-31ロッキービル2F\n東京都知事（2）第９９５１１号\ninfo@bv-estate.jp\nTEL：03‐6262‐9904\nFAX：03‐6262‐9905\n買取応相談\n担当：チョウ/ラ\n携帯：080-3437-1550(チョウ)\n　　　080-3885-2803(ラ)\nzhang@bv-es"
+    },
+    {
+      "page_number": 38,
+      "property_name": null,
+      "property_type": "一棟マンション",
+      "price": null,
+      "location": {
+        "full": "東京都新宿区市谷薬王寺町",
+        "prefecture": "東京都",
+        "city": "新宿区",
+        "town": "市谷薬王寺町"
+      },
+      "access_info": [
+        {
+          "line": "都営大江戸線",
+          "station": "牛込柳町駅",
+          "walk_time": 5
+        },
+        {
+          "line": "都営大江戸線",
+          "station": "牛込柳町駅",
+          "walk_time": 5
+        }
+      ],
+      "land_area_sqm": 185.31,
+      "land_area_tsubo": 56.05,
+      "building_area_sqm": 598.45,
+      "building_area_tsubo": 181.03,
+      "structure": "鉄筋コンクリート造",
+      "construction_date": "1994-02-01",
+      "total_units": null,
+      "use_district": "建ぺい率",
+      "building_coverage_ratio": null,
+      "floor_area_ratio": null,
+      "annual_rent": null,
+      "yield_surface": 80.0,
+      "raw_text": "２駅２沿線利用可で各方面へのアクセスも良好\n井上ビル\n都営大江戸線\n牛込柳町駅\n徒歩\n5\n分\n72,000\n非課税\n \nマンション\nコメント\n所在地\n東京都新宿区市谷薬王寺町 \n公簿\nセットバック\n宅地\n有 \n建物・土地\n所有権\n●間取：\n設備\n賃貸中\n市街化区域\n商業地域\n80%\n500%\n相談\n周辺情報\n専任\nオーナーチェンジ\n※図面と現況が異なる場合は現況を優先させていただきます。\nTEL. 03-3261-6261\n■FAX. 03-3261-6310\n　日信興業\n■URL: http://www.c21n.jp/\n■Email: ichigaya@nisshin21.co.jp\n物件コード：046801-109609\n価格\n万円\n２駅２沿線利用可で各方面へのアクセス\nも良好\n土地面積\n185.31㎡(56.05坪)\n面積基準\n私道面積\n地目\n駐車場\n土地権利\n延床面積:598.45㎡(181.03坪)\n接道状況\n構造\n鉄筋コンクリート造 6階建\n●土地面積：185.31㎡(56.05坪)\n築年月\n1994年02月\n延床面積\n598.45㎡(181.03坪)\n間取\n現況\n土地広"
+    },
+    {
+      "page_number": 39,
+      "property_name": null,
+      "property_type": "一棟マンション",
+      "price": 5000000,
+      "location": {
+        "full": "東京都新宿区早稲田鶴巻町533番-17号",
+        "prefecture": "東京都",
+        "city": "新宿区",
+        "town": "早稲田鶴巻町533番-17号"
+      },
+      "access_info": null,
+      "land_area_sqm": null,
+      "land_area_tsubo": null,
+      "building_area_sqm": null,
+      "building_area_tsubo": null,
+      "structure": "鉄筋コンクリート造",
+      "construction_date": "1989-10-01",
+      "total_units": null,
+      "use_district": "第二種住居地域",
+      "building_coverage_ratio": null,
+      "floor_area_ratio": null,
+      "annual_rent": 9084000,
+      "yield_surface": 4.21,
+      "raw_text": "建\n物\n全\n部\n価格（税込）\n万円\n交\n通\n東京メトロ東西線「早稲田」駅徒歩3分\n所\n在\n地\n●掲載物件が売却になった場合はご容赦下さい。●掲載物件の図面が現況と異なる場合は現況を優先します。\n広告掲載可（連絡不要）\n可\n取引形態\n代理\n手数料\n500万円（税込）\n物件概要\n土\n地\n権 \n利\n所有権\n面 \n積\n66.21㎡\n私 \n道\n-\n地 \n勢\n-\n地 \n目\n宅地\n接道舗装\n-\n接 面 道 路\n北側:幅員\n約5.93m\n借 \n地 \n料\n-\n借地期間\n-\n建\n物\n物 件 種 目\nマンション\n構 \n造\n鉄筋コンクリート造陸屋根地下1階付4階建\n築 \n年 \n数\n昭和63年10月\n面 積\n193.42㎡\nテラス面積\n-\n間 \n取 \nり\n-\n法\n令\n制\n限\n用途地域\n第二種住居地域\n防火指定\n防火地域\n建ぺい率\n60％\n容 \n積 \n率\n400％\nそ\nの\n他\n30m高度地区\n施\n設\n駐 \n車 \n場\n無し\n駐 輪 場\n有\nエレベーター\n無し\n宅配ボックス\n無し\nガ \nス\n都市ガス\nオートロック\n無し\n引\n渡\n現 \n況\n賃貸中（オーナーチェンジ）\n引 \n渡\n相談\n賃\n料\n満 室 賃 料\n9,084,"
+    },
+    {
+      "page_number": 40,
+      "property_name": null,
+      "property_type": "一棟マンション",
+      "price": 328000000,
+      "location": {
+        "full": "東京都新宿区下落合４丁⽬",
+        "prefecture": "東京都",
+        "city": "新宿区",
+        "town": "下落合４丁⽬"
+      },
+      "access_info": [
+        {
+          "line": "豊島線",
+          "station": "椎名町駅",
+          "walk_time": 8
+        },
+        {
+          "line": "武新宿線",
+          "station": "下落合駅",
+          "walk_time": 8
+        }
+      ],
+      "land_area_sqm": null,
+      "land_area_tsubo": null,
+      "building_area_sqm": null,
+      "building_area_tsubo": null,
+      "structure": null,
+      "construction_date": null,
+      "total_units": null,
+      "use_district": null,
+      "building_coverage_ratio": null,
+      "floor_area_ratio": null,
+      "annual_rent": null,
+      "yield_surface": 5.48,
+      "raw_text": "建物延⾯積\n439.66㎡\n築年⽉\n1989年05⽉\n引渡可能時期\n相談\n⼀括売マンション\n⽬⽩駅\n新宿区下落合４丁⽬\nオーナーチェンジ\nチェックポイント！\nＢ・Ｔ同室,収納スペース,給湯,都市ガス,ＢＳ端⼦,ＣＡＴＶ,インターネッ\nト対応\n物\n件\n種\n⽬\n⼀括売マンション\n最\n寄\n駅\n⽬⽩\n価\n格\n32,800万円\n物\n件\n所\n在\n地\n東京都新宿区下落合４丁⽬\n交\n \n通\nＪＲ⼭⼿線 ⽬⽩ 徒歩13分\n⼟\n地\n⾯\n積公簿 234.87㎡\n私道⾯積\n(共有持分) なし\n建\n \n \n物\n構造・規模\nＲＣ 3階建 地下1階\n⾯ 積\n439.66㎡\n間取タイプ\n建物名\n下落合四丁⽬\n⼟地権利\n所有権\n施⼯会社\n総 ⼾ 数\n築 年 ⽉\n1989年05⽉\n都市計画\n市街化区域\n⽤途地域\n商業地域/１種低層\n建ぺい率\n80%\n容 積 率\n400%\n現  況\n賃貸中\n引渡可能\n時 期\n相談\n駐 ⾞ 場\n接道状況\n(⾓地・間⼝)\n東4.0m 公道 ⻄4.0m 私道\n設  備\nＢ・Ｔ同室,収納スペース,給湯,都市ガス,ＢＳ端⼦,\nＣＡＴＶ,インターネット対応\n備  考\n１棟リースバック相談可（期間１０年"
+    }
+  ]
+}
