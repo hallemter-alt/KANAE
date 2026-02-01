@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Inter, Noto_Sans_JP } from "next/font/google";
 import "../globals.css";
 import { LanguageProvider } from "@/contexts/LanguageContext";
+import { SavedSearchesProvider } from "@/contexts/SavedSearchesContext";
+import { FavoritesProvider } from "@/contexts/FavoritesContext";
+import { ComparisonProvider } from "@/contexts/ComparisonContext";
 import { translations } from "@/lib/translations";
 import { generateOrganizationSchema } from "@/lib/seo-schema";
 
@@ -94,7 +97,13 @@ export default async function RootLayout({
       </head>
       <body className="font-noto antialiased">
         <LanguageProvider initialLocale={currentLocale}>
-          {children}
+          <SavedSearchesProvider>
+            <FavoritesProvider>
+              <ComparisonProvider>
+                {children}
+              </ComparisonProvider>
+            </FavoritesProvider>
+          </SavedSearchesProvider>
         </LanguageProvider>
       </body>
     </html>
