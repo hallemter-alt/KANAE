@@ -14,12 +14,14 @@ interface PropertyFiltersProps {
   onFilterChange: (filters: PropertyFilterParams) => void;
   initialFilters?: PropertyFilterParams;
   language?: 'ja' | 'en' | 'zh';
+  propertyCategory?: 'all' | 'residential' | 'investment';
 }
 
 export default function PropertyFilters({
   onFilterChange,
   initialFilters = {},
   language = 'ja',
+  propertyCategory = 'all',
 }: PropertyFiltersProps) {
   const [filters, setFilters] = useState<PropertyFilterParams>(initialFilters);
   const [expandedSections, setExpandedSections] = useState({
@@ -163,28 +165,30 @@ export default function PropertyFilters({
         </button>
       </div>
 
-      {/* Quick Search Presets */}
-      <div>
-        <h4 className="text-sm font-semibold text-gray-700 mb-3">{t.presets}</h4>
-        <div className="grid grid-cols-2 gap-2">
-          {FILTER_PRESETS.map(preset => (
-            <button
-              key={preset.id}
-              onClick={() => applyPreset(preset.id)}
-              className="px-3 py-2 text-sm border border-gray-200 rounded-lg hover:border-sky-500 hover:bg-sky-50 transition-colors text-left"
-            >
-              <div className="flex items-center gap-2">
-                <span>{preset.icon}</span>
-                <span className="font-medium">
-                  {language === 'ja' && preset.name_ja}
-                  {language === 'en' && preset.name_en}
-                  {language === 'zh' && preset.name_zh}
-                </span>
-              </div>
-            </button>
-          ))}
+      {/* Quick Search Presets - Only for investment properties */}
+      {propertyCategory === 'investment' && (
+        <div>
+          <h4 className="text-sm font-semibold text-gray-700 mb-3">{t.presets}</h4>
+          <div className="grid grid-cols-2 gap-2">
+            {FILTER_PRESETS.map(preset => (
+              <button
+                key={preset.id}
+                onClick={() => applyPreset(preset.id)}
+                className="px-3 py-2 text-sm border border-gray-200 rounded-lg hover:border-sky-500 hover:bg-sky-50 transition-colors text-left"
+              >
+                <div className="flex items-center gap-2">
+                  <span>{preset.icon}</span>
+                  <span className="font-medium">
+                    {language === 'ja' && preset.name_ja}
+                    {language === 'en' && preset.name_en}
+                    {language === 'zh' && preset.name_zh}
+                  </span>
+                </div>
+              </button>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
 
       {/* Price Range */}
       <FilterSection
@@ -210,31 +214,33 @@ export default function PropertyFilters({
         </div>
       </FilterSection>
 
-      {/* Yield Range */}
-      <FilterSection
-        title={t.yield}
-        isExpanded={expandedSections.yield}
-        onToggle={() => toggleSection('yield')}
-      >
-        <div className="space-y-3">
-          <input
-            type="number"
-            step="0.1"
-            placeholder={t.yieldMin}
-            value={filters.yield_min || ''}
-            onChange={e => updateFilter('yield_min', e.target.value ? Number(e.target.value) : undefined)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-transparent"
-          />
-          <input
-            type="number"
-            step="0.1"
-            placeholder={t.yieldMax}
-            value={filters.yield_max || ''}
-            onChange={e => updateFilter('yield_max', e.target.value ? Number(e.target.value) : undefined)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-transparent"
-          />
-        </div>
-      </FilterSection>
+      {/* Yield Range - Only for investment properties */}
+      {propertyCategory === 'investment' && (
+        <FilterSection
+          title={t.yield}
+          isExpanded={expandedSections.yield}
+          onToggle={() => toggleSection('yield')}
+        >
+          <div className="space-y-3">
+            <input
+              type="number"
+              step="0.1"
+              placeholder={t.yieldMin}
+              value={filters.yield_min || ''}
+              onChange={e => updateFilter('yield_min', e.target.value ? Number(e.target.value) : undefined)}
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-transparent"
+            />
+            <input
+              type="number"
+              step="0.1"
+              placeholder={t.yieldMax}
+              value={filters.yield_max || ''}
+              onChange={e => updateFilter('yield_max', e.target.value ? Number(e.target.value) : undefined)}
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-transparent"
+            />
+          </div>
+        </FilterSection>
+      )}
 
       {/* Location */}
       <FilterSection
@@ -257,60 +263,62 @@ export default function PropertyFilters({
         </div>
       </FilterSection>
 
-      {/* Special Features */}
-      <FilterSection
-        title={t.features}
-        isExpanded={expandedSections.features}
-        onToggle={() => toggleSection('features')}
-      >
-        <div className="space-y-2">
-          <CheckboxFilter
-            label={t.iot}
-            checked={filters.has_iot || false}
-            onChange={checked => updateFilter('has_iot', checked || undefined)}
-          />
-          <CheckboxFilter
-            label={t.faceRecognition}
-            checked={filters.has_face_recognition || false}
-            onChange={checked => updateFilter('has_face_recognition', checked || undefined)}
-          />
-          <CheckboxFilter
-            label={t.soundproof}
-            checked={filters.has_soundproof || false}
-            onChange={checked => updateFilter('has_soundproof', checked || undefined)}
-          />
-          <CheckboxFilter
-            label={t.minpaku}
-            checked={filters.is_minpaku_operating || false}
-            onChange={checked => updateFilter('is_minpaku_operating', checked || undefined)}
-          />
-          <CheckboxFilter
-            label={t.rentalGuarantee}
-            checked={filters.has_rental_guarantee || false}
-            onChange={checked => updateFilter('has_rental_guarantee', checked || undefined)}
-          />
-          <CheckboxFilter
-            label={t.smartHome}
-            checked={filters.has_smart_home || false}
-            onChange={checked => updateFilter('has_smart_home', checked || undefined)}
-          />
-          <CheckboxFilter
-            label={t.nearPark}
-            checked={filters.near_park || false}
-            onChange={checked => updateFilter('near_park', checked || undefined)}
-          />
-          <CheckboxFilter
-            label={t.multiLine}
-            checked={filters.multi_line_access || false}
-            onChange={checked => updateFilter('multi_line_access', checked || undefined)}
-          />
-          <CheckboxFilter
-            label={t.urbanPlanning}
-            checked={filters.urban_planning_benefit || false}
-            onChange={checked => updateFilter('urban_planning_benefit', checked || undefined)}
-          />
-        </div>
-      </FilterSection>
+      {/* Special Features - Only for investment properties */}
+      {propertyCategory === 'investment' && (
+        <FilterSection
+          title={t.features}
+          isExpanded={expandedSections.features}
+          onToggle={() => toggleSection('features')}
+        >
+          <div className="space-y-2">
+            <CheckboxFilter
+              label={t.iot}
+              checked={filters.has_iot || false}
+              onChange={checked => updateFilter('has_iot', checked || undefined)}
+            />
+            <CheckboxFilter
+              label={t.faceRecognition}
+              checked={filters.has_face_recognition || false}
+              onChange={checked => updateFilter('has_face_recognition', checked || undefined)}
+            />
+            <CheckboxFilter
+              label={t.soundproof}
+              checked={filters.has_soundproof || false}
+              onChange={checked => updateFilter('has_soundproof', checked || undefined)}
+            />
+            <CheckboxFilter
+              label={t.minpaku}
+              checked={filters.is_minpaku_operating || false}
+              onChange={checked => updateFilter('is_minpaku_operating', checked || undefined)}
+            />
+            <CheckboxFilter
+              label={t.rentalGuarantee}
+              checked={filters.has_rental_guarantee || false}
+              onChange={checked => updateFilter('has_rental_guarantee', checked || undefined)}
+            />
+            <CheckboxFilter
+              label={t.smartHome}
+              checked={filters.has_smart_home || false}
+              onChange={checked => updateFilter('has_smart_home', checked || undefined)}
+            />
+            <CheckboxFilter
+              label={t.nearPark}
+              checked={filters.near_park || false}
+              onChange={checked => updateFilter('near_park', checked || undefined)}
+            />
+            <CheckboxFilter
+              label={t.multiLine}
+              checked={filters.multi_line_access || false}
+              onChange={checked => updateFilter('multi_line_access', checked || undefined)}
+            />
+            <CheckboxFilter
+              label={t.urbanPlanning}
+              checked={filters.urban_planning_benefit || false}
+              onChange={checked => updateFilter('urban_planning_benefit', checked || undefined)}
+            />
+          </div>
+        </FilterSection>
+      )}
 
       {/* Completion Year */}
       <FilterSection

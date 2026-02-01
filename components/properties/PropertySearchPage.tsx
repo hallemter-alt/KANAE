@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { Building2, MapPin, TrendingUp, Maximize2, Search, Filter } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { translations } from '@/lib/translations';
@@ -129,13 +130,13 @@ export default function PropertySearchPage() {
                     }}
                   />
                 </div>
-                <button
-                  onClick={() => window.location.href = `/${locale}/premium-properties`}
+                <Link
+                  href={`/${locale}/sale?category=investment`}
                   className="px-6 py-3 bg-gradient-to-r from-primary-600 to-primary-700 text-white rounded-lg font-semibold hover:from-primary-700 hover:to-primary-800 transition-all transform hover:scale-105 shadow-lg flex items-center justify-center space-x-2"
                 >
                   <Filter className="w-5 h-5" />
                   <span>詳細検索</span>
-                </button>
+                </Link>
               </div>
             </div>
             

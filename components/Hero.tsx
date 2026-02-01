@@ -93,7 +93,7 @@ export default function Hero() {
                 />
               </div>
               <Link
-                href={`/${locale}/premium-properties`}
+                href={`/${locale}/sale`}
                 className="bg-gradient-to-r from-primary-600 to-primary-700 text-white px-8 py-3 rounded-lg font-semibold hover:from-primary-700 hover:to-primary-800 transition-all transform hover:scale-105 shadow-lg flex items-center justify-center"
               >
                 検索
