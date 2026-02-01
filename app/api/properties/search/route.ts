@@ -44,13 +44,113 @@ export interface PropertySearchParams {
   limit?: number;
 }
 
+// Mock data for development
+const MOCK_PROPERTIES = [
+  {
+    id: '1',
+    property_name: 'サンプル物件1',
+    property_type: '一棟マンション',
+    price: 59800,
+    address_prefecture: '東京都',
+    address_city: '新宿区',
+    address_town: '西早稲田',
+    land_area_sqm: 135.3,
+    land_area_tsubo: 40.93,
+    building_area_sqm: 673,
+    building_area_tsubo: 203.6,
+    structure: 'RC造',
+    construction_date: '1985-02-01',
+    building_age_years: 41,
+    yield_surface: 4.05,
+    annual_rent: 2422,
+    status: '販売中',
+    property_stations: [
+      {
+        walk_time: 3,
+        is_primary: true,
+        station: { id: '1', station_name: '西早稲田', prefecture: '東京都', city: '新宿区' },
+        line: { id: '1', line_name: '副都心線', company: '東京メトロ', line_color: '#9c5e31' }
+      }
+    ]
+  },
+  {
+    id: '2',
+    property_name: 'サンプル物件2',
+    property_type: '一棟マンション',
+    price: 42000,
+    address_prefecture: '東京都',
+    address_city: '新宿区',
+    address_town: '中井２丁目',
+    land_area_sqm: 78.52,
+    land_area_tsubo: 23.75,
+    building_area_sqm: 264.67,
+    building_area_tsubo: 80.07,
+    structure: 'RC造',
+    construction_date: '2005-02-01',
+    building_age_years: 21,
+    yield_surface: 6.5,
+    annual_rent: 2730,
+    status: '販売中',
+    property_stations: [
+      {
+        walk_time: 5,
+        is_primary: true,
+        station: { id: '2', station_name: '中井', prefecture: '東京都', city: '新宿区' },
+        line: { id: '2', line_name: '西武新宿線', company: '西武鉄道', line_color: '#ffc20e' }
+      }
+    ]
+  },
+  {
+    id: '3',
+    property_name: 'サンプル物件3',
+    property_type: '一棟ビル',
+    price: 128000,
+    address_prefecture: '東京都',
+    address_city: '港区',
+    address_town: '赤坂',
+    land_area_sqm: 245.8,
+    land_area_tsubo: 74.35,
+    building_area_sqm: 890.5,
+    building_area_tsubo: 269.4,
+    structure: 'SRC造',
+    construction_date: '1998-06-01',
+    building_age_years: 28,
+    yield_surface: 5.2,
+    annual_rent: 6656,
+    status: '販売中',
+    property_stations: [
+      {
+        walk_time: 2,
+        is_primary: true,
+        station: { id: '3', station_name: '赤坂', prefecture: '東京都', city: '港区' },
+        line: { id: '3', line_name: '千代田線', company: '東京メトロ', line_color: '#00bb85' }
+      }
+    ]
+  }
+];
+
 export async function GET(request: NextRequest) {
   try {
+    // If Supabase not configured, use mock data
     if (!supabase) {
-      return NextResponse.json(
-        { error: 'データベース設定が完了していません。環境変数を確認してください。' },
-        { status: 503 }
-      );
+      console.log('Using mock data - Supabase not configured');
+      const searchParams = request.nextUrl.searchParams;
+      const page = searchParams.get('page') ? parseInt(searchParams.get('page')!) : 1;
+      const limit = searchParams.get('limit') ? parseInt(searchParams.get('limit')!) : 20;
+      
+      return NextResponse.json({
+        success: true,
+        data: MOCK_PROPERTIES,
+        pagination: {
+          page,
+          limit,
+          total: MOCK_PROPERTIES.length,
+          totalPages: 1,
+        },
+        filters: {},
+        mock: true,
+        message: 'モックデータを表示しています。Supabaseを設定すると実データが表示されます。'
+      });
     }
     
     const searchParams = request.nextUrl.searchParams;
