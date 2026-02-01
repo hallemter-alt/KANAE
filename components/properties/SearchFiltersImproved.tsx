@@ -196,34 +196,34 @@ export default function SearchFiltersImproved({ onSearch, initialFilters = {}, o
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* エリア（区） */}
             <div>
-              <label className="block text-sm font-bold text-gray-900 mb-2">
+              <label className="label-standard">
                 エリア（区）
               </label>
               <select
                 value={filters.city}
                 onChange={(e) => handleChange('city', e.target.value)}
-                className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-gray-900 transition-all"
+                className="select-standard"
               >
-                <option value="">すべてのエリア</option>
+                <option value="" className="text-gray-900 font-semibold">すべてのエリア</option>
                 {tokyoWards.map((ward) => (
-                  <option key={ward} value={ward}>{ward}</option>
+                  <option key={ward} value={ward} className="text-gray-900 font-semibold">{ward}</option>
                 ))}
               </select>
             </div>
 
             {/* 路線 */}
             <div>
-              <label className="block text-sm font-bold text-gray-900 mb-2">
+              <label className="label-standard">
                 路線
               </label>
               <select
                 value={filters.lineId}
                 onChange={(e) => handleChange('lineId', e.target.value)}
-                className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-gray-900 transition-all"
+                className="select-standard"
               >
-                <option value="">すべての路線</option>
+                <option value="" className="text-gray-900 font-semibold">すべての路線</option>
                 {railwayLines.map((line) => (
-                  <option key={line.id} value={line.id}>
+                  <option key={line.id} value={line.id} className="text-gray-900 font-semibold">
                     {line.line_name}
                   </option>
                 ))}
@@ -233,17 +233,17 @@ export default function SearchFiltersImproved({ onSearch, initialFilters = {}, o
             {/* 駅 */}
             {filters.lineId && (
               <div className="md:col-span-2">
-                <label className="block text-sm font-bold text-gray-900 mb-2">
+                <label className="label-standard">
                   駅
                 </label>
                 <select
                   value={filters.stationId}
                   onChange={(e) => handleChange('stationId', e.target.value)}
-                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-gray-900 transition-all"
+                  className="select-standard"
                 >
-                  <option value="">すべての駅</option>
+                  <option value="" className="text-gray-900 font-semibold">すべての駅</option>
                   {stations.map((station) => (
-                    <option key={station.id} value={station.id}>
+                    <option key={station.id} value={station.id} className="text-gray-900 font-semibold">
                       {station.station_name}
                     </option>
                   ))}
@@ -277,7 +277,7 @@ export default function SearchFiltersImproved({ onSearch, initialFilters = {}, o
           {/* 価格範囲入力 */}
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-bold text-gray-900 mb-2">
+              <label className="label-standard">
                 下限（万円）
               </label>
               <input
@@ -285,11 +285,11 @@ export default function SearchFiltersImproved({ onSearch, initialFilters = {}, o
                 value={filters.minPrice ? filters.minPrice / 10000 : ''}
                 onChange={(e) => handleChange('minPrice', e.target.value ? parseInt(e.target.value) * 10000 : '')}
                 placeholder="例：3000"
-                className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-gray-900 transition-all"
+                className="input-standard"
               />
             </div>
             <div>
-              <label className="block text-sm font-bold text-gray-900 mb-2">
+              <label className="label-standard">
                 上限（万円）
               </label>
               <input
@@ -297,7 +297,7 @@ export default function SearchFiltersImproved({ onSearch, initialFilters = {}, o
                 value={filters.maxPrice ? filters.maxPrice / 10000 : ''}
                 onChange={(e) => handleChange('maxPrice', e.target.value ? parseInt(e.target.value) * 10000 : '')}
                 placeholder="例：10000"
-                className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-gray-900 transition-all"
+                className="input-standard"
               />
             </div>
           </div>
@@ -433,13 +433,13 @@ export default function SearchFiltersImproved({ onSearch, initialFilters = {}, o
               <select
                 value={filters.maxBuildingAge}
                 onChange={(e) => handleChange('maxBuildingAge', e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-gray-900"
+                className="select-standard"
               >
-                <option value="">指定なし</option>
-                <option value="5">5年以内</option>
-                <option value="10">10年以内</option>
-                <option value="20">20年以内</option>
-                <option value="30">30年以内</option>
+                <option value="" className="text-gray-900 font-semibold">指定なし</option>
+                <option value="5" className="text-gray-900 font-semibold">5年以内</option>
+                <option value="10" className="text-gray-900 font-semibold">10年以内</option>
+                <option value="20" className="text-gray-900 font-semibold">20年以内</option>
+                <option value="30" className="text-gray-900 font-semibold">30年以内</option>
               </select>
             </div>
 
@@ -452,13 +452,13 @@ export default function SearchFiltersImproved({ onSearch, initialFilters = {}, o
               <select
                 value={filters.maxWalkTime}
                 onChange={(e) => handleChange('maxWalkTime', e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-gray-900"
+                className="select-standard"
               >
-                <option value="">指定なし</option>
-                <option value="5">5分以内</option>
-                <option value="10">10分以内</option>
-                <option value="15">15分以内</option>
-                <option value="20">20分以内</option>
+                <option value="" className="text-gray-900 font-semibold">指定なし</option>
+                <option value="5" className="text-gray-900 font-semibold">5分以内</option>
+                <option value="10" className="text-gray-900 font-semibold">10分以内</option>
+                <option value="15" className="text-gray-900 font-semibold">15分以内</option>
+                <option value="20" className="text-gray-900 font-semibold">20分以内</option>
               </select>
             </div>
           </div>

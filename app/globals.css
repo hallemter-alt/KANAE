@@ -2,194 +2,223 @@
 @tailwind components;
 @tailwind utilities;
 
-/* デザインシステム - カスタムカラー */
-:root {
-  --foreground-rgb: 17, 24, 39;
-  --background-start-rgb: 255, 255, 255;
-  --background-end-rgb: 249, 250, 251;
-  
-  /* ブランドカラー */
-  --primary: 2, 132, 199;
-  --secondary: 192, 38, 211;
-  --accent: 251, 191, 36;
-  
-  /* グレースケール */
-  --gray-50: 249, 250, 251;
-  --gray-100: 243, 244, 246;
-  --gray-200: 229, 231, 235;
-  --gray-300: 209, 213, 219;
-  --gray-400: 156, 163, 175;
-  --gray-500: 107, 114, 128;
-  --gray-600: 75, 85, 99;
-  --gray-700: 55, 65, 81;
-  --gray-800: 31, 41, 55;
-  --gray-900: 17, 24, 39;
-  
-  /* ステータスカラー */
-  --success: 16, 185, 129;
-  --warning: 245, 158, 11;
-  --error: 239, 68, 68;
-  --info: 59, 130, 246;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 249, 250, 251;
-    --background-start-rgb: 17, 24, 39;
-    --background-end-rgb: 31, 41, 55;
-  }
-}
-
-/* ベーススタイル */
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-html {
-  scroll-behavior: smooth;
-  font-size: 16px;
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: rgb(var(--background-start-rgb));
-  font-family: var(--font-noto-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-  line-height: 1.75;
-  font-weight: 400;
-  font-size: 16px;
-  letter-spacing: 0.01em;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* タイポグラフィーの統一 */
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 700;
-  line-height: 1.3;
-  color: rgb(var(--gray-900));
-  margin: 0;
-}
-
-h1 {
-  font-size: clamp(2rem, 5vw, 3rem);
-  letter-spacing: -0.02em;
-}
-
-h2 {
-  font-size: clamp(1.75rem, 4vw, 2.25rem);
-  letter-spacing: -0.01em;
-}
-
-h3 {
-  font-size: clamp(1.5rem, 3vw, 1.875rem);
-}
-
-h4 {
-  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
-}
-
-h5 {
-  font-size: clamp(1.125rem, 2vw, 1.25rem);
-}
-
-h6 {
-  font-size: 1rem;
-}
-
-p {
-  margin: 0;
-  line-height: 1.8;
-  font-size: 1rem;
-  color: rgb(var(--gray-700));
-}
-
-/* レスポンシブな余白 */
-@media (max-width: 640px) {
+/* 全域字體優化 - 確保清晰易讀 */
+@layer base {
+  /* 基礎字體設置 */
   html {
-    font-size: 14px;
+    @apply antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply font-sans text-base leading-normal text-gray-900;
+    font-feature-settings: "kern" 1, "liga" 1;
+  }
+
+  /* 標題層級 - 確保邊緣分明 */
+  h1 {
+    @apply text-4xl md:text-5xl font-bold leading-tight tracking-tight;
+    letter-spacing: -0.02em;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl font-bold leading-tight tracking-tight;
+    letter-spacing: -0.01em;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl font-bold leading-snug;
+  }
+
+  h4 {
+    @apply text-xl md:text-2xl font-bold leading-snug;
+  }
+
+  h5 {
+    @apply text-lg md:text-xl font-semibold leading-normal;
+  }
+
+  h6 {
+    @apply text-base md:text-lg font-semibold leading-normal;
+  }
+
+  /* 段落和文本 */
+  p {
+    @apply text-base leading-relaxed;
+  }
+
+  /* 強調文本 */
+  strong, b {
+    @apply font-bold;
+  }
+
+  /* 連結 */
+  a {
+    @apply transition-colors duration-200;
+  }
+
+  /* 選擇框和輸入框的清晰樣式 */
+  select,
+  input[type="text"],
+  input[type="number"],
+  input[type="email"],
+  textarea {
+    @apply border-2 border-gray-300 rounded-lg;
+    @apply text-gray-900 font-medium;
+    @apply focus:ring-2 focus:ring-primary-500 focus:border-primary-500;
+    @apply transition-all duration-200;
+    font-weight: 500 !important;
+  }
+
+  /* 選擇框選項 */
+  option {
+    @apply text-gray-900 font-medium bg-white;
+    font-weight: 500 !important;
+    padding: 8px 12px;
+  }
+
+  /* 確保選中的選項顏色一致 */
+  select:not([multiple]) option:checked {
+    @apply bg-primary-50 text-primary-900;
+    font-weight: 600 !important;
+  }
+
+  /* 按鈕 */
+  button {
+    @apply font-semibold transition-all duration-200;
   }
 }
 
-@media (min-width: 1536px) {
-  html {
-    font-size: 18px;
-  }
-}
-
+/* 實用工具類 */
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  /* 文字清晰度 */
+  .text-sharp {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* 邊緣分明 */
+  .crisp-edges {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+
+  /* 平滑滾動 */
+  .smooth-scroll {
+    scroll-behavior: smooth;
+  }
+
+  /* 文字截斷 */
+  .line-clamp-1 {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
-
-/* Smooth scroll */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Animation utilities */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
+/* 選擇框和下拉菜單的特殊樣式 */
+@layer components {
+  /* 統一的選擇框樣式 */
+  .select-standard {
+    @apply w-full px-4 py-3;
+    @apply border-2 border-gray-300 rounded-lg;
+    @apply text-gray-900 font-semibold text-base;
+    @apply bg-white;
+    @apply focus:ring-2 focus:ring-primary-500 focus:border-primary-500;
+    @apply transition-all duration-200;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E");
+    background-position: right 0.75rem center;
+    background-repeat: no-repeat;
+    background-size: 1.25em 1.25em;
+    padding-right: 2.5rem;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 
-.animate-fadeIn {
-  animation: fadeIn 0.6s ease-out;
-}
-
-@keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-50px);
+  /* 選項的一致性樣式 */
+  .select-standard option {
+    @apply text-gray-900 font-semibold bg-white;
+    @apply py-2;
   }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
 
-.animate-slideInLeft {
-  animation: slideInLeft 0.6s ease-out;
-}
-
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(50px);
+  /* 輸入框統一樣式 */
+  .input-standard {
+    @apply w-full px-4 py-3;
+    @apply border-2 border-gray-300 rounded-lg;
+    @apply text-gray-900 font-medium text-base;
+    @apply bg-white;
+    @apply focus:ring-2 focus:ring-primary-500 focus:border-primary-500;
+    @apply transition-all duration-200;
   }
-  to {
-    opacity: 1;
-    transform: translateX(0);
+
+  /* 標籤統一樣式 */
+  .label-standard {
+    @apply block text-sm font-bold text-gray-900 mb-2;
+  }
+
+  /* 按鈕統一樣式 */
+  .btn-primary {
+    @apply px-6 py-3;
+    @apply bg-gradient-to-r from-primary-600 to-primary-700;
+    @apply text-white font-bold text-base;
+    @apply rounded-lg;
+    @apply hover:from-primary-700 hover:to-primary-800;
+    @apply focus:ring-4 focus:ring-primary-200;
+    @apply transition-all duration-200;
+    @apply shadow-md hover:shadow-lg;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3;
+    @apply bg-white text-gray-900 font-semibold text-base;
+    @apply border-2 border-gray-300;
+    @apply rounded-lg;
+    @apply hover:bg-gray-50 hover:border-gray-400;
+    @apply focus:ring-4 focus:ring-gray-200;
+    @apply transition-all duration-200;
   }
 }
 
-.animate-slideInRight {
-  animation: slideInRight 0.6s ease-out;
+/* 確保在深色背景上的可讀性 */
+@layer utilities {
+  .text-contrast-high {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+
+  .bg-blur {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+}
+
+/* 打印樣式 */
+@media print {
+  body {
+    @apply text-black bg-white;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+  }
+  
+  p, blockquote, ul, ol {
+    page-break-inside: avoid;
+  }
 }
