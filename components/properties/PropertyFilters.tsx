@@ -612,22 +612,25 @@ export default function PropertyFilters({
           />
         </div>
       </FilterSection>
+      
+      {/* Map Modal */}
+      <MapModal
+        isOpen={showMapModal}
+        onClose={() => setShowMapModal(false)}
+        onAreaSelect={(areas) => {
+          setSelectedMapAreas(areas);
+          // Update city filter with first selected area
+          if (areas.length > 0) {
+            // For now, just update the city filter with the first area
+            updateFilter('city', areas[0]);
+          } else {
+            updateFilter('city', undefined);
+          }
+        }}
+        selectedAreas={selectedMapAreas}
+        language={language}
+      />
     </div>
-    
-    {/* Map Modal */}
-    <MapModal
-      isOpen={showMapModal}
-      onClose={() => setShowMapModal(false)}
-      onAreaSelect={(areas) => {
-        setSelectedMapAreas(areas);
-        // Optionally update filters with selected areas
-        if (areas.length > 0) {
-          updateFilter('cities', areas);
-        }
-      }}
-      selectedAreas={selectedMapAreas}
-      language={language}
-    />
   );
 }
 

@@ -90,7 +90,7 @@ export default function PropertyCard({
 
   return (
     <Link href={detailLink} className="block h-full">
-      <div className="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden h-full flex flex-col cursor-pointer">>
+      <div className="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden h-full flex flex-col cursor-pointer">
         {/* Image Section */}
         <div className="relative aspect-[16/10] overflow-hidden bg-gradient-to-br from-sky-100 to-blue-100">
           {property.image_urls && property.image_urls.length > 0 ? (

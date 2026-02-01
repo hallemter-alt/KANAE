@@ -7,17 +7,26 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
+// Mark this route as dynamic
+export const dynamic = 'force-dynamic';
+
+function getSupabaseClient() {
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  
+  if (!supabaseUrl || !supabaseKey) {
+    throw new Error('Supabase configuration is missing');
+  }
+  
+  return createClient(supabaseUrl, supabaseKey);
+}
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const { id } = params;
+    const { id } = await params;
 
     if (!id) {
       return NextResponse.json(
@@ -25,6 +34,8 @@ export async function GET(
         { status: 400 }
       );
     }
+
+    const supabase = getSupabaseClient();
 
     // Fetch the property from Supabase
     const { data: property, error } = await supabase
@@ -89,18 +100,19 @@ export async function GET(
     };
 
     // Increment view count (asynchronously, don't wait)
-    supabase
+    void supabase
       .from('properties')
       .update({ 
         view_count: (property.view_count || 0) + 1,
         updated_at: new Date().toISOString(),
       })
       .eq('id', id)
-      .then(() => {
-        console.log(`View count incremented for property ${id}`);
-      })
-      .catch((error) => {
-        console.error('Error incrementing view count:', error);
+      .then((result) => {
+        if (result.error) {
+          console.error('Error incrementing view count:', result.error);
+        } else {
+          console.log(`View count incremented for property ${id}`);
+        }
       });
 
     return NextResponse.json(transformedProperty);
