@@ -35,9 +35,6 @@ export default function Navbar() {
             <Link href={`/${locale}/sale`} className="nav-link text-gray-700 hover:text-primary-600 transition-colors">
               {t.nav.sale}
             </Link>
-            <Link href={`/${locale}/properties`} className="nav-link text-gray-700 hover:text-primary-600 transition-colors">
-              {t.nav.properties}
-            </Link>
             <Link href={`/${locale}/management`} className="nav-link text-gray-700 hover:text-primary-600 transition-colors">
               {t.nav.management}
             </Link>
@@ -129,9 +126,6 @@ export default function Navbar() {
             </Link>
             <Link href={`/${locale}/sale`} className="block px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors">
               {t.nav.sale}
-            </Link>
-            <Link href={`/${locale}/properties`} className="block px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors">
-              {t.nav.properties}
             </Link>
             <Link href={`/${locale}/management`} className="block px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors">
               {t.nav.management}
