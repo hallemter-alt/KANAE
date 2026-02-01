@@ -13,6 +13,7 @@ import Footer from '@/components/Footer';
 import PropertyCard from '@/components/properties/PropertyCard';
 import PropertyFilters from '@/components/properties/PropertyFilters';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { translations } from '@/lib/translations';
 import type { PropertyFilterParams } from '@/lib/types/premium-property';
 
 type PropertyCategory = 'all' | 'residential' | 'investment';
@@ -33,6 +34,7 @@ function UnifiedSaleContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { locale } = useLanguage();
+  const t = translations[locale as keyof typeof translations] || translations.ja;
   
   const [category, setCategory] = useState<PropertyCategory>('all');
   const [properties, setProperties] = useState<Property[]>([]);
@@ -135,10 +137,10 @@ function UnifiedSaleContent() {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight">
-              売買物件検索
+              {t.sale.title}
             </h1>
             <p className="text-xl md:text-2xl text-white/90">
-              住宅用・投資用の多様な物件をご提案
+              {t.sale.subtitle}
             </p>
           </div>
 
@@ -146,7 +148,7 @@ function UnifiedSaleContent() {
           <div className="max-w-4xl mx-auto">
             <div className="bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl p-6">
               <h3 className="text-lg font-bold text-gray-900 mb-4 text-center">
-                物件カテゴリを選択
+                {t.sale.categorySelect}
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <button
@@ -158,8 +160,8 @@ function UnifiedSaleContent() {
                   }`}
                 >
                   <Building2 className="w-8 h-8 mx-auto mb-3" />
-                  <div className="text-lg font-bold mb-1">すべて</div>
-                  <div className="text-sm opacity-90">全物件を表示</div>
+                  <div className="text-lg font-bold mb-1">{t.sale.all}</div>
+                  <div className="text-sm opacity-90">{t.sale.allProperties}</div>
                 </button>
 
                 <button
@@ -171,8 +173,8 @@ function UnifiedSaleContent() {
                   }`}
                 >
                   <Home className="w-8 h-8 mx-auto mb-3" />
-                  <div className="text-lg font-bold mb-1">住宅用</div>
-                  <div className="text-sm opacity-90">マンション・戸建</div>
+                  <div className="text-lg font-bold mb-1">{t.sale.residential}</div>
+                  <div className="text-sm opacity-90">{t.sale.residentialDesc}</div>
                 </button>
 
                 <button
@@ -184,8 +186,8 @@ function UnifiedSaleContent() {
                   }`}
                 >
                   <TrendingUp className="w-8 h-8 mx-auto mb-3" />
-                  <div className="text-lg font-bold mb-1">投資用</div>
-                  <div className="text-sm opacity-90">収益物件</div>
+                  <div className="text-lg font-bold mb-1">{t.sale.investment}</div>
+                  <div className="text-sm opacity-90">{t.sale.investmentDesc}</div>
                 </button>
               </div>
             </div>
@@ -207,7 +209,7 @@ function UnifiedSaleContent() {
                     className="w-full flex items-center justify-center gap-2 bg-white px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transition-shadow"
                   >
                     <Filter className="w-5 h-5" />
-                    <span className="font-semibold">詳細検索</span>
+                    <span className="font-semibold">{t.sale.detailedSearch}</span>
                   </button>
                 </div>
 
@@ -230,19 +232,19 @@ function UnifiedSaleContent() {
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                   <div>
                     <h2 className="text-2xl font-bold text-gray-900 mb-1">
-                      {category === 'all' && 'すべての物件'}
-                      {category === 'residential' && '住宅用物件'}
-                      {category === 'investment' && '投資用物件'}
+                      {category === 'all' && t.sale.allPropertiesTitle}
+                      {category === 'residential' && t.sale.residentialTitle}
+                      {category === 'investment' && t.sale.investmentTitle}
                     </h2>
                     <p className="text-gray-600">
-                      全 <span className="font-semibold text-primary-600">{pagination.total}</span> 件
+                      {t.sale.totalCount} <span className="font-semibold text-primary-600">{pagination.total}</span> {t.sale.items}
                     </p>
                   </div>
 
                   {/* Sort Options */}
                   <div className="flex items-center space-x-3">
                     <label className="text-sm font-medium text-gray-700">
-                      並び替え:
+                      {t.sale.sortBy}
                     </label>
                     <select
                       className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-gray-900 bg-white"
@@ -254,13 +256,13 @@ function UnifiedSaleContent() {
                         });
                       }}
                     >
-                      <option value="priority">おすすめ順</option>
-                      <option value="price_asc">価格: 安い順</option>
-                      <option value="price_desc">価格: 高い順</option>
+                      <option value="priority">{t.sale.sortRecommended}</option>
+                      <option value="price_asc">{t.sale.sortPriceAsc}</option>
+                      <option value="price_desc">{t.sale.sortPriceDesc}</option>
                       {category === 'investment' && (
-                        <option value="yield_desc">利回り: 高い順</option>
+                        <option value="yield_desc">{t.sale.sortYieldDesc}</option>
                       )}
-                      <option value="completion_desc">築年数: 新しい順</option>
+                      <option value="completion_desc">{t.sale.sortCompletionDesc}</option>
                     </select>
                   </div>
                 </div>
@@ -292,10 +294,10 @@ function UnifiedSaleContent() {
                 <div className="text-center py-20 bg-white rounded-xl">
                   <Building2 className="w-16 h-16 text-gray-300 mx-auto mb-4" />
                   <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                    物件が見つかりませんでした
+                    {t.sale.noResults}
                   </h3>
                   <p className="text-gray-600 mb-6">
-                    検索条件を変更してもう一度お試しください
+                    {t.sale.noResultsDesc}
                   </p>
                   <button
                     onClick={() => {
@@ -304,7 +306,7 @@ function UnifiedSaleContent() {
                     }}
                     className="px-6 py-3 bg-gradient-to-r from-primary-600 to-primary-700 text-white rounded-lg font-semibold hover:from-primary-700 hover:to-primary-800 transition-all"
                   >
-                    すべての物件を表示
+                    {t.sale.showAll}
                   </button>
                 </div>
               )}
@@ -317,7 +319,7 @@ function UnifiedSaleContent() {
                     disabled={pagination.page === 1}
                     className="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors text-gray-700"
                   >
-                    前へ
+                    {t.sale.prev}
                   </button>
 
                   {[...Array(pagination.totalPages)].map((_, i) => {
@@ -351,7 +353,7 @@ function UnifiedSaleContent() {
                     disabled={pagination.page === pagination.totalPages}
                     className="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors text-gray-700"
                   >
-                    次へ
+                    {t.sale.next}
                   </button>
                 </div>
               )}
@@ -364,17 +366,17 @@ function UnifiedSaleContent() {
       <section className="bg-gradient-to-r from-primary-600 to-primary-700 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">
-            物件についてのご相談
+            {t.sale.ctaTitle}
           </h2>
           <p className="text-xl text-white/90 mb-8">
-            専門スタッフが丁寧にサポートいたします
+            {t.sale.ctaDescription}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href={`/${locale}/contact`}
               className="px-8 py-4 bg-white text-primary-600 font-bold rounded-lg hover:bg-gray-100 transition-colors shadow-lg"
             >
-              お問い合わせ
+              {t.sale.ctaContact}
             </a>
             <a
               href="tel:03-6914-3633"
