@@ -137,10 +137,10 @@ function UnifiedSaleContent() {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight">
-              {t.sale.title}
+              {(t as any).sale?.title || '買賣物業搜索'}
             </h1>
             <p className="text-xl md:text-2xl text-white/90">
-              {t.sale.subtitle}
+              {(t as any).sale?.subtitle || '提供住宅用・投資用的多樣物業'}
             </p>
           </div>
 
@@ -148,7 +148,7 @@ function UnifiedSaleContent() {
           <div className="max-w-4xl mx-auto">
             <div className="bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl p-6">
               <h3 className="text-lg font-bold text-gray-900 mb-4 text-center">
-                {t.sale.categorySelect}
+                {(t as any).sale?.categorySelect || '選擇物業類別'}
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <button
@@ -160,8 +160,8 @@ function UnifiedSaleContent() {
                   }`}
                 >
                   <Building2 className="w-8 h-8 mx-auto mb-3" />
-                  <div className="text-lg font-bold mb-1">{t.sale.all}</div>
-                  <div className="text-sm opacity-90">{t.sale.allProperties}</div>
+                  <div className="text-lg font-bold mb-1">{(t as any).sale?.all || '全部'}</div>
+                  <div className="text-sm opacity-90">{(t as any).sale?.allProperties || '全部物業'}</div>
                 </button>
 
                 <button
@@ -173,8 +173,8 @@ function UnifiedSaleContent() {
                   }`}
                 >
                   <Home className="w-8 h-8 mx-auto mb-3" />
-                  <div className="text-lg font-bold mb-1">{t.sale.residential}</div>
-                  <div className="text-sm opacity-90">{t.sale.residentialDesc}</div>
+                  <div className="text-lg font-bold mb-1">{(t as any).sale?.residential || '住宅用'}</div>
+                  <div className="text-sm opacity-90">{(t as any).sale?.residentialDesc || '公寓・獨棟'}</div>
                 </button>
 
                 <button
@@ -186,8 +186,8 @@ function UnifiedSaleContent() {
                   }`}
                 >
                   <TrendingUp className="w-8 h-8 mx-auto mb-3" />
-                  <div className="text-lg font-bold mb-1">{t.sale.investment}</div>
-                  <div className="text-sm opacity-90">{t.sale.investmentDesc}</div>
+                  <div className="text-lg font-bold mb-1">{(t as any).sale?.investment || '投資用'}</div>
+                  <div className="text-sm opacity-90">{(t as any).sale?.investmentDesc || '收益物業'}</div>
                 </button>
               </div>
             </div>
@@ -209,7 +209,7 @@ function UnifiedSaleContent() {
                     className="w-full flex items-center justify-center gap-2 bg-white px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transition-shadow"
                   >
                     <Filter className="w-5 h-5" />
-                    <span className="font-semibold">{t.sale.detailedSearch}</span>
+                    <span className="font-semibold">{(t as any).sale?.detailedSearch || '詳細搜索'}</span>
                   </button>
                 </div>
 
@@ -232,19 +232,19 @@ function UnifiedSaleContent() {
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                   <div>
                     <h2 className="text-2xl font-bold text-gray-900 mb-1">
-                      {category === 'all' && t.sale.allPropertiesTitle}
-                      {category === 'residential' && t.sale.residentialTitle}
-                      {category === 'investment' && t.sale.investmentTitle}
+                      {category === 'all' && ((t as any).sale?.allPropertiesTitle || '全部物業')}
+                      {category === 'residential' && ((t as any).sale?.residentialTitle || '住宅用物業')}
+                      {category === 'investment' && ((t as any).sale?.investmentTitle || '投資用物業')}
                     </h2>
                     <p className="text-gray-600">
-                      {t.sale.totalCount} <span className="font-semibold text-primary-600">{pagination.total}</span> {t.sale.items}
+                      {((t as any).sale?.totalCount || '全')} <span className="font-semibold text-primary-600">{pagination.total}</span> {((t as any).sale?.items || '件')}
                     </p>
                   </div>
 
                   {/* Sort Options */}
                   <div className="flex items-center space-x-3">
                     <label className="text-sm font-medium text-gray-700">
-                      {t.sale.sortBy}
+                      {((t as any).sale?.sortBy || '排序')}
                     </label>
                     <select
                       className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-gray-900 bg-white"
@@ -256,13 +256,13 @@ function UnifiedSaleContent() {
                         });
                       }}
                     >
-                      <option value="priority">{t.sale.sortRecommended}</option>
-                      <option value="price_asc">{t.sale.sortPriceAsc}</option>
-                      <option value="price_desc">{t.sale.sortPriceDesc}</option>
+                      <option value="priority">{((t as any).sale?.sortRecommended || '推薦順序')}</option>
+                      <option value="price_asc">{((t as any).sale?.sortPriceAsc || '價格:低到高')}</option>
+                      <option value="price_desc">{((t as any).sale?.sortPriceDesc || '價格:高到低')}</option>
                       {category === 'investment' && (
-                        <option value="yield_desc">{t.sale.sortYieldDesc}</option>
+                        <option value="yield_desc">{((t as any).sale?.sortYieldDesc || '利回:高到低')}</option>
                       )}
-                      <option value="completion_desc">{t.sale.sortCompletionDesc}</option>
+                      <option value="completion_desc">{((t as any).sale?.sortCompletionDesc || '樓齡:新到舊')}</option>
                     </select>
                   </div>
                 </div>
@@ -294,10 +294,10 @@ function UnifiedSaleContent() {
                 <div className="text-center py-20 bg-white rounded-xl">
                   <Building2 className="w-16 h-16 text-gray-300 mx-auto mb-4" />
                   <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                    {t.sale.noResults}
+                    {((t as any).sale?.noResults || '未找到物業')}
                   </h3>
                   <p className="text-gray-600 mb-6">
-                    {t.sale.noResultsDesc}
+                    {((t as any).sale?.noResultsDesc || '請變更搜索條件')}
                   </p>
                   <button
                     onClick={() => {
@@ -306,7 +306,7 @@ function UnifiedSaleContent() {
                     }}
                     className="px-6 py-3 bg-gradient-to-r from-primary-600 to-primary-700 text-white rounded-lg font-semibold hover:from-primary-700 hover:to-primary-800 transition-all"
                   >
-                    {t.sale.showAll}
+                    {((t as any).sale?.showAll || '顯示全部物業')}
                   </button>
                 </div>
               )}
@@ -319,7 +319,7 @@ function UnifiedSaleContent() {
                     disabled={pagination.page === 1}
                     className="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors text-gray-700"
                   >
-                    {t.sale.prev}
+                    {((t as any).sale?.prev || '上一頁')}
                   </button>
 
                   {[...Array(pagination.totalPages)].map((_, i) => {
@@ -353,7 +353,7 @@ function UnifiedSaleContent() {
                     disabled={pagination.page === pagination.totalPages}
                     className="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors text-gray-700"
                   >
-                    {t.sale.next}
+                    {((t as any).sale?.next || '下一頁')}
                   </button>
                 </div>
               )}
@@ -366,17 +366,17 @@ function UnifiedSaleContent() {
       <section className="bg-gradient-to-r from-primary-600 to-primary-700 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">
-            {t.sale.ctaTitle}
+            {((t as any).sale?.ctaTitle || '物業諮詢')}
           </h2>
           <p className="text-xl text-white/90 mb-8">
-            {t.sale.ctaDescription}
+            {((t as any).sale?.ctaDescription || '專業人員提供支援')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href={`/${locale}/contact`}
               className="px-8 py-4 bg-white text-primary-600 font-bold rounded-lg hover:bg-gray-100 transition-colors shadow-lg"
             >
-              {t.sale.ctaContact}
+              {((t as any).sale?.ctaContact || '聯繫我們')}
             </a>
             <a
               href="tel:03-6914-3633"

@@ -148,7 +148,7 @@ export default function RentPage() {
                     type="number"
                     value={minRent}
                     onChange={(e) => setMinRent(e.target.value)}
-                    placeholder={t.rent.rentPlaceholder !== undefined ? t.rent.rentPlaceholder : "50000"}
+                    placeholder={'rentPlaceholder' in t.rent ? (t.rent as any).rentPlaceholder : "50000"}
                     className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-base text-gray-900 bg-white"
                   />
                 </div>
@@ -160,7 +160,7 @@ export default function RentPage() {
                     type="number"
                     value={maxRent}
                     onChange={(e) => setMaxRent(e.target.value)}
-                    placeholder={t.rent.rentPlaceholderMax !== undefined ? t.rent.rentPlaceholderMax : "200000"}
+                    placeholder={'rentPlaceholderMax' in t.rent ? (t.rent as any).rentPlaceholderMax : "200000"}
                     className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-base text-gray-900 bg-white"
                   />
                 </div>
@@ -199,7 +199,7 @@ export default function RentPage() {
                   {t.rent.features}
                 </label>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                  {(t.rent.featuresList || []).map((condition: string, index: number) => (
+                  {(('featuresList' in t.rent ? (t.rent as any).featuresList : []) || []).map((condition: string, index: number) => (
                     <label 
                       key={index} 
                       className="flex items-center space-x-2 p-3 border-2 border-gray-300 rounded-lg hover:bg-gray-50 cursor-pointer transition-all text-gray-700"
@@ -318,16 +318,16 @@ export default function RentPage() {
         <Container>
           <div className="text-center">
             <Heading level={3} align="center" className="mb-4 text-gray-900">
-              {t.rent.ctaTitle || t.cta.title}
+              {('ctaTitle' in t.rent ? (t.rent as any).ctaTitle : null) || t.cta.title}
             </Heading>
             <Text size="lg" className="mb-8 max-w-2xl mx-auto">
-              {t.rent.ctaDescription || t.cta.description}
+              {('ctaDescription' in t.rent ? (t.rent as any).ctaDescription : null) || t.cta.description}
             </Text>
             <a
               href={`/${locale}/contact`}
               className="inline-block px-8 py-4 bg-blue-600 text-white rounded-lg font-bold text-lg hover:bg-blue-700 transition-colors shadow-lg"
             >
-              {t.rent.ctaButton || t.contact.inquiryButton}
+              {('ctaButton' in t.rent ? (t.rent as any).ctaButton : null) || t.contact.inquiryButton}
             </a>
           </div>
         </Container>

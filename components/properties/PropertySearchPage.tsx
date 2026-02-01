@@ -107,10 +107,10 @@ export default function PropertySearchPage() {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight">
-              投資収益物件検索
+              {(t as any).properties?.title || '投資收益物業搜索'}
             </h1>
             <p className="text-xl md:text-2xl text-white/90">
-              東京都内の投資収益物件を簡単検索
+              {(t as any).properties?.subtitle || '搜索東京都內的投資收益物業'}
             </p>
           </div>
 
@@ -121,7 +121,7 @@ export default function PropertySearchPage() {
                 <div className="flex-1">
                   <input
                     type="text"
-                    placeholder="エリア、沿線、駅名で検索"
+                    placeholder={(t as any).properties?.quickSearch || '快速搜索'}
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-transparent text-gray-900 bg-white"
                     onKeyPress={(e) => {
                       if (e.key === 'Enter') {
@@ -135,7 +135,7 @@ export default function PropertySearchPage() {
                   className="px-6 py-3 bg-gradient-to-r from-primary-600 to-primary-700 text-white rounded-lg font-semibold hover:from-primary-700 hover:to-primary-800 transition-all transform hover:scale-105 shadow-lg flex items-center justify-center space-x-2"
                 >
                   <Filter className="w-5 h-5" />
-                  <span>詳細検索</span>
+                  <span>{(t as any).properties?.detailedSearch || '詳細搜索'}</span>
                 </Link>
               </div>
             </div>
@@ -150,7 +150,7 @@ export default function PropertySearchPage() {
                 className="px-8 py-3 bg-white/95 backdrop-blur-md text-primary-600 border-2 border-primary-600 rounded-full font-semibold hover:bg-primary-600 hover:text-white transition-all transform hover:scale-105 shadow-lg inline-flex items-center space-x-2"
               >
                 <Building2 className="w-5 h-5" />
-                <span>すべての物件を表示</span>
+                <span>{(t as any).properties?.showAllProperties || '顯示全部物業'}</span>
               </button>
             </div>
           </div>
@@ -172,7 +172,7 @@ export default function PropertySearchPage() {
             >
               <div className="flex items-center space-x-2">
                 <Building2 className="w-5 h-5" />
-                <span>物件一覧</span>
+                <span>{(t as any).properties?.propertyView || '物件列表'}</span>
               </div>
             </button>
             <button
@@ -185,7 +185,7 @@ export default function PropertySearchPage() {
             >
               <div className="flex items-center space-x-2">
                 <MapPin className="w-5 h-5" />
-                <span>エリア別検索</span>
+                <span>{(t as any).properties?.wardView || '按區域搜索'}</span>
               </div>
             </button>
           </div>
@@ -203,17 +203,17 @@ export default function PropertySearchPage() {
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
               <div>
                 <h2 className="text-2xl font-bold text-gray-900 mb-1">
-                  検索結果
+                  {(t as any).properties?.totalResults || '搜索結果'}
                 </h2>
                 <p className="text-gray-600">
-                  全 <span className="font-semibold text-primary-600">{pagination.total}</span> 件の物件が見つかりました
+                  {(t as any).properties?.totalCount || '全'} <span className="font-semibold text-primary-600">{pagination.total}</span> {(t as any).properties?.items || '件'}
                 </p>
               </div>
 
               {/* Sort Options */}
               <div className="flex items-center space-x-3">
                 <label className="text-sm font-medium text-gray-700">
-                  並び替え:
+                  {(t as any).properties?.sortBy || '排序：'}
                 </label>
                 <select
                   className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-gray-900 bg-white"
@@ -222,12 +222,12 @@ export default function PropertySearchPage() {
                     searchProperties({ ...searchParams, sortBy, sortOrder }, 1);
                   }}
                 >
-                  <option value="price-asc">価格: 安い順</option>
-                  <option value="price-desc">価格: 高い順</option>
-                  <option value="yield_surface-desc">利回り: 高い順</option>
-                  <option value="yield_surface-asc">利回り: 低い順</option>
-                  <option value="land_area_sqm-desc">土地面積: 広い順</option>
-                  <option value="construction_date-desc">築年数: 新しい順</option>
+                  <option value="price-asc">{(t as any).sale?.sortPriceAsc || '價格: 低到高'}</option>
+                  <option value="price-desc">{(t as any).sale?.sortPriceDesc || '價格: 高到低'}</option>
+                  <option value="yield_surface-desc">{(t as any).sale?.sortYieldDesc || '利回: 高到低'}</option>
+                  <option value="yield_surface-asc">{(t as any).properties?.sortYieldAsc || '利回: 低到高'}</option>
+                  <option value="land_area_sqm-desc">{(t as any).properties?.sortAreaDesc || '土地面積: 大到小'}</option>
+                  <option value="construction_date-desc">{(t as any).sale?.sortCompletionDesc || '樓齡: 新到舊'}</option>
                 </select>
               </div>
             </div>
@@ -238,13 +238,13 @@ export default function PropertySearchPage() {
                 <div className="text-2xl font-bold text-primary-600 mb-1">
                   {properties.filter(p => p.property_type === '一棟マンション').length}
                 </div>
-                <div className="text-sm text-gray-600">一棟マンション</div>
+                <div className="text-sm text-gray-600">{(t as any).properties?.wholeBuilding || '整棟公寓'}</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-primary-600 mb-1">
                   {properties.filter(p => p.property_type === '一棟ビル').length}
                 </div>
-                <div className="text-sm text-gray-600">一棟ビル</div>
+                <div className="text-sm text-gray-600">{(t as any).properties?.wholeOffice || '整棟辦公樓'}</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-primary-600 mb-1">
@@ -252,7 +252,7 @@ export default function PropertySearchPage() {
                     ? Math.round(properties.reduce((sum, p) => sum + (p.yield_surface || 0), 0) / properties.length * 10) / 10
                     : 0}%
                 </div>
-                <div className="text-sm text-gray-600">平均利回り</div>
+                <div className="text-sm text-gray-600">{(t as any).properties?.avgYield || '平均利回'}</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-primary-600 mb-1">
@@ -260,7 +260,7 @@ export default function PropertySearchPage() {
                     ? Math.round(properties.reduce((sum, p) => sum + (p.price || 0), 0) / properties.length / 10000000) / 10
                     : 0}億
                 </div>
-                <div className="text-sm text-gray-600">平均価格</div>
+                <div className="text-sm text-gray-600">{(t as any).properties?.avgPrice || '平均價格'}</div>
               </div>
             </div>
           </div>
@@ -288,10 +288,10 @@ export default function PropertySearchPage() {
                 <Building2 className="w-16 h-16 text-gray-300 mx-auto" />
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                物件が見つかりませんでした
+                {(t as any).sale?.noResults || '未找到物業'}
               </h3>
               <p className="text-gray-600 mb-6">
-                検索条件を変更して再度お試しください
+                {(t as any).sale?.noResultsDesc || '請變更搜索條件後再試一次'}
               </p>
               <button
                 onClick={() => {
