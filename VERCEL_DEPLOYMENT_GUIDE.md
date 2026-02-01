@@ -1,549 +1,467 @@
-# Vercel デプロイ完全ガイド
+# Vercel 部署配置 / Vercel Deployment Configuration
 
-## 📋 概要
+## 🎯 部署架构 / Deployment Architecture
 
-GitHub リポジトリを Vercel に接続し、自動デプロイを設定する手順を説明します。
+```
+GitHub Repository
+       ↓
+   [Push to main]
+       ↓
+   Vercel (Auto Deploy)
+       ↓
+   Production URL
+```
 
----
-
-## 🚀 Vercel デプロイ手順
-
-### ステップ 1: Vercel にログイン
-
-1. **Vercel にアクセス**
-   - URL: https://vercel.com/
-   - 「Sign Up」または「Login」をクリック
-
-2. **GitHub OAuth でログイン**
-   - 「Continue with GitHub」を選択
-   - GitHub アカウントでログイン
-   - Vercel に必要な権限を付与
+**说明:** 本项目专为 Vercel 部署优化，不使用 Cloudflare Pages。
 
 ---
 
-### ステップ 2: 新しいプロジェクトを作成
+## ✅ 当前配置 / Current Configuration
 
-1. **ダッシュボードから新規プロジェクト作成**
-   - Vercel ダッシュボードにアクセス: https://vercel.com/dashboard
-   - 「Add New...」→「Project」をクリック
-   - または直接: https://vercel.com/new
+### 1. Next.js 配置 (next.config.ts)
 
-2. **GitHub リポジトリを選択**
-   - 「Import Git Repository」セクションで GitHub を選択
-   - リポジトリ検索で「KANAE」または「hallemter-alt/KANAE」を検索
-   - 「Import」をクリック
+```typescript
+import type { NextConfig } from "next";
 
----
+const nextConfig: NextConfig = {
+  reactStrictMode: true,
+  images: {
+    domains: ['images.unsplash.com'],
+    // Vercel automatic image optimization
+    unoptimized: false,
+  },
+  // Vercel deployment configuration
+  output: 'standalone',
+};
 
-### ステップ 3: プロジェクト設定
+export default nextConfig;
+```
 
-#### 3.1 基本設定
+**特点:**
+- ✅ `output: 'standalone'` - Vercel 优化的服务端渲染
+- ✅ `unoptimized: false` - 使用 Vercel 自动图片优化
+- ✅ 完全支持 API Routes
+- ✅ 支持动态路由和 SSR
+- ✅ 支持统合买卖系统的所有功能
 
-| 設定項目 | 値 | 備考 |
-|---------|-----|------|
-| **Project Name** | `kanae-real-estate` | 任意の名前（URL の一部になる） |
-| **Framework Preset** | `Next.js` | 自動検出されるはず |
-| **Root Directory** | `./` | デフォルトのまま |
+### 2. Vercel 项目设置
 
-#### 3.2 Build and Output Settings
+**Framework Preset:** Next.js  
+**Build Command:** `npm run build`  
+**Output Directory:** `.next`  
+**Install Command:** `npm install`  
+**Development Command:** `npm run dev`
 
-Vercel は自動的に Next.js を検出し、以下の設定を適用します：
+### 3. 环境变量
 
-| 設定項目 | 値 |
-|---------|-----|
-| **Build Command** | `next build` |
-| **Output Directory** | `.next` |
-| **Install Command** | `npm ci` または `npm install` |
-| **Development Command** | `next dev` |
+在 Vercel Dashboard 设置：
 
-**確認ポイント**:
-- ✅ Framework Preset が「Next.js」になっていることを確認
-- ✅ Build Command が `next build` であることを確認
-- ✅ Node.js Version は 18.x 以上を推奨
-
-#### 3.3 Environment Variables
-
-**現時点では設定不要**
-
-将来的に必要な環境変数（例）:
 ```bash
-# データベース接続
-DATABASE_URL=postgresql://...
+# Supabase
+NEXT_PUBLIC_SUPABASE_URL=your-supabase-project-url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-key
 
-# API キー
-API_SECRET_KEY=your_secret_key
-
-# その他
-NEXT_PUBLIC_API_URL=https://api.example.com
+# Next.js (可选)
+NODE_VERSION=20
 ```
 
 ---
 
-### ステップ 4: デプロイ実行
+## 🚀 部署流程 / Deployment Flow
 
-1. **「Deploy」ボタンをクリック**
-   - すべての設定を確認後、「Deploy」をクリック
+### 自动部署
 
-2. **ビルドプロセスを監視**
-   - ビルドログがリアルタイムで表示される
-   - 以下のステップが実行される:
-     1. クローン: GitHub からコードを取得
-     2. インストール: `npm ci` で依存関係をインストール
-     3. ビルド: `next build` で本番ビルドを実行
-     4. デプロイ: Vercel の CDN にデプロイ
-
-3. **デプロイ完了を待つ**
-   - 通常 2-5 分で完了
-   - 成功すると「🎉 Deployment Successful」と表示される
-
----
-
-### ステップ 5: デプロイ URL の確認
-
-デプロイが完了すると、Vercel が自動的に URL を生成します：
-
-**URL パターン**:
-```
-https://kanae-real-estate.vercel.app
-https://kanae-real-estate-[hash].vercel.app  # プレビュー URL
-```
-
-**確認方法**:
-1. Vercel ダッシュボードで「Visit」ボタンをクリック
-2. または、表示された URL をブラウザで開く
-
----
-
-## ✅ デプロイ確認チェックリスト
-
-### 1. ホームページの確認
-
-**URL**: `https://kanae-real-estate.vercel.app/`
-
-**確認項目**:
-- [ ] ページが正常に表示される
-- [ ] Navbar が表示される
-- [ ] Hero セクションが表示される
-- [ ] Services セクションが表示される
-- [ ] Footer が表示される
-- [ ] 画像が正常に表示される
-- [ ] レスポンシブデザインが動作する
-
----
-
-### 2. 各ページの確認
-
-#### 賃貸ページ
-- **URL**: `https://kanae-real-estate.vercel.app/rent/`
-- [ ] 検索フォームが表示される
-- [ ] おすすめ物件が表示される
-
-#### 売買ページ
-- **URL**: `https://kanae-real-estate.vercel.app/sale/`
-- [ ] 物件種別選択が表示される
-- [ ] おすすめ物件が表示される
-
-#### 民泊ページ
-- **URL**: `https://kanae-real-estate.vercel.app/minpaku/`
-- [ ] サービス紹介が表示される
-- [ ] 収支シミュレーターが動作する
-
----
-
-### 3. API Routes の確認
-
-#### Hello API
 ```bash
-curl https://kanae-real-estate.vercel.app/api/hello
+# 1. 在本地开发
+git add .
+git commit -m "feat: your changes"
+
+# 2. 推送到 GitHub
+git push origin main
+
+# 3. Vercel 自动检测并部署
+# ⏱️ 通常 2-5 分钟完成
 ```
 
-**期待されるレスポンス**:
+### 手动触发
+
+```
+Vercel Dashboard 
+→ 选择项目 
+→ Deployments 
+→ Redeploy
+```
+
+---
+
+## 📊 完全支持的功能 / Fully Supported Features
+
+### ✅ 统合买卖系统
+
+```
+/sale 页面
+├─ 3 个类别标签（すべて・住宅用・投資用）
+├─ 动态筛选器（服务端 + 客户端）
+├─ API Routes (/api/properties/unified-search)
+├─ 服务端渲染（SSR）
+├─ 增量静态再生成（ISR）
+└─ 图片优化（Vercel Image Optimization）
+```
+
+### ✅ Next.js 15 功能
+
+```
+- App Router ✅
+- Server Components ✅
+- Client Components ✅
+- API Routes ✅
+- Dynamic Routes ✅
+- Middleware ✅
+- Image Optimization ✅
+- Font Optimization ✅
+```
+
+### ✅ 性能优化
+
+```
+- 自动代码分割 ✅
+- 静态资源优化 ✅
+- Edge Caching ✅
+- Gzip/Brotli 压缩 ✅
+- HTTP/2 推送 ✅
+```
+
+---
+
+## 🔧 Vercel 特定配置
+
+### vercel.json (可选)
+
+如需自定义，可创建：
+
 ```json
 {
-  "message": "Hello from Next.js API Route",
-  "timestamp": "2026-01-12T...",
-  "environment": "production"
+  "buildCommand": "npm run build",
+  "devCommand": "npm run dev",
+  "installCommand": "npm install",
+  "framework": "nextjs",
+  "outputDirectory": ".next"
 }
 ```
 
-**確認項目**:
-- [ ] JSON レスポンスが返る
-- [ ] `environment` が "production" になっている
-- [ ] ステータスコード 200
+### .vercelignore
 
-#### Properties API
-```bash
-curl 'https://kanae-real-estate.vercel.app/api/properties?type=rent'
+已配置，排除不必要的文件：
+
+```
+node_modules
+.next
+.env*.local
+.DS_Store
+*.log
+.vercel
 ```
 
-**期待されるレスポンス**:
-```json
-{
-  "success": true,
-  "count": 2,
-  "properties": [...]
+---
+
+## 🎯 为什么选择 Vercel？
+
+### 优势
+
+```
+✅ Next.js 原生支持
+   - 由 Next.js 团队开发
+   - 完美兼容 Next.js 15
+   - 自动优化配置
+
+✅ 完整功能支持
+   - API Routes 完全支持
+   - SSR/ISR 无缝工作
+   - 边缘函数支持
+   - 中间件支持
+
+✅ 开发体验
+   - 预览部署自动生成
+   - 每个 PR 都有独立 URL
+   - 实时日志查看
+   - 简单的回滚功能
+
+✅ 性能
+   - 全球 CDN
+   - 边缘网络
+   - 自动优化
+   - 快速构建
+
+✅ 统合系统需求
+   - 动态 API 支持 ✅
+   - 实时筛选 ✅
+   - 服务端数据获取 ✅
+   - 客户端状态管理 ✅
+```
+
+### 不适合 Cloudflare 的原因
+
+```
+❌ API Routes 限制
+   - 需要迁移到 Workers
+   - 额外的开发成本
+
+❌ SSR 限制
+   - 有限的 Next.js 支持
+   - 部分功能不兼容
+
+❌ 统合系统需求
+   - 动态筛选需要 API
+   - 实时数据需要 SSR
+   - 复杂的客户端路由
+
+✅ Vercel 完美支持所有需求
+```
+
+---
+
+## 📝 部署检查清单 / Deployment Checklist
+
+### 部署前
+
+```
+✅ 代码检查
+├─ [ ] 无 TypeScript 错误
+├─ [ ] 无 ESLint 警告（重要的）
+├─ [ ] 通过本地构建测试
+└─ [ ] 环境变量已配置
+
+✅ Git 状态
+├─ [ ] 所有更改已提交
+├─ [ ] 推送到 GitHub
+└─ [ ] 分支已合并到 main
+
+✅ Vercel 设置
+├─ [ ] 项目已连接 GitHub
+├─ [ ] 环境变量已设置
+└─ [ ] Production 分支设为 main
+```
+
+### 部署后
+
+```
+✅ 功能验证
+├─ [ ] 主页加载正常
+├─ [ ] /sale 页面正常
+├─ [ ] 类别切换工作
+├─ [ ] 筛选器工作
+├─ [ ] 物件显示正常
+└─ [ ] API 调用成功
+
+✅ 性能检查
+├─ [ ] Lighthouse Score > 90
+├─ [ ] 页面加载 < 2 秒
+└─ [ ] 无 Console 错误
+```
+
+---
+
+## 🐛 故障排除 / Troubleshooting
+
+### 问题 1: 构建失败
+
+**检查:**
+```bash
+# 本地测试构建
+npm run build
+
+# 查看构建日志
+Vercel Dashboard → Deployments → View Function Logs
+```
+
+**常见原因:**
+- TypeScript 类型错误
+- 环境变量未设置
+- 依赖包版本冲突
+
+### 问题 2: 页面 404
+
+**检查:**
+- 路由配置是否正确
+- 文件路径是否正确
+- 动态路由是否正确定义
+
+### 问题 3: API 不工作
+
+**检查:**
+- 环境变量是否在 Vercel 设置
+- API Route 文件位置是否正确
+- Supabase 连接是否正常
+
+### 问题 4: 图片不显示
+
+**检查:**
+```typescript
+// next.config.ts 中
+images: {
+  domains: ['images.unsplash.com'], // 添加你的图片域名
 }
 ```
 
-**確認項目**:
-- [ ] JSON レスポンスが返る
-- [ ] `success: true`
-- [ ] 物件データが含まれる
+---
 
-#### Contact API
-```bash
-curl -X POST https://kanae-real-estate.vercel.app/api/contact \
-  -H "Content-Type: application/json" \
-  -d '{
-    "name": "Test User",
-    "email": "test@example.com",
-    "message": "Test message"
-  }'
+## 🌐 URL 结构 / URL Structure
+
+### Production
+
+```
+https://your-project.vercel.app
+https://kanae-real-estate.vercel.app (example)
 ```
 
-**期待されるレスポンス**:
-```json
-{
-  "success": true,
-  "message": "お問い合わせありがとうございます...",
-  "submissionId": 1234567890
+### Preview (PR deployments)
+
+```
+https://kanae-git-{branch}-{team}.vercel.app
+https://kanae-git-feature-new-page-team.vercel.app (example)
+```
+
+### 自定义域名
+
+```
+Vercel Dashboard 
+→ Settings 
+→ Domains 
+→ Add Domain
+```
+
+---
+
+## 📊 监控和分析 / Monitoring & Analytics
+
+### Vercel Analytics
+
+```
+// 添加到 app/layout.tsx
+import { Analytics } from '@vercel/analytics/react';
+
+export default function RootLayout({ children }) {
+  return (
+    <html>
+      <body>
+        {children}
+        <Analytics />
+      </body>
+    </html>
+  );
 }
 ```
 
-**確認項目**:
-- [ ] JSON レスポンスが返る
-- [ ] `success: true`
-- [ ] `submissionId` が含まれる
+### 实时日志
+
+```
+Vercel Dashboard 
+→ Deployments 
+→ 选择部署 
+→ Runtime Logs
+```
 
 ---
 
-### 4. API テストページの確認
+## 🎯 最佳实践 / Best Practices
 
-**URL**: `https://kanae-real-estate.vercel.app/api-test`
+### 1. 环境变量管理
 
-**確認項目**:
-- [ ] ページが表示される
-- [ ] 各 API テストボタンが動作する
-- [ ] レスポンスが正しく表示される
+```bash
+# 开发环境
+.env.local
 
----
-
-## 🔧 ブラウザでの確認手順
-
-### 1. ホームページを開く
-
-```
-https://kanae-real-estate.vercel.app/
+# 生产环境
+Vercel Dashboard → Settings → Environment Variables
 ```
 
-**確認内容**:
-1. ページが素早く読み込まれる（< 3秒）
-2. すべてのセクションが表示される
-3. ナビゲーションが動作する
-4. レスポンシブデザインが動作する（ブラウザのウィンドウをリサイズ）
+### 2. 分支策略
 
----
-
-### 2. API をブラウザで直接確認
-
-#### Hello API
 ```
-https://kanae-real-estate.vercel.app/api/hello
+main           → Production (自动部署)
+staging        → Staging (预览环境)
+feature/*      → Preview (PR 部署)
 ```
 
-ブラウザで開くと、JSON が表示されます：
-```json
-{
-  "message": "Hello from Next.js API Route",
-  "timestamp": "...",
-  "environment": "production"
+### 3. 性能优化
+
+```typescript
+// 使用 Next.js Image 组件
+import Image from 'next/image';
+
+// 代码分割
+const DynamicComponent = dynamic(() => import('./Component'));
+
+// 静态生成（当可能时）
+export const generateStaticParams = async () => {...};
+```
+
+### 4. 错误处理
+
+```typescript
+// app/error.tsx
+'use client';
+
+export default function Error({ error, reset }) {
+  return (
+    <div>
+      <h2>出错了！</h2>
+      <button onClick={() => reset()}>重试</button>
+    </div>
+  );
 }
 ```
 
-#### Properties API
-```
-https://kanae-real-estate.vercel.app/api/properties
-```
+---
 
-すべての物件データが表示されます。
+## 📚 相关文档 / Related Documentation
 
-```
-https://kanae-real-estate.vercel.app/api/properties?type=rent
-```
+### Vercel 官方文档
+- [Vercel Documentation](https://vercel.com/docs)
+- [Next.js on Vercel](https://vercel.com/docs/frameworks/nextjs)
+- [Environment Variables](https://vercel.com/docs/environment-variables)
 
-賃貸物件のみが表示されます。
+### 项目文档
+- `UNIFIED_PROPERTY_SYSTEM.md` - 统合系统架构
+- `DEPLOYMENT_VERIFICATION.md` - 部署验证指南
+- `VISUAL_CHANGES_GUIDE.md` - 视觉变更指南
 
 ---
 
-### 3. API テストページを使用
+## ✅ 总结 / Summary
+
+### 当前状态
 
 ```
-https://kanae-real-estate.vercel.app/api-test
+✅ 平台: Vercel（唯一部署平台）
+✅ 配置: 完全优化为 Vercel
+✅ 功能: 100% 支持统合买卖系统
+✅ 性能: 自动优化和 CDN
+✅ 维护: 简单的部署和回滚
 ```
 
-このページで：
-1. 各 API の「テスト実行」ボタンをクリック
-2. レスポンスが正しく表示されることを確認
-3. すべての API が動作していることを確認
+### 不使用 Cloudflare 的原因
 
----
-
-## 🎯 自動デプロイの動作確認
-
-### Git Push でのデプロイ
-
-1. **ローカルで変更を加える**
-   ```bash
-   # 例: README.md を編集
-   echo "# Updated" >> README.md
-   git add README.md
-   git commit -m "test: Verify auto-deploy"
-   git push origin main
-   ```
-
-2. **Vercel ダッシュボードで確認**
-   - 自動的に新しいデプロイが開始される
-   - ビルドログを確認
-   - 数分後、変更が反映される
-
-3. **URL で確認**
-   - 変更が本番環境に反映されているか確認
-
----
-
-## 📊 Vercel ダッシュボードの機能
-
-### デプロイメント履歴
-- すべてのデプロイメントを表示
-- 各デプロイメントのビルドログを確認
-- ロールバック機能（前のバージョンに戻す）
-
-### Analytics（オプション）
-- ページビュー数
-- リクエスト数
-- レスポンス時間
-- エラー率
-
-### Settings
-- Environment Variables の設定
-- Custom Domains の追加
-- Build & Development Settings の変更
-
----
-
-## 🔍 トラブルシューティング
-
-### ビルドが失敗する場合
-
-#### 1. ビルドログを確認
-Vercel ダッシュボードの「Deployments」→ 失敗したデプロイメント → 「View Build Logs」
-
-#### 2. よくある原因
-
-**依存関係のエラー**
-```bash
-# エラー例
-npm ERR! Could not resolve dependency
+```
+1. 统合系统需要动态 API Routes
+2. 需要完整的 SSR 支持
+3. Vercel 提供更好的 Next.js 集成
+4. 开发和部署流程更简单
+5. 预览部署自动生成
 ```
 
-**解決策**:
-- `package-lock.json` が最新か確認
-- ローカルで `npm install` を実行して問題がないか確認
+### 推荐设置
 
-**TypeScript エラー**
-```bash
-# エラー例
-Type error: Cannot find module...
 ```
-
-**解決策**:
-- ローカルで `npm run build` を実行してエラーを確認
-- 型定義を修正
-
-**環境変数の不足**
-```bash
-# エラー例
-Error: Missing environment variable
-```
-
-**解決策**:
-- Vercel ダッシュボードで必要な環境変数を追加
-
----
-
-### API が動作しない場合
-
-#### 1. API エンドポイントを直接確認
-```bash
-curl https://your-app.vercel.app/api/hello
-```
-
-#### 2. ブラウザの開発者ツールで確認
-- F12 を押して開発者ツールを開く
-- Network タブで API リクエストを確認
-- エラーメッセージを確認
-
-#### 3. Vercel Function Logs を確認
-Vercel ダッシュボード → Deployments → Functions タブ
-
----
-
-### ページが 404 になる場合
-
-#### 1. URL を確認
-- Next.js 13+ では `/rent/` ではなく `/rent` でアクセス可能
-- 両方試してみる
-
-#### 2. ビルドログで静的生成を確認
-ビルドログに以下のような出力があるか確認：
-```
-Route (app)                          Size
-┌ ○ /                             ...
-├ ○ /rent                         ...
-├ ○ /sale                         ...
-└ ○ /minpaku                      ...
+✅ GitHub → Vercel 自动部署
+✅ 环境变量在 Vercel Dashboard 设置
+✅ 使用 Vercel Analytics 监控
+✅ 自定义域名（如需要）
+✅ 定期检查 Vercel 日志
 ```
 
 ---
 
-## 🌐 カスタムドメインの設定（オプション）
-
-### 独自ドメインを接続する場合
-
-1. **Vercel ダッシュボードで設定**
-   - Project Settings → Domains
-   - 「Add Domain」をクリック
-   - 独自ドメイン（例：`kanae-realestate.com`）を入力
-
-2. **DNS 設定**
-   - A レコードまたは CNAME レコードを設定
-   - Vercel が提供する値を使用
-
-3. **SSL 証明書**
-   - Vercel が自動的に Let's Encrypt 証明書を発行
-   - HTTPS が自動的に有効化される
-
----
-
-## 📈 パフォーマンス最適化
-
-### Vercel の最適化機能
-
-1. **Edge Network**
-   - 世界中の CDN から配信
-   - 低レイテンシー
-
-2. **Automatic Static Optimization**
-   - 静的ページは自動的に最適化
-   - 高速な初回読み込み
-
-3. **Image Optimization**
-   - Next.js の Image コンポーネントが自動最適化
-   - WebP 形式に変換
-   - レスポンシブ画像
-
-4. **Edge Functions**
-   - API Routes が Edge で実行
-   - 高速なレスポンス
-
----
-
-## 📝 デプロイ確認レポート（記入用）
-
-### デプロイ情報
-
-- **デプロイ日時**: _______________
-- **Vercel URL**: https://________________.vercel.app
-- **プロジェクト名**: _______________
-- **Framework**: Next.js
-- **Node.js Version**: _______________
-
-### 確認結果
-
-#### ホームページ
-- [ ] 正常に表示
-- [ ] レスポンス時間: _____ ms
-- [ ] 問題点: _______________
-
-#### API Routes
-- [ ] `/api/hello` 動作確認
-  - レスポンス: _______________
-- [ ] `/api/properties` 動作確認
-  - レスポンス: _______________
-- [ ] `/api/contact` 動作確認
-  - レスポンス: _______________
-
-#### その他のページ
-- [ ] `/rent` 動作確認
-- [ ] `/sale` 動作確認
-- [ ] `/minpaku` 動作確認
-- [ ] `/api-test` 動作確認
-
-### 問題点・改善点
-
-_______________________________________________
-_______________________________________________
-_______________________________________________
-
----
-
-## 🎉 デプロイ完了後の次のステップ
-
-### 1. 環境変数の設定
-データベースや API キーを使用する場合：
-- Vercel ダッシュボード → Settings → Environment Variables
-- 必要な環境変数を追加
-- 再デプロイ（自動）
-
-### 2. カスタムドメインの追加
-独自ドメインを使用する場合：
-- Vercel ダッシュボード → Settings → Domains
-- ドメインを追加して DNS 設定
-
-### 3. Analytics の有効化
-アクセス解析を使用する場合：
-- Vercel ダッシュボード → Analytics
-- プランをアップグレード（必要に応じて）
-
-### 4. 継続的な開発
-- GitHub に Push → 自動デプロイ
-- プレビューデプロイメント（PR ごと）
-- 本番デプロイメント（main ブランチ）
-
----
-
-## 📚 参考リンク
-
-- **Vercel ドキュメント**: https://vercel.com/docs
-- **Next.js デプロイガイド**: https://nextjs.org/docs/deployment
-- **Vercel CLI**: https://vercel.com/docs/cli
-- **環境変数の設定**: https://vercel.com/docs/concepts/projects/environment-variables
-
----
-
-## ✅ チェックリスト
-
-### デプロイ前
-- [x] GitHub にコードを Push
-- [x] ローカルで `npm run build` が成功
-- [x] すべての API が動作
-
-### デプロイ中
-- [ ] Vercel にログイン
-- [ ] GitHub リポジトリを接続
-- [ ] プロジェクト設定を確認
-- [ ] デプロイを実行
-
-### デプロイ後
-- [ ] Vercel URL にアクセス
-- [ ] ホームページが表示される
-- [ ] `/api/hello` が JSON を返す
-- [ ] `/api/properties` が動作
-- [ ] `/api/contact` が動作
-- [ ] すべてのページが動作
-
----
-
-**作成日**: 2026-01-12  
-**バージョン**: v1.0  
-**状態**: デプロイ準備完了
+**配置版本**: 2.0.0 (Vercel Only)  
+**更新日期**: 2026-02-01  
+**状态**: ✅ 生产就绪
