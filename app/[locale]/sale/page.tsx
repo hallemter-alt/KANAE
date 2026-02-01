@@ -5,9 +5,9 @@
 
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense, useCallback } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { Building2, TrendingUp, Filter, Home, MapPin } from 'lucide-react';
+import { Building2, TrendingUp, Filter, Home } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import PropertyCard from '@/components/properties/PropertyCard';
@@ -29,7 +29,7 @@ interface Property {
   [key: string]: any;
 }
 
-export default function UnifiedSalePage() {
+function UnifiedSaleContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { locale } = useLanguage();
@@ -54,12 +54,7 @@ export default function UnifiedSalePage() {
     }
   }, [searchParams]);
 
-  // Fetch properties when category or filters change
-  useEffect(() => {
-    fetchProperties();
-  }, [category, filters]);
-
-  const fetchProperties = async () => {
+  const fetchProperties = useCallback(async () => {
     setLoading(true);
     try {
       // Build query based on category
@@ -99,7 +94,12 @@ export default function UnifiedSalePage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [category, filters, pagination.page, pagination.limit]);
+
+  // Fetch properties when category or filters change
+  useEffect(() => {
+    fetchProperties();
+  }, [fetchProperties]);
 
   const handleCategoryChange = (newCategory: PropertyCategory) => {
     setCategory(newCategory);
@@ -387,5 +387,18 @@ export default function UnifiedSalePage() {
 
       <Footer />
     </main>
+  );
+}
+
+// Wrap in Suspense to handle useSearchParams
+export default function UnifiedSalePage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600"></div>
+      </div>
+    }>
+      <UnifiedSaleContent />
+    </Suspense>
   );
 }
