@@ -162,7 +162,7 @@ export default function SearchFiltersImproved({ onSearch, initialFilters = {}, o
       {/* 結果カウントとクリアボタン */}
       <div className="flex items-center justify-between pb-4 border-b border-gray-200">
         <div className="flex items-center space-x-3">
-          <div className="text-sm font-bold text-gray-700">
+          <div className="text-sm font-bold text-gray-900">
             該当物件: <span className="text-2xl font-bold text-primary-600">{resultCount}</span> 件
           </div>
           {activeFilterCount > 0 && (
@@ -190,13 +190,13 @@ export default function SearchFiltersImproved({ onSearch, initialFilters = {}, o
         <div className="bg-gray-50 rounded-xl p-4">
           <div className="flex items-center space-x-2 mb-4">
             <MapPin className="w-5 h-5 text-primary-600" />
-            <h3 className="text-lg font-bold text-gray-700">地理位置</h3>
+            <h3 className="text-lg font-bold text-gray-900">地理位置</h3>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* エリア（区） */}
             <div>
-              <label className="block text-sm font-bold text-gray-700 mb-2">
+              <label className="block text-sm font-bold text-gray-900 mb-2">
                 エリア（区）
               </label>
               <select
@@ -213,7 +213,7 @@ export default function SearchFiltersImproved({ onSearch, initialFilters = {}, o
 
             {/* 路線 */}
             <div>
-              <label className="block text-sm font-bold text-gray-700 mb-2">
+              <label className="block text-sm font-bold text-gray-900 mb-2">
                 路線
               </label>
               <select
@@ -233,7 +233,7 @@ export default function SearchFiltersImproved({ onSearch, initialFilters = {}, o
             {/* 駅 */}
             {filters.lineId && (
               <div className="md:col-span-2">
-                <label className="block text-sm font-bold text-gray-700 mb-2">
+                <label className="block text-sm font-bold text-gray-900 mb-2">
                   駅
                 </label>
                 <select
@@ -257,7 +257,7 @@ export default function SearchFiltersImproved({ onSearch, initialFilters = {}, o
         <div className="bg-gray-50 rounded-xl p-4">
           <div className="flex items-center space-x-2 mb-4">
             <TrendingUp className="w-5 h-5 text-primary-600" />
-            <h3 className="text-lg font-bold text-gray-700">予算範囲</h3>
+            <h3 className="text-lg font-bold text-gray-900">予算範囲</h3>
           </div>
 
           {/* 価格プリセット */}
@@ -267,7 +267,7 @@ export default function SearchFiltersImproved({ onSearch, initialFilters = {}, o
                 key={index}
                 type="button"
                 onClick={() => handlePricePreset(preset)}
-                className="px-3 py-2 text-sm border-2 border-gray-300 rounded-lg hover:border-primary-500 hover:bg-primary-50 transition-all text-gray-700 hover:text-primary-700 font-bold"
+                className="px-3 py-2 text-sm border-2 border-gray-300 rounded-lg hover:border-primary-500 hover:bg-primary-50 transition-all text-gray-900 hover:text-primary-700 font-bold"
               >
                 {preset.label}
               </button>
@@ -277,7 +277,7 @@ export default function SearchFiltersImproved({ onSearch, initialFilters = {}, o
           {/* 価格範囲入力 */}
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-bold text-gray-700 mb-2">
+              <label className="block text-sm font-bold text-gray-900 mb-2">
                 下限（万円）
               </label>
               <input
@@ -289,7 +289,7 @@ export default function SearchFiltersImproved({ onSearch, initialFilters = {}, o
               />
             </div>
             <div>
-              <label className="block text-sm font-bold text-gray-700 mb-2">
+              <label className="block text-sm font-bold text-gray-900 mb-2">
                 上限（万円）
               </label>
               <input
@@ -307,7 +307,7 @@ export default function SearchFiltersImproved({ onSearch, initialFilters = {}, o
         <div className="bg-gray-50 rounded-xl p-4">
           <div className="flex items-center space-x-2 mb-4">
             <Home className="w-5 h-5 text-primary-600" />
-            <h3 className="text-lg font-bold text-gray-700">物件タイプ</h3>
+            <h3 className="text-lg font-bold text-gray-900">物件タイプ</h3>
           </div>
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -332,12 +332,12 @@ export default function SearchFiltersImproved({ onSearch, initialFilters = {}, o
         <div className="bg-gray-50 rounded-xl p-4">
           <div className="flex items-center space-x-2 mb-4">
             <Ruler className="w-5 h-5 text-primary-600" />
-            <h3 className="text-lg font-bold text-gray-700">面積</h3>
+            <h3 className="text-lg font-bold text-gray-900">面積</h3>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <div className="text-sm font-bold text-gray-700 mb-2">土地面積（㎡）</div>
+              <div className="text-sm font-bold text-gray-900 mb-2">土地面積（㎡）</div>
               <div className="grid grid-cols-2 gap-2">
                 <input
                   type="number"
@@ -356,7 +356,7 @@ export default function SearchFiltersImproved({ onSearch, initialFilters = {}, o
               </div>
             </div>
             <div>
-              <div className="text-sm font-bold text-gray-700 mb-2">建物面積（㎡）</div>
+              <div className="text-sm font-bold text-gray-900 mb-2">建物面積（㎡）</div>
               <div className="grid grid-cols-2 gap-2">
                 <input
                   type="number"
@@ -402,7 +402,7 @@ export default function SearchFiltersImproved({ onSearch, initialFilters = {}, o
             <div>
               <div className="flex items-center space-x-2 mb-3">
                 <TrendingUp className="w-4 h-4 text-primary-600" />
-                <h4 className="font-bold text-gray-700">想定利回り（%）</h4>
+                <h4 className="font-bold text-gray-900">想定利回り（%）</h4>
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <input
@@ -428,7 +428,7 @@ export default function SearchFiltersImproved({ onSearch, initialFilters = {}, o
             <div>
               <div className="flex items-center space-x-2 mb-3">
                 <Calendar className="w-4 h-4 text-primary-600" />
-                <h4 className="font-bold text-gray-700">築年数</h4>
+                <h4 className="font-bold text-gray-900">築年数</h4>
               </div>
               <select
                 value={filters.maxBuildingAge}
@@ -447,7 +447,7 @@ export default function SearchFiltersImproved({ onSearch, initialFilters = {}, o
             <div>
               <div className="flex items-center space-x-2 mb-3">
                 <MapPin className="w-4 h-4 text-primary-600" />
-                <h4 className="font-bold text-gray-700">駅徒歩時間</h4>
+                <h4 className="font-bold text-gray-900">駅徒歩時間</h4>
               </div>
               <select
                 value={filters.maxWalkTime}
