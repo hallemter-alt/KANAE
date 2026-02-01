@@ -13,6 +13,7 @@ import type { PremiumProperty } from '@/lib/types/premium-property';
 interface PropertyCardProps {
   property: PremiumProperty;
   language?: 'ja' | 'en' | 'zh';
+  locale?: string;
   showBadges?: boolean;
   showYield?: boolean;
   showLocation?: boolean;
@@ -21,6 +22,7 @@ interface PropertyCardProps {
 export default function PropertyCard({
   property,
   language = 'ja',
+  locale = 'ja',
   showBadges = true,
   showYield = true,
   showLocation = true,
@@ -82,10 +84,13 @@ export default function PropertyCard({
 
   const headline = getHeadline();
   const features = getFeatures();
+  
+  // Use locale-aware link
+  const detailLink = `/${locale}/properties/${property.id}`;
 
   return (
-    <Link href={`/properties/${property.id}`}>
-      <div className="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden h-full flex flex-col">
+    <Link href={detailLink} className="block h-full">
+      <div className="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden h-full flex flex-col cursor-pointer">>
         {/* Image Section */}
         <div className="relative aspect-[16/10] overflow-hidden bg-gradient-to-br from-sky-100 to-blue-100">
           {property.image_urls && property.image_urls.length > 0 ? (

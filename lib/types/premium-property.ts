@@ -178,12 +178,30 @@ export interface PropertyFilterParams {
   prefecture?: string;
   city?: string;
   
+  // Area filters (m²)
+  land_area_min?: number;
+  land_area_max?: number;
+  building_area_min?: number;
+  building_area_max?: number;
+  
   // Completion date range
   completion_year_min?: number;
   completion_year_max?: number;
   
-  // Structure
+  // Structure types (checkboxes)
+  structure_rc?: boolean;
+  structure_src?: boolean;
+  structure_steel?: boolean;
+  structure_wood?: boolean;
   structure_types?: StructureType[];
+  
+  // Floors range
+  floors_min?: number;
+  floors_max?: number;
+  
+  // Station & Transport
+  station_name?: string;
+  walk_time_max?: number;
   
   // Special features (boolean filters)
   has_iot?: boolean;

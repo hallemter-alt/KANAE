@@ -281,6 +281,7 @@ function UnifiedSaleContent() {
                       key={property.id}
                       property={property as any}
                       language={locale as 'ja' | 'en' | 'zh'}
+                      locale={locale}
                     />
                   ))}
                 </div>
