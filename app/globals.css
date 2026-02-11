@@ -2,18 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
-/* デザインシステム - カスタムカラー */
+/* 優化的字體和排版系統 */
 :root {
   --foreground-rgb: 17, 24, 39;
   --background-start-rgb: 255, 255, 255;
   --background-end-rgb: 249, 250, 251;
   
-  /* ブランドカラー */
+  /* 品牌顏色 */
   --primary: 2, 132, 199;
   --secondary: 192, 38, 211;
   --accent: 251, 191, 36;
   
-  /* グレースケール */
+  /* 灰階 */
   --gray-50: 249, 250, 251;
   --gray-100: 243, 244, 246;
   --gray-200: 229, 231, 235;
@@ -25,11 +25,23 @@
   --gray-800: 31, 41, 55;
   --gray-900: 17, 24, 39;
   
-  /* ステータスカラー */
+  /* 狀態顏色 */
   --success: 16, 185, 129;
   --warning: 245, 158, 11;
   --error: 239, 68, 68;
   --info: 59, 130, 246;
+  
+  /* 易讀性優化 - 字體大小 */
+  --font-size-base: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 20px;
+  
+  /* 易讀性優化 - 行高 */
+  --line-height-tight: 1.25;
+  --line-height-snug: 1.375;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+  --line-height-loose: 2;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -40,7 +52,7 @@
   }
 }
 
-/* ベーススタイル */
+/* 優化的基礎樣式 */
 * {
   box-sizing: border-box;
   padding: 0;
@@ -50,67 +62,152 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+  /* 優化文字渲染 */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 body {
   color: rgb(var(--foreground-rgb));
   background: rgb(var(--background-start-rgb));
   font-family: var(--font-noto-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-  line-height: 1.7;
+  line-height: var(--line-height-relaxed);
   font-weight: 400;
+  /* 優化字體渲染 */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* 優化移動端點擊 */
+  -webkit-tap-highlight-color: transparent;
 }
 
-/* タイポグラフィーの統一 */
+/* 優化的標題樣式 - 提升易讀性 */
 h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
-  line-height: 1.3;
+  line-height: var(--line-height-tight);
   color: rgb(var(--gray-900));
   margin: 0;
+  /* 優化字母間距 */
+  letter-spacing: -0.025em;
+  /* 文字平衡 */
+  text-wrap: balance;
 }
 
 h1 {
-  font-size: clamp(2rem, 5vw, 3rem);
-  letter-spacing: -0.02em;
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  /* 增加段落下方間距 */
+  margin-bottom: 1.5rem;
 }
 
 h2 {
-  font-size: clamp(1.75rem, 4vw, 2.25rem);
-  letter-spacing: -0.01em;
+  font-size: clamp(1.875rem, 4vw, 2.5rem);
+  letter-spacing: -0.025em;
+  line-height: 1.25;
+  margin-bottom: 1.25rem;
 }
 
 h3 {
-  font-size: clamp(1.5rem, 3vw, 1.875rem);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  letter-spacing: -0.02em;
+  line-height: 1.35;
+  margin-bottom: 1rem;
 }
 
 h4 {
   font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+  line-height: 1.4;
+  margin-bottom: 0.875rem;
 }
 
 h5 {
   font-size: clamp(1.125rem, 2vw, 1.25rem);
+  line-height: 1.5;
+  margin-bottom: 0.75rem;
 }
 
 h6 {
   font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
 }
 
+/* 優化的段落樣式 - 提升可讀性 */
 p {
-  margin: 0;
-  line-height: 1.75;
+  margin: 0 0 1.5rem 0;
+  line-height: var(--line-height-relaxed);
+  /* 最大寬度限制提升可讀性 */
+  max-width: 65ch;
+  /* 文字平衡 */
+  text-wrap: pretty;
 }
 
-/* レスポンシブな余白 */
+/* 長段落優化 */
+p.text-lg {
+  line-height: 1.8;
+  font-size: 1.125rem;
+}
+
+/* 小文字優化 */
+p.text-sm {
+  line-height: 1.7;
+}
+
+/* 引用文字 */
+blockquote {
+  margin: 2rem 0;
+  padding: 1rem 1.5rem;
+  border-left: 4px solid rgb(var(--primary));
+  font-style: italic;
+  line-height: 1.8;
+}
+
+/* 列表優化 */
+ul, ol {
+  margin: 1.5rem 0;
+  padding-left: 2rem;
+  line-height: 1.8;
+}
+
+li {
+  margin-bottom: 0.75rem;
+}
+
+li:last-child {
+  margin-bottom: 0;
+}
+
+/* 響應式字體大小優化 */
 @media (max-width: 640px) {
   html {
     font-size: 14px;
+  }
+  
+  h1 {
+    margin-bottom: 1rem;
+  }
+  
+  h2 {
+    margin-bottom: 0.875rem;
+  }
+  
+  p {
+    margin-bottom: 1.25rem;
   }
 }
 
 @media (min-width: 1536px) {
   html {
     font-size: 18px;
+  }
+  
+  h1 {
+    margin-bottom: 2rem;
+  }
+  
+  h2 {
+    margin-bottom: 1.5rem;
   }
 }
 

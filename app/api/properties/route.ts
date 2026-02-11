@@ -1,6 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { supabase } from '@/lib/supabase'
 
+// Edge Runtime 配置以獲得更快的響應
+export const runtime = 'nodejs' // Supabase需要Node.js runtime
+export const dynamic = 'force-dynamic' // 始終動態生成
+
 // GET /api/properties - 物件一覧取得・検索
 export async function GET(request: NextRequest) {
   try {

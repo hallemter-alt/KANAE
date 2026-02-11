@@ -5,6 +5,9 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import { Container, Section, Heading, Text, Card } from '@/components/ui/Layout'
 
+// ISR 配置 - 每5分鐘重新驗證（僅對靜態頁面有效）
+// Client component 無法使用 revalidate，需要在服務端組件中設置
+
 // サンプル物件データ
 const sampleProperties = [
   {
