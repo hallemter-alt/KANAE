@@ -59,7 +59,7 @@ export default function PhilosophyPage() {
 
             <Card padding="lg" hover>
               <div className="mb-4">
-                <span className="inline-block px-4 py-2 bg-purple-100 text-purple-800 rounded-full font-bold text-sm">
+                <span className="inline-block px-4 py-2 bg-gold-100 text-gold-800 rounded-full font-bold text-sm">
                   ビジョン
                 </span>
               </div>
@@ -72,15 +72,15 @@ export default function PhilosophyPage() {
               </Text>
               <div className="mt-6 space-y-3">
                 <div className="flex items-start">
-                  <span className="text-purple-600 mr-2">✓</span>
+                  <span className="text-gold-600 mr-2">✓</span>
                   <Text size="sm">他者を思いやる心を大切に</Text>
                 </div>
                 <div className="flex items-start">
-                  <span className="text-purple-600 mr-2">✓</span>
+                  <span className="text-gold-600 mr-2">✓</span>
                   <Text size="sm">革新的なサービスの提供</Text>
                 </div>
                 <div className="flex items-start">
-                  <span className="text-purple-600 mr-2">✓</span>
+                  <span className="text-gold-600 mr-2">✓</span>
                   <Text size="sm">業界のスタンダードを創造</Text>
                 </div>
               </div>
@@ -153,7 +153,7 @@ export default function PhilosophyPage() {
                 'ワークライフバランスを尊重します',
                 '多様性を認め、個性を活かします',
               ]}
-              color="purple"
+              color="gold"
             />
           </div>
         </Container>
@@ -241,20 +241,20 @@ function ValueCard({ number, title, description, icon }: ValueCardProps) {
 interface PromiseCardProps {
   title: string
   items: string[]
-  color: 'blue' | 'green' | 'purple'
+  color: 'blue' | 'green' | 'gold'
 }
 
 function PromiseCard({ title, items, color }: PromiseCardProps) {
   const colorClasses = {
     blue: 'bg-primary-50 border-primary-200 text-primary-800',
     green: 'bg-green-50 border-green-200 text-green-800',
-    purple: 'bg-purple-50 border-purple-200 text-purple-800',
+    gold: 'bg-gold-50 border-gold-200 text-gold-800',
   }
 
   const iconColorClasses = {
     blue: 'text-primary-600',
     green: 'text-green-600',
-    purple: 'text-purple-600',
+    gold: 'text-gold-600',
   }
 
   return (

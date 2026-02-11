@@ -101,18 +101,18 @@ export default function RentPage() {
                 <select
                   value={selectedArea}
                   onChange={(e) => setSelectedArea(e.target.value)}
-                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all text-base"
+                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all text-base text-gray-900 bg-white"
                 >
-                  <option value="">エリアを選択してください</option>
-                  <option value="tokyo23">東京23区</option>
-                  <option value="shibuya">渋谷区</option>
-                  <option value="minato">港区</option>
-                  <option value="shinjuku">新宿区</option>
-                  <option value="setagaya">世田谷区</option>
-                  <option value="meguro">目黒区</option>
-                  <option value="kanagawa">神奈川県</option>
-                  <option value="chiba">千葉県</option>
-                  <option value="saitama">埼玉県</option>
+                  <option value="" className="text-gray-700">エリアを選択してください</option>
+                  <option value="tokyo23" className="text-gray-900">東京23区</option>
+                  <option value="shibuya" className="text-gray-900">渋谷区</option>
+                  <option value="minato" className="text-gray-900">港区</option>
+                  <option value="shinjuku" className="text-gray-900">新宿区</option>
+                  <option value="setagaya" className="text-gray-900">世田谷区</option>
+                  <option value="meguro" className="text-gray-900">目黒区</option>
+                  <option value="kanagawa" className="text-gray-900">神奈川県</option>
+                  <option value="chiba" className="text-gray-900">千葉県</option>
+                  <option value="saitama" className="text-gray-900">埼玉県</option>
                 </select>
               </div>
 
@@ -127,7 +127,7 @@ export default function RentPage() {
                     value={minRent}
                     onChange={(e) => setMinRent(e.target.value)}
                     placeholder="例: 50000"
-                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all text-base"
+                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all text-base text-gray-900 bg-white"
                   />
                 </div>
                 <div>
@@ -139,7 +139,7 @@ export default function RentPage() {
                     value={maxRent}
                     onChange={(e) => setMaxRent(e.target.value)}
                     placeholder="例: 200000"
-                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all text-base"
+                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all text-base text-gray-900 bg-white"
                   />
                 </div>
               </div>
@@ -163,7 +163,7 @@ export default function RentPage() {
                         type="checkbox" 
                         checked={selectedRooms.includes(type)}
                         onChange={() => handleRoomToggle(type)}
-                        className="rounded text-blue-600 focus:ring-blue-500" 
+                        className="rounded text-primary-600 focus:ring-primary-500" 
                       />
                       <span className="text-base">{type}</span>
                     </label>

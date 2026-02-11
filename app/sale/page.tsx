@@ -5,20 +5,26 @@ import Footer from '@/components/Footer';
 
 export default function SalePage() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+    <main className="min-h-screen bg-gray-50">
       <Navbar />
       
-      <div className="container mx-auto px-4 py-16">
-        <div className="max-w-4xl mx-auto">
-          {/* Hero Section */}
-          <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+      {/* Hero Section with Dark Gradient */}
+      <section className="relative pt-32 pb-20 bg-gradient-to-br from-primary-900 via-primary-800 to-gold-900">
+        <div className="absolute inset-0 bg-black/10"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-4xl mx-auto text-center">
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
               売買物件検索
             </h1>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-white/90 mb-8">
               マンション・一戸建て・土地など、資産価値の高い物件をご提案します
             </p>
           </div>
+        </div>
+      </section>
+      
+      <div className="container mx-auto px-4 py-16">
+        <div className="max-w-4xl mx-auto">
 
           {/* Search Section */}
           <div className="bg-white rounded-2xl shadow-xl p-8 mb-12">
@@ -32,9 +38,9 @@ export default function SalePage() {
                 </label>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   {['マンション', '一戸建て', '土地'].map((type) => (
-                    <label key={type} className="flex items-center space-x-2 p-4 border-2 border-gray-300 rounded-lg hover:border-amber-500 cursor-pointer transition-colors">
-                      <input type="radio" name="propertyType" className="text-amber-600 focus:ring-amber-500" />
-                      <span className="text-gray-700 font-medium">{type}</span>
+                    <label key={type} className="flex items-center space-x-2 p-4 border-2 border-gray-300 rounded-lg hover:border-primary-500 cursor-pointer transition-colors">
+                      <input type="radio" name="propertyType" className="text-primary-600 focus:ring-primary-500" />
+                      <span className="text-gray-900 font-medium">{type}</span>
                     </label>
                   ))}
                 </div>
@@ -45,11 +51,11 @@ export default function SalePage() {
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   エリア
                 </label>
-                <select className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent">
-                  <option>東京都</option>
-                  <option>神奈川県</option>
-                  <option>千葉県</option>
-                  <option>埼玉県</option>
+                <select className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-gray-900 bg-white">
+                  <option className="text-gray-900">東京都</option>
+                  <option className="text-gray-900">神奈川県</option>
+                  <option className="text-gray-900">千葉県</option>
+                  <option className="text-gray-900">埼玉県</option>
                 </select>
               </div>
 
@@ -62,7 +68,7 @@ export default function SalePage() {
                   <input
                     type="number"
                     placeholder="30000000"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-gray-900 bg-white"
                   />
                 </div>
                 <div>
@@ -72,13 +78,13 @@ export default function SalePage() {
                   <input
                     type="number"
                     placeholder="100000000"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-gray-900 bg-white"
                   />
                 </div>
               </div>
 
               {/* Search Button */}
-              <button className="w-full bg-amber-600 text-white py-4 rounded-lg font-semibold hover:bg-amber-700 transition-colors">
+              <button className="w-full bg-gradient-to-r from-primary-600 to-primary-700 text-white py-4 rounded-lg font-bold hover:from-primary-700 hover:to-primary-800 transition-all shadow-lg">
                 物件を検索
               </button>
             </div>

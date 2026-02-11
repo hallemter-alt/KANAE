@@ -45,20 +45,26 @@ export default function MinpakuPage() {
   };
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+    <main className="min-h-screen bg-gray-50">
       <Navbar />
       
-      <div className="container mx-auto px-4 py-16">
-        <div className="max-w-5xl mx-auto">
-          {/* Hero Section */}
-          <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+      {/* Hero Section with Dark Gradient */}
+      <section className="relative pt-32 pb-20 bg-gradient-to-br from-primary-900 via-primary-800 to-gold-900">
+        <div className="absolute inset-0 bg-black/10"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-4xl mx-auto text-center">
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
               民泊運営代行サービス
             </h1>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-white/90 mb-8">
               お持ちの物件を民泊として運営し、安定した収益を実現します
             </p>
           </div>
+        </div>
+      </section>
+      
+      <div className="container mx-auto px-4 py-16">
+        <div className="max-w-5xl mx-auto">
 
           {/* Service Features */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
@@ -67,9 +73,9 @@ export default function MinpakuPage() {
               { title: '高稼働率', desc: '最適な価格設定で高い稼働率を維持' },
               { title: '安心サポート', desc: '24時間365日のトラブル対応' },
             ].map((feature, idx) => (
-              <div key={idx} className="bg-white rounded-xl shadow-lg p-6 text-center">
-                <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl">✓</span>
+                <div key={idx} className="bg-white rounded-xl shadow-lg p-6 text-center">
+                <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl text-primary-600">✓</span>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-2">{feature.title}</h3>
                 <p className="text-gray-600">{feature.desc}</p>
@@ -90,10 +96,10 @@ export default function MinpakuPage() {
                 <select
                   value={formData.propertyType}
                   onChange={(e) => setFormData({ ...formData, propertyType: e.target.value })}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-gray-900 bg-white"
                 >
-                  <option>マンション</option>
-                  <option>一戸建て</option>
+                  <option className="text-gray-900">マンション</option>
+                  <option className="text-gray-900">一戸建て</option>
                 </select>
               </div>
 
@@ -107,7 +113,7 @@ export default function MinpakuPage() {
                   value={formData.area}
                   onChange={(e) => setFormData({ ...formData, area: e.target.value })}
                   placeholder="50"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-gray-900 bg-white"
                 />
               </div>
 
@@ -119,13 +125,13 @@ export default function MinpakuPage() {
                 <select
                   value={formData.rooms}
                   onChange={(e) => setFormData({ ...formData, rooms: e.target.value })}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-gray-900 bg-white"
                 >
-                  <option>1R</option>
-                  <option>1K</option>
-                  <option>1LDK</option>
-                  <option>2LDK</option>
-                  <option>3LDK</option>
+                  <option className="text-gray-900">1R</option>
+                  <option className="text-gray-900">1K</option>
+                  <option className="text-gray-900">1LDK</option>
+                  <option className="text-gray-900">2LDK</option>
+                  <option className="text-gray-900">3LDK</option>
                 </select>
               </div>
 
@@ -139,7 +145,7 @@ export default function MinpakuPage() {
                   value={formData.nightly_rate}
                   onChange={(e) => setFormData({ ...formData, nightly_rate: e.target.value })}
                   placeholder="10000"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-gray-900 bg-white"
                 />
               </div>
 
@@ -154,7 +160,7 @@ export default function MinpakuPage() {
                   onChange={(e) => setFormData({ ...formData, occupancy_rate: e.target.value })}
                   min="0"
                   max="100"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-gray-900 bg-white"
                 />
               </div>
 
@@ -169,7 +175,7 @@ export default function MinpakuPage() {
                   onChange={(e) => setFormData({ ...formData, management_fee: e.target.value })}
                   min="0"
                   max="100"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-gray-900 bg-white"
                 />
               </div>
             </div>

@@ -44,8 +44,8 @@ export default function ManagementPage() {
               onClick={() => setActiveTab('tenant')}
               className={`px-8 py-4 rounded-xl font-bold text-lg transition-all ${
                 activeTab === 'tenant'
-                  ? 'bg-gradient-to-r from-purple-600 to-purple-700 text-white shadow-lg'
-                  : 'bg-white text-gray-600 border-2 border-gray-200 hover:border-purple-300'
+                  ? 'bg-gradient-to-r from-gold-600 to-gold-700 text-white shadow-lg'
+                  : 'bg-white text-gray-600 border-2 border-gray-200 hover:border-gold-300'
               }`}
             >
               入居者様向け
