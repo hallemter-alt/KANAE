@@ -73,10 +73,10 @@ export default function RentPage() {
       <Section background="gradient" spacing="lg">
         <Container>
           <div className="text-center">
-            <Heading level={1} align="center" className="mb-6">
+            <Heading level={1} align="center" className="mb-6 text-white">
               賃貸物件検索
             </Heading>
-            <Text size="xl" className="max-w-3xl mx-auto">
+            <Text size="xl" className="max-w-3xl mx-auto text-white/90">
               お客様のライフスタイルに合った理想の賃貸物件をお探しします
             </Text>
           </div>
@@ -98,7 +98,7 @@ export default function RentPage() {
                 <select
                   value={selectedArea}
                   onChange={(e) => setSelectedArea(e.target.value)}
-                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-base"
+                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all text-base"
                 >
                   <option value="">エリアを選択してください</option>
                   <option value="tokyo23">東京23区</option>
@@ -124,7 +124,7 @@ export default function RentPage() {
                     value={minRent}
                     onChange={(e) => setMinRent(e.target.value)}
                     placeholder="例: 50000"
-                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-base"
+                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all text-base"
                   />
                 </div>
                 <div>
@@ -136,7 +136,7 @@ export default function RentPage() {
                     value={maxRent}
                     onChange={(e) => setMaxRent(e.target.value)}
                     placeholder="例: 200000"
-                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-base"
+                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all text-base"
                   />
                 </div>
               </div>
@@ -152,7 +152,7 @@ export default function RentPage() {
                       key={type} 
                       className={`flex items-center justify-center space-x-2 p-3 border-2 rounded-lg cursor-pointer transition-all ${
                         selectedRooms.includes(type)
-                          ? 'bg-blue-50 border-blue-500 text-blue-700 font-bold'
+                          ? 'bg-primary-50 border-primary-500 text-primary-700 font-bold'
                           : 'border-gray-300 hover:bg-gray-50'
                       }`}
                     >
@@ -179,7 +179,7 @@ export default function RentPage() {
                       key={condition} 
                       className="flex items-center space-x-2 p-3 border-2 border-gray-300 rounded-lg hover:bg-gray-50 cursor-pointer transition-all"
                     >
-                      <input type="checkbox" className="rounded text-blue-600 focus:ring-blue-500" />
+                      <input type="checkbox" className="rounded text-primary-600 focus:ring-primary-500" />
                       <span className="text-sm">{condition}</span>
                     </label>
                   ))}
@@ -187,7 +187,7 @@ export default function RentPage() {
               </div>
 
               {/* 検索ボタン */}
-              <button className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white py-4 rounded-lg font-bold text-lg hover:from-blue-700 hover:to-blue-800 transition-all shadow-lg hover:shadow-xl transform hover:scale-[1.02]">
+              <button className="w-full bg-gradient-to-r from-primary-600 to-primary-700 text-white py-4 rounded-lg font-bold text-lg hover:from-primary-700 hover:to-primary-800 transition-all shadow-lg hover:shadow-xl transform hover:scale-[1.02]">
                 この条件で検索する
               </button>
             </div>
@@ -238,7 +238,7 @@ export default function RentPage() {
                     {property.features.map((feature, index) => (
                       <span 
                         key={index} 
-                        className="px-3 py-1 bg-blue-100 text-blue-800 text-xs font-medium rounded-full"
+                        className="px-3 py-1 bg-primary-100 text-primary-800 text-xs font-medium rounded-full"
                       >
                         {feature}
                       </span>
@@ -261,7 +261,7 @@ export default function RentPage() {
 
           {/* もっと見るボタン */}
           <div className="text-center mt-12">
-            <button className="px-8 py-3 border-2 border-blue-600 text-blue-600 rounded-lg font-bold hover:bg-blue-50 transition-colors">
+            <button className="px-8 py-3 border-2 border-primary-600 text-primary-600 rounded-lg font-bold hover:bg-primary-50 transition-colors">
               もっと見る
             </button>
           </div>
@@ -288,15 +288,15 @@ export default function RentPage() {
       <Section background="primary" spacing="md">
         <Container>
           <div className="text-center">
-            <Heading level={3} align="center" className="mb-4 text-gray-900">
+            <Heading level={3} align="center" className="mb-4 text-white">
               お気軽にご相談ください
             </Heading>
-            <Text size="lg" className="mb-8 max-w-2xl mx-auto">
+            <Text size="lg" className="mb-8 max-w-2xl mx-auto text-white/90">
               物件に関するご質問や内見のご予約は、お電話またはお問い合わせフォームから
             </Text>
             <a
               href="/contact"
-              className="inline-block px-8 py-4 bg-blue-600 text-white rounded-lg font-bold text-lg hover:bg-blue-700 transition-colors shadow-lg"
+              className="inline-block px-8 py-4 bg-white text-primary-600 rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors shadow-lg"
             >
               お問い合わせはこちら
             </a>
@@ -319,10 +319,10 @@ interface StepCardProps {
 function StepCard({ number, title, description }: StepCardProps) {
   return (
     <div className="text-center">
-      <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-blue-600 to-blue-700 rounded-full flex items-center justify-center text-white text-2xl font-bold shadow-lg">
+      <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-primary-600 to-primary-700 rounded-full flex items-center justify-center text-white text-2xl font-bold shadow-lg">
         {number}
       </div>
-      <Heading level={5} className="mb-2">
+      <Heading level={5} className="mb-2 text-gray-900">
         {title}
       </Heading>
       <Text size="sm" color="light">

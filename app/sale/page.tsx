@@ -95,9 +95,9 @@ export default function SalePage() {
                 { id: 4, type: '土地', price: '3,000万円', area: '100㎡' },
               ].map((property) => (
                 <div key={property.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                  <div className="h-48 bg-gradient-to-br from-blue-400 to-blue-600" />
+                  <div className="h-48 bg-gradient-to-br from-gold-400 to-gold-600" />
                   <div className="p-6">
-                    <div className="inline-block px-3 py-1 bg-blue-100 text-blue-800 text-sm rounded-full mb-2">
+                    <div className="inline-block px-3 py-1 bg-primary-100 text-primary-800 text-sm rounded-full mb-2">
                       {property.type}
                     </div>
                     <div className="text-2xl font-bold text-gray-900 mb-2">

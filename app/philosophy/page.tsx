@@ -30,7 +30,7 @@ export default function PhilosophyPage() {
           <div className="grid md:grid-cols-2 gap-8 mb-16">
             <Card padding="lg" hover>
               <div className="mb-4">
-                <span className="inline-block px-4 py-2 bg-blue-100 text-blue-800 rounded-full font-bold text-sm">
+                <span className="inline-block px-4 py-2 bg-primary-100 text-primary-800 rounded-full font-bold text-sm">
                   ミッション
                 </span>
               </div>
@@ -43,15 +43,15 @@ export default function PhilosophyPage() {
               </Text>
               <div className="mt-6 space-y-3">
                 <div className="flex items-start">
-                  <span className="text-blue-600 mr-2">✓</span>
+                  <span className="text-primary-600 mr-2">✓</span>
                   <Text size="sm">お客様の満足と幸福を最優先</Text>
                 </div>
                 <div className="flex items-start">
-                  <span className="text-blue-600 mr-2">✓</span>
+                  <span className="text-primary-600 mr-2">✓</span>
                   <Text size="sm">従業員の成長と働きがいの実現</Text>
                 </div>
                 <div className="flex items-start">
-                  <span className="text-blue-600 mr-2">✓</span>
+                  <span className="text-primary-600 mr-2">✓</span>
                   <Text size="sm">社会への貢献と価値提供</Text>
                 </div>
               </div>
@@ -193,7 +193,7 @@ export default function PhilosophyPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="/contact"
-                className="inline-block px-8 py-4 bg-white text-blue-600 rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors shadow-lg"
+                className="inline-block px-8 py-4 bg-white text-primary-600 rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors shadow-lg"
               >
                 お問い合わせ
               </a>
@@ -246,13 +246,13 @@ interface PromiseCardProps {
 
 function PromiseCard({ title, items, color }: PromiseCardProps) {
   const colorClasses = {
-    blue: 'bg-blue-50 border-blue-200 text-blue-800',
+    blue: 'bg-primary-50 border-primary-200 text-primary-800',
     green: 'bg-green-50 border-green-200 text-green-800',
     purple: 'bg-purple-50 border-purple-200 text-purple-800',
   }
 
   const iconColorClasses = {
-    blue: 'text-blue-600',
+    blue: 'text-primary-600',
     green: 'text-green-600',
     purple: 'text-purple-600',
   }
@@ -277,7 +277,7 @@ function PromiseCard({ title, items, color }: PromiseCardProps) {
 function StatCard({ number, label }: { number: string; label: string }) {
   return (
     <div className="text-center">
-      <div className="text-4xl font-bold text-blue-600 mb-2">{number}</div>
+      <div className="text-4xl font-bold text-primary-600 mb-2">{number}</div>
       <Text size="sm" color="light">{label}</Text>
     </div>
   )

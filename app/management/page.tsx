@@ -34,8 +34,8 @@ export default function ManagementPage() {
               onClick={() => setActiveTab('owner')}
               className={`px-8 py-4 rounded-xl font-bold text-lg transition-all ${
                 activeTab === 'owner'
-                  ? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg'
-                  : 'bg-white text-gray-600 border-2 border-gray-200 hover:border-blue-300'
+                  ? 'bg-gradient-to-r from-primary-600 to-primary-700 text-white shadow-lg'
+                  : 'bg-white text-gray-600 border-2 border-gray-200 hover:border-primary-300'
               }`}
             >
               オーナー様向け
@@ -84,7 +84,7 @@ export default function ManagementPage() {
               {/* 詳細サービス */}
               <div className="grid md:grid-cols-2 gap-8">
                 <Card padding="lg" hover>
-                  <Heading level={4} className="mb-4 text-blue-600">
+                  <Heading level={4} className="mb-4 text-primary-600">
                     賃料管理サービス
                   </Heading>
                   <ul className="space-y-3 text-gray-700">
@@ -97,7 +97,7 @@ export default function ManagementPage() {
                 </Card>
 
                 <Card padding="lg" hover>
-                  <Heading level={4} className="mb-4 text-blue-600">
+                  <Heading level={4} className="mb-4 text-primary-600">
                     建物管理サービス
                   </Heading>
                   <ul className="space-y-3 text-gray-700">
@@ -110,7 +110,7 @@ export default function ManagementPage() {
                 </Card>
 
                 <Card padding="lg" hover>
-                  <Heading level={4} className="mb-4 text-blue-600">
+                  <Heading level={4} className="mb-4 text-primary-600">
                     入居者管理サービス
                   </Heading>
                   <ul className="space-y-3 text-gray-700">
@@ -123,7 +123,7 @@ export default function ManagementPage() {
                 </Card>
 
                 <Card padding="lg" hover>
-                  <Heading level={4} className="mb-4 text-blue-600">
+                  <Heading level={4} className="mb-4 text-primary-600">
                     その他サービス
                   </Heading>
                   <ul className="space-y-3 text-gray-700">
@@ -303,7 +303,7 @@ export default function ManagementPage() {
             </Text>
             <a
               href="/contact"
-              className="inline-block px-8 py-4 bg-white text-blue-600 rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors shadow-lg"
+              className="inline-block px-8 py-4 bg-white text-primary-600 rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors shadow-lg"
             >
               お問い合わせはこちら
             </a>
@@ -334,7 +334,7 @@ function ServiceFeature({ icon, title, description }: { icon: string; title: str
 function ListItem({ children }: { children: React.ReactNode }) {
   return (
     <li className="flex items-start">
-      <span className="text-blue-600 mr-2">✓</span>
+      <span className="text-primary-600 mr-2">✓</span>
       <span>{children}</span>
     </li>
   )
@@ -352,11 +352,11 @@ function PricingCard({ title, price, features, recommended }: PricingCardProps) 
     <Card 
       padding="lg" 
       hover 
-      className={`relative ${recommended ? 'ring-2 ring-blue-600 shadow-xl' : ''}`}
+      className={`relative ${recommended ? 'ring-2 ring-primary-600 shadow-xl' : ''}`}
     >
       {recommended && (
         <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-          <span className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-4 py-1 rounded-full text-sm font-bold">
+          <span className="bg-gradient-to-r from-primary-600 to-primary-700 text-white px-4 py-1 rounded-full text-sm font-bold">
             おすすめ
           </span>
         </div>
@@ -365,14 +365,14 @@ function PricingCard({ title, price, features, recommended }: PricingCardProps) 
         <Heading level={4} className="mb-2">
           {title}
         </Heading>
-        <div className="text-3xl font-bold text-blue-600">
+        <div className="text-3xl font-bold text-primary-600">
           {price}
         </div>
       </div>
       <ul className="space-y-3">
         {features.map((feature, index) => (
           <li key={index} className="flex items-start text-sm">
-            <span className="text-blue-600 mr-2">✓</span>
+            <span className="text-primary-600 mr-2">✓</span>
             <span>{feature}</span>
           </li>
         ))}
@@ -384,7 +384,7 @@ function PricingCard({ title, price, features, recommended }: PricingCardProps) 
 function StatCard({ number, label }: { number: string; label: string }) {
   return (
     <div className="text-center">
-      <div className="text-4xl font-bold text-blue-600 mb-2">{number}</div>
+      <div className="text-4xl font-bold text-primary-600 mb-2">{number}</div>
       <Text size="sm" color="light">{label}</Text>
     </div>
   )

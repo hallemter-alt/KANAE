@@ -14,10 +14,10 @@ export default function AboutPage() {
       <Section background="gradient" spacing="lg">
         <Container>
           <div className="text-center">
-            <Heading level={1} align="center" className="mb-6">
+            <Heading level={1} align="center" className="mb-6 text-white">
               会社概要
             </Heading>
-            <Text size="xl" className="max-w-3xl mx-auto">
+            <Text size="xl" className="max-w-3xl mx-auto text-white/90">
               物心両面の幸福と利他の心で、世界に通じる価値を創造する
             </Text>
           </div>
@@ -27,7 +27,7 @@ export default function AboutPage() {
       {/* 会社基本情報 */}
       <Section background="white" spacing="lg">
         <Container maxWidth="lg">
-          <Heading level={2} align="center" className="mb-12">
+          <Heading level={2} align="center" className="mb-12 text-gray-900">
             会社情報
           </Heading>
           <Card padding="lg" className="max-w-4xl mx-auto">
@@ -71,7 +71,7 @@ export default function AboutPage() {
       {/* 当社の強み */}
       <Section background="white" spacing="lg">
         <Container maxWidth="lg">
-          <Heading level={2} align="center" className="mb-12">
+          <Heading level={2} align="center" className="mb-12 text-gray-900">
             当社の強み
           </Heading>
           <div className="grid md:grid-cols-2 gap-8">
@@ -141,7 +141,7 @@ export default function AboutPage() {
       {/* 事業内容 */}
       <Section background="gray" spacing="lg">
         <Container maxWidth="lg">
-          <Heading level={2} align="center" className="mb-12">
+          <Heading level={2} align="center" className="mb-12 text-gray-900">
             事業内容
           </Heading>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -173,15 +173,15 @@ export default function AboutPage() {
       <Section background="primary" spacing="md">
         <Container>
           <div className="text-center">
-            <Heading level={3} align="center" className="mb-4 text-gray-900">
+            <Heading level={3} align="center" className="mb-4 text-white">
               私たちの理念
             </Heading>
-            <Text size="lg" className="mb-8 max-w-2xl mx-auto">
+            <Text size="lg" className="mb-8 max-w-2xl mx-auto text-white/90">
               物心両面の幸福と利他の心で、世界に通じる価値を創造する
             </Text>
             <a
               href="/philosophy"
-              className="inline-block px-8 py-4 bg-white text-blue-600 rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors shadow-lg"
+              className="inline-block px-8 py-4 bg-white text-primary-600 rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors shadow-lg"
             >
               企業理念を見る
             </a>
@@ -192,7 +192,7 @@ export default function AboutPage() {
       {/* アクセス */}
       <Section background="gray" spacing="lg">
         <Container maxWidth="lg">
-          <Heading level={2} align="center" className="mb-12">
+          <Heading level={2} align="center" className="mb-12 text-gray-900">
             アクセス
           </Heading>
           <Card padding="lg">
@@ -239,16 +239,16 @@ export default function AboutPage() {
       <Section background="primary" spacing="md">
         <Container>
           <div className="text-center">
-            <Heading level={3} align="center" className="mb-4 text-gray-900">
+            <Heading level={3} align="center" className="mb-4 text-white">
               お問い合わせ
             </Heading>
-            <Text size="lg" className="mb-8 max-w-2xl mx-auto">
+            <Text size="lg" className="mb-8 max-w-2xl mx-auto text-white/90">
               物件に関するご質問や、サービスについてのお問い合わせは、
               お気軽にご連絡ください。
             </Text>
             <a
               href="/contact"
-              className="inline-block px-8 py-4 bg-blue-600 text-white rounded-lg font-bold text-lg hover:bg-blue-700 transition-colors shadow-lg"
+              className="inline-block px-8 py-4 bg-white text-primary-600 rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors shadow-lg"
             >
               お問い合わせはこちら
             </a>
@@ -270,8 +270,8 @@ interface InfoItemProps {
 function InfoItem({ label, value, fullWidth = false }: InfoItemProps) {
   return (
     <div className={fullWidth ? 'md:col-span-2' : ''}>
-      <dt className="text-sm font-bold text-gray-500 mb-2">{label}</dt>
-      <dd className="text-base text-gray-900">{value}</dd>
+      <dt className="text-sm font-bold text-gray-600 mb-2">{label}</dt>
+      <dd className="text-base text-gray-900 font-medium">{value}</dd>
     </div>
   )
 }

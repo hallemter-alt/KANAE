@@ -39,8 +39,8 @@ export function Section({
   const backgroundClasses = {
     white: 'bg-white',
     gray: 'bg-gray-50',
-    primary: 'bg-blue-50',
-    gradient: 'bg-gradient-to-br from-blue-50 to-purple-50',
+    primary: 'bg-gradient-to-br from-primary-50 via-primary-100 to-gold-50',
+    gradient: 'bg-gradient-to-br from-primary-900 via-primary-800 to-gold-900 text-white',
   }
 
   const spacingClasses = {
@@ -83,7 +83,7 @@ export function Heading({ level = 2, children, className = '', align = 'left' }:
   }
 
   return (
-    <Tag className={`${sizeClasses[level]} ${alignClasses[align]} text-gray-900 ${className}`}>
+    <Tag className={`${sizeClasses[level]} ${alignClasses[align]} ${className}`}>
       {children}
     </Tag>
   )
@@ -109,8 +109,8 @@ export function Text({ children, className = '', size = 'base', color = 'gray', 
   const colorClasses = {
     gray: 'text-gray-600',
     dark: 'text-gray-900',
-    light: 'text-gray-400',
-    primary: 'text-blue-600',
+    light: 'text-gray-500',
+    primary: 'text-primary-600',
   }
 
   const weightClasses = {
@@ -180,9 +180,9 @@ export function Button({
   ...props 
 }: ButtonProps) {
   const variantClasses = {
-    primary: 'bg-blue-600 text-white hover:bg-blue-700 shadow-md',
-    secondary: 'bg-purple-600 text-white hover:bg-purple-700 shadow-md',
-    outline: 'border-2 border-blue-600 text-blue-600 hover:bg-blue-50',
+    primary: 'bg-gradient-to-r from-primary-600 to-primary-700 text-white hover:from-primary-700 hover:to-primary-800 shadow-lg',
+    secondary: 'bg-gradient-to-r from-gold-500 to-gold-600 text-white hover:from-gold-600 hover:to-gold-700 shadow-lg',
+    outline: 'border-2 border-primary-600 text-primary-600 hover:bg-primary-50',
     ghost: 'text-gray-700 hover:bg-gray-100',
   }
 
@@ -217,9 +217,9 @@ interface BadgeProps {
 
 export function Badge({ children, variant = 'primary', size = 'md' }: BadgeProps) {
   const variantClasses = {
-    primary: 'bg-blue-100 text-blue-800',
+    primary: 'bg-primary-100 text-primary-800',
     success: 'bg-green-100 text-green-800',
-    warning: 'bg-yellow-100 text-yellow-800',
+    warning: 'bg-gold-100 text-gold-800',
     error: 'bg-red-100 text-red-800',
     gray: 'bg-gray-100 text-gray-800',
   }
