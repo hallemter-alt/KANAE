@@ -4,8 +4,13 @@ import React from 'react'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import { Container, Section, Heading, Text, Card } from '@/components/ui/Layout'
+import { useLanguage } from '@/contexts/LanguageContext'
+import { translations } from '@/lib/translations'
 
 export default function AboutPage() {
+  const { locale } = useLanguage()
+  const t = translations[locale]
+  
   return (
     <main className="min-h-screen bg-gray-50">
       <Navbar />

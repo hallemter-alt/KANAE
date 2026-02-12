@@ -4,6 +4,8 @@ import React, { useState } from 'react'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import { Container, Section, Heading, Text, Card } from '@/components/ui/Layout'
+import { useLanguage } from '@/contexts/LanguageContext'
+import { translations } from '@/lib/translations'
 
 // ISR 配置 - 每5分鐘重新驗證（僅對靜態頁面有效）
 // Client component 無法使用 revalidate，需要在服務端組件中設置
@@ -57,6 +59,8 @@ const sampleProperties = [
 ]
 
 export default function RentPage() {
+  const { locale } = useLanguage()
+  const t = translations[locale]
   const [selectedArea, setSelectedArea] = useState('')
   const [minRent, setMinRent] = useState('')
   const [maxRent, setMaxRent] = useState('')
@@ -77,10 +81,10 @@ export default function RentPage() {
         <Container>
           <div className="text-center">
             <Heading level={1} align="center" className="mb-6 text-white">
-              賃貸物件検索
+              {t.rent.title}
             </Heading>
             <Text size="xl" className="max-w-3xl mx-auto text-white/90">
-              お客様のライフスタイルに合った理想の賃貸物件をお探しします
+              {t.rent.subtitle}
             </Text>
           </div>
         </Container>
@@ -90,20 +94,20 @@ export default function RentPage() {
       <Section background="white" spacing="lg">
         <Container maxWidth="lg">
           <Card padding="lg" className="shadow-xl">
-            <Heading level={3} className="mb-6">物件を探す</Heading>
+            <Heading level={3} className="mb-6">{t.rent.searchTitle}</Heading>
             
             <div className="space-y-6">
               {/* エリア選択 */}
               <div>
-                <label className="block text-sm font-bold text-gray-700 mb-3">
-                  エリア
+                <label className="block text-sm font-bold text-gray-900 mb-3">
+                  {t.rent.area}
                 </label>
                 <select
                   value={selectedArea}
                   onChange={(e) => setSelectedArea(e.target.value)}
                   className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all text-base text-gray-900 bg-white"
                 >
-                  <option value="" className="text-gray-700">エリアを選択してください</option>
+                  <option value="" className="text-gray-700">{t.rent.areaPlaceholder}</option>
                   <option value="tokyo23" className="text-gray-900">東京23区</option>
                   <option value="shibuya" className="text-gray-900">渋谷区</option>
                   <option value="minato" className="text-gray-900">港区</option>
@@ -119,8 +123,8 @@ export default function RentPage() {
               {/* 賃料範囲 */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-bold text-gray-700 mb-3">
-                    賃料（下限）
+                  <label className="block text-sm font-bold text-gray-900 mb-3">
+                    {t.rent.minRent}
                   </label>
                   <input
                     type="number"
@@ -131,8 +135,8 @@ export default function RentPage() {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-bold text-gray-700 mb-3">
-                    賃料（上限）
+                  <label className="block text-sm font-bold text-gray-900 mb-3">
+                    {t.rent.maxRent}
                   </label>
                   <input
                     type="number"
@@ -147,7 +151,7 @@ export default function RentPage() {
               {/* 間取り選択 */}
               <div>
                 <label className="block text-sm font-bold text-gray-900 mb-3">
-                  間取り
+                  {t.rent.layout}
                 </label>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                   {['1R', '1K', '1DK', '1LDK', '2K', '2DK', '2LDK', '3LDK'].map((type) => (
@@ -174,7 +178,7 @@ export default function RentPage() {
               {/* その他の条件 */}
               <div>
                 <label className="block text-sm font-bold text-gray-900 mb-3">
-                  こだわり条件
+                  {t.rent.features}
                 </label>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                   {['駅近（徒歩5分以内）', 'ペット可', 'バス・トイレ別', 'オートロック', '築浅（5年以内）', '駐車場あり'].map((condition) => (
@@ -191,7 +195,7 @@ export default function RentPage() {
 
               {/* 検索ボタン */}
               <button className="w-full bg-gradient-to-r from-primary-600 to-primary-700 text-white py-4 rounded-lg font-bold text-lg hover:from-primary-700 hover:to-primary-800 transition-all shadow-lg hover:shadow-xl transform hover:scale-[1.02]">
-                この条件で検索する
+                {t.rent.searchButton}
               </button>
             </div>
           </Card>
@@ -201,7 +205,7 @@ export default function RentPage() {
       {/* おすすめ物件 */}
       <Section background="gray" spacing="lg">
         <Container maxWidth="lg">
-          <Heading level={2} className="mb-8">おすすめ物件</Heading>
+          <Heading level={2} className="mb-8">{t.rent.recommended}</Heading>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {sampleProperties.map((property) => (
               <Card key={property.id} padding="none" hover className="overflow-hidden">

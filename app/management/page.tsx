@@ -4,8 +4,12 @@ import React, { useState } from 'react'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import { Container, Section, Heading, Text, Card } from '@/components/ui/Layout'
+import { useLanguage } from '@/contexts/LanguageContext'
+import { translations } from '@/lib/translations'
 
 export default function ManagementPage() {
+  const { locale } = useLanguage()
+  const t = translations[locale]
   const [activeTab, setActiveTab] = useState<'owner' | 'tenant'>('owner')
 
   return (
@@ -17,10 +21,10 @@ export default function ManagementPage() {
         <Container>
           <div className="text-center">
             <Heading level={1} align="center" className="mb-6 text-white">
-              賃貸管理サービス
+              {t.management.title}
             </Heading>
             <Text size="xl" className="max-w-3xl mx-auto text-white/90">
-              オーナー様と入居者様、双方にとって最適な賃貸管理をご提供します
+              {t.management.subtitle}
             </Text>
           </div>
         </Container>
