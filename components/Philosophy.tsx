@@ -23,10 +23,10 @@ export default function Philosophy() {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            企業理念
+            {t.philosophy.title}
           </h2>
           <p className="text-xl text-white/90">
-            私たちの行動指針と目指すべき姿
+            {t.philosophy.subtitle}
           </p>
         </div>
 
@@ -45,24 +45,14 @@ export default function Philosophy() {
               {t.philosophy.missionText}
             </p>
             <div className="mt-6 space-y-2">
-              <div className="flex items-start space-x-2">
-                <svg className="w-5 h-5 text-gold-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                <span className="text-sm text-white/80">深い洞察でニーズを理解</span>
-              </div>
-              <div className="flex items-start space-x-2">
-                <svg className="w-5 h-5 text-gold-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                <span className="text-sm text-white/80">速く・安く・便利に提供</span>
-              </div>
-              <div className="flex items-start space-x-2">
-                <svg className="w-5 h-5 text-gold-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                <span className="text-sm text-white/80">感動体験とファンの創造</span>
-              </div>
+              {t.philosophy.missionPoints.map((point: string, index: number) => (
+                <div key={index} className="flex items-start space-x-2">
+                  <svg className="w-5 h-5 text-gold-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-sm text-white/80">{point}</span>
+                </div>
+              ))}
             </div>
           </div>
 
@@ -81,24 +71,14 @@ export default function Philosophy() {
               {t.philosophy.visionText}
             </p>
             <div className="mt-6 space-y-2">
-              <div className="flex items-start space-x-2">
-                <svg className="w-5 h-5 text-primary-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                <span className="text-sm text-white/80">グローバルブランドへ</span>
-              </div>
-              <div className="flex items-start space-x-2">
-                <svg className="w-5 h-5 text-primary-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                <span className="text-sm text-white/80">100年続く企業基盤</span>
-              </div>
-              <div className="flex items-start space-x-2">
-                <svg className="w-5 h-5 text-primary-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                <span className="text-sm text-white/80">常に進化する組織</span>
-              </div>
+              {t.philosophy.visionPoints.map((point: string, index: number) => (
+                <div key={index} className="flex items-start space-x-2">
+                  <svg className="w-5 h-5 text-primary-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-sm text-white/80">{point}</span>
+                </div>
+              ))}
             </div>
           </div>
 
@@ -110,7 +90,7 @@ export default function Philosophy() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                 </svg>
               </div>
-              <h3 className="text-2xl font-bold mb-2">価値観</h3>
+              <h3 className="text-2xl font-bold mb-2">{t.philosophy.values}</h3>
             </div>
             <p className="text-white/90 leading-relaxed mb-4">
               {t.philosophy.motto}
@@ -119,41 +99,23 @@ export default function Philosophy() {
               {t.philosophy.mottoDescription}
             </p>
             <div className="space-y-2">
-              <div className="flex items-start space-x-2">
-                <svg className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                <span className="text-sm text-white/80">物心両面の幸福追求</span>
-              </div>
-              <div className="flex items-start space-x-2">
-                <svg className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                <span className="text-sm text-white/80">利他の心で社会貢献</span>
-              </div>
-              <div className="flex items-start space-x-2">
-                <svg className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                <span className="text-sm text-white/80">誰にも負けない努力</span>
-              </div>
+              {t.philosophy.valuesPoints.map((point: string, index: number) => (
+                <div key={index} className="flex items-start space-x-2">
+                  <svg className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-sm text-white/80">{point}</span>
+                </div>
+              ))}
             </div>
           </div>
         </div>
 
         {/* Seven Principles */}
         <div className="mt-16 bg-white/10 backdrop-blur-md rounded-2xl p-8 md:p-12 border border-white/20">
-          <h3 className="text-3xl font-bold text-center mb-8">経営理念 7つの原則</h3>
+          <h3 className="text-3xl font-bold text-center mb-8">{t.philosophy.principlesTitle}</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              '全従業員の幸福追求',
-              '人として正しく',
-              'Win-Winの関係',
-              '売上最大・経費最小',
-              '全員参加経営',
-              '誰にも負けない努力',
-              '明るく前向きに',
-            ].map((principle, index) => (
+            {t.philosophy.principles.map((principle: string, index: number) => (
               <div key={index} className="flex items-start space-x-3">
                 <div className="flex-shrink-0 w-8 h-8 bg-gold-500 rounded-full flex items-center justify-center font-bold text-white">
                   {index + 1}

@@ -56,12 +56,40 @@ export const translations = {
     
     // 企業理念
     philosophy: {
+      title: '企業理念',
+      subtitle: '私たちの行動指針と目指すべき姿',
       motto: '誠意正心 知行合一',
       mottoDescription: '誠実な心を正しく保ち、学んだことを必ず実践する',
       vision: 'ビジョン',
       visionText: '世界で戦えるブランドへの飛躍、永続的発展の実現',
       mission: 'ミッション',
       missionText: '他社を凌駕する速さ・安さ・便利さでお客様の笑顔を創造する',
+      values: '価値観',
+      principlesTitle: '経営理念 7つの原則',
+      principles: [
+        '全従業員の幸福追求',
+        '人として正しく',
+        'Win-Winの関係',
+        '売上最大・経費最小',
+        '全員参加経営',
+        '誰にも負けない努力',
+        '明るく前向きに',
+      ],
+      missionPoints: [
+        '深い洞察でニーズを理解',
+        '速く・安く・便利に提供',
+        '感動体験とファンの創造',
+      ],
+      visionPoints: [
+        'グローバルブランドへ',
+        '100年続く企業基盤',
+        '常に進化する組織',
+      ],
+      valuesPoints: [
+        '物心両面の幸福追求',
+        '利他の心で社会貢献',
+        '誰にも負けない努力',
+      ],
     },
     
     // 会社概要
@@ -419,12 +447,40 @@ export const translations = {
     
     // 企业理念
     philosophy: {
+      title: '企业理念',
+      subtitle: '我们的行动准则与目标',
       motto: '诚意正心 知行合一',
       mottoDescription: '保持诚实正直的心，必定实践所学',
       vision: '愿景',
       visionText: '成为能在世界竞争的品牌，实现永续发展',
       mission: '使命',
       missionText: '以超越其他公司的速度、价格和便利性，创造客户的笑容',
+      values: '价值观',
+      principlesTitle: '经营理念 7大原则',
+      principles: [
+        '追求全体员工的幸福',
+        '作为人正确行事',
+        '实现双赢关系',
+        '销售最大化，成本最小化',
+        '全员参与经营',
+        '永不服输的努力',
+        '保持积极乐观',
+      ],
+      missionPoints: [
+        '深入洞察理解需求',
+        '提供快速、实惠、便捷的服务',
+        '创造感动体验与粉丝',
+      ],
+      visionPoints: [
+        '成为全球品牌',
+        '建立百年企业基础',
+        '持续进化的组织',
+      ],
+      valuesPoints: [
+        '追求物质与精神双重幸福',
+        '以利他之心贡献社会',
+        '永不服输的努力',
+      ],
     },
     
     // 公司简介
@@ -782,12 +838,40 @@ export const translations = {
     
     // Philosophy
     philosophy: {
+      title: 'Our Philosophy',
+      subtitle: 'Our Guiding Principles and Vision',
       motto: 'Integrity & Unity of Knowledge and Action',
       mottoDescription: 'Maintain an honest heart and always practice what we learn',
       vision: 'Vision',
       visionText: 'To become a globally competitive brand and achieve sustainable development',
       mission: 'Mission',
       missionText: 'Creating customer smiles with speed, affordability, and convenience that surpass others',
+      values: 'Values',
+      principlesTitle: '7 Management Principles',
+      principles: [
+        'Pursue Happiness for All Employees',
+        'Do What is Right as a Human Being',
+        'Build Win-Win Relationships',
+        'Maximize Sales, Minimize Expenses',
+        'Participatory Management for All',
+        'Make Unrelenting Efforts',
+        'Stay Positive and Optimistic',
+      ],
+      missionPoints: [
+        'Understand needs through deep insight',
+        'Deliver with speed, affordability, and convenience',
+        'Create inspiring experiences and loyal fans',
+      ],
+      visionPoints: [
+        'Become a global brand',
+        'Build a foundation for 100 years',
+        'Always evolving organization',
+      ],
+      valuesPoints: [
+        'Pursue material and spiritual happiness',
+        'Contribute to society with altruism',
+        'Make unrelenting efforts',
+      ],
     },
     
     // About Us
