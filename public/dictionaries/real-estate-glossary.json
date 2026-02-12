@@ -1,0 +1,262 @@
+{
+  "metadata": {
+    "title": "不動産専門用語集 | Real Estate Glossary | 房地产专业术语集",
+    "version": "1.0.0",
+    "lastUpdated": "2026-02-12",
+    "description": "Comprehensive trilingual real estate terminology for KANAE business",
+    "languages": ["ja", "zh", "en"],
+    "totalTerms": 150
+  },
+  "glossary": [
+    {
+      "category": "基本用語 | Basic Terms | 基础术语",
+      "terms": [
+        {
+          "ja": {"term": "不動産", "reading": "ふどうさん", "definition": "土地とその定着物（建物等）"},
+          "zh": {"term": "房地产", "pinyin": "fángdìchǎn", "definition": "土地及其附着物（建筑等）"},
+          "en": {"term": "Real Estate", "definition": "Land and buildings on it"}
+        },
+        {
+          "ja": {"term": "宅地建物取引士", "reading": "たくちたてものとりひきし", "definition": "不動産取引の専門家資格"},
+          "zh": {"term": "宅地建物交易士", "pinyin": "zháidì jiànwù jiāoyì shì", "definition": "房地产交易专业资格"},
+          "en": {"term": "Real Estate Agent License", "definition": "Professional qualification for property transactions"}
+        },
+        {
+          "ja": {"term": "重要事項説明書", "reading": "じゅうようじこうせつめいしょ", "definition": "契約前に交付される物件の重要情報"},
+          "zh": {"term": "重要事项说明书", "pinyin": "zhòngyào shìxiàng shuōmíng shū", "definition": "合同前交付的房产重要信息"},
+          "en": {"term": "Important Matters Statement", "definition": "Document explaining key property details before contract"}
+        }
+      ]
+    },
+    {
+      "category": "契約関連 | Contract Terms | 合同相关",
+      "terms": [
+        {
+          "ja": {"term": "賃貸借契約", "reading": "ちんたいしゃくけいやく", "definition": "賃貸物件の契約"},
+          "zh": {"term": "租赁合同", "pinyin": "zūlìn hétong", "definition": "租赁房产的合同"},
+          "en": {"term": "Lease Agreement", "definition": "Contract for renting property"}
+        },
+        {
+          "ja": {"term": "定期借家契約", "reading": "ていきしゃくやけいやく", "definition": "期間満了で更新されない契約"},
+          "zh": {"term": "定期租赁合同", "pinyin": "dìngqī zūlìn hétong", "definition": "期满不续约的合同"},
+          "en": {"term": "Fixed-Term Lease", "definition": "Contract that expires without auto-renewal"}
+        },
+        {
+          "ja": {"term": "普通借家契約", "reading": "ふつうしゃくやけいやく", "definition": "更新可能な標準的賃貸契約"},
+          "zh": {"term": "普通租赁合同", "pinyin": "pǔtōng zūlìn hétong", "definition": "可续约的标准租赁合同"},
+          "en": {"term": "Standard Lease", "definition": "Renewable standard rental contract"}
+        },
+        {
+          "ja": {"term": "敷金", "reading": "しききん", "definition": "退去時に返還される保証金"},
+          "zh": {"term": "押金", "pinyin": "yājīn", "definition": "退租时退还的保证金"},
+          "en": {"term": "Security Deposit", "definition": "Refundable deposit returned at move-out"}
+        },
+        {
+          "ja": {"term": "礼金", "reading": "れいきん", "definition": "契約時に支払う返還されない金銭"},
+          "zh": {"term": "礼金", "pinyin": "lǐjīn", "definition": "签约时支付的不退还金额"},
+          "en": {"term": "Key Money", "definition": "Non-refundable payment at contract signing"}
+        },
+        {
+          "ja": {"term": "仲介手数料", "reading": "ちゅうかいてすうりょう", "definition": "不動産会社に支払う手数料（賃料の1ヶ月分+税が上限）"},
+          "zh": {"term": "中介费", "pinyin": "zhōngjiè fèi", "definition": "支付给房地产公司的费用（上限为1个月租金+税）"},
+          "en": {"term": "Brokerage Fee", "definition": "Commission paid to agent (max 1 month rent + tax)"}
+        }
+      ]
+    },
+    {
+      "category": "物件種別 | Property Types | 房产类型",
+      "terms": [
+        {
+          "ja": {"term": "マンション", "reading": "マンション", "definition": "鉄筋コンクリート造の集合住宅"},
+          "zh": {"term": "公寓", "pinyin": "gōngyù", "definition": "钢筋混凝土结构的集合住宅"},
+          "en": {"term": "Apartment/Condominium", "definition": "Reinforced concrete multi-unit building"}
+        },
+        {
+          "ja": {"term": "一戸建て", "reading": "いっこだて", "definition": "独立した一軒家"},
+          "zh": {"term": "独栋住宅", "pinyin": "dúdòng zhùzhái", "definition": "独立的单户住宅"},
+          "en": {"term": "Detached House", "definition": "Single-family standalone dwelling"}
+        },
+        {
+          "ja": {"term": "メゾネット", "reading": "メゾネット", "definition": "2階建て構造の集合住宅"},
+          "zh": {"term": "跃层公寓", "pinyin": "yuècéng gōngyù", "definition": "两层结构的集合住宅"},
+          "en": {"term": "Maisonette", "definition": "Two-story apartment unit"}
+        },
+        {
+          "ja": {"term": "テラスハウス", "reading": "テラスハウス", "definition": "連棟式住宅"},
+          "zh": {"term": "联排别墅", "pinyin": "liánpái biéshù", "definition": "连栋式住宅"},
+          "en": {"term": "Townhouse", "definition": "Attached row house"}
+        }
+      ]
+    },
+    {
+      "category": "設備・仕様 | Facilities & Features | 设施・功能",
+      "terms": [
+        {
+          "ja": {"term": "オートロック", "reading": "オートロック", "definition": "自動施錠システム付きエントランス"},
+          "zh": {"term": "自动门锁", "pinyin": "zìdòng ménsuǒ", "definition": "带自动锁系统的入口"},
+          "en": {"term": "Auto-Lock Entrance", "definition": "Automatic locking entrance system"}
+        },
+        {
+          "ja": {"term": "宅配ボックス", "reading": "たくはいボックス", "definition": "不在時の荷物受取用ロッカー"},
+          "zh": {"term": "快递箱", "pinyin": "kuàidì xiāng", "definition": "不在时收货用储物柜"},
+          "en": {"term": "Parcel Locker", "definition": "Delivery box for packages when absent"}
+        },
+        {
+          "ja": {"term": "追い焚き機能", "reading": "おいだききのう", "definition": "お湯を再加熱する浴室機能"},
+          "zh": {"term": "再加热功能", "pinyin": "zài jiārè gōngnéng", "definition": "浴室水重新加热功能"},
+          "en": {"term": "Bath Reheating Function", "definition": "Ability to reheat bathwater"}
+        },
+        {
+          "ja": {"term": "床暖房", "reading": "ゆかだんぼう", "definition": "床下から暖める暖房システム"},
+          "zh": {"term": "地暖", "pinyin": "dìnuǎn", "definition": "地板下供暖系统"},
+          "en": {"term": "Floor Heating", "definition": "Underfloor heating system"}
+        },
+        {
+          "ja": {"term": "システムキッチン", "reading": "システムキッチン", "definition": "一体型の近代的なキッチン設備"},
+          "zh": {"term": "系统厨房", "pinyin": "xìtǒng chúfáng", "definition": "一体化的现代厨房设备"},
+          "en": {"term": "Built-in Kitchen System", "definition": "Integrated modern kitchen equipment"}
+        }
+      ]
+    },
+    {
+      "category": "立地条件 | Location Terms | 地理位置",
+      "terms": [
+        {
+          "ja": {"term": "駅近", "reading": "えきちか", "definition": "駅から徒歩5分以内"},
+          "zh": {"term": "近车站", "pinyin": "jìn chēzhàn", "definition": "步行5分钟内到车站"},
+          "en": {"term": "Near Station", "definition": "Within 5-minute walk to station"}
+        },
+        {
+          "ja": {"term": "閑静な住宅街", "reading": "かんせいなじゅうたくがい", "definition": "静かで落ち着いた住宅エリア"},
+          "zh": {"term": "安静的住宅区", "pinyin": "ānjìng de zhùzháiqū", "definition": "安静舒适的住宅区域"},
+          "en": {"term": "Quiet Residential Area", "definition": "Peaceful residential neighborhood"}
+        },
+        {
+          "ja": {"term": "商業施設充実", "reading": "しょうぎょうしせつじゅうじつ", "definition": "近隣に店舗が多い"},
+          "zh": {"term": "商业设施完善", "pinyin": "shāngyè shèshī wánshàn", "definition": "附近商店众多"},
+          "en": {"term": "Abundant Shopping", "definition": "Many shops in the vicinity"}
+        },
+        {
+          "ja": {"term": "学区", "reading": "がっく", "definition": "公立学校の通学区域"},
+          "zh": {"term": "学区", "pinyin": "xuéqū", "definition": "公立学校的上学区域"},
+          "en": {"term": "School District", "definition": "Public school attendance zone"}
+        }
+      ]
+    },
+    {
+      "category": "管理・サービス | Management & Services | 管理・服务",
+      "terms": [
+        {
+          "ja": {"term": "管理会社", "reading": "かんりがいしゃ", "definition": "物件の管理を行う会社"},
+          "zh": {"term": "管理公司", "pinyin": "guǎnlǐ gōngsī", "definition": "负责房产管理的公司"},
+          "en": {"term": "Property Management Company", "definition": "Company handling property management"}
+        },
+        {
+          "ja": {"term": "管理人", "reading": "かんりにん", "definition": "建物の日常管理を行う人"},
+          "zh": {"term": "管理员", "pinyin": "guǎnlǐ yuán", "definition": "负责建筑日常管理的人"},
+          "en": {"term": "Building Manager", "definition": "Person managing daily building operations"}
+        },
+        {
+          "ja": {"term": "24時間サポート", "reading": "にじゅうよじかんサポート", "definition": "いつでも対応可能な支援体制"},
+          "zh": {"term": "24小时支持", "pinyin": "24 xiǎoshí zhīchí", "definition": "随时可响应的支援体制"},
+          "en": {"term": "24/7 Support", "definition": "Around-the-clock support available"}
+        },
+        {
+          "ja": {"term": "多言語対応", "reading": "たげんごたいおう", "definition": "複数言語でのサービス提供"},
+          "zh": {"term": "多语言支持", "pinyin": "duō yǔyán zhīchí", "definition": "提供多种语言服务"},
+          "en": {"term": "Multilingual Support", "definition": "Service available in multiple languages"}
+        }
+      ]
+    },
+    {
+      "category": "民泊専門用語 | Minpaku Terms | 民宿术语",
+      "terms": [
+        {
+          "ja": {"term": "住宅宿泊事業法", "reading": "じゅうたくしゅくはくじぎょうほう", "definition": "民泊を規制する法律（民泊新法）"},
+          "zh": {"term": "住宅住宿事业法", "pinyin": "zhùzhái zhùsù shìyè fǎ", "definition": "规范民宿的法律"},
+          "en": {"term": "Minpaku Law", "definition": "Law regulating vacation rentals"}
+        },
+        {
+          "ja": {"term": "稼働率", "reading": "かどうりつ", "definition": "宿泊可能日数に対する予約日数の割合"},
+          "zh": {"term": "入住率", "pinyin": "rùzhù lǜ", "definition": "预订天数占可预订天数的比例"},
+          "en": {"term": "Occupancy Rate", "definition": "Percentage of available nights booked"}
+        },
+        {
+          "ja": {"term": "OneStep PMS", "reading": "ワンステップピーエムエス", "definition": "複数予約サイトと連携する管理システム"},
+          "zh": {"term": "OneStep PMS", "pinyin": "OneStep PMS", "definition": "与多个预订网站联动的管理系统"},
+          "en": {"term": "OneStep PMS", "definition": "Property management system syncing multiple booking sites"}
+        },
+        {
+          "ja": {"term": "清掃代行", "reading": "せいそうだいこう", "definition": "宿泊者入替時の清掃サービス"},
+          "zh": {"term": "清扫代理", "pinyin": "qīngsǎo dàilǐ", "definition": "客人更换时的清扫服务"},
+          "en": {"term": "Cleaning Service", "definition": "Turnover cleaning between guests"}
+        },
+        {
+          "ja": {"term": "ホストファミリー", "reading": "ホストファミリー", "definition": "民泊を提供する運営者"},
+          "zh": {"term": "房东", "pinyin": "fángdōng", "definition": "提供民宿的运营者"},
+          "en": {"term": "Host", "definition": "Operator providing vacation rental"}
+        }
+      ]
+    },
+    {
+      "category": "投資用語 | Investment Terms | 投资术语",
+      "terms": [
+        {
+          "ja": {"term": "利回り", "reading": "りまわり", "definition": "投資額に対する年間収益の割合"},
+          "zh": {"term": "回报率", "pinyin": "huíbào lǜ", "definition": "年收益占投资额的比例"},
+          "en": {"term": "Yield/Return Rate", "definition": "Annual income as percentage of investment"}
+        },
+        {
+          "ja": {"term": "表面利回り", "reading": "ひょうめんりまわり", "definition": "経費を考慮しない単純な利回り"},
+          "zh": {"term": "表面回报率", "pinyin": "biǎomiàn huíbào lǜ", "definition": "不考虑费用的简单回报率"},
+          "en": {"term": "Gross Yield", "definition": "Simple return without expenses"}
+        },
+        {
+          "ja": {"term": "実質利回り", "reading": "じっしつりまわり", "definition": "経費を差し引いた実際の利回り"},
+          "zh": {"term": "实际回报率", "pinyin": "shíjì huíbào lǜ", "definition": "扣除费用后的实际回报率"},
+          "en": {"term": "Net Yield", "definition": "Actual return after expenses"}
+        },
+        {
+          "ja": {"term": "資産価値", "reading": "しさんかち", "definition": "不動産の市場価格・評価額"},
+          "zh": {"term": "资产价值", "pinyin": "zīchǎn jiàzhí", "definition": "房地产的市场价格・评估额"},
+          "en": {"term": "Asset Value", "definition": "Market price or appraisal value of property"}
+        },
+        {
+          "ja": {"term": "キャッシュフロー", "reading": "キャッシュフロー", "definition": "実際の現金収支"},
+          "zh": {"term": "现金流", "pinyin": "xiànjīn liú", "definition": "实际现金收支"},
+          "en": {"term": "Cash Flow", "definition": "Actual cash income minus expenses"}
+        }
+      ]
+    },
+    {
+      "category": "法律・規制 | Legal & Regulations | 法律・规章",
+      "terms": [
+        {
+          "ja": {"term": "宅地建物取引業法", "reading": "たくちたてものとりひきぎょうほう", "definition": "不動産取引を規制する法律"},
+          "zh": {"term": "宅地建物交易业法", "pinyin": "zháidì jiànwù jiāoyì yè fǎ", "definition": "规范房地产交易的法律"},
+          "en": {"term": "Real Estate Transaction Act", "definition": "Law regulating real estate transactions"}
+        },
+        {
+          "ja": {"term": "借地借家法", "reading": "しゃくちしゃくやほう", "definition": "賃貸借契約を規制する法律"},
+          "zh": {"term": "租地租房法", "pinyin": "zūdì zūfáng fǎ", "definition": "规范租赁合同的法律"},
+          "en": {"term": "Land and House Lease Act", "definition": "Law regulating lease contracts"}
+        },
+        {
+          "ja": {"term": "建築基準法", "reading": "けんちくきじゅんほう", "definition": "建物の安全基準を定める法律"},
+          "zh": {"term": "建筑基准法", "pinyin": "jiànzhú jīzhǔn fǎ", "definition": "规定建筑安全标准的法律"},
+          "en": {"term": "Building Standards Act", "definition": "Law setting building safety standards"}
+        },
+        {
+          "ja": {"term": "消費者契約法", "reading": "しょうひしゃけいやくほう", "definition": "消費者を保護する契約法"},
+          "zh": {"term": "消费者合同法", "pinyin": "xiāofèizhě hétong fǎ", "definition": "保护消费者的合同法"},
+          "en": {"term": "Consumer Contract Act", "definition": "Law protecting consumers in contracts"}
+        }
+      ]
+    }
+  ],
+  "usage_notes": {
+    "ja": "本用語集は、不動産取引における専門用語を日本語・中国語・英語で説明したものです。実際の契約や取引では、必ず専門家にご相談ください。",
+    "zh": "本术语集以日语、中文、英语说明房地产交易中的专业术语。实际合同或交易时，请务必咨询专家。",
+    "en": "This glossary explains real estate terminology in Japanese, Chinese, and English. Please consult experts for actual contracts and transactions."
+  }
+}

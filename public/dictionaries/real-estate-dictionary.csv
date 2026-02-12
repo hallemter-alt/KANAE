@@ -1,0 +1,60 @@
+Category,Japanese,Japanese Reading,Chinese,Chinese Pinyin,English,Definition JP,Definition ZH,Definition EN
+Property Types,マンション,mansion,公寓,gōngyù,Apartment/Condominium,鉄筋コンクリート造の集合住宅,钢筋混凝土结构的集合住宅,Reinforced concrete multi-unit building
+Property Types,一戸建て,ikkodate,独栋住宅,dúdòng zhùzhái,Detached House,独立した一軒家,独立的单户住宅,Single-family standalone dwelling
+Property Types,土地,tochi,土地,tǔdì,Land,土地のみ,仅土地,Land parcel only
+Property Types,賃貸物件,chintai bukken,租赁房源,zūlìn fángyuán,Rental Property,賃貸用の物件,供租赁的房产,Property for rent
+Property Types,売買物件,baibai bukken,买卖房源,mǎimài fángyuán,Sales Property,売買用の物件,供买卖的房产,Property for sale
+Property Types,投資用物件,toushi bukken,投资用房产,tóuzī yòng fángchǎn,Investment Property,投資目的の物件,投资用房产,Property for investment
+Room Layouts,1R,wan ruumu,单间,dānjiān,Studio,ワンルーム（独立寝室なし）,单间（无独立卧室）,One room (no separate bedroom)
+Room Layouts,1K,wan kei,1室+厨房,1shì + chúfáng,1 Bedroom + Kitchen,1部屋＋キッチン,1室+厨房,One room plus kitchen
+Room Layouts,1DK,wan di kei,1室+餐厅厨房,1shì + cāntīng chúfáng,1 Bedroom + Dining-Kitchen,1部屋＋ダイニングキッチン,1室+餐厅厨房,One room plus dining-kitchen
+Room Layouts,1LDK,wan eru di kei,1室+客餐厅厨房,1shì + kè cāntīng chúfáng,1 Bedroom + Living-Dining-Kitchen,1部屋＋リビングダイニングキッチン,1室+客餐厅厨房,One room plus living-dining-kitchen
+Room Layouts,2LDK,tsuu eru di kei,2室+客餐厅厨房,2shì + kè cāntīng chúfáng,2 Bedrooms + Living-Dining-Kitchen,2部屋＋リビングダイニングキッチン,2室+客餐厅厨房,Two rooms plus living-dining-kitchen
+Room Layouts,3LDK,san eru di kei,3室+客餐厅厨房,3shì + kè cāntīng chúfáng,3 Bedrooms + Living-Dining-Kitchen,3部屋＋リビングダイニングキッチン,3室+客餐厅厨房,Three rooms plus living-dining-kitchen
+Financial Terms,賃料,chinryou,租金,zūjīn,Rent,毎月の賃貸料,每月租金,Monthly rent payment
+Financial Terms,管理費,kanrihi,管理费,guǎnlǐ fèi,Management Fee,建物管理の費用,建筑管理费用,Building management fee
+Financial Terms,共益費,kyouekihi,共益费,gòngyì fèi,Common Area Fee,共用部分の維持費,公共区域维护费,Maintenance fee for common areas
+Financial Terms,敷金,shikikin,押金,yājīn,Security Deposit,退去時返還される保証金,退租时退还的保证金,Refundable deposit returned at move-out
+Financial Terms,礼金,reikin,礼金,lǐjīn,Key Money,契約時の返還されない金銭,签约时不退还的金额,Non-refundable payment at signing
+Financial Terms,仲介手数料,chuukai tesuuryou,中介费,zhōngjiè fèi,Brokerage Fee,不動産会社への手数料,支付给房地产公司的费用,Commission to real estate agency
+Financial Terms,更新料,koushinryou,续约费,xùyuē fèi,Renewal Fee,契約更新時の費用,合同续约时的费用,Fee for lease renewal
+Financial Terms,火災保険,kasai hoken,火灾保险,huǒzāi bǎoxiǎn,Fire Insurance,火災に対する保険,火灾保险,Insurance against fire
+Amenities,駅近,ekichika,近车站,jìn chēzhàn,Near Station,駅から徒歩5分以内,步行5分钟内到车站,Within 5-minute walk to station
+Amenities,ペット可,petto ka,可养宠物,kě yǎng chǒngwù,Pet-Friendly,ペットの飼育可能,可饲养宠物,Pets allowed
+Amenities,バス・トイレ別,basu toire betsu,浴厕分离,yù cè fēnlí,Separate Bath/Toilet,浴室とトイレが別室,浴室和厕所分离,Bathroom and toilet in separate rooms
+Amenities,オートロック,ooto rokku,自动门锁,zìdòng ménsuǒ,Auto-Lock,自動施錠システム,自动锁系统,Automatic locking system
+Amenities,宅配ボックス,takuhai bokkusu,快递箱,kuàidì xiāng,Parcel Locker,不在時の荷物受取ロッカー,不在时收货储物柜,Delivery box for packages
+Amenities,エレベーター,erebeetaa,电梯,diàntī,Elevator,昇降機,升降机,Lift
+Amenities,駐車場,chuushajou,停车位,tíngchē wèi,Parking Space,車の駐車スペース,汽车停车位,Car parking space
+Amenities,バルコニー,barukonii,阳台,yángtái,Balcony,屋外スペース,户外空间,Outdoor space
+Contract Process,物件検索,bukken kensaku,房源搜索,fángyuán sōusuǒ,Property Search,希望条件で物件を探す,按期望条件搜索房源,Search for properties by desired conditions
+Contract Process,内見予約,naiken yoyaku,看房预约,kànfáng yùyuē,Viewing Reservation,物件を見学する予約,预约看房,Appointment to inspect property
+Contract Process,入居申込,nyuukyo moushikomi,入住申请,rùzhù shēnqǐng,Rental Application,入居の申し込み,入住申请,Application to rent
+Contract Process,審査,shinsa,审查,shěnchá,Screening,入居資格の審査,入住资格审查,Background and credit check
+Contract Process,契約手続き,keiyaku tetsuzuki,签约手续,qiānyuē shǒuxù,Contract Procedures,契約のための手続き,合同手续,Procedures for contract signing
+Contract Process,重要事項説明,juuyou jikou setsumei,重要事项说明,zhòngyào shìxiàng shuōmíng,Important Matters Explanation,物件の重要情報説明,房产重要信息说明,Explanation of key property details
+Contract Process,契約締結,keiyaku teiketsu,签约,qiānyuē,Contract Signing,契約書への署名,合同签署,Signing the lease agreement
+Contract Process,鍵渡し,kagi watashi,钥匙交接,yàoshi jiāojiē,Key Handover,鍵の受け渡し,钥匙交接,Receiving keys
+Contract Process,入居,nyuukyo,入住,rùzhù,Move-in,入居開始,开始入住,Start of tenancy
+Contract Process,退去,taikyo,退租,tuì zū,Move-out,退去・契約終了,退租・合同结束,End of tenancy
+Minpaku Terms,民泊,minpaku,民宿,mínsu,Vacation Rental,住宅の短期賃貸,住宅短期租赁,Short-term residential rental
+Minpaku Terms,OneStep PMS,wan suteppu pii emu esu,OneStep PMS,OneStep PMS,OneStep PMS,複数予約サイト連携システム,多预订网站联动系统,Property management system syncing booking sites
+Minpaku Terms,稼働率,kadouritsu,入住率,rùzhù lǜ,Occupancy Rate,予約日数の割合,预订天数比例,Percentage of nights booked
+Minpaku Terms,宿泊料金,shukuhaku ryoukin,住宿费,zhùsù fèi,Nightly Rate,1泊あたりの料金,每晚收费,Rate per night
+Minpaku Terms,清掃費,seisouhi,清扫费,qīngsǎo fèi,Cleaning Fee,清掃サービスの費用,清扫服务费用,Fee for cleaning service
+Minpaku Terms,光熱費,kounetsuhi,水电费,shuǐdiàn fèi,Utilities,電気・ガス・水道代,电・气・水费,Electricity gas water costs
+Minpaku Terms,プラットフォーム手数料,purattofoomu tesuuryou,平台手续费,píngtái shǒuxù fèi,Platform Fee,予約サイトへの手数料,预订网站手续费,Commission to booking platform
+Minpaku Terms,ゲスト対応,gesuto taiou,客人对应,kèrén duìyìng,Guest Support,宿泊者への対応,对住客的服务,Communication with guests
+Management,賃貸管理,chintai kanri,租赁管理,zūlìn guǎnlǐ,Rental Management,賃貸物件の管理,租赁房产管理,Management of rental properties
+Management,オーナー様,oonaa sama,业主,yèzhǔ,Property Owner,物件所有者,房产所有者,Owner of the property
+Management,入居者様,nyuukyosha sama,租客,zūkè,Tenant,賃借人,租户,Renter
+Management,家賃管理,yachin kanri,租金管理,zūjīn guǎnlǐ,Rent Collection,家賃の集金代行,租金代收,Service collecting rent
+Management,滞納対応,tainou taiou,欠款处理,qiànkuǎn chǔlǐ,Delinquency Handling,滞納家賃の回収,欠租金催收,Collecting overdue rent
+Management,建物管理,tatemono kanri,建筑管理,jiànzhú guǎnlǐ,Building Management,建物の維持管理,建筑维护管理,Maintenance of building
+Management,設備点検,setsubi tenken,设备检查,shèbèi jiǎnchá,Equipment Inspection,設備の定期点検,设备定期检查,Regular equipment checks
+Management,募集業務,boshuu gyoumu,招租业务,zhāo zū yèwù,Tenant Recruitment,入居者募集活動,招募租客活动,Activities to find tenants
+Management,契約更新,keiyaku koushin,续约,xùyuē,Lease Renewal,契約の更新,合同续约,Renewing the lease
+Company Philosophy,誠意正心,seii seishin,诚意正心,chéngyì zhèngxīn,Integrity & Sincerity,誠実な心を正しく保つ,保持诚实正直的心,Maintain honest and upright heart
+Company Philosophy,知行合一,chikou gouitsu,知行合一,zhī xíng héyī,Unity of Knowledge & Action,学んだことを必ず実践する,必定实践所学,Always practice what we learn
+Company Philosophy,物心両面の幸福,busshin ryoumen no koufuku,物质与精神的双重幸福,wùzhì yǔ jīngshén de shuāngchóng xìngfú,Material & Spiritual Happiness,物質的・精神的な幸福,物质与精神的幸福,Both material and spiritual wellbeing
+Company Philosophy,利他の心,rita no kokoro,利他之心,lìtā zhī xīn,Spirit of Altruism,他者を思いやる心,为他人着想的心,Putting others first

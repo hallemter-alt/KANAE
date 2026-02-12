@@ -1,0 +1,349 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "lastUpdated": "2026-02-12",
+    "description": "Complete Japanese-Chinese-English Real Estate Dictionary for KANAE",
+    "totalTerms": 200
+  },
+  "categories": {
+    "property_types": {
+      "ja": {
+        "マンション": "Mansion (Apartment/Condo)",
+        "一戸建て": "Detached house",
+        "土地": "Land",
+        "賃貸物件": "Rental property",
+        "売買物件": "Sales property",
+        "投資用物件": "Investment property",
+        "新築": "Newly built",
+        "中古": "Pre-owned/Used",
+        "タワーマンション": "Tower mansion (high-rise)",
+        "低層マンション": "Low-rise apartment"
+      },
+      "zh": {
+        "公寓": "Apartment/Mansion",
+        "独栋": "Detached house",
+        "土地": "Land",
+        "租赁房源": "Rental property",
+        "买卖房源": "Sales property",
+        "投资用房产": "Investment property",
+        "新建": "Newly built",
+        "二手": "Pre-owned",
+        "高层公寓": "Tower mansion",
+        "低层公寓": "Low-rise apartment"
+      },
+      "en": {
+        "Apartment": "マンション (Condominium)",
+        "House": "一戸建て (Detached house)",
+        "Land": "土地 (Land parcel)",
+        "Rental": "賃貸 (For rent)",
+        "For Sale": "売買 (Sales)",
+        "Investment": "投資用 (For investment)",
+        "New": "新築 (Newly constructed)",
+        "Used": "中古 (Pre-owned)",
+        "High-rise": "タワーマンション (Tower)",
+        "Low-rise": "低層 (Low-rise)"
+      }
+    },
+    "room_layouts": {
+      "ja": {
+        "1R": "One room (no separate bedroom)",
+        "1K": "One room + Kitchen",
+        "1DK": "One room + Dining-Kitchen",
+        "1LDK": "One room + Living-Dining-Kitchen",
+        "2K": "Two rooms + Kitchen",
+        "2DK": "Two rooms + Dining-Kitchen",
+        "2LDK": "Two rooms + Living-Dining-Kitchen",
+        "3LDK": "Three rooms + Living-Dining-Kitchen",
+        "4LDK+": "Four+ rooms + Living-Dining-Kitchen"
+      },
+      "zh": {
+        "1R": "单间（无独立卧室）",
+        "1K": "1室+厨房",
+        "1DK": "1室+餐厅厨房",
+        "1LDK": "1室+客餐厅厨房",
+        "2K": "2室+厨房",
+        "2DK": "2室+餐厅厨房",
+        "2LDK": "2室+客餐厅厨房",
+        "3LDK": "3室+客餐厅厨房",
+        "4LDK+": "4室以上+客餐厅厨房"
+      },
+      "en": {
+        "Studio": "1R (ワンルーム)",
+        "1 Bedroom + Kitchen": "1K",
+        "1 Bedroom + Dining-Kitchen": "1DK",
+        "1 Bedroom + Living-Dining-Kitchen": "1LDK",
+        "2 Bedrooms + Kitchen": "2K",
+        "2 Bedrooms + Dining-Kitchen": "2DK",
+        "2 Bedrooms + Living-Dining-Kitchen": "2LDK",
+        "3 Bedrooms + Living-Dining-Kitchen": "3LDK",
+        "4+ Bedrooms + Living-Dining-Kitchen": "4LDK+"
+      }
+    },
+    "financial_terms": {
+      "ja": {
+        "賃料": "Rent/Monthly rent",
+        "管理費": "Management fee",
+        "共益費": "Common area maintenance fee",
+        "敷金": "Security deposit (refundable)",
+        "礼金": "Key money (non-refundable)",
+        "仲介手数料": "Brokerage fee",
+        "更新料": "Lease renewal fee",
+        "火災保険": "Fire insurance",
+        "保証会社": "Guarantor company",
+        "初期費用": "Initial costs"
+      },
+      "zh": {
+        "租金": "Monthly rent",
+        "管理费": "Management fee",
+        "共益费": "Common area fee",
+        "押金": "Security deposit (refundable)",
+        "礼金": "Gift money (non-refundable)",
+        "中介费": "Brokerage fee",
+        "续约费": "Renewal fee",
+        "火灾保险": "Fire insurance",
+        "担保公司": "Guarantor company",
+        "初期费用": "Initial costs"
+      },
+      "en": {
+        "Rent": "賃料 (Monthly payment)",
+        "Management Fee": "管理費 (Monthly)",
+        "Common Fee": "共益費 (Maintenance)",
+        "Security Deposit": "敷金 (Refundable)",
+        "Key Money": "礼金 (Non-refundable)",
+        "Brokerage Fee": "仲介手数料 (Agent fee)",
+        "Renewal Fee": "更新料 (Lease renewal)",
+        "Fire Insurance": "火災保険 (Required)",
+        "Guarantor": "保証人/保証会社 (Required)",
+        "Initial Costs": "初期費用 (Move-in costs)"
+      }
+    },
+    "amenities_features": {
+      "ja": {
+        "駅近": "Near station (within 5 min walk)",
+        "ペット可": "Pets allowed",
+        "バス・トイレ別": "Separate bath and toilet",
+        "オートロック": "Auto-lock entrance",
+        "宅配ボックス": "Parcel delivery box",
+        "エレベーター": "Elevator",
+        "駐車場": "Parking space",
+        "バルコニー": "Balcony",
+        "システムキッチン": "Modern kitchen system",
+        "エアコン": "Air conditioning"
+      },
+      "zh": {
+        "近车站": "Near station (5 min walk)",
+        "可养宠物": "Pets allowed",
+        "浴厕分离": "Separate bath/toilet",
+        "自动门锁": "Auto-lock entrance",
+        "快递箱": "Parcel box",
+        "电梯": "Elevator",
+        "停车位": "Parking space",
+        "阳台": "Balcony",
+        "系统厨房": "Modern kitchen",
+        "空调": "Air conditioning"
+      },
+      "en": {
+        "Near Station": "駅近 (< 5 min walk)",
+        "Pet-Friendly": "ペット可 (Pets allowed)",
+        "Separate Bath": "バス・トイレ別 (Bath/toilet)",
+        "Auto-Lock": "オートロック (Secure entry)",
+        "Delivery Box": "宅配ボックス (Parcel box)",
+        "Elevator": "エレベーター (Lift)",
+        "Parking": "駐車場 (Car space)",
+        "Balcony": "バルコニー (Outdoor)",
+        "Modern Kitchen": "システムキッチン (Built-in)",
+        "Air Conditioning": "エアコン (Cooling/heating)"
+      }
+    },
+    "contract_process": {
+      "ja": {
+        "物件検索": "Property search",
+        "内見予約": "Viewing reservation",
+        "入居申込": "Rental application",
+        "審査": "Screening process",
+        "契約手続き": "Contract procedures",
+        "重要事項説明": "Important matters explanation",
+        "契約締結": "Contract signing",
+        "鍵渡し": "Key handover",
+        "入居": "Move-in",
+        "退去": "Move-out"
+      },
+      "zh": {
+        "房源搜索": "Property search",
+        "看房预约": "Viewing appointment",
+        "入住申请": "Rental application",
+        "审查": "Screening",
+        "签约手续": "Contract procedures",
+        "重要事项说明": "Important explanation",
+        "签约": "Contract signing",
+        "钥匙交接": "Key handover",
+        "入住": "Move-in",
+        "退租": "Move-out"
+      },
+      "en": {
+        "Search": "物件検索 (Find property)",
+        "Viewing": "内見 (Inspection)",
+        "Application": "入居申込 (Apply)",
+        "Screening": "審査 (Background check)",
+        "Contract": "契約 (Lease agreement)",
+        "Explanation": "重要事項説明 (Disclosure)",
+        "Signing": "契約締結 (Execution)",
+        "Key Handover": "鍵渡し (Receive keys)",
+        "Move-in": "入居 (Start tenancy)",
+        "Move-out": "退去 (End tenancy)"
+      }
+    },
+    "minpaku_vacation_rental": {
+      "ja": {
+        "民泊": "Vacation rental (Minpaku)",
+        "OneStep PMS": "Property management system",
+        "稼働率": "Occupancy rate",
+        "宿泊料金": "Nightly rate",
+        "清掃費": "Cleaning fee",
+        "光熱費": "Utilities cost",
+        "プラットフォーム手数料": "Platform commission",
+        "ゲスト対応": "Guest communication",
+        "チェックイン": "Check-in",
+        "チェックアウト": "Check-out"
+      },
+      "zh": {
+        "民宿": "Vacation rental",
+        "OneStep PMS": "房产管理系统",
+        "入住率": "Occupancy rate",
+        "住宿费": "Nightly rate",
+        "清扫费": "Cleaning fee",
+        "水电费": "Utilities",
+        "平台手续费": "Platform fee",
+        "客人对应": "Guest support",
+        "入住": "Check-in",
+        "退房": "Check-out"
+      },
+      "en": {
+        "Vacation Rental": "民泊 (Short-term)",
+        "PMS": "OneStep PMS (Management)",
+        "Occupancy Rate": "稼働率 (Booking %)",
+        "Nightly Rate": "宿泊料金 (Per night)",
+        "Cleaning Fee": "清掃費 (Service)",
+        "Utilities": "光熱費 (Power/water)",
+        "Platform Fee": "手数料 (Commission)",
+        "Guest Support": "ゲスト対応 (Service)",
+        "Check-in": "チェックイン (Arrival)",
+        "Check-out": "チェックアウト (Departure)"
+      }
+    },
+    "management_services": {
+      "ja": {
+        "賃貸管理": "Rental management",
+        "オーナー様": "Property owner",
+        "入居者様": "Tenant/Resident",
+        "家賃管理": "Rent collection",
+        "滞納対応": "Delinquency handling",
+        "建物管理": "Building management",
+        "設備点検": "Equipment inspection",
+        "募集業務": "Tenant recruitment",
+        "契約更新": "Lease renewal",
+        "入居率": "Occupancy rate"
+      },
+      "zh": {
+        "租赁管理": "Rental management",
+        "业主": "Property owner",
+        "租客": "Tenant",
+        "租金管理": "Rent collection",
+        "欠款处理": "Delinquency handling",
+        "建筑管理": "Building management",
+        "设备检查": "Equipment inspection",
+        "招租业务": "Tenant recruitment",
+        "续约": "Lease renewal",
+        "入住率": "Occupancy rate"
+      },
+      "en": {
+        "Rental Management": "賃貸管理 (PM services)",
+        "Owner": "オーナー (Landlord)",
+        "Tenant": "入居者 (Renter)",
+        "Rent Collection": "家賃管理 (Monthly)",
+        "Delinquency": "滞納対応 (Late payment)",
+        "Building Management": "建物管理 (Maintenance)",
+        "Inspection": "設備点検 (Check)",
+        "Recruitment": "募集 (Find tenants)",
+        "Renewal": "契約更新 (Extend lease)",
+        "Occupancy": "入居率 (Fill rate)"
+      }
+    },
+    "locations": {
+      "ja": {
+        "東京23区": "Tokyo 23 wards",
+        "山手線": "Yamanote Line",
+        "新宿区": "Shinjuku Ward",
+        "渋谷区": "Shibuya Ward",
+        "港区": "Minato Ward",
+        "中央区": "Chuo Ward",
+        "千代田区": "Chiyoda Ward",
+        "高田馬場": "Takadanobaba",
+        "西早稲田": "Nishi-Waseda",
+        "都心": "City center"
+      },
+      "zh": {
+        "东京23区": "Tokyo 23 wards",
+        "山手线": "Yamanote Line",
+        "新宿区": "Shinjuku",
+        "涩谷区": "Shibuya",
+        "港区": "Minato",
+        "中央区": "Chuo",
+        "千代田区": "Chiyoda",
+        "高田马场": "Takadanobaba",
+        "西早稻田": "Nishi-Waseda",
+        "市中心": "City center"
+      },
+      "en": {
+        "Tokyo 23 Wards": "東京23区 (Central Tokyo)",
+        "Yamanote Line": "山手線 (Loop line)",
+        "Shinjuku": "新宿区 (Business hub)",
+        "Shibuya": "渋谷区 (Youth culture)",
+        "Minato": "港区 (Upscale)",
+        "Chuo": "中央区 (Business)",
+        "Chiyoda": "千代田区 (Government)",
+        "Takadanobaba": "高田馬場 (Student area)",
+        "Nishi-Waseda": "西早稲田 (University)",
+        "City Center": "都心 (Downtown)"
+      }
+    },
+    "company_philosophy": {
+      "ja": {
+        "誠意正心": "Sincerity and righteous heart",
+        "知行合一": "Unity of knowledge and action",
+        "物心両面の幸福": "Material and spiritual happiness",
+        "利他の心": "Spirit of altruism",
+        "全従業員の幸福追求": "Pursuit of employee happiness",
+        "人として正しく": "Act with integrity",
+        "Win-Winの関係": "Win-win relationships",
+        "売上最大・経費最小": "Maximize sales, minimize costs",
+        "全員参加経営": "All-hands management",
+        "明るく前向きに": "Bright and positive"
+      },
+      "zh": {
+        "诚意正心": "Sincere and upright heart",
+        "知行合一": "Unity of knowing and doing",
+        "物质与精神的双重幸福": "Material and spiritual well-being",
+        "利他之心": "Altruistic spirit",
+        "全员幸福追求": "Employee happiness pursuit",
+        "正直行事": "Act with integrity",
+        "双赢关系": "Win-win relations",
+        "销售最大化・成本最小化": "Max revenue, min cost",
+        "全员参与管理": "All-staff management",
+        "积极向上": "Positive attitude"
+      },
+      "en": {
+        "Integrity": "誠意正心 (Honest heart)",
+        "Knowledge-Action Unity": "知行合一 (Practice)",
+        "Holistic Happiness": "物心両面 (Material+Spiritual)",
+        "Altruism": "利他の心 (Others-first)",
+        "Employee Wellbeing": "全従業員の幸福 (Staff focus)",
+        "Right Conduct": "人として正しく (Integrity)",
+        "Win-Win": "Win-Win関係 (Mutual benefit)",
+        "Revenue Focus": "売上最大 (Growth)",
+        "Participation": "全員参加 (Inclusive)",
+        "Positivity": "明るく前向き (Optimism)"
+      }
+    }
+  }
+}
