@@ -80,20 +80,20 @@ export default function Hero() {
             <div className="flex flex-col md:flex-row gap-4">
               <div className="flex-1">
                 <select className="w-full px-4 py-3 rounded-lg border-2 border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-gray-900 font-semibold bg-white appearance-none">
-                  <option className="text-gray-900 font-semibold">賃貸物件を探す</option>
-                  <option className="text-gray-900 font-semibold">売買物件を探す</option>
-                  <option className="text-gray-900 font-semibold">民泊運営相談</option>
+                  <option className="text-gray-900 font-semibold">{t.hero.searchRent}</option>
+                  <option className="text-gray-900 font-semibold">{t.hero.searchSale}</option>
+                  <option className="text-gray-900 font-semibold">{t.hero.searchMinpaku}</option>
                 </select>
               </div>
               <div className="flex-1">
                 <input 
                   type="text" 
-                  placeholder="エリア、沿線、駅名で検索"
+                  placeholder={t.hero.searchPlaceholder}
                   className="w-full px-4 py-3 rounded-lg border-2 border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-gray-900 font-semibold placeholder:text-gray-600"
                 />
               </div>
               <button className="bg-gradient-to-r from-primary-600 to-primary-700 text-white px-8 py-3 rounded-lg font-bold hover:from-primary-700 hover:to-primary-800 transition-all transform hover:scale-105 shadow-lg">
-                検索
+                {t.hero.searchButton}
               </button>
             </div>
           </div>

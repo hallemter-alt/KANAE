@@ -19,12 +19,18 @@ export const translations = {
       subtitle: '世界に通じる価値を創造する',
       cta: '物件を探す',
       learnMore: '詳しく見る',
+      searchRent: '賃貸物件を探す',
+      searchSale: '売買物件を探す',
+      searchMinpaku: '民泊運営相談',
+      searchPlaceholder: 'エリア、沿線、駅名で検索',
+      searchButton: '検索',
     },
     
     // サービス
     services: {
       title: '事業内容',
       subtitle: '4つの事業で、お客様の幸福を実現します',
+      learnMore: '詳しく見る',
       rent: {
         title: '賃貸事業',
         description: 'エリア・沿線・賃料・間取りなど、お客様のニーズに合わせた物件検索サービス',
@@ -40,6 +46,11 @@ export const translations = {
       minpaku: {
         title: '民泊事業',
         description: 'OneStep PMS連動で、民泊運営を完全サポート。収益最大化を実現',
+      },
+      stats: {
+        minpakuProperties: '民泊運営物件',
+        managedProperties: '管理物件',
+        customerSmiles: 'お客様の笑顔',
       },
     },
     
@@ -371,12 +382,18 @@ export const translations = {
       subtitle: '以利他之心创造通往世界的价值',
       cta: '搜索房源',
       learnMore: '了解更多',
+      searchRent: '搜索租赁房源',
+      searchSale: '搜索买卖房源',
+      searchMinpaku: '民宿运营咨询',
+      searchPlaceholder: '按地区、线路、车站搜索',
+      searchButton: '搜索',
     },
     
     // 服务
     services: {
       title: '业务内容',
       subtitle: '通过四大业务，实现客户的幸福',
+      learnMore: '了解更多',
       rent: {
         title: '租赁业务',
         description: '根据地区、线路、租金、户型等，为客户提供符合需求的房源搜索服务',
@@ -392,6 +409,11 @@ export const translations = {
       minpaku: {
         title: '民宿业务',
         description: '通过OneStep PMS联动，全面支持民宿运营，实现收益最大化',
+      },
+      stats: {
+        minpakuProperties: '民宿运营物业',
+        managedProperties: '管理物业',
+        customerSmiles: '客户笑容',
       },
     },
     
@@ -723,12 +745,18 @@ export const translations = {
       subtitle: 'With Pursuit of Material and Spiritual Happiness',
       cta: 'Search Properties',
       learnMore: 'Learn More',
+      searchRent: 'Search Rental Properties',
+      searchSale: 'Search Properties for Sale',
+      searchMinpaku: 'Vacation Rental Consultation',
+      searchPlaceholder: 'Search by area, line, or station',
+      searchButton: 'Search',
     },
     
     // Services
     services: {
       title: 'Our Services',
       subtitle: 'Four Business Areas to Realize Customer Happiness',
+      learnMore: 'Learn More',
       rent: {
         title: 'Rental Business',
         description: 'Property search service tailored to customer needs by area, transit line, rent, layout, etc.',
@@ -744,6 +772,11 @@ export const translations = {
       minpaku: {
         title: 'Vacation Rental Business',
         description: 'Full support for vacation rental operations with OneStep PMS integration to maximize revenue',
+      },
+      stats: {
+        minpakuProperties: 'Vacation Rental Properties',
+        managedProperties: 'Managed Properties',
+        customerSmiles: 'Customer Smiles',
       },
     },
     
