@@ -13,7 +13,7 @@ export default function ManagementPage() {
       <Navbar />
       
       {/* ヒーローセクション */}
-      <Section background="gradient" spacing="lg">
+      <Section background="gradient" spacing="hero">
         <Container>
           <div className="text-center">
             <Heading level={1} align="center" className="mb-6 text-white">

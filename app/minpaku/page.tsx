@@ -2,6 +2,7 @@
 
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import { Container, Section, Heading, Text } from '@/components/ui/Layout';
 import { useState } from 'react';
 
 export default function MinpakuPage() {
@@ -49,19 +50,18 @@ export default function MinpakuPage() {
       <Navbar />
       
       {/* Hero Section with Dark Gradient */}
-      <section className="relative pt-32 pb-20 bg-gradient-to-br from-primary-900 via-primary-800 to-gold-900">
-        <div className="absolute inset-0 bg-black/10"></div>
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+      <Section background="gradient" spacing="hero">
+        <Container>
+          <div className="text-center">
+            <Heading level={1} align="center" className="mb-6 text-white">
               民泊運営代行サービス
-            </h1>
-            <p className="text-xl text-white/90 mb-8">
+            </Heading>
+            <Text size="xl" className="max-w-3xl mx-auto text-white/90">
               お持ちの物件を民泊として運営し、安定した収益を実現します
-            </p>
+            </Text>
           </div>
-        </div>
-      </section>
+        </Container>
+      </Section>
       
       <div className="container mx-auto px-4 py-16">
         <div className="max-w-5xl mx-auto">

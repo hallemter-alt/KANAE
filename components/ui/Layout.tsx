@@ -27,7 +27,7 @@ interface SectionProps {
   children: React.ReactNode
   className?: string
   background?: 'white' | 'gray' | 'primary' | 'gradient'
-  spacing?: 'sm' | 'md' | 'lg' | 'xl'
+  spacing?: 'sm' | 'md' | 'lg' | 'xl' | 'hero'
 }
 
 export function Section({ 
@@ -48,6 +48,7 @@ export function Section({
     md: 'py-12 sm:py-16',
     lg: 'py-16 sm:py-24',
     xl: 'py-24 sm:py-32',
+    hero: 'pt-32 pb-20',
   }
 
   return (
