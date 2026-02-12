@@ -30,7 +30,7 @@ export default function CTA() {
             </span>
           </h2>
 
-          <p className="text-xl text-white/90 mb-12 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-white/95 mb-12 max-w-3xl mx-auto leading-relaxed font-semibold">
             {t.cta.description}
           </p>
 
@@ -66,7 +66,7 @@ export default function CTA() {
                   </svg>
                 </div>
                 <h3 className="text-lg font-bold text-white mb-2">{t.contact.phone}</h3>
-                <a href="tel:03-6914-3633" className="text-white/90 hover:text-white transition-colors text-lg">
+                <a href="tel:03-6914-3633" className="text-white hover:text-gold-300 transition-colors text-lg font-semibold">
                   03-6914-3633
                 </a>
               </div>
@@ -78,7 +78,7 @@ export default function CTA() {
                   </svg>
                 </div>
                 <h3 className="text-lg font-bold text-white mb-2">{t.contact.email}</h3>
-                <a href="mailto:info@rut-tokyo.com" className="text-white/90 hover:text-white transition-colors">
+                <a href="mailto:info@rut-tokyo.com" className="text-white hover:text-gold-300 transition-colors font-semibold">
                   info@rut-tokyo.com
                 </a>
               </div>
@@ -90,17 +90,17 @@ export default function CTA() {
                   </svg>
                 </div>
                 <h3 className="text-lg font-bold text-white mb-2">{t.contact.businessHours}</h3>
-                <p className="text-white/90">
+                <p className="text-white font-semibold">
                   {t.contact.businessHoursValue}
                   <br />
-                  <span className="text-sm">{t.contact.businessHoursNote}</span>
+                  <span className="text-sm text-white/90">{t.contact.businessHoursNote}</span>
                 </p>
               </div>
             </div>
           </div>
 
           {/* Additional Note */}
-          <p className="mt-8 text-white/70 text-sm">
+          <p className="mt-8 text-white/90 text-sm font-medium">
             {t.contact.onlineNote}
           </p>
         </div>

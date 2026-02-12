@@ -33,14 +33,14 @@ export default function SalePage() {
             <div className="space-y-6">
               {/* Property Type */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-bold text-gray-900 mb-2">
                   物件種別
                 </label>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   {['マンション', '一戸建て', '土地'].map((type) => (
                     <label key={type} className="flex items-center space-x-2 p-4 border-2 border-gray-300 rounded-lg hover:border-primary-500 cursor-pointer transition-colors">
                       <input type="radio" name="propertyType" className="text-primary-600 focus:ring-primary-500" />
-                      <span className="text-gray-900 font-medium">{type}</span>
+                      <span className="text-gray-900 font-semibold">{type}</span>
                     </label>
                   ))}
                 </div>
@@ -48,7 +48,7 @@ export default function SalePage() {
 
               {/* Location */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-bold text-gray-900 mb-2">
                   エリア
                 </label>
                 <select className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-gray-900 bg-white">
@@ -62,7 +62,7 @@ export default function SalePage() {
               {/* Price Range */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-bold text-gray-900 mb-2">
                     価格（下限）
                   </label>
                   <input
@@ -72,7 +72,7 @@ export default function SalePage() {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-bold text-gray-900 mb-2">
                     価格（上限）
                   </label>
                   <input

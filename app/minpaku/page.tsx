@@ -90,7 +90,7 @@ export default function MinpakuPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
               {/* Property Type */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-bold text-gray-900 mb-2">
                   物件種別
                 </label>
                 <select
@@ -105,7 +105,7 @@ export default function MinpakuPage() {
 
               {/* Area */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-bold text-gray-900 mb-2">
                   面積（㎡）
                 </label>
                 <input
@@ -119,7 +119,7 @@ export default function MinpakuPage() {
 
               {/* Rooms */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-bold text-gray-900 mb-2">
                   間取り
                 </label>
                 <select
@@ -137,7 +137,7 @@ export default function MinpakuPage() {
 
               {/* Nightly Rate */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-bold text-gray-900 mb-2">
                   1泊料金（円）
                 </label>
                 <input
@@ -151,7 +151,7 @@ export default function MinpakuPage() {
 
               {/* Occupancy Rate */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-bold text-gray-900 mb-2">
                   予想稼働率（%）
                 </label>
                 <input
@@ -166,7 +166,7 @@ export default function MinpakuPage() {
 
               {/* Management Fee */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-bold text-gray-900 mb-2">
                   管理手数料（%）
                 </label>
                 <input
@@ -195,7 +195,7 @@ export default function MinpakuPage() {
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                 <div className="bg-white rounded-lg p-6">
-                  <h3 className="text-lg font-semibold text-gray-700 mb-4">収入</h3>
+                  <h3 className="text-lg font-bold text-gray-900 mb-4">収入</h3>
                   <div className="space-y-2">
                     <div className="flex justify-between">
                       <span className="text-gray-600">総売上</span>
@@ -209,7 +209,7 @@ export default function MinpakuPage() {
                 </div>
 
                 <div className="bg-white rounded-lg p-6">
-                  <h3 className="text-lg font-semibold text-gray-700 mb-4">支出</h3>
+                  <h3 className="text-lg font-bold text-gray-900 mb-4">支出</h3>
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between">
                       <span className="text-gray-600">管理手数料</span>

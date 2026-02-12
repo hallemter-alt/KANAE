@@ -146,7 +146,7 @@ export default function RentPage() {
 
               {/* 間取り選択 */}
               <div>
-                <label className="block text-sm font-bold text-gray-700 mb-3">
+                <label className="block text-sm font-bold text-gray-900 mb-3">
                   間取り
                 </label>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -155,8 +155,8 @@ export default function RentPage() {
                       key={type} 
                       className={`flex items-center justify-center space-x-2 p-3 border-2 rounded-lg cursor-pointer transition-all ${
                         selectedRooms.includes(type)
-                          ? 'bg-primary-50 border-primary-500 text-primary-700 font-bold'
-                          : 'border-gray-300 hover:bg-gray-50'
+                          ? 'bg-primary-50 border-primary-500 text-primary-900 font-bold'
+                          : 'border-gray-300 hover:bg-gray-50 text-gray-900'
                       }`}
                     >
                       <input 
@@ -165,7 +165,7 @@ export default function RentPage() {
                         onChange={() => handleRoomToggle(type)}
                         className="rounded text-primary-600 focus:ring-primary-500" 
                       />
-                      <span className="text-base">{type}</span>
+                      <span className="text-base font-semibold">{type}</span>
                     </label>
                   ))}
                 </div>
@@ -173,17 +173,17 @@ export default function RentPage() {
 
               {/* その他の条件 */}
               <div>
-                <label className="block text-sm font-bold text-gray-700 mb-3">
+                <label className="block text-sm font-bold text-gray-900 mb-3">
                   こだわり条件
                 </label>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                   {['駅近（徒歩5分以内）', 'ペット可', 'バス・トイレ別', 'オートロック', '築浅（5年以内）', '駐車場あり'].map((condition) => (
                     <label 
                       key={condition} 
-                      className="flex items-center space-x-2 p-3 border-2 border-gray-300 rounded-lg hover:bg-gray-50 cursor-pointer transition-all"
+                      className="flex items-center space-x-2 p-3 border-2 border-gray-300 rounded-lg hover:bg-gray-50 cursor-pointer transition-all text-gray-900"
                     >
                       <input type="checkbox" className="rounded text-primary-600 focus:ring-primary-500" />
-                      <span className="text-sm">{condition}</span>
+                      <span className="text-sm font-semibold">{condition}</span>
                     </label>
                   ))}
                 </div>
