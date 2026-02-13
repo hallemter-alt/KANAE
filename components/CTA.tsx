@@ -78,8 +78,8 @@ export default function CTA() {
                   </svg>
                 </div>
                 <h3 className="text-lg font-bold text-white mb-2">{t.contact.email}</h3>
-                <a href="mailto:info@rut-tokyo.com" className="text-white hover:text-gold-300 transition-colors font-semibold">
-                  info@rut-tokyo.com
+                <a href="mailto:info@kanae-tokyo.com" className="text-white hover:text-gold-300 transition-colors font-semibold">
+                  info@kanae-tokyo.com
                 </a>
               </div>
 
