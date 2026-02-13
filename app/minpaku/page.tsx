@@ -190,8 +190,8 @@ export default function MinpakuPage() {
                         ¥{result.grossRevenue.toLocaleString()}
                       </span>
                     </div>
-                    <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
-                      <span className="text-gray-600">{t.minpaku.bookedNights}</span>
+                    <div className="flex justify-between items-center p-3 bg-gray-100 rounded-lg border border-gray-200">
+                      <span className="text-gray-700 font-medium">{t.minpaku.bookedNights}</span>
                       <span className="text-gray-900 font-semibold">
                         {result.bookedNights} {t.minpaku.nights}
                       </span>
@@ -203,26 +203,26 @@ export default function MinpakuPage() {
                 <div>
                   <h3 className="text-lg font-bold text-gray-900 mb-4">{t.minpaku.expenses}</h3>
                   <div className="space-y-3">
-                    <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
-                      <span className="text-gray-600">{t.minpaku.managementFeeLabel}</span>
+                    <div className="flex justify-between items-center p-3 bg-gray-100 rounded-lg border border-gray-200">
+                      <span className="text-gray-700 font-medium">{t.minpaku.managementFeeLabel}</span>
                       <span className="text-gray-900 font-semibold">
                         ¥{result.managementFee.toLocaleString()}
                       </span>
                     </div>
-                    <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
-                      <span className="text-gray-600">{t.minpaku.cleaningFee}</span>
+                    <div className="flex justify-between items-center p-3 bg-gray-100 rounded-lg border border-gray-200">
+                      <span className="text-gray-700 font-medium">{t.minpaku.cleaningFee}</span>
                       <span className="text-gray-900 font-semibold">
                         ¥{result.cleaningFee.toLocaleString()}
                       </span>
                     </div>
-                    <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
-                      <span className="text-gray-600">{t.minpaku.utilities}</span>
+                    <div className="flex justify-between items-center p-3 bg-gray-100 rounded-lg border border-gray-200">
+                      <span className="text-gray-700 font-medium">{t.minpaku.utilities}</span>
                       <span className="text-gray-900 font-semibold">
                         ¥{result.utilities.toLocaleString()}
                       </span>
                     </div>
-                    <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
-                      <span className="text-gray-600">{t.minpaku.platformFee}</span>
+                    <div className="flex justify-between items-center p-3 bg-gray-100 rounded-lg border border-gray-200">
+                      <span className="text-gray-700 font-medium">{t.minpaku.platformFee}</span>
                       <span className="text-gray-900 font-semibold">
                         ¥{result.platformFee.toLocaleString()}
                       </span>

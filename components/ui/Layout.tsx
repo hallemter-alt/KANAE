@@ -39,7 +39,7 @@ export function Section({
   const backgroundClasses = {
     white: 'bg-white',
     gray: 'bg-gray-50',
-    primary: 'bg-gradient-to-br from-primary-50 via-primary-100 to-gold-50',
+    primary: 'bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800 text-white',
     gradient: 'bg-gradient-to-br from-primary-900 via-primary-800 to-gold-900 text-white',
   }
 
@@ -108,7 +108,7 @@ export function Text({ children, className = '', size = 'base', color = 'gray', 
   }
 
   const colorClasses = {
-    gray: 'text-gray-600',
+    gray: 'text-gray-700',
     dark: 'text-gray-900',
     light: 'text-gray-500',
     primary: 'text-primary-600',

@@ -60,8 +60,8 @@ export default function Stats() {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 text-center">
             {t.stats.banks.map((bank: string, index: number) => (
-              <div key={index} className="p-4 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors">
-                <p className="text-sm font-semibold text-gray-700">{bank}</p>
+              <div key={index} className="p-4 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors border border-gray-200">
+                <p className="text-sm font-semibold text-gray-900">{bank}</p>
               </div>
             ))}
           </div>
