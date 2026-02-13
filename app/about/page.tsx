@@ -225,7 +225,7 @@ export default function AboutPage() {
               </div>
               <div className="bg-gray-200 rounded-lg h-80 overflow-hidden shadow-inner">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3239.211!2d139.7063!3d35.7165!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzXCsDQyJzU5LjQiTiAxMznCsDQyJzIyLjciRQ!5e0!3m2!1sja!2sjp!4v1620000000000!5m2!1sja!2sjp&q=35.716500,139.706300"
+                  src="https://www.google.com/maps?q=東京都豊島区高田3丁目16番4号&output=embed"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
