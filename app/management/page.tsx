@@ -299,17 +299,17 @@ export default function ManagementPage() {
       <Section background="gradient" spacing="lg">
         <Container>
           <div className="text-center">
-            <Heading level={2} align="center" className="mb-6">
-              管理のご相談はお気軽に
+            <Heading level={2} align="center" className="mb-6 text-white">
+              {t.management.ctaTitle}
             </Heading>
-            <Text size="lg" className="mb-8 max-w-2xl mx-auto">
-              物件管理に関するご相談は無料です。お気軽にお問い合わせください。
+            <Text size="lg" className="mb-8 max-w-2xl mx-auto text-white/90">
+              {t.management.ctaDescription}
             </Text>
             <a
               href="/contact"
               className="inline-block px-8 py-4 bg-white text-primary-600 rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors shadow-lg"
             >
-              お問い合わせはこちら
+              {t.management.ctaButton}
             </a>
           </div>
         </Container>

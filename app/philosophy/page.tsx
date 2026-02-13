@@ -165,13 +165,13 @@ export default function PhilosophyPage() {
       </Section>
 
       {/* 経営理念の実践 */}
-      <Section background="primary" spacing="lg">
+      <Section background="white" spacing="lg" className="bg-gradient-to-br from-primary-50 via-primary-100 to-gold-50">
         <Container maxWidth="lg">
           <div className="text-center">
-            <Heading level={2} align="center" className="mb-6 text-white">
+            <Heading level={2} align="center" className="mb-6 text-gray-900">
               {t.philosophy.practiceTitle}
             </Heading>
-            <Text size="lg" className="mb-8 max-w-3xl mx-auto text-white/90">
+            <Text size="lg" className="mb-8 max-w-3xl mx-auto text-gray-800">
               {t.philosophy.practiceDescription}
             </Text>
             <div className="grid md:grid-cols-4 gap-6">
@@ -188,10 +188,10 @@ export default function PhilosophyPage() {
       <Section background="gradient" spacing="lg">
         <Container>
           <div className="text-center">
-            <Heading level={2} align="center" className="mb-6">
+            <Heading level={2} align="center" className="mb-6 text-white">
               {t.philosophy.ctaTitle}
             </Heading>
-            <Text size="lg" className="mb-8 max-w-2xl mx-auto">
+            <Text size="lg" className="mb-8 max-w-2xl mx-auto text-white/90">
               {t.philosophy.ctaDescription}
             </Text>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -282,7 +282,7 @@ function StatCard({ number, label }: { number: string; label: string }) {
   return (
     <div className="text-center">
       <div className="text-4xl font-bold text-primary-600 mb-2">{number}</div>
-      <Text size="sm" color="light">{label}</Text>
+      <Text size="sm" color="gray" className="text-gray-700 font-medium">{label}</Text>
     </div>
   )
 }

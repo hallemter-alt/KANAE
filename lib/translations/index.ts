@@ -265,6 +265,9 @@ export const translations = {
       businessHours: '営業時間',
       emergencyContact: '緊急連絡先（24時間）',
       faq: 'よくあるご質問',
+      ctaTitle: '管理のご相談はお気軽に',
+      ctaDescription: '物件管理に関するご相談は無料です。お気軽にお問い合わせください。',
+      ctaButton: 'お問い合わせはこちら',
     },
     
     // CTA（行動呼びかけ）
@@ -668,6 +671,9 @@ export const translations = {
       businessHours: '营业时间',
       emergencyContact: '紧急联系方式（24小时）',
       faq: '常见问题',
+      ctaTitle: '欢迎咨询管理服务',
+      ctaDescription: '关于物业管理的咨询免费提供。欢迎随时联系我们。',
+      ctaButton: '点击此处咨询',
     },
     
     // 行动号召
@@ -1071,6 +1077,9 @@ export const translations = {
       businessHours: 'Business Hours',
       emergencyContact: 'Emergency Contact (24/7)',
       faq: 'FAQ',
+      ctaTitle: 'Feel Free to Consult About Management',
+      ctaDescription: 'Consultations about property management are free. Please feel free to contact us.',
+      ctaButton: 'Contact Us',
     },
     
     // Call to Action
