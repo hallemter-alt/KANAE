@@ -168,18 +168,17 @@ export default function PhilosophyPage() {
       <Section background="primary" spacing="lg">
         <Container maxWidth="lg">
           <div className="text-center">
-            <Heading level={2} align="center" className="mb-6 text-gray-900">
-              経営理念の実践
+            <Heading level={2} align="center" className="mb-6 text-white">
+              {t.philosophy.practiceTitle}
             </Heading>
-            <Text size="lg" className="mb-8 max-w-3xl mx-auto">
-              私たちは、この理念を日々の業務の中で実践し、
-              お客様、社会、従業員すべての幸福を追求します。
+            <Text size="lg" className="mb-8 max-w-3xl mx-auto text-white/90">
+              {t.philosophy.practiceDescription}
             </Text>
             <div className="grid md:grid-cols-4 gap-6">
-              <StatCard number="100%" label="顧客満足度目標" />
-              <StatCard number="365日" label="サポート体制" />
-              <StatCard number="3言語" label="対応可能" />
-              <StatCard number="∞" label="成長の可能性" />
+              <StatCard number="100%" label={t.philosophy.practiceStats.satisfaction} />
+              <StatCard number="365日" label={t.philosophy.practiceStats.support} />
+              <StatCard number="3言語" label={t.philosophy.practiceStats.languages} />
+              <StatCard number="∞" label={t.philosophy.practiceStats.growth} />
             </div>
           </div>
         </Container>
@@ -190,23 +189,23 @@ export default function PhilosophyPage() {
         <Container>
           <div className="text-center">
             <Heading level={2} align="center" className="mb-6">
-              私たちと一緒に働きませんか
+              {t.philosophy.ctaTitle}
             </Heading>
             <Text size="lg" className="mb-8 max-w-2xl mx-auto">
-              KANAEの理念に共感し、一緒に価値を創造していただける方を募集しています。
+              {t.philosophy.ctaDescription}
             </Text>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="/contact"
                 className="inline-block px-8 py-4 bg-white text-primary-600 rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors shadow-lg"
               >
-                お問い合わせ
+                {t.philosophy.ctaContact}
               </a>
               <a
                 href="/about"
                 className="inline-block px-8 py-4 bg-transparent border-2 border-white text-white rounded-lg font-bold text-lg hover:bg-white/10 transition-colors"
               >
-                会社概要を見る
+                {t.philosophy.ctaAbout}
               </a>
             </div>
           </div>

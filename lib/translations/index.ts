@@ -90,6 +90,18 @@ export const translations = {
         '利他の心で社会貢献',
         '誰にも負けない努力',
       ],
+      practiceTitle: '経営理念の実践',
+      practiceDescription: '私たちは、この理念を日々の業務の中で実践し、お客様、社会、従業員すべての幸福を追求します。',
+      practiceStats: {
+        satisfaction: '顧客満足度目標',
+        support: 'サポート体制',
+        languages: '対応可能',
+        growth: '成長の可能性',
+      },
+      ctaTitle: '私たちと一緒に働きませんか',
+      ctaDescription: 'KANAEの理念に共感し、一緒に価値を創造していただける方を募集しています。',
+      ctaContact: 'お問い合わせ',
+      ctaAbout: '会社概要を見る',
     },
     
     // 会社概要
@@ -481,6 +493,18 @@ export const translations = {
         '以利他之心贡献社会',
         '永不服输的努力',
       ],
+      practiceTitle: '经营理念的实践',
+      practiceDescription: '我们在日常业务中践行这一理念，追求客户、社会、员工全体的幸福。',
+      practiceStats: {
+        satisfaction: '客户满意度目标',
+        support: '支持体系',
+        languages: '语言支持',
+        growth: '成长可能性',
+      },
+      ctaTitle: '与我们一起工作',
+      ctaDescription: '我们正在招募认同KANAE理念，愿意一起创造价值的伙伴。',
+      ctaContact: '联系我们',
+      ctaAbout: '查看公司简介',
     },
     
     // 公司简介
@@ -872,6 +896,18 @@ export const translations = {
         'Contribute to society with altruism',
         'Make unrelenting efforts',
       ],
+      practiceTitle: 'Philosophy in Practice',
+      practiceDescription: 'We practice this philosophy in our daily work, pursuing happiness for our customers, society, and all employees.',
+      practiceStats: {
+        satisfaction: 'Customer Satisfaction Goal',
+        support: 'Support System',
+        languages: 'Language Support',
+        growth: 'Growth Potential',
+      },
+      ctaTitle: 'Join Our Team',
+      ctaDescription: 'We are looking for partners who resonate with KANAE\'s philosophy and want to create value together.',
+      ctaContact: 'Contact Us',
+      ctaAbout: 'View Company Profile',
     },
     
     // About Us
