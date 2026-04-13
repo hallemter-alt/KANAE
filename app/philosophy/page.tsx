@@ -20,10 +20,10 @@ export default function PhilosophyPage() {
         <Container>
           <div className="text-center">
             <Heading level={1} align="center" className="mb-6 text-white">
-              企業理念
+              {t.philosophy.heroTitle}
             </Heading>
             <Text size="xl" className="max-w-3xl mx-auto text-white/90">
-              物心両面の幸福と利他の心で、世界に通じる価値を創造する
+              {t.philosophy.heroSubtitle}
             </Text>
           </div>
         </Container>
@@ -36,28 +36,27 @@ export default function PhilosophyPage() {
             <Card padding="lg" hover>
               <div className="mb-4">
                 <span className="inline-block px-4 py-2 bg-primary-100 text-primary-800 rounded-full font-bold text-sm">
-                  ミッション
+                  {t.philosophy.mission}
                 </span>
               </div>
               <Heading level={3} className="mb-4">
-                物心両面の幸福を追求
+                {t.philosophy.missionCardTitle}
               </Heading>
               <Text className="mb-4">
-                お客様と従業員、そして社会全体の物質的・精神的な豊かさを実現し、
-                すべてのステークホルダーの幸福に貢献します。
+                {t.philosophy.missionCardDesc}
               </Text>
               <div className="mt-6 space-y-3">
                 <div className="flex items-start">
                   <span className="text-primary-600 mr-2">✓</span>
-                  <Text size="sm">お客様の満足と幸福を最優先</Text>
+                  <Text size="sm">{t.philosophy.missionCheck1}</Text>
                 </div>
                 <div className="flex items-start">
                   <span className="text-primary-600 mr-2">✓</span>
-                  <Text size="sm">従業員の成長と働きがいの実現</Text>
+                  <Text size="sm">{t.philosophy.missionCheck2}</Text>
                 </div>
                 <div className="flex items-start">
                   <span className="text-primary-600 mr-2">✓</span>
-                  <Text size="sm">社会への貢献と価値提供</Text>
+                  <Text size="sm">{t.philosophy.missionCheck3}</Text>
                 </div>
               </div>
             </Card>
@@ -65,28 +64,27 @@ export default function PhilosophyPage() {
             <Card padding="lg" hover>
               <div className="mb-4">
                 <span className="inline-block px-4 py-2 bg-gold-100 text-gold-800 rounded-full font-bold text-sm">
-                  ビジョン
+                  {t.philosophy.vision}
                 </span>
               </div>
               <Heading level={3} className="mb-4">
-                利他の心で価値創造
+                {t.philosophy.visionCardTitle}
               </Heading>
               <Text className="mb-4">
-                利他の心を持って、世界に通じる価値を創造し、
-                不動産業界のリーディングカンパニーを目指します。
+                {t.philosophy.visionCardDesc}
               </Text>
               <div className="mt-6 space-y-3">
                 <div className="flex items-start">
                   <span className="text-gold-600 mr-2">✓</span>
-                  <Text size="sm">他者を思いやる心を大切に</Text>
+                  <Text size="sm">{t.philosophy.visionCheck1}</Text>
                 </div>
                 <div className="flex items-start">
                   <span className="text-gold-600 mr-2">✓</span>
-                  <Text size="sm">革新的なサービスの提供</Text>
+                  <Text size="sm">{t.philosophy.visionCheck2}</Text>
                 </div>
                 <div className="flex items-start">
                   <span className="text-gold-600 mr-2">✓</span>
-                  <Text size="sm">業界のスタンダードを創造</Text>
+                  <Text size="sm">{t.philosophy.visionCheck3}</Text>
                 </div>
               </div>
             </Card>
@@ -98,25 +96,25 @@ export default function PhilosophyPage() {
       <Section background="gray" spacing="lg">
         <Container maxWidth="lg">
           <Heading level={2} align="center" className="mb-12">
-            行動指針
+            {t.philosophy.guidelinesTitle}
           </Heading>
           <div className="grid md:grid-cols-3 gap-8">
             <ValueCard
               number="01"
-              title="誠実さ"
-              description="すべての行動において、誠実であることを第一とします。お客様、取引先、社会に対して正直で透明性のある対応を心がけます。"
+              title={t.philosophy.guideline1Title}
+              description={t.philosophy.guideline1Desc}
               icon="🤝"
             />
             <ValueCard
               number="02"
-              title="挑戦"
-              description="現状に満足せず、常に新しい価値の創造に挑戦します。失敗を恐れず、学び続ける姿勢を大切にします。"
+              title={t.philosophy.guideline2Title}
+              description={t.philosophy.guideline2Desc}
               icon="🚀"
             />
             <ValueCard
               number="03"
-              title="感謝"
-              description="すべての出会いとご縁に感謝の気持ちを持ちます。お客様、仲間、社会への感謝を忘れません。"
+              title={t.philosophy.guideline3Title}
+              description={t.philosophy.guideline3Desc}
               icon="🙏"
             />
           </div>
@@ -127,37 +125,22 @@ export default function PhilosophyPage() {
       <Section background="white" spacing="lg">
         <Container maxWidth="lg">
           <Heading level={2} align="center" className="mb-12">
-            私たちの約束
+            {t.philosophy.promisesTitle}
           </Heading>
           <div className="space-y-6">
             <PromiseCard
-              title="お客様への約束"
-              items={[
-                '最高のサービスと満足を提供します',
-                'お客様の立場に立った提案を行います',
-                '迅速かつ丁寧な対応を心がけます',
-                '長期的な関係構築を大切にします',
-              ]}
+              title={t.philosophy.promiseCustomerTitle}
+              items={t.philosophy.promiseCustomerItems}
               color="blue"
             />
             <PromiseCard
-              title="社会への約束"
-              items={[
-                '法令遵守と倫理的な経営を実践します',
-                '環境に配慮した事業活動を推進します',
-                '地域社会の発展に貢献します',
-                '持続可能な社会の実現に取り組みます',
-              ]}
+              title={t.philosophy.promiseSocietyTitle}
+              items={t.philosophy.promiseSocietyItems}
               color="green"
             />
             <PromiseCard
-              title="従業員への約束"
-              items={[
-                '働きがいのある職場環境を提供します',
-                '公正な評価と成長機会を用意します',
-                'ワークライフバランスを尊重します',
-                '多様性を認め、個性を活かします',
-              ]}
+              title={t.philosophy.promiseEmployeeTitle}
+              items={t.philosophy.promiseEmployeeItems}
               color="gold"
             />
           </div>
@@ -176,8 +159,8 @@ export default function PhilosophyPage() {
             </Text>
             <div className="grid md:grid-cols-4 gap-6">
               <StatCard number="100%" label={t.philosophy.practiceStats.satisfaction} />
-              <StatCard number="365日" label={t.philosophy.practiceStats.support} />
-              <StatCard number="3言語" label={t.philosophy.practiceStats.languages} />
+              <StatCard number="365" label={t.philosophy.practiceStats.support} />
+              <StatCard number="3" label={t.philosophy.practiceStats.languages} />
               <StatCard number="∞" label={t.philosophy.practiceStats.growth} />
             </div>
           </div>

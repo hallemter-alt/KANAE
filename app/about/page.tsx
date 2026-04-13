@@ -20,10 +20,10 @@ export default function AboutPage() {
         <Container>
           <div className="text-center">
             <Heading level={1} align="center" className="mb-6 text-white">
-              会社概要
+              {t.about.heroTitle}
             </Heading>
             <Text size="xl" className="max-w-3xl mx-auto text-white/90">
-              物心両面の幸福と利他の心で、世界に通じる価値を創造する
+              {t.about.heroSubtitle}
             </Text>
           </div>
         </Container>
@@ -33,39 +33,39 @@ export default function AboutPage() {
       <Section background="white" spacing="lg">
         <Container maxWidth="lg">
           <Heading level={2} align="center" className="mb-12 text-gray-900">
-            会社情報
+            {t.about.companyInfoTitle}
           </Heading>
           <Card padding="lg" className="max-w-4xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <InfoItem label="会社名" value="株式会社ＫＡＮＡＥ" />
-              <InfoItem label="代表者" value="代表取締役 叶維舟" />
-              <InfoItem label="設立" value="令和3年7月5日（2021年7月5日）" />
-              <InfoItem label="会社法人等番号" value="0111-01-095676" />
+              <InfoItem label={t.about.companyName} value="株式会社ＫＡＮＡＥ" />
+              <InfoItem label={t.about.representative} value="代表取締役 叶維舟" />
+              <InfoItem label={t.about.established} value="令和3年7月5日（2021年7月5日）" />
+              <InfoItem label={t.about.corporateNumber} value="0111-01-095676" />
               <InfoItem 
-                label="本社所在地" 
+                label={t.about.address} 
                 value="〒171-0033 東京都豊島区高田3丁目16番4号 Golje Bld. 6F" 
               />
-              <InfoItem label="電話番号" value="03-6914-3633 / 080-4363-2780" />
-              <InfoItem label="メールアドレス" value="info@kanae-tokyo.com" />
-              <InfoItem label="公式サイト" value="www.kanae-tokyo.com" />
+              <InfoItem label={t.about.phone} value="03-6914-3633 / 080-4363-2780" />
+              <InfoItem label={t.about.email} value="info@kanae-tokyo.com" />
+              <InfoItem label={t.about.website} value="www.kanae-tokyo.com" />
               <InfoItem 
-                label="営業時間" 
-                value="平日 9:00〜18:00 / 土曜 10:00〜17:00（日祝休業）" 
+                label={t.about.businessHours} 
+                value={t.about.businessHoursValue}
                 fullWidth 
               />
               <InfoItem 
-                label="事業内容" 
-                value="不動産賃貸仲介・売買仲介・賃貸管理・民泊運営・不動産コンサルティング" 
+                label={t.about.businessContent} 
+                value={t.about.businessContentValue}
                 fullWidth 
               />
               <InfoItem 
-                label="許認可番号" 
-                value="宅地建物取引業 東京都知事(1)第107157号" 
+                label={t.about.licenseNumber} 
+                value={t.about.licenseNumberValue}
                 fullWidth 
               />
               <InfoItem 
-                label="加盟団体" 
-                value="公益社団法人 全国宅地建物取引業協会連合会、公益社団法人 東京都宅地建物取引業協会" 
+                label={t.about.associations} 
+                value={t.about.associationsValue}
                 fullWidth 
               />
             </div>
@@ -77,7 +77,7 @@ export default function AboutPage() {
       <Section background="white" spacing="lg">
         <Container maxWidth="lg">
           <Heading level={2} align="center" className="mb-12 text-gray-900">
-            当社の強み
+            {t.about.strengthsTitle}
           </Heading>
           <div className="grid md:grid-cols-2 gap-8">
             <Card padding="lg" hover>
@@ -85,11 +85,10 @@ export default function AboutPage() {
                 <div className="text-4xl">🎯</div>
                 <div>
                   <Heading level={4} className="mb-3">
-                    地域密着型の丁寧なサービス
+                    {t.about.strength1Title}
                   </Heading>
                   <Text>
-                    東京23区を中心に、地域の特性を熟知したスタッフが、
-                    お客様一人ひとりのニーズに合わせた最適な物件をご提案いたします。
+                    {t.about.strength1Description}
                   </Text>
                 </div>
               </div>
@@ -100,11 +99,10 @@ export default function AboutPage() {
                 <div className="text-4xl">🌐</div>
                 <div>
                   <Heading level={4} className="mb-3">
-                    多言語対応（日本語・中国語・英語）
+                    {t.about.strength2Title}
                   </Heading>
                   <Text>
-                    外国籍のお客様も安心してご利用いただけるよう、
-                    中国語・英語に対応したスタッフが在籍しております。
+                    {t.about.strength2Description}
                   </Text>
                 </div>
               </div>
@@ -115,11 +113,10 @@ export default function AboutPage() {
                 <div className="text-4xl">💡</div>
                 <div>
                   <Heading level={4} className="mb-3">
-                    最新テクノロジーの活用
+                    {t.about.strength3Title}
                   </Heading>
                   <Text>
-                    AIを活用した物件マッチングシステムや、オンライン内見など、
-                    最新技術を導入し、効率的な物件探しをサポートします。
+                    {t.about.strength3Description}
                   </Text>
                 </div>
               </div>
@@ -130,11 +127,10 @@ export default function AboutPage() {
                 <div className="text-4xl">🤝</div>
                 <div>
                   <Heading level={4} className="mb-3">
-                    ワンストップサービス
+                    {t.about.strength4Title}
                   </Heading>
                   <Text>
-                    賃貸・売買・管理・民泊まで、不動産に関するあらゆるニーズに、
-                    一社で対応できる総合力が当社の強みです。
+                    {t.about.strength4Description}
                   </Text>
                 </div>
               </div>
@@ -147,28 +143,28 @@ export default function AboutPage() {
       <Section background="gray" spacing="lg">
         <Container maxWidth="lg">
           <Heading level={2} align="center" className="mb-12 text-gray-900">
-            事業内容
+            {t.about.businessContentTitle}
           </Heading>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             <ServiceCard
               icon="🏠"
-              title="賃貸事業"
-              description="お客様のライフスタイルに合わせた最適な賃貸物件をご提案します。"
+              title={t.about.service1Title}
+              description={t.about.service1Desc}
             />
             <ServiceCard
               icon="🏢"
-              title="売買事業"
-              description="不動産の売買仲介から投資用物件のご紹介まで幅広く対応します。"
+              title={t.about.service2Title}
+              description={t.about.service2Desc}
             />
             <ServiceCard
               icon="🔧"
-              title="管理事業"
-              description="オーナー様の大切な資産を適切に管理し、安定した収益をサポートします。"
+              title={t.about.service3Title}
+              description={t.about.service3Desc}
             />
             <ServiceCard
               icon="✈️"
-              title="民泊事業"
-              description="民泊運営のノウハウを活かし、収益最大化をサポートします。"
+              title={t.about.service4Title}
+              description={t.about.service4Desc}
             />
           </div>
         </Container>
@@ -179,16 +175,16 @@ export default function AboutPage() {
         <Container>
           <div className="text-center">
             <Heading level={3} align="center" className="mb-4 text-white">
-              私たちの理念
+              {t.about.ourPhilosophyTitle}
             </Heading>
             <Text size="lg" className="mb-8 max-w-2xl mx-auto text-white/90">
-              物心両面の幸福と利他の心で、世界に通じる価値を創造する
+              {t.about.ourPhilosophySubtitle}
             </Text>
             <a
               href="/philosophy"
               className="inline-block px-8 py-4 bg-white text-primary-600 rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors shadow-lg"
             >
-              企業理念を見る
+              {t.about.ourPhilosophyButton}
             </a>
           </div>
         </Container>
@@ -198,13 +194,13 @@ export default function AboutPage() {
       <Section background="gray" spacing="lg">
         <Container maxWidth="lg">
           <Heading level={2} align="center" className="mb-12 text-gray-900">
-            アクセス
+            {t.about.accessTitle}
           </Heading>
           <Card padding="lg">
             <div className="grid md:grid-cols-2 gap-8">
               <div>
                 <Heading level={4} className="mb-4">
-                  所在地
+                  {t.about.locationTitle}
                 </Heading>
                 <Text className="mb-4">
                   〒171-0033<br />
@@ -212,15 +208,13 @@ export default function AboutPage() {
                   Golje Bld. 6F
                 </Text>
                 <Heading level={4} className="mb-4 mt-6">
-                  アクセス
+                  {t.about.accessDetailTitle}
                 </Heading>
                 <Text>
-                  <strong>東京メトロ東西線 高田馬場駅</strong><br />
-                  7番出口より徒歩約5分<br />
-                  <strong>JR山手線 高田馬場駅</strong><br />
-                  早稲田口より徒歩約7分<br />
-                  <strong>東京メトロ副都心線 西早稲田駅</strong><br />
-                  3番出口より徒歩約6分
+                  <strong>{t.about.nearStation1}</strong><br />
+                  {t.about.nearStation1Time}<br />
+                  <strong>{t.about.nearStation2}</strong><br />
+                  {t.about.nearStation2Time}
                 </Text>
               </div>
               <div className="bg-gray-200 rounded-lg h-80 overflow-hidden shadow-inner">
@@ -245,17 +239,16 @@ export default function AboutPage() {
         <Container>
           <div className="text-center">
             <Heading level={3} align="center" className="mb-4 text-white">
-              お問い合わせ
+              {t.about.contactSectionTitle}
             </Heading>
             <Text size="lg" className="mb-8 max-w-2xl mx-auto text-white/90">
-              物件に関するご質問や、サービスについてのお問い合わせは、
-              お気軽にご連絡ください。
+              {t.about.contactSectionDesc}
             </Text>
             <a
               href="/contact"
               className="inline-block px-8 py-4 bg-white text-primary-600 rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors shadow-lg"
             >
-              お問い合わせはこちら
+              {t.about.contactButton}
             </a>
           </div>
         </Container>

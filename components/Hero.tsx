@@ -30,7 +30,7 @@ export default function Hero() {
               KANAE
             </h1>
             <p className="text-xl md:text-2xl text-gold-300 font-light tracking-wider">
-              株式会社
+              {t.hero.companyType}
             </p>
           </div>
 
