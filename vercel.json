@@ -1,14 +1,7 @@
 {
   "version": 2,
-  "buildCommand": "npm run build",
-  "devCommand": "npm run dev",
-  "installCommand": "npm install",
   "framework": "nextjs",
-  "outputDirectory": ".next",
   "regions": ["hnd1"],
-  "env": {
-    "NODE_VERSION": "20"
-  },
   "build": {
     "env": {
       "NEXT_TELEMETRY_DISABLED": "1"
