@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "📝 Checking commit message format..."
+
+# Conventional Commits チェック
+pnpm commitlint --edit "$1"
+
+echo "✅ Commit message format valid"

@@ -1,0 +1,421 @@
+{
+  "workflow_name": "KANAE_Property_Automation_v1",
+  "description": "Renis物件自動抓取→分析→推薦判定→Web連携のN8N工作流設定",
+  "trigger": {
+    "type": "ScheduleTrigger",
+    "cron": "0 */2 * * *",
+    "timezone": "Asia/Tokyo"
+  },
+  "nodes": [
+    {
+      "id": "trigger-cron",
+      "name": "定期実行トリガー",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "position": [250, 300],
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "http-renis",
+      "name": "Renis HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [450, 300],
+      "parameters": {
+        "method": "GET",
+        "url": "https://renis.jp/tokyo/shibuya",
+        "options": {
+          "timeout": 30000
+        },
+        "headerParametersUi": {
+          "parameter": [
+            {
+              "name": "User-Agent",
+              "value": "KANAE-Bot/1.0 (info@kanae-tokyo.com)"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "html-extract",
+      "name": "物件情報抽出",
+      "type": "n8n-nodes-base.htmlExtract",
+      "position": [650, 300],
+      "parameters": {
+        "dataPropertyName": "data",
+        "extractionValues": {
+          "values": [
+            {
+              "key": "property_name",
+              "cssSelector": ".property-title",
+              "returnValue": "text"
+            },
+            {
+              "key": "price",
+              "cssSelector": ".price-value",
+              "returnValue": "text"
+            },
+            {
+              "key": "area",
+              "cssSelector": ".area-value",
+              "returnValue": "text"
+            },
+            {
+              "key": "station",
+              "cssSelector": ".station-name",
+              "returnValue": "text"
+            },
+            {
+              "key": "walk_minutes",
+              "cssSelector": ".walk-time",
+              "returnValue": "text"
+            },
+            {
+              "key": "building_age",
+              "cssSelector": ".building-age",
+              "returnValue": "text"
+            },
+            {
+              "key": "property_url",
+              "cssSelector": ".property-link",
+              "returnValue": "attribute",
+              "attribute": "href"
+            },
+            {
+              "key": "image_url",
+              "cssSelector": ".property-image img",
+              "returnValue": "attribute",
+              "attribute": "src"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "function-transform",
+      "name": "データ整形",
+      "type": "n8n-nodes-base.function",
+      "position": [850, 300],
+      "parameters": {
+        "functionCode": "\nconst items = $input.all()[0].json;\nconst properties = [];\n\n// 複数物件を個別アイテムに分割\nfor (const item of items) {\n    properties.push({\n        json: {\n            property_name: item.property_name,\n            price_text: item.price,\n            price_numeric: parseInt(item.price.replace(/[^0-9]/g, '')),\n            area: parseFloat(item.area),\n            station: item.station,\n            walk_minutes: parseInt(item.walk_minutes),\n            building_age: parseInt(item.building_age),\n            source_url: item.property_url,\n            image_url: item.image_url,\n            source_site: 'renis',\n            scraped_at: new Date().toISOString(),\n            status: 'raw'\n        }\n    });\n}\n\nreturn properties;\n"
+      }
+    },
+    {
+      "id": "postgres-save",
+      "name": "DB一時保存",
+      "type": "n8n-nodes-base.postgres",
+      "position": [1050, 300],
+      "parameters": {
+        "operation": "insert",
+        "table": "raw_properties",
+        "columns": "property_name, price_text, price_numeric, area, station, walk_minutes, building_age, source_url, image_url, source_site, scraped_at, status",
+        "mode": "multiple"
+      },
+      "credentials": {
+        "postgres": {
+          "id": "kanae-db",
+          "name": "KANAE PostgreSQL"
+        }
+      }
+    },
+    {
+      "id": "ai-analysis",
+      "name": "AI物件分析",
+      "type": "n8n-nodes-base.openAi",
+      "position": [850, 500],
+      "parameters": {
+        "resource": "chatCompletion",
+        "model": "gpt-4o-mini",
+        "messages": {
+          "message": [
+            {
+              "role": "system",
+              "content": "あなたは不動産投資アナリストです。物件情報を分析し、推薦スコア（0-100）と理由をJSONで出力してください。"
+            },
+            {
+              "role": "user",
+              "content": "= {{ JSON.stringify($json) }}"
+            }
+          ]
+        },
+        "options": {
+          "responseFormat": {
+            "type": "json_object"
+          }
+        }
+      },
+      "credentials": {
+        "openAiApi": {
+          "id": "openai-kanae",
+          "name": "KANAE OpenAI"
+        }
+      }
+    },
+    {
+      "id": "map-api",
+      "name": "周辺情報Map API",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [850, 700],
+      "parameters": {
+        "method": "GET",
+        "url": "= https://api.mapbox.com/geocoding/v5/mapbox.places/{{ $json.station }}.json",
+        "options": {
+          "qs": {
+            "access_token": "={{ $env.MAPBOX_TOKEN }}",
+            "country": "JP",
+            "limit": 1
+          }
+        }
+      }
+    },
+    {
+      "id": "scoring",
+      "name": "推薦スコア算出",
+      "type": "n8n-nodes-base.function",
+      "position": [1050, 500],
+      "parameters": {
+        "functionCode": "\nconst aiResult = $input.all()[0].json;\nconst mapResult = $input.all()[1]?.json;\n\nlet score = aiResult.recommendation_score || 50;\n\n// 駅距離ボーナス\nif ($json.walk_minutes <= 5) score += 10;\nelse if ($json.walk_minutes <= 10) score += 5;\n\n// 築年数ペナルティ\nif ($json.building_age > 30) score -= 10;\nelse if ($json.building_age > 20) score -= 5;\n\n// 利回りボーナス（投資物件の場合）\nif ($json.price_numeric > 0 && $json.area > 0) {\n    const estimatedRent = $json.area * 3500; // ㎡単価想定\n    const yield_rate = (estimatedRent * 12 / $json.price_numeric) * 100;\n    if (yield_rate >= 6) score += 10;\n    else if (yield_rate >= 5) score += 5;\n}\n\n// スコア範囲制限\nscore = Math.max(0, Math.min(100, score));\n\nreturn [{\n    json: {\n        ...$json,\n        recommendation_score: score,\n        ai_analysis: aiResult.analysis,\n        map_data: mapResult?.features?.[0],\n        analyzed_at: new Date().toISOString()\n    }\n}];\n"
+      }
+    },
+    {
+      "id": "threshold-check",
+      "name": "推薦閾値判定",
+      "type": "n8n-nodes-base.if",
+      "position": [1250, 500],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "= {{ $json.recommendation_score }}",
+            "type": "number"
+          },
+          "conditions": [
+            {
+              "id": "cond-1",
+              "leftValue": "= {{ $json.recommendation_score }}",
+              "rightValue": 80,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "create-record",
+      "name": "物件データ档作成",
+      "type": "n8n-nodes-base.postgres",
+      "position": [1450, 400],
+      "parameters": {
+        "operation": "insert",
+        "table": "recommended_properties",
+        "columns": "property_name, price_numeric, area, station, walk_minutes, building_age, recommendation_score, ai_analysis, map_data, status, created_at",
+        "mode": "multiple"
+      }
+    },
+    {
+      "id": "upload-images",
+      "name": "画像CDNアップロード",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [1450, 600],
+      "parameters": {
+        "method": "POST",
+        "url": "= {{ $env.CDN_UPLOAD_URL }}",
+        "options": {
+          "formData": {
+            "file": "= {{ $json.image_url }}",
+            "property_id": "= {{ $json.id }}"
+          }
+        }
+      }
+    },
+    {
+      "id": "update-cms",
+      "name": "Web CMS連携",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [1650, 400],
+      "parameters": {
+        "method": "POST",
+        "url": "= {{ $env.KANAE_API_URL }}/properties",
+        "options": {
+          "headers": {
+            "Authorization": "= Bearer {{ $env.KANAE_API_TOKEN }}",
+            "Content-Type": "application/json"
+          },
+          "body": {
+            "property_name": "= {{ $json.property_name }}",
+            "price": "= {{ $json.price_numeric }}",
+            "area": "= {{ $json.area }}",
+            "station": "= {{ $json.station }}",
+            "walk_minutes": "= {{ $json.walk_minutes }}",
+            "building_age": "= {{ $json.building_age }}",
+            "recommendation_score": "= {{ $json.recommendation_score }}",
+            "status": "recommended",
+            "source": "n8n-auto"
+          }
+        }
+      }
+    },
+    {
+      "id": "slack-notify",
+      "name": "Slack通知",
+      "type": "n8n-nodes-base.slack",
+      "position": [1850, 400],
+      "parameters": {
+        "channel": "#物件推薦",
+        "text": "= 🏠 *新規推薦物件* \\n物件名: {{ $json.property_name }}\\n価格: ¥{{ $json.price_numeric.toLocaleString() }}\\n推薦スコア: {{ $json.recommendation_score }}/100\\n駅: {{ $json.station }}（徒歩{{ $json.walk_minutes }}分）\\n[詳細を見る]({{ $env.KANAE_WEB_URL }}/admin/properties/{{ $json.id }})"
+      },
+      "credentials": {
+        "slackApi": {
+          "id": "slack-kanae",
+          "name": "KANAE Slack"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "trigger-cron": {
+      "main": [
+        [
+          {
+            "node": "http-renis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "http-renis": {
+      "main": [
+        [
+          {
+            "node": "html-extract",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "html-extract": {
+      "main": [
+        [
+          {
+            "node": "function-transform",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "function-transform": {
+      "main": [
+        [
+          {
+            "node": "postgres-save",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "ai-analysis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ai-analysis": {
+      "main": [
+        [
+          {
+            "node": "scoring",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "map-api": {
+      "main": [
+        [
+          {
+            "node": "scoring",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "scoring": {
+      "main": [
+        [
+          {
+            "node": "threshold-check",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "threshold-check": {
+      "main": [
+        [
+          {
+            "node": "create-record",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "upload-images",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "create-record": {
+      "main": [
+        [
+          {
+            "node": "update-cms",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "update-cms": {
+      "main": [
+        [
+          {
+            "node": "slack-notify",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "errorWorkflow": "KANAE_Error_Handler",
+    "saveDataErrorExecution": "all",
+    "saveDataSuccessExecution": "none",
+    "saveExecutionProgress": true,
+    "timezone": "Asia/Tokyo"
+  },
+  "tags": ["property", "automation", "renis", "scraping", "ai"]
+}

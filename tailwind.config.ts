@@ -1,45 +1,43 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
+  content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     extend: {
       colors: {
-        primary: {
-          50: '#f0f9ff',
-          100: '#e0f2fe',
-          200: '#bae6fd',
-          300: '#7dd3fc',
-          400: '#38bdf8',
-          500: '#0ea5e9',
-          600: '#0284c7',
-          700: '#0369a1',
-          800: '#075985',
-          900: '#0c4a6e',
-        },
-        gold: {
-          50: '#fefce8',
-          100: '#fef9c3',
-          200: '#fef08a',
-          300: '#fde047',
-          400: '#facc15',
-          500: '#eab308',
-          600: '#ca8a04',
-          700: '#a16207',
-          800: '#854d0e',
-          900: '#713f12',
-        },
+        "washi-white": "#F5F3EF",
+        "concrete-grey": "#E8E4DF",
+        "brick-white": "#FAF8F5",
+        "charcoal-black": "#2C2C2C",
+        "decay-wood": "#8B7355",
+        "rust-iron": "#5A5A5A",
+        "light-copper": "#C9A96E",
+        "brass-gold": "#D4AF37",
+        "red-copper": "#B87333",
+        "celadon-blue": "#7A9E9F",
       },
       fontFamily: {
-        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
-        noto: ['var(--font-noto-sans)', 'sans-serif'],
+        "serif-jp": ["var(--font-noto-serif-jp)", "Noto Serif JP", "serif"],
+        "sans-jp": ["var(--font-noto-sans-jp)", "Noto Sans JP", "sans-serif"],
+        "mono-data": ["Roboto Mono", "monospace"],
+      },
+      boxShadow: {
+        building: "0 20px 60px rgba(44, 44, 44, 0.15)",
+        "card-hover": "0 8px 30px rgba(201, 169, 110, 0.12)",
+        "inner-light": "inset 0 0 40px rgba(201, 169, 110, 0.08)",
+        "subtle-line": "0 1px 0 rgba(44, 44, 44, 0.08)",
+      },
+      spacing: {
+        section: "120px",
+      },
+      screens: {
+        mobile: "375px",
+        tablet: "768px",
+        desktop: "1440px",
+        wide: "1920px",
       },
     },
   },
-  plugins: [],
 };
+
 export default config;

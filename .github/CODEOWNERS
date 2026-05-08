@@ -1,0 +1,39 @@
+# KANAE CODEOWNERS
+# 各ディレクトリの責任者を定義
+
+# グローバル設定（デフォルト）
+* @hallemter-alt
+
+# デザインシステム・Storybook
+/.storybook/ @hallemter-alt
+/src/components/ @hallemter-alt
+/tailwind.config.ts @hallemter-alt
+
+# 7大業務線
+/src/components/rental/ @hallemter-alt
+/src/components/sales/ @hallemter-alt
+/src/components/investment/ @hallemter-alt
+/src/components/management/ @hallemter-alt
+/src/components/inn/ @hallemter-alt
+/src/components/bm/ @hallemter-alt
+/src/components/materials/ @hallemter-alt
+
+# Map / PDF / SEO / 多言語
+/src/components/map/ @hallemter-alt
+/src/components/pdf/ @hallemter-alt
+/src/components/seo/ @hallemter-alt
+/src/components/layout/ @hallemter-alt
+
+# AI / VR / IoT / Workflow / Database
+/src/components/ai/ @hallemter-alt
+/src/components/vr/ @hallemter-alt
+/src/components/iot/ @hallemter-alt
+/src/components/workflow/ @hallemter-alt
+/src/components/database/ @hallemter-alt
+
+# CI/CD / インフラ
+/.github/ @hallemter-alt
+/docs/n8n/ @hallemter-alt
+
+# セキュリティ関連
+SECURITY.md @hallemter-alt

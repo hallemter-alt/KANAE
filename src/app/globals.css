@@ -1,0 +1,129 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* Colors - Dominant (60%) */
+  --color-washi-white: #F5F3EF;
+  --color-concrete-grey: #E8E4DF;
+  --color-brick-white: #FAF8F5;
+
+  /* Colors - Secondary (30%) */
+  --color-charcoal-black: #2C2C2C;
+  --color-decay-wood: #8B7355;
+  --color-rust-iron: #5A5A5A;
+
+  /* Colors - Accent (10%) */
+  --color-light-copper: #C9A96E;
+  --color-brass-gold: #D4AF37;
+  --color-red-copper: #B87333;
+  --color-celadon-blue: #7A9E9F;
+
+  /* Light Effects */
+  --color-light-through-10: rgba(201, 169, 110, 0.10);
+  --color-light-through-20: rgba(201, 169, 110, 0.20);
+  --color-white-heat-30: rgba(255, 255, 255, 0.30);
+
+  /* Fonts */
+  --font-sans: var(--font-noto-sans-jp), "Noto Sans JP", sans-serif;
+  --font-serif: var(--font-noto-serif-jp), "Noto Serif JP", serif;
+  --font-mono: "Roboto Mono", monospace;
+
+  /* Shadows */
+  --shadow-building: 0 20px 60px rgba(44, 44, 44, 0.15);
+  --shadow-card-hover: 0 8px 30px rgba(201, 169, 110, 0.12);
+  --shadow-inner-light: inset 0 0 40px rgba(201, 169, 110, 0.08);
+  --shadow-subtle-line: 0 1px 0 rgba(44, 44, 44, 0.08);
+
+  /* Background */
+  --background: var(--color-washi-white);
+  --foreground: var(--color-charcoal-black);
+}
+
+@layer base {
+  body {
+    background-color: var(--color-washi-white);
+    color: var(--color-charcoal-black);
+    font-family: var(--font-sans);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+  }
+}
+
+@layer utilities {
+  .gradient-morning {
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.12) 0%, rgba(245, 243, 239, 0) 60%);
+  }
+
+  .gradient-sunset {
+    background: linear-gradient(180deg, rgba(184, 115, 51, 0.08) 0%, rgba(245, 243, 239, 0.6) 100%);
+  }
+
+  .gradient-light-through {
+    background: linear-gradient(135deg, rgba(201, 169, 110, 0.10) 0%, transparent 60%);
+  }
+
+  .shadow-building {
+    box-shadow: 0 20px 60px rgba(44, 44, 44, 0.15);
+  }
+
+  .shadow-card-hover {
+    box-shadow: 0 8px 30px rgba(201, 169, 110, 0.12);
+  }
+
+  .shadow-inner-light {
+    box-shadow: inset 0 0 40px rgba(201, 169, 110, 0.08);
+  }
+
+  .shadow-subtle-line {
+    box-shadow: 0 1px 0 rgba(44, 44, 44, 0.08);
+  }
+
+  .font-serif-jp {
+    font-family: var(--font-serif);
+  }
+
+  .font-sans-jp {
+    font-family: var(--font-sans);
+  }
+
+  .font-mono-data {
+    font-family: var(--font-mono);
+  }
+
+  @keyframes pulse-gold {
+    0%, 100% {
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+    }
+    50% {
+      box-shadow: 0 0 40px rgba(212, 175, 55, 0.6);
+    }
+  }
+
+  .animate-pulse-gold {
+    animation: pulse-gold 2s infinite;
+  }
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-washi-white);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-concrete-grey);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-decay-wood);
+}

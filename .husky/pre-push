@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "🚀 Running pre-push checks..."
+
+# TypeScript型チェック
+pnpm typecheck
+
+# テスト実行（カバレッジ閾値80%）
+pnpm test -- --coverage --coverageThreshold='{"global":{"branches":80,"functions":80,"lines":80,"statements":80}}'
+
+echo "✅ Pre-push checks passed"
