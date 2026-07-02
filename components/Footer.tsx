@@ -32,8 +32,10 @@ export default function Footer() {
               {[
                 { href: '/rent', label: t.footer.rentalBusiness },
                 { href: '/sale', label: t.footer.salesBusiness },
+                { href: '/invest', label: t.nav.properties },
                 { href: '/management', label: t.footer.managementBusiness },
                 { href: '/minpaku', label: t.footer.minpakuBusiness },
+                { href: '/market', label: t.nav.market },
               ].map((item) => (
                 <li key={item.href}>
                   <Link href={item.href} className="link-quiet text-washi/65 hover:text-washi text-sm transition-colors duration-500">

@@ -36,6 +36,20 @@ export const IMAGES = {
   woodMacro:
     'https://sspark.genspark.ai/cfimages?u1=Jn5PTLUG7HDA1%2FMrN5%2BdxVN6nPprCdZd2TZMd8S4j06EgDLwog9AAaK%2BkLSlo1K2tjGimzyMjbJjjyqO3MAVNLQCGbSZ0hvOhnsfq%2BeswDTkjdyE1NaWlegLzlWL7t%2Bf1uSwnXXDbb5JWsVb22Y3OsSqH3uVboYZYw%3D%3D&u2=BdWQL7XK5pd%2FiB4l&width=2560',
 
+  // 日本庭園 / 侘寂 — 空間と時間の対話
+  mossLantern:
+    'https://sspark.genspark.ai/cfimages?u1=sIZ47wh9aH7l%2B%2BAJAeZ12MjoVL1%2FkT7%2Btbwuo6avOWdQeRxB6l5u1FHXJXpmBJIMFAvtVA9yNVRLZca%2BB%2BtCdG83yEn6dKuVp7GSCOfT5AQe8gsir5eQauyuItMdSHG6hDfExud%2B07ut1ZXqfuCVjCB3CDy2gcyCRAU9DPXTEIzf2KoH13CVxtM9vyGryWXruAMTPIRDwxkEjrtW8S3LUxnNsgDTf59A%2BXzZcMhf1Tq49kANkOdAcfkozUl3mDPBng2%2Fd0UsJr8ri%2Fma9ifcQuIvyB0z52R5bg%3D%3D&u2=07msEj76ksbq8fqD&width=2560',
+  engawa:
+    'https://sspark.genspark.ai/cfimages?u1=4LKgF1my56PfU3CgarSZbE1zQmgp8kLWS6FeYvOauMDEW4cyOo0audzemCIgxs8%2Fimx%2F%2FH6QOT2QfHL%2F1KEDkjAwcLgBmPZxgret&u2=OKH8qKaCZnFgiZeR&width=2560',
+  zenCourtyard:
+    'https://sspark.genspark.ai/cfimages?u1=E6QsdaBuowMhx%2BrOyjygpW4tJiJCwG6JvgEsIc2k5PHTkx%2BRX1qpIpFVQyEftjmkP9F7x9oMf0kxxkHYhtOGIr02ASc%2BeFlD7dH8agjfTjWI4I32vhwQL0IEzRTsvnfW8OZtjIubJZckeQElFUeBGBgY8C%2FJOV0BI03Uw28R7d3f&u2=MGFxdsBLXPSBWZ%2Bu&width=2560',
+
+  // ローカル素材 — 光と影の情景（ユーザー提供のムードイメージ）
+  moodBlossom: '/assets/mood/blossom-court.jpg',
+  moodWater: '/assets/mood/water-ripple.jpg',
+  moodTerrace: '/assets/mood/tree-shadow-terrace.jpg',
+  moodGreenBath: '/assets/mood/green-bath-light.jpg',
+
   // 植物 / 苔 / 庭
   mossPost:
     'https://sspark.genspark.ai/cfimages?u1=Unu3VhzEo%2BEb0PbiUnks8TNazEyzgpPHtFxxST1hLbzF7c83i%2BYbs1J4jxAMnBGbB9KRN1csQil%2Brhdyoq4q3wmVtKZu5l7IPtZeX1Z2&u2=iSFWU%2BJ1%2FwIufRJp&width=2560',

@@ -81,7 +81,7 @@ export default function Story() {
               <figure className="img-breathe relative overflow-hidden aspect-[16/9]">
                 <div
                   className="absolute inset-0 bg-cover bg-center"
-                  style={{ backgroundImage: `url('${IMAGES.kyotoGarden}')` }}
+                  style={{ backgroundImage: `url('${IMAGES.mossLantern}')` }}
                   role="img"
                   aria-label={s.caption3}
                 />
