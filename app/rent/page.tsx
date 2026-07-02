@@ -9,6 +9,7 @@ import { Container, Section, Heading, Text } from '@/components/ui/Layout'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { translations } from '@/lib/translations'
 import { IMAGES } from '@/lib/images'
+import LineSelector from '@/components/search/LineSelector'
 
 // サンプル物件データ
 const sampleProperties = [
@@ -68,6 +69,7 @@ export default function RentPage() {
   const [minRent, setMinRent] = useState('')
   const [maxRent, setMaxRent] = useState('')
   const [selectedRooms, setSelectedRooms] = useState<string[]>([])
+  const [selectedLines, setSelectedLines] = useState<string[]>([])
 
   const handleRoomToggle = (room: string) => {
     setSelectedRooms(prev =>
@@ -126,6 +128,9 @@ export default function RentPage() {
                     <option value="saitama">埼玉県</option>
                   </select>
                 </div>
+
+                {/* 沿線選択 */}
+                <LineSelector locale={locale} selected={selectedLines} onChange={setSelectedLines} />
 
                 {/* 賃料範囲 */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
