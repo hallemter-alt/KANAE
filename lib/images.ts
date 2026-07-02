@@ -1,0 +1,54 @@
+// 厳選されたCCライセンス写真素材
+// テーマ: 建築と自然の融合 — 光・影・水・植物・素材の肌理・歳月の痕跡
+
+export const IMAGES = {
+  // 建築 / 光と影
+  concreteShadow:
+    'https://sspark.genspark.ai/cfimages?u1=%2B%2BaxCjSrnSLGl2y9yI97wNOeWEHe16F9%2Fl0WgMBLFg%2FKZJCV2PLekDxM7moLoinECodI%2FVMxgxE8sZFqKQdmYsZC7g53b55ehMT%2FpQiIro1EW88sBaTs5FpsenBkshzw4lHrHDyY3p3SFLO8TusVVNNTwzVQbevZpp4J4tTivg%3D%3D&u2=S6W7%2ByttjtnWva7R&width=2560',
+  lightOnWall:
+    'https://sspark.genspark.ai/cfimages?u1=8W4Oj1HgYX1CWqV7%2Fxwh%2F0HJrrZtQtb9p2JYh9Fohn7OyxaOMmmfZKGGBxsn5vA7dgKjvJxIi1fuZpC0uUyPQsJ1Qgkd7tu30pQt4srj&u2=FF25Xf8qp7Ua1zJP&width=2560',
+  corridor:
+    'https://sspark.genspark.ai/cfimages?u1=ZTgKiQU7dbIEZB2Z3zC2KybYhKazbCpYlPE8gtPEc8VSSKXgeoZS3NkRK3BP9qtyZBIiUO3EuphCuQuM%2BCcxdjykIJVyyHMkW6VqCCDhBxYgh%2FYBymUjSXw6%2BAHuGPl6SZPiKEaIuujuEbA%3D&u2=lMF7KQtkdieLxPCg&width=2560',
+  concreteColumns:
+    'https://sspark.genspark.ai/cfimages?u1=%2FJTX2qX2hXXtSDfIKpOYVfr1f%2F%2Bus5z0D06QBtNq7Z%2BcF3%2Bk%2FqOnWY9nzN5MJmUdLNnN6jA9q9kOua%2FhulIjMlABd2dRymeSd9KoX6GF%2Bhuw7xRS5PbiH1alByau8hTsc8v3kx0a&u2=aAPhhsYm1aOztw%2B%2F&width=2560',
+  geometric:
+    'https://sspark.genspark.ai/cfimages?u1=XaP4xh82I2J4mR4fZzhXXSOlrjC9DsbJmqm0Xw0CoqDBWBHDvnmBWpLWSCIZHlCjw5D4Ry00EKf4k%2B5kgGQg%2BqHPHQvfH1UJYoYcDXkcLvgTT5bdQSnJj2BTpcsLcweptAwO%2FlWFkFhqeM7pOdwENA%3D%3D&u2=lbxsuLo0d83yTDkE&width=2560',
+  pavementFog:
+    'https://sspark.genspark.ai/cfimages?u1=rnlvPcBkKqlUkPSR02tytUyEaE0VanSQT2P7JcYXIJ0vrNqIrdswRhjP%2BzDCb4HbT1HZ%2Fg8Q3%2BQuz5JGDH7oomyu1jfiNi%2Bupp76TqycE6FNycUsGMihSdZ8sUAfvjOh4KXpos9T8n7uQ7XUl3HTYZxPoEFUVI8%3D&u2=tC5BsWZ%2BiWgtommP&width=2560',
+  windowLight:
+    'https://sspark.genspark.ai/cfimages?u1=RZtsrOjrUIhXpzS0GFXLvuVFUE4sr4QDKQrjQW1J0esSQ6Pjy%2FmxkcTBY49ataBdRcPKMGklpulKqaZLHwKe%2BTQ0zTchmvhfTNBljCT4OLeydM3nfTr7fEQI%2FWgm&u2=aYmHZboWyhhexQWF&width=2560',
+  lightStripes:
+    'https://sspark.genspark.ai/cfimages?u1=WKVCoZGI8otKC5LPZTD5u1sEjPXGIOP5vnuqeTiGKDGe7ju0JdD9c7exJLm3raga8YeTJ3ONgIPweZN%2FWj%2FZOoADnsRcnY4SbaRgvcAnvXNzQveEZrIiZU7fyNIX1CfDl3Tj&u2=rhLVKniTCfmOtUVr&width=2560',
+  biophilic:
+    'https://sspark.genspark.ai/cfimages?u1=dJdRQcNKdmeBnuMWvSnBtYHd8IUUlPC3qt9GgPJUsI0tOcsrQwKkzle9I2KuautyPsgjBA1UJiLa01CoykKuwkcQptpTMAT0b6zGLCuSsQn0eTfOUPd099aVffAFjXpknFvIBrxOHYxQ9Jl1zkxGsNXzyVmO2dGHBA%3D%3D&u2=EhM9kwCQTS5iSMrM&width=2560',
+
+  // 水
+  pondStill:
+    'https://sspark.genspark.ai/cfimages?u1=fjfodWa7QGAwPxWeuoAeQ%2F5i8xtdPhKFHqEbEY4brlfG42W7y8UiWU8Yv5VByybFiqL89kUSrXwccwqHL5Foo3yj%2Bwep2NAdOZP3AAW3NoPBdW2ucMFssVOek0AHPRgbxZjMBlTSNla1BJ%2BA6myzcz%2B9E%2Bm2cOua7iElXSBxp9%2Fvcw0taUsWiAu4RcXvPE89e%2B6W3tPe30UjuQHqK3AUxMgAPxr8GeSBlGi4%2BPdfkTloOOPctcoz1aXpKjmTDt3%2B5eu%2FNdAR6JjtpLx6SL%2Fqrsgg21DduhSLUbddikJa07alqLBwllgLOUumMoj%2FXEUDqzlVL6OxpnxGYjArKkB9ex%2F64Kdg80KYZJQiODAnNO%2B6M5zWyh%2Bx59h9Y6hMTWKXahvV8rzNP%2BfUnNNjM3OJIi9rw1Iy7S%2BolsIS3TDINlX%2FxkKNI0pRJXeJPxzzrwfC613hIlnpg0c1iwzDf%2FRCA3kodhu9O0TOongmmIoR3BVmWg7J%2F2xkXSc4NJC07vjpeXlUEfn2NbLL688NBvSJdeZcM%2FxGcDl07zRQ9TFi9lESJYepxX0wbVjCTnNYkFv7Rt4S6%2BXJ2u2tmc6Xg7B4Y5683omUCtedcGa1KUfTPc4iKd5Bi9rJbux%2B2cKr7O1ILlpArnuv2k%2FNPXvfFLY6nlocgflhA4QZKtbEYikTxlnl48VWQgHifeGHY9PlvElEWA%2Faxy1BCWLFz%2Fla4wFkG8D9kGUfJO7TUAyD72Hf0yfBXTJn2GEUL7UKaHUGZDz76EJ%2Fr%2BWG1QQZfeGCCSiMljP6itjFXecUTplT7YNSuDaBQWPriZA%3D&u2=vNPdRc9rIaet3%2FU%2B&width=2560',
+  gardenBridge:
+    'https://sspark.genspark.ai/cfimages?u1=AAwkE4xgsP7VR5%2BkB9fwy1cfMR%2FCA7eIoQGh0%2BxAZ5b32YycSFHKFJg7VFhQybo%2Fz1JTo%2B5x47WLh22ppJZc4nlSPJA2nFmtT3jh7lZ5gfP9twmiPtj3vU%2FMUah9MulsiWsb3nk%2FTCKiyNGWZUp27JLUH7%2FBjTZ0qk7DoN4LnN3lYKxXWJ3c9QunwGgmMe03GuiSqR979UKnO5ZMWQsZzKOPJMBE11EUzUeusbWl2ERzIb4C49hWXjNaezVZuKjs36sp%2Bt3oIHmQAgWK5D6bS041CQFIIK%2Bb86dUF8Jw1XZ3SGwNU1TqxWmvLvxu8DI5ag7VKzApg9SzsDnHkekDhQ2TEpgBzOB6x1uiWHd9gTW7R7kCXrAgRkjq9esm5tYBFikloTdm&u2=HXVTx6fP8UV0QQ5E&width=2560',
+  mountainReflection:
+    'https://sspark.genspark.ai/cfimages?u1=NH9KTLBvLLWtHrdfUeGGaeyYcrutNGHaF8WMpZwFmMtNwmQD7D1fOjdsq%2FkHMWCl%2B85jqBAUacUJlgf6r%2BuZw5z%2BurEFahHJM0JgJJub515ebss0us3rsw%3D%3D&u2=gRv6rtymeZZFR5sS&width=2560',
+
+  // 素材の肌理 / 歳月の痕跡
+  woodGrain:
+    'https://sspark.genspark.ai/cfimages?u1=WUICenV6zNQ%2FPMt1O%2F7VlVgABtabp0mcu4xwg%2FFsOCw88ailWdmUaoVq9WTlJwJ0nQhbphgKKCv9I4zImUCYa7H8hr3nanq83A3L3clbCJPAiJNHqa4rubnyTVphvHiWOySV167Qiw5KnrwZi5jM%2FDhyCip0OY3y6P%2Bq&u2=tBm8s03GHucb4%2BfY&width=2560',
+  woodMacro:
+    'https://sspark.genspark.ai/cfimages?u1=Jn5PTLUG7HDA1%2FMrN5%2BdxVN6nPprCdZd2TZMd8S4j06EgDLwog9AAaK%2BkLSlo1K2tjGimzyMjbJjjyqO3MAVNLQCGbSZ0hvOhnsfq%2BeswDTkjdyE1NaWlegLzlWL7t%2Bf1uSwnXXDbb5JWsVb22Y3OsSqH3uVboYZYw%3D%3D&u2=BdWQL7XK5pd%2FiB4l&width=2560',
+
+  // 植物 / 苔 / 庭
+  mossPost:
+    'https://sspark.genspark.ai/cfimages?u1=Unu3VhzEo%2BEb0PbiUnks8TNazEyzgpPHtFxxST1hLbzF7c83i%2BYbs1J4jxAMnBGbB9KRN1csQil%2Brhdyoq4q3wmVtKZu5l7IPtZeX1Z2&u2=iSFWU%2BJ1%2FwIufRJp&width=2560',
+  kyotoGarden:
+    'https://sspark.genspark.ai/cfimages?u1=RWLXJkVsLan5eqYdZANF0CcbYC%2B8YuVcI2oWZqGa2%2Flli9vRb4t7%2Bhmf4xXjVTUkKfEDyrZI9gHDV217QEd3rwDZ4qetr3H6GVB1NO3y8s07d5Cp4EB6YPewBfwy%2Fafn2n8GTZ5PM0%2BoyEWwUJbJdSMPANU9i20%3D&u2=3AirLmRmK9ZbzkSJ&width=2560',
+
+  // 光 / 木漏れ日
+  komorebi:
+    'https://sspark.genspark.ai/cfimages?u1=F%2BmsOkj%2FK7Zr%2FVa%2FUcTJMYT%2F73g0jJQ%2BbKRpF1sGEYFUBqykXUKc2poVOz8LVJOxlg%2BaQZlgbzm6SvfNHlAMReDEemNLZEKVhgSlHezwK8pNVTA2wAmJBIEgIb4rYpg%2BXFc%3D&u2=srfZ1A3YdvXhXgTL&width=2560',
+  komorebi2:
+    'https://sspark.genspark.ai/cfimages?u1=3GGaUwMrbD28lCl0z2Cn55m05CF%2FQ4O3HoXgBngaL26AsJS%2FnRd3%2FxNfXMTTlFJYylW%2BQnTM7iukVd5QU7fEXwe%2Fm4zlyv1W6p8tb78hIdot9uVh7rPVpW5Y8%2FTb4764lC7ONl38&u2=JAL%2BHwK%2BkymLSvfl&width=2560',
+  forestLight:
+    'https://sspark.genspark.ai/cfimages?u1=D1Hp4QNIRgdrE92Zj0kixWhFF3HT2qLz4%2BnLWuSbL37m0IopRDZcR0fIDzW8RTaC8BM4LQsEhfUxEse%2FafP1M0dNMnMQ48GkeBJ9AQ4vEA%3D%3D&u2=lZezkZFz%2B6mKfhmq&width=2560',
+} as const
+
+export type ImageKey = keyof typeof IMAGES

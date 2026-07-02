@@ -28,6 +28,23 @@ export const translations = {
       searchButton: '検索',
     },
     
+    // 住まいの物語（建築と自然）
+    story: {
+      label: 'Our Perspective',
+      title: '建築と自然が、静かに溶け合う場所へ',
+      lead: '住まいとは、壁と屋根だけではありません。朝の光、風の通り道、窓の外の緑、素材に刻まれる歳月——そのすべてが暮らしをかたちづくります。',
+      body: '私たちは物件を「箱」としてではなく、時間とともに育つ「場」として捉えます。光と影の移ろい、水や植物の気配、手に触れる素材の肌理。そうした細部に目を向けながら、お客様一人ひとりの暮らしに寄り添う住まいをご提案します。',
+      item1Title: '光と影',
+      item1Text: '一日の光の移ろいが、部屋の表情を静かに変えていきます。',
+      item2Title: '素材と歳月',
+      item2Text: '木や石は、年月を経るほどに深い味わいをまといます。',
+      item3Title: '緑と水',
+      item3Text: '窓辺の緑、水の気配。自然は暮らしに呼吸をもたらします。',
+      caption1: '木漏れ日 — 時間の痕跡',
+      caption2: '素材の肌理 — 歳月が刻む表情',
+      caption3: '苔むす石 — 静かに積み重なる時間',
+    },
+    
     // サービス
     services: {
       title: '事業内容',
@@ -585,6 +602,23 @@ export const translations = {
       searchButton: '搜索',
     },
     
+    // 居住的故事（建筑与自然）
+    story: {
+      label: 'Our Perspective',
+      title: '让建筑与自然，静静地交融',
+      lead: '住所不只是墙壁与屋顶。清晨的光线、风的通道、窗外的绿意、材质上镌刻的岁月——这一切共同构成了生活本身。',
+      body: '我们不把房产看作单纯的“容器”，而是随时间生长的“场所”。光影的流转、水与植物的气息、指尖触及的材质肌理。我们关注这些细节，为每一位客户提供贴近生活本质的居住方案。',
+      item1Title: '光与影',
+      item1Text: '一天中光线的变化，静静地改变着房间的表情。',
+      item2Title: '材质与岁月',
+      item2Text: '木与石，随着岁月流转而愈发温润深邃。',
+      item3Title: '绿意与水',
+      item3Text: '窗边的绿植、水的气息，让生活有了呼吸。',
+      caption1: '树影婆娑 — 时间的痕迹',
+      caption2: '材质肌理 — 岁月镌刻的表情',
+      caption3: '苔石静默 — 悄然沉淀的时光',
+    },
+    
     // 服务
     services: {
       title: '业务内容',
@@ -1138,6 +1172,23 @@ export const translations = {
       searchMinpaku: 'Vacation Rental Consultation',
       searchPlaceholder: 'Search by area, line, or station',
       searchButton: 'Search',
+    },
+    
+    // Story (Architecture & Nature)
+    story: {
+      label: 'Our Perspective',
+      title: 'Where Architecture and Nature Quietly Meet',
+      lead: 'A home is more than walls and a roof. Morning light, the path of the wind, greenery beyond the window, the patina of time on materials — all of these shape the way we live.',
+      body: 'We see property not as a container, but as a place that grows with time. The shifting of light and shadow, the presence of water and plants, the texture of materials under your hand. With attention to these details, we propose homes that stay close to how each person truly lives.',
+      item1Title: 'Light & Shadow',
+      item1Text: 'The passage of daylight quietly changes the expression of a room.',
+      item2Title: 'Material & Time',
+      item2Text: 'Wood and stone grow deeper and warmer with the years.',
+      item3Title: 'Green & Water',
+      item3Text: 'Plants by the window, the presence of water — nature lets a home breathe.',
+      caption1: 'Dappled light — traces of time',
+      caption2: 'Texture — expressions carved by years',
+      caption3: 'Mossed stone — time quietly accumulating',
     },
     
     // Services

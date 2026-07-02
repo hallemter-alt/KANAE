@@ -3,9 +3,12 @@
 import React, { useState } from 'react'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
-import { Container, Section, Heading, Text, Card } from '@/components/ui/Layout'
+import PageHero from '@/components/ui/PageHero'
+import Reveal from '@/components/Reveal'
+import { Container, Section, Heading, Text } from '@/components/ui/Layout'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { translations } from '@/lib/translations'
+import { IMAGES } from '@/lib/images'
 
 export default function ManagementPage() {
   const { locale } = useLanguage()
@@ -13,131 +16,90 @@ export default function ManagementPage() {
   const [activeTab, setActiveTab] = useState<'owner' | 'tenant'>('owner')
 
   return (
-    <main className="min-h-screen bg-gray-50">
+    <main className="min-h-screen bg-washi">
       <Navbar />
-      
-      {/* ヒーローセクション */}
-      <Section background="gradient" spacing="hero">
-        <Container>
-          <div className="text-center">
-            <Heading level={1} align="center" className="mb-6 text-white">
-              {t.management.title}
-            </Heading>
-            <Text size="xl" className="max-w-3xl mx-auto text-white/90">
-              {t.management.subtitle}
-            </Text>
-          </div>
-        </Container>
-      </Section>
+
+      <PageHero
+        label="Property Management"
+        title={t.management.title}
+        subtitle={t.management.subtitle}
+        image="concreteShadow"
+        alt="時を経たコンクリートに落ちる木の影"
+      />
 
       {/* タブ切り替え */}
-      <Section background="white" spacing="md">
+      <Section background="white" spacing="sm">
         <Container>
-          <div className="flex justify-center space-x-4 mb-12">
-            <button
-              onClick={() => setActiveTab('owner')}
-              className={`px-8 py-4 rounded-xl font-bold text-lg transition-all ${
-                activeTab === 'owner'
-                  ? 'bg-gradient-to-r from-primary-600 to-primary-700 text-white shadow-lg'
-                  : 'bg-white text-gray-600 border-2 border-gray-200 hover:border-primary-300'
-              }`}
-            >
-              オーナー様向け
-            </button>
-            <button
-              onClick={() => setActiveTab('tenant')}
-              className={`px-8 py-4 rounded-xl font-bold text-lg transition-all ${
-                activeTab === 'tenant'
-                  ? 'bg-gradient-to-r from-gold-600 to-gold-700 text-white shadow-lg'
-                  : 'bg-white text-gray-600 border-2 border-gray-200 hover:border-gold-300'
-              }`}
-            >
-              入居者様向け
-            </button>
+          <div className="flex justify-center border-b hairline" role="tablist">
+            {[
+              { key: 'owner' as const, label: t.management.forOwners },
+              { key: 'tenant' as const, label: t.management.forTenants },
+            ].map((tab) => (
+              <button
+                key={tab.key}
+                role="tab"
+                aria-selected={activeTab === tab.key}
+                onClick={() => setActiveTab(tab.key)}
+                className={`px-8 sm:px-12 py-4 font-serif text-base sm:text-lg tracking-widest transition-colors duration-500 border-b-2 -mb-px ${
+                  activeTab === tab.key
+                    ? 'border-ink text-ink'
+                    : 'border-transparent text-ink/40 hover:text-ink/70'
+                }`}
+              >
+                {tab.label}
+              </button>
+            ))}
           </div>
         </Container>
       </Section>
 
-      {/* オーナー様向けコンテンツ */}
+      {/* オーナー様向け */}
       {activeTab === 'owner' && (
         <>
-          {/* 管理サービスの特徴 */}
           <Section background="white" spacing="lg">
             <Container maxWidth="lg">
-              <Heading level={2} align="center" className="mb-12">
-                オーナー様向け管理サービス
-              </Heading>
-              <div className="grid md:grid-cols-3 gap-8 mb-12">
-                <ServiceFeature
-                  icon="💰"
-                  title="安定した収益管理"
-                  description="家賃の集金代行から滞納対応まで、収益を確実に確保します。"
-                />
-                <ServiceFeature
-                  icon="🛠️"
-                  title="建物・設備管理"
-                  description="定期点検からトラブル対応まで、物件の価値を維持します。"
-                />
-                <ServiceFeature
-                  icon="👥"
-                  title="入居者管理"
-                  description="入居者募集から契約更新まで、総合的にサポートします。"
-                />
+              <Reveal className="mb-14">
+                <p className="section-label mb-4">For Owners</p>
+                <Heading level={2} className="text-ink">
+                  {t.management.ownerServices}
+                </Heading>
+              </Reveal>
+
+              {/* 三つの特徴 */}
+              <div className="grid grid-cols-1 md:grid-cols-3 border-t border-l hairline mb-20">
+                {[
+                  { title: t.management.feature1, desc: t.management.feature1Desc },
+                  { title: t.management.feature2, desc: t.management.feature2Desc },
+                  { title: t.management.feature3, desc: t.management.feature3Desc },
+                ].map((item, i) => (
+                  <Reveal key={i} delay={(i % 3) as 0 | 1 | 2} className="border-b border-r hairline p-8 md:p-10">
+                    <span className="font-serif text-gold-400 text-xs tracking-[0.3em] block mb-5">
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+                    <Heading level={4} className="mb-3 text-ink">{item.title}</Heading>
+                    <Text size="sm" color="light">{item.desc}</Text>
+                  </Reveal>
+                ))}
               </div>
 
               {/* 詳細サービス */}
-              <div className="grid md:grid-cols-2 gap-8">
-                <Card padding="lg" hover>
-                  <Heading level={4} className="mb-4 text-primary-600">
-                    賃料管理サービス
-                  </Heading>
-                  <ul className="space-y-3 text-gray-700">
-                    <ListItem>家賃の集金代行・振込管理</ListItem>
-                    <ListItem>滞納家賃の督促・回収</ListItem>
-                    <ListItem>入出金明細の定期報告</ListItem>
-                    <ListItem>収支レポートの作成</ListItem>
-                    <ListItem>確定申告用の資料作成サポート</ListItem>
-                  </ul>
-                </Card>
-
-                <Card padding="lg" hover>
-                  <Heading level={4} className="mb-4 text-primary-600">
-                    建物管理サービス
-                  </Heading>
-                  <ul className="space-y-3 text-gray-700">
-                    <ListItem>定期清掃・巡回点検</ListItem>
-                    <ListItem>共用部分の維持管理</ListItem>
-                    <ListItem>設備の保守・修繕手配</ListItem>
-                    <ListItem>24時間緊急対応</ListItem>
-                    <ListItem>大規模修繕の計画・実施</ListItem>
-                  </ul>
-                </Card>
-
-                <Card padding="lg" hover>
-                  <Heading level={4} className="mb-4 text-primary-600">
-                    入居者管理サービス
-                  </Heading>
-                  <ul className="space-y-3 text-gray-700">
-                    <ListItem>入居者募集・内見対応</ListItem>
-                    <ListItem>入居審査・契約手続き</ListItem>
-                    <ListItem>契約更新・退去手続き</ListItem>
-                    <ListItem>入居者からの問い合わせ対応</ListItem>
-                    <ListItem>クレーム・トラブル対応</ListItem>
-                  </ul>
-                </Card>
-
-                <Card padding="lg" hover>
-                  <Heading level={4} className="mb-4 text-primary-600">
-                    その他サービス
-                  </Heading>
-                  <ul className="space-y-3 text-gray-700">
-                    <ListItem>リノベーション・リフォーム提案</ListItem>
-                    <ListItem>空室対策・家賃改定のアドバイス</ListItem>
-                    <ListItem>火災保険・損害保険の手配</ListItem>
-                    <ListItem>相続・売却時のサポート</ListItem>
-                    <ListItem>節税対策のご提案</ListItem>
-                  </ul>
-                </Card>
+              <div className="grid md:grid-cols-2 gap-x-14 gap-y-12">
+                <ServiceList
+                  title={t.management.rentManagement}
+                  items={['家賃の集金代行・振込管理', '滞納家賃の督促・回収', '入出金明細の定期報告', '収支レポートの作成', '確定申告用の資料作成サポート']}
+                />
+                <ServiceList
+                  title={t.management.buildingManagement}
+                  items={['定期清掃・巡回点検', '共用部分の維持管理', '設備の保守・修繕手配', '24時間緊急対応', '大規模修繕の計画・実施']}
+                />
+                <ServiceList
+                  title={t.management.tenantManagement}
+                  items={['入居者募集・内見対応', '入居審査・契約手続き', '契約更新・退去手続き', '入居者からの問い合わせ対応', 'クレーム・トラブル対応']}
+                />
+                <ServiceList
+                  title={t.management.otherServices}
+                  items={['リノベーション・リフォーム提案', '空室対策・家賃改定のアドバイス', '火災保険・損害保険の手配', '相続・売却時のサポート', '節税対策のご提案']}
+                />
               </div>
             </Container>
           </Section>
@@ -145,150 +107,149 @@ export default function ManagementPage() {
           {/* 管理手数料 */}
           <Section background="gray" spacing="lg">
             <Container maxWidth="lg">
-              <Heading level={2} align="center" className="mb-12">
-                管理手数料
-              </Heading>
-              <div className="grid md:grid-cols-3 gap-8">
-                <PricingCard
-                  title="基本管理プラン"
+              <Reveal className="mb-14">
+                <p className="section-label mb-4">Pricing</p>
+                <Heading level={2} className="text-ink">
+                  {t.management.managementFees}
+                </Heading>
+              </Reveal>
+              <div className="grid md:grid-cols-3 gap-px bg-ink/10 border hairline">
+                <PricingCol
+                  title={t.management.basicPlan}
                   price="家賃の5%"
-                  features={[
-                    '家賃集金代行',
-                    '入出金管理',
-                    '入居者対応',
-                    '月次報告書',
-                  ]}
-                  recommended={false}
+                  features={['家賃集金代行', '入出金管理', '入居者対応', '月次報告書']}
                 />
-                <PricingCard
-                  title="フル管理プラン"
+                <PricingCol
+                  title={t.management.fullPlan}
                   price="家賃の8%"
-                  features={[
-                    '基本管理プラン内容',
-                    '建物巡回点検（月1回）',
-                    '設備トラブル対応',
-                    '24時間緊急対応',
-                    '修繕手配・立会い',
-                  ]}
-                  recommended={true}
+                  features={['基本管理プラン内容', '建物巡回点検（月1回）', '設備トラブル対応', '24時間緊急対応', '修繕手配・立会い']}
+                  recommended={t.management.recommended}
                 />
-                <PricingCard
-                  title="プレミアムプラン"
+                <PricingCol
+                  title={t.management.premiumPlan}
                   price="家賃の10%"
-                  features={[
-                    'フル管理プラン内容',
-                    '空室保証',
-                    'リフォーム提案',
-                    '収益最大化コンサル',
-                    '税務相談サポート',
-                  ]}
-                  recommended={false}
+                  features={['フル管理プラン内容', '空室保証', 'リフォーム提案', '収益最大化コンサル', '税務相談サポート']}
                 />
               </div>
-              <Text size="sm" className="text-center mt-8 text-gray-600">
-                ※上記は標準料金です。物件の規模や条件により異なる場合がございます。
-              </Text>
+              <Reveal>
+                <Text size="xs" color="light" className="mt-6">
+                  ※上記は標準料金です。物件の規模や条件により異なる場合がございます。
+                </Text>
+              </Reveal>
             </Container>
           </Section>
 
           {/* 管理実績 */}
           <Section background="white" spacing="lg">
             <Container maxWidth="lg">
-              <Heading level={2} align="center" className="mb-12">
-                管理実績
-              </Heading>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-                <StatCard number="250+" label="管理物件数" />
-                <StatCard number="1,500+" label="管理戸数" />
-                <StatCard number="98%" label="入居率" />
-                <StatCard number="15年" label="平均管理年数" />
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <Reveal className="lg:col-span-5">
+                  <figure className="img-breathe relative overflow-hidden aspect-[4/3]">
+                    <div
+                      className="absolute inset-0 bg-cover bg-center"
+                      style={{ backgroundImage: `url('${IMAGES.corridor}')` }}
+                      role="img"
+                      aria-label="丁寧に維持された建物の廊下"
+                    />
+                  </figure>
+                </Reveal>
+                <div className="lg:col-span-7">
+                  <Reveal className="mb-10">
+                    <p className="section-label mb-4">Results</p>
+                    <Heading level={2} className="text-ink">
+                      {t.management.managementStats}
+                    </Heading>
+                  </Reveal>
+                  <div className="grid grid-cols-2 divide-x divide-ink/10 border-t border-b hairline">
+                    <StatCell number="250+" label={t.management.properties} />
+                    <StatCell number="1,500+" label={t.management.units} />
+                  </div>
+                  <div className="grid grid-cols-2 divide-x divide-ink/10 border-b hairline">
+                    <StatCell number="98%" label={t.management.occupancyRate} />
+                    <StatCell number="15年" label={t.management.avgYears} />
+                  </div>
+                </div>
               </div>
             </Container>
           </Section>
         </>
       )}
 
-      {/* 入居者様向けコンテンツ */}
+      {/* 入居者様向け */}
       {activeTab === 'tenant' && (
         <>
           <Section background="white" spacing="lg">
             <Container maxWidth="lg">
-              <Heading level={2} align="center" className="mb-12">
-                入居者様向けサービス
-              </Heading>
-              <div className="grid md:grid-cols-2 gap-8">
-                <Card padding="lg" hover>
-                  <div className="text-4xl mb-4">🏠</div>
-                  <Heading level={4} className="mb-4">
-                    快適な住環境のサポート
+              <Reveal className="mb-14">
+                <p className="section-label mb-4">For Tenants</p>
+                <Heading level={2} className="text-ink">
+                  {t.management.tenantServices}
+                </Heading>
+              </Reveal>
+              <div className="grid md:grid-cols-2 gap-px bg-ink/10 border hairline mb-20">
+                <Reveal className="bg-washi p-8 md:p-10">
+                  <Heading level={4} className="mb-4 text-ink">
+                    {t.management.comfortableSupport}
                   </Heading>
-                  <Text className="mb-4">
-                    入居中のお困りごとから退去時の手続きまで、安心してお住まいいただけるよう全力でサポートいたします。
+                  <Text size="sm" className="mb-6">
+                    {t.management.supportDesc}
                   </Text>
-                  <ul className="space-y-2 text-gray-700">
-                    <ListItem>24時間緊急対応</ListItem>
-                    <ListItem>設備トラブル対応</ListItem>
-                    <ListItem>各種手続きサポート</ListItem>
+                  <ul className="space-y-3">
+                    {['24時間緊急対応', '設備トラブル対応', '各種手続きサポート'].map((item, i) => (
+                      <li key={i} className="flex items-start gap-3 text-ink/60 text-sm">
+                        <span className="mt-2.5 block w-3 h-px bg-gold-500 shrink-0" aria-hidden="true" />
+                        {item}
+                      </li>
+                    ))}
                   </ul>
-                </Card>
+                </Reveal>
 
-                <Card padding="lg" hover>
-                  <div className="text-4xl mb-4">📞</div>
-                  <Heading level={4} className="mb-4">
-                    お問い合わせ窓口
+                <Reveal delay={1} className="bg-washi p-8 md:p-10">
+                  <Heading level={4} className="mb-6 text-ink">
+                    {t.management.contactWindow}
                   </Heading>
-                  <div className="space-y-4">
+                  <div className="space-y-6">
                     <div>
-                      <Text weight="bold" className="mb-2">営業時間</Text>
-                      <Text>平日 9:00〜18:00</Text>
-                      <Text>土曜 10:00〜17:00</Text>
-                      <Text color="light">日祝：休業</Text>
+                      <p className="text-xs tracking-[0.2em] text-ink/45 uppercase mb-2">{t.management.businessHours}</p>
+                      <p className="text-ink/70 text-sm leading-loose">
+                        平日 9:00〜18:00<br />
+                        土曜 10:00〜17:00<br />
+                        <span className="text-ink/45">日祝：休業</span>
+                      </p>
                     </div>
                     <div>
-                      <Text weight="bold" className="mb-2">緊急連絡先（24時間）</Text>
-                      <Text>TEL: 03-XXXX-XXXX</Text>
+                      <p className="text-xs tracking-[0.2em] text-ink/45 uppercase mb-2">{t.management.emergencyContact}</p>
+                      <a href="tel:03-6914-3633" className="font-serif text-lg text-ink hover:text-gold-700 transition-colors">
+                        03-6914-3633
+                      </a>
                     </div>
                   </div>
-                </Card>
+                </Reveal>
               </div>
 
-              {/* よくあるご質問 */}
-              <div className="mt-16">
-                <Heading level={3} align="center" className="mb-8">
-                  よくあるご質問
+              {/* FAQ */}
+              <Reveal className="mb-10">
+                <Heading level={3} className="text-ink">
+                  {t.management.faq}
                 </Heading>
-                <div className="space-y-4">
-                  <FAQItem
-                    question="家賃の支払い方法は？"
-                    answer="銀行振込、口座振替、クレジットカード決済に対応しております。詳しくは契約時にご説明いたします。"
-                  />
-                  <FAQItem
-                    question="設備が故障した場合は？"
-                    answer="管理会社までご連絡ください。緊急の場合は24時間対応の緊急連絡先にお電話ください。"
-                  />
-                  <FAQItem
-                    question="契約更新の手続きは？"
-                    answer="契約満了の3ヶ月前に更新のご案内をお送りいたします。更新される場合は必要書類のご提出をお願いいたします。"
-                  />
-                  <FAQItem
-                    question="退去時の手続きは？"
-                    answer="退去希望日の1ヶ月前までに書面にてご連絡ください。退去立会い日を調整させていただきます。"
-                  />
-                </div>
-              </div>
-            </Container>
-          </Section>
-
-          {/* 入居者マイページ（将来実装） */}
-          <Section background="primary" spacing="md">
-            <Container>
-              <div className="text-center">
-                <Heading level={3} align="center" className="mb-4 text-gray-900">
-                  入居者マイページ（準備中）
-                </Heading>
-                <Text size="lg" className="mb-8 max-w-2xl mx-auto">
-                  家賃の支払い履歴確認や修繕依頼など、便利な機能をご用意予定です。
-                </Text>
+              </Reveal>
+              <div className="border-t hairline">
+                <FAQItem
+                  question="家賃の支払い方法は？"
+                  answer="銀行振込、口座振替、クレジットカード決済に対応しております。詳しくは契約時にご説明いたします。"
+                />
+                <FAQItem
+                  question="設備が故障した場合は？"
+                  answer="管理会社までご連絡ください。緊急の場合は24時間対応の緊急連絡先にお電話ください。"
+                />
+                <FAQItem
+                  question="契約更新の手続きは？"
+                  answer="契約満了の3ヶ月前に更新のご案内をお送りいたします。更新される場合は必要書類のご提出をお願いいたします。"
+                />
+                <FAQItem
+                  question="退去時の手続きは？"
+                  answer="退去希望日の1ヶ月前までに書面にてご連絡ください。退去立会い日を調整させていただきます。"
+                />
               </div>
             </Container>
           </Section>
@@ -296,22 +257,22 @@ export default function ManagementPage() {
       )}
 
       {/* CTA */}
-      <Section background="gradient" spacing="lg">
+      <Section background="primary" spacing="lg">
         <Container>
-          <div className="text-center">
-            <Heading level={2} align="center" className="mb-6 text-white">
+          <Reveal className="text-center">
+            <Heading level={2} align="center" className="mb-6 text-washi">
               {t.management.ctaTitle}
             </Heading>
-            <Text size="lg" className="mb-8 max-w-2xl mx-auto text-white/90">
+            <Text size="base" className="mb-12 max-w-2xl mx-auto !text-washi/60">
               {t.management.ctaDescription}
             </Text>
             <a
               href="/contact"
-              className="inline-block px-8 py-4 bg-white text-primary-600 rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors shadow-lg"
+              className="inline-flex items-center gap-3 bg-washi text-ink px-9 py-4 text-sm tracking-[0.2em] hover:bg-gold-200 transition-colors duration-700"
             >
               {t.management.ctaButton}
             </a>
-          </div>
+          </Reveal>
         </Container>
       </Section>
 
@@ -320,104 +281,76 @@ export default function ManagementPage() {
   )
 }
 
-// ヘルパーコンポーネント
-function ServiceFeature({ icon, title, description }: { icon: string; title: string; description: string }) {
+// ヘルパー
+function ServiceList({ title, items }: { title: string; items: string[] }) {
   return (
-    <div className="text-center">
-      <div className="text-5xl mb-4">{icon}</div>
-      <Heading level={5} className="mb-3">
-        {title}
-      </Heading>
-      <Text size="sm" color="light">
-        {description}
-      </Text>
-    </div>
-  )
-}
-
-function ListItem({ children }: { children: React.ReactNode }) {
-  return (
-    <li className="flex items-start">
-      <span className="text-primary-600 mr-2">✓</span>
-      <span>{children}</span>
-    </li>
-  )
-}
-
-interface PricingCardProps {
-  title: string
-  price: string
-  features: string[]
-  recommended: boolean
-}
-
-function PricingCard({ title, price, features, recommended }: PricingCardProps) {
-  return (
-    <Card 
-      padding="lg" 
-      hover 
-      className={`relative ${recommended ? 'ring-2 ring-primary-600 shadow-xl' : ''}`}
-    >
-      {recommended && (
-        <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-          <span className="bg-gradient-to-r from-primary-600 to-primary-700 text-white px-4 py-1 rounded-full text-sm font-bold">
-            おすすめ
-          </span>
-        </div>
-      )}
-      <div className="text-center mb-6">
-        <Heading level={4} className="mb-2">
-          {title}
-        </Heading>
-        <div className="text-3xl font-bold text-primary-600">
-          {price}
-        </div>
-      </div>
+    <Reveal>
+      <Heading level={4} className="mb-5 text-ink pb-4 border-b hairline">{title}</Heading>
       <ul className="space-y-3">
-        {features.map((feature, index) => (
-          <li key={index} className="flex items-start text-sm">
-            <span className="text-primary-600 mr-2">✓</span>
-            <span>{feature}</span>
+        {items.map((item, i) => (
+          <li key={i} className="flex items-start gap-3 text-ink/60 text-sm leading-relaxed">
+            <span className="mt-2.5 block w-3 h-px bg-gold-500 shrink-0" aria-hidden="true" />
+            {item}
           </li>
         ))}
       </ul>
-    </Card>
+    </Reveal>
   )
 }
 
-function StatCard({ number, label }: { number: string; label: string }) {
+function PricingCol({ title, price, features, recommended }: { title: string; price: string; features: string[]; recommended?: string }) {
   return (
-    <div className="text-center">
-      <div className="text-4xl font-bold text-primary-600 mb-2">{number}</div>
-      <Text size="sm" color="light">{label}</Text>
+    <div className={`p-8 md:p-10 ${recommended ? 'bg-ink text-washi' : 'bg-washi'}`}>
+      {recommended && (
+        <p className="text-gold-400 text-[10px] tracking-[0.35em] uppercase mb-4">{recommended}</p>
+      )}
+      <p className={`font-serif text-lg mb-2 ${recommended ? 'text-washi' : 'text-ink'}`}>{title}</p>
+      <p className={`font-serif text-2xl md:text-3xl mb-7 ${recommended ? 'text-gold-300' : 'text-gold-700'}`}>{price}</p>
+      <ul className="space-y-3">
+        {features.map((feature, index) => (
+          <li key={index} className={`flex items-start gap-3 text-sm leading-relaxed ${recommended ? 'text-washi/70' : 'text-ink/60'}`}>
+            <span className={`mt-2.5 block w-3 h-px shrink-0 ${recommended ? 'bg-gold-400' : 'bg-gold-500'}`} aria-hidden="true" />
+            {feature}
+          </li>
+        ))}
+      </ul>
     </div>
   )
 }
 
-interface FAQItemProps {
-  question: string
-  answer: string
+function StatCell({ number, label }: { number: string; label: string }) {
+  return (
+    <div className="py-9 px-4 text-center">
+      <div className="font-serif text-3xl md:text-4xl text-ink mb-2">{number}</div>
+      <p className="text-ink/50 text-xs md:text-sm">{label}</p>
+    </div>
+  )
 }
 
-function FAQItem({ question, answer }: FAQItemProps) {
+function FAQItem({ question, answer }: { question: string; answer: string }) {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <Card padding="md" hover>
+    <div className="border-b hairline">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full text-left flex justify-between items-center"
+        aria-expanded={isOpen}
+        className="w-full text-left flex justify-between items-center gap-6 py-6"
       >
-        <Heading level={5}>{question}</Heading>
-        <span className={`text-2xl transition-transform ${isOpen ? 'rotate-180' : ''}`}>
-          ▼
+        <span className="font-serif text-base md:text-lg text-ink">{question}</span>
+        <span
+          className={`shrink-0 relative w-4 h-4 transition-transform duration-500 ${isOpen ? 'rotate-45' : ''}`}
+          aria-hidden="true"
+        >
+          <span className="absolute top-1/2 left-0 w-full h-px bg-ink/60" />
+          <span className="absolute left-1/2 top-0 h-full w-px bg-ink/60" />
         </span>
       </button>
-      {isOpen && (
-        <Text className="mt-4 pt-4 border-t border-gray-200">
-          {answer}
-        </Text>
-      )}
-    </Card>
+      <div
+        className={`overflow-hidden transition-all duration-500 ${isOpen ? 'max-h-48 pb-6' : 'max-h-0'}`}
+      >
+        <p className="text-ink/60 text-sm leading-loose max-w-3xl">{answer}</p>
+      </div>
+    </div>
   )
 }

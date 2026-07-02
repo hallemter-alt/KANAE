@@ -2,129 +2,88 @@
 
 import { useLanguage } from '@/contexts/LanguageContext';
 import { translations } from '@/lib/translations';
+import { IMAGES } from '@/lib/images';
+import Reveal from '@/components/Reveal';
 
 export default function Philosophy() {
   const { locale } = useLanguage();
   const t = translations[locale];
 
-  return (
-    <section className="py-20 bg-gradient-to-br from-primary-900 via-primary-800 to-gold-900 text-white relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div 
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="1"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')`
-          }}
-        ></div>
-      </div>
+  const pillars = [
+    { label: 'Mission', title: t.philosophy.mission, text: t.philosophy.missionText, points: t.philosophy.missionPoints },
+    { label: 'Vision', title: t.philosophy.vision, text: t.philosophy.visionText, points: t.philosophy.visionPoints },
+    { label: 'Values', title: t.philosophy.values, text: t.philosophy.mottoDescription, points: t.philosophy.valuesPoints },
+  ];
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            {t.philosophy.title}
+  return (
+    <section className="relative py-24 md:py-36 bg-ink text-washi overflow-hidden">
+      {/* 背景 — 苔むした石（歳月の痕跡） */}
+      <div className="absolute inset-0 opacity-[0.14]" aria-hidden="true">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url('${IMAGES.mossPost}')` }}
+        />
+      </div>
+      <div className="absolute inset-0 bg-gradient-to-b from-ink via-transparent to-ink" aria-hidden="true" />
+
+      <div className="relative max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
+        {/* 社是 — 中央に静かに */}
+        <Reveal className="text-center mb-20 md:mb-28">
+          <p className="section-label !text-gold-400 mb-6">Philosophy</p>
+          <h2 className="font-serif text-3xl md:text-5xl tracking-[0.15em] mb-6">
+            {t.philosophy.motto}
           </h2>
-          <p className="text-xl text-white/90">
+          <p className="text-washi/50 text-sm md:text-base max-w-xl mx-auto leading-loose">
             {t.philosophy.subtitle}
           </p>
+        </Reveal>
+
+        {/* 三本柱 */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-washi/10 border border-washi/10 mb-20 md:mb-28">
+          {pillars.map((pillar, index) => (
+            <Reveal
+              key={pillar.label}
+              delay={index as 0 | 1 | 2}
+              className="bg-ink p-8 md:p-10"
+            >
+              <p className="font-serif text-xs tracking-[0.35em] uppercase text-gold-400 mb-5">
+                {pillar.label}
+              </p>
+              <h3 className="font-serif text-xl md:text-2xl mb-5">{pillar.title}</h3>
+              <p className="text-washi/60 text-sm leading-loose mb-6">
+                {pillar.text}
+              </p>
+              <ul className="space-y-3">
+                {pillar.points.map((point: string, i: number) => (
+                  <li key={i} className="flex items-start gap-3 text-washi/50 text-xs leading-relaxed">
+                    <span className="mt-2 block w-3 h-px bg-gold-500 shrink-0" aria-hidden="true" />
+                    {point}
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+          ))}
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Mission */}
-          <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20 hover:bg-white/15 transition-all duration-300 transform hover:-translate-y-2">
-            <div className="mb-6">
-              <div className="w-16 h-16 bg-gradient-to-br from-gold-400 to-gold-600 rounded-xl flex items-center justify-center mb-4">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </div>
-              <h3 className="text-2xl font-bold mb-2">{t.philosophy.mission}</h3>
-            </div>
-            <p className="text-white/90 leading-relaxed">
-              {t.philosophy.missionText}
-            </p>
-            <div className="mt-6 space-y-2">
-              {t.philosophy.missionPoints.map((point: string, index: number) => (
-                <div key={index} className="flex items-start space-x-2">
-                  <svg className="w-5 h-5 text-gold-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                  </svg>
-                  <span className="text-sm text-white/80">{point}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Vision */}
-          <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20 hover:bg-white/15 transition-all duration-300 transform hover:-translate-y-2">
-            <div className="mb-6">
-              <div className="w-16 h-16 bg-gradient-to-br from-primary-400 to-primary-600 rounded-xl flex items-center justify-center mb-4">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                </svg>
-              </div>
-              <h3 className="text-2xl font-bold mb-2">{t.philosophy.vision}</h3>
-            </div>
-            <p className="text-white/90 leading-relaxed">
-              {t.philosophy.visionText}
-            </p>
-            <div className="mt-6 space-y-2">
-              {t.philosophy.visionPoints.map((point: string, index: number) => (
-                <div key={index} className="flex items-start space-x-2">
-                  <svg className="w-5 h-5 text-primary-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                  </svg>
-                  <span className="text-sm text-white/80">{point}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Values */}
-          <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20 hover:bg-white/15 transition-all duration-300 transform hover:-translate-y-2">
-            <div className="mb-6">
-              <div className="w-16 h-16 bg-gradient-to-br from-green-400 to-green-600 rounded-xl flex items-center justify-center mb-4">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                </svg>
-              </div>
-              <h3 className="text-2xl font-bold mb-2">{t.philosophy.values}</h3>
-            </div>
-            <p className="text-white/90 leading-relaxed mb-4">
-              {t.philosophy.motto}
-            </p>
-            <p className="text-white/70 text-sm leading-relaxed mb-6">
-              {t.philosophy.mottoDescription}
-            </p>
-            <div className="space-y-2">
-              {t.philosophy.valuesPoints.map((point: string, index: number) => (
-                <div key={index} className="flex items-start space-x-2">
-                  <svg className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                  </svg>
-                  <span className="text-sm text-white/80">{point}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Seven Principles */}
-        <div className="mt-16 bg-white/10 backdrop-blur-md rounded-2xl p-8 md:p-12 border border-white/20">
-          <h3 className="text-3xl font-bold text-center mb-8">{t.philosophy.principlesTitle}</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* 七つの原則 */}
+        <Reveal>
+          <h3 className="font-serif text-xl md:text-2xl text-center mb-12 tracking-widest">
+            {t.philosophy.principlesTitle}
+          </h3>
+          <ol className="max-w-3xl mx-auto space-y-0 border-t border-washi/10">
             {t.philosophy.principles.map((principle: string, index: number) => (
-              <div key={index} className="flex items-start space-x-3">
-                <div className="flex-shrink-0 w-8 h-8 bg-gold-500 rounded-full flex items-center justify-center font-bold text-white">
-                  {index + 1}
-                </div>
-                <p className="text-white/90 pt-1">{principle}</p>
-              </div>
+              <li
+                key={index}
+                className="flex items-baseline gap-6 py-5 border-b border-washi/10"
+              >
+                <span className="font-serif text-gold-500 text-sm tracking-widest shrink-0 w-8">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+                <p className="text-washi/70 text-sm md:text-base leading-relaxed">{principle}</p>
+              </li>
             ))}
-          </div>
-        </div>
+          </ol>
+        </Reveal>
       </div>
     </section>
   );

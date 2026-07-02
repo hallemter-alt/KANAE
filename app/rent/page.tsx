@@ -3,12 +3,12 @@
 import React, { useState } from 'react'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
-import { Container, Section, Heading, Text, Card } from '@/components/ui/Layout'
+import PageHero from '@/components/ui/PageHero'
+import Reveal from '@/components/Reveal'
+import { Container, Section, Heading, Text } from '@/components/ui/Layout'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { translations } from '@/lib/translations'
-
-// ISR 配置 - 每5分鐘重新驗證（僅對靜態頁面有效）
-// Client component 無法使用 revalidate，需要在服務端組件中設置
+import { IMAGES } from '@/lib/images'
 
 // サンプル物件データ
 const sampleProperties = [
@@ -21,7 +21,7 @@ const sampleProperties = [
     area: 35,
     features: ['駅近', 'ペット可', '南向き', 'オートロック'],
     nearestStation: '渋谷駅 徒歩5分',
-    imageColor: 'from-blue-400 to-blue-600'
+    image: IMAGES.windowLight,
   },
   {
     id: 2,
@@ -32,7 +32,7 @@ const sampleProperties = [
     area: 55,
     features: ['駐車場あり', 'リノベーション済み', '角部屋'],
     nearestStation: '三軒茶屋駅 徒歩8分',
-    imageColor: 'from-green-400 to-green-600'
+    image: IMAGES.biophilic,
   },
   {
     id: 3,
@@ -43,7 +43,7 @@ const sampleProperties = [
     area: 25,
     features: ['駅近', '築浅', 'セキュリティ充実'],
     nearestStation: '六本木駅 徒歩3分',
-    imageColor: 'from-purple-400 to-purple-600'
+    image: IMAGES.corridor,
   },
   {
     id: 4,
@@ -54,9 +54,12 @@ const sampleProperties = [
     area: 60,
     features: ['デザイナーズ', 'ルーフバルコニー', '最上階'],
     nearestStation: '中目黒駅 徒歩7分',
-    imageColor: 'from-amber-400 to-amber-600'
+    image: IMAGES.geometric,
   },
 ]
+
+const inputClass =
+  'w-full px-4 py-3 bg-white/80 border hairline focus:border-ink/40 transition-colors text-sm text-ink placeholder:text-ink/35'
 
 export default function RentPage() {
   const { locale } = useLanguage()
@@ -72,221 +75,223 @@ export default function RentPage() {
     )
   }
 
+  const steps = [
+    { title: t.rent.step1, desc: t.rent.step1Desc },
+    { title: t.rent.step2, desc: t.rent.step2Desc },
+    { title: t.rent.step3, desc: t.rent.step3Desc },
+    { title: t.rent.step4, desc: t.rent.step4Desc },
+    { title: t.rent.step5, desc: t.rent.step5Desc },
+  ]
+
   return (
-    <main className="min-h-screen bg-gray-50">
+    <main className="min-h-screen bg-washi">
       <Navbar />
-      
-      {/* ヒーローセクション */}
-      <Section background="gradient" spacing="hero">
-        <Container>
-          <div className="text-center">
-            <Heading level={1} align="center" className="mb-6 text-white">
-              {t.rent.title}
-            </Heading>
-            <Text size="xl" className="max-w-3xl mx-auto text-white/90">
-              {t.rent.subtitle}
-            </Text>
-          </div>
-        </Container>
-      </Section>
+
+      <PageHero
+        label="For Rent"
+        title={t.rent.title}
+        subtitle={t.rent.subtitle}
+        image="biophilic"
+        alt="緑と光に包まれた住まい"
+      />
 
       {/* 検索フォーム */}
       <Section background="white" spacing="lg">
         <Container maxWidth="lg">
-          <Card padding="lg" className="shadow-xl">
-            <Heading level={3} className="mb-6">{t.rent.searchTitle}</Heading>
-            
-            <div className="space-y-6">
-              {/* エリア選択 */}
-              <div>
-                <label className="block text-sm font-bold text-gray-900 mb-3">
-                  {t.rent.area}
-                </label>
-                <select
-                  value={selectedArea}
-                  onChange={(e) => setSelectedArea(e.target.value)}
-                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all text-base text-gray-900 bg-white"
-                >
-                  <option value="" className="text-gray-700">{t.rent.areaPlaceholder}</option>
-                  <option value="tokyo23" className="text-gray-900">東京23区</option>
-                  <option value="shibuya" className="text-gray-900">渋谷区</option>
-                  <option value="minato" className="text-gray-900">港区</option>
-                  <option value="shinjuku" className="text-gray-900">新宿区</option>
-                  <option value="setagaya" className="text-gray-900">世田谷区</option>
-                  <option value="meguro" className="text-gray-900">目黒区</option>
-                  <option value="kanagawa" className="text-gray-900">神奈川県</option>
-                  <option value="chiba" className="text-gray-900">千葉県</option>
-                  <option value="saitama" className="text-gray-900">埼玉県</option>
-                </select>
-              </div>
+          <Reveal>
+            <div className="border hairline bg-gold-50/60 p-7 md:p-12">
+              <p className="section-label mb-3">Search</p>
+              <Heading level={3} className="mb-10 text-ink">{t.rent.searchTitle}</Heading>
 
-              {/* 賃料範囲 */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="space-y-8">
+                {/* エリア選択 */}
                 <div>
-                  <label className="block text-sm font-bold text-gray-900 mb-3">
-                    {t.rent.minRent}
+                  <label className="block text-xs tracking-[0.2em] text-ink/50 uppercase mb-3">
+                    {t.rent.area}
                   </label>
-                  <input
-                    type="number"
-                    value={minRent}
-                    onChange={(e) => setMinRent(e.target.value)}
-                    placeholder="例: 50000"
-                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all text-base text-gray-900 bg-white"
-                  />
+                  <select
+                    value={selectedArea}
+                    onChange={(e) => setSelectedArea(e.target.value)}
+                    className={inputClass}
+                  >
+                    <option value="">{t.rent.areaPlaceholder}</option>
+                    <option value="tokyo23">東京23区</option>
+                    <option value="shibuya">渋谷区</option>
+                    <option value="minato">港区</option>
+                    <option value="shinjuku">新宿区</option>
+                    <option value="setagaya">世田谷区</option>
+                    <option value="meguro">目黒区</option>
+                    <option value="kanagawa">神奈川県</option>
+                    <option value="chiba">千葉県</option>
+                    <option value="saitama">埼玉県</option>
+                  </select>
                 </div>
+
+                {/* 賃料範囲 */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                  <div>
+                    <label className="block text-xs tracking-[0.2em] text-ink/50 uppercase mb-3">
+                      {t.rent.minRent}
+                    </label>
+                    <input
+                      type="number"
+                      value={minRent}
+                      onChange={(e) => setMinRent(e.target.value)}
+                      placeholder="50,000"
+                      className={inputClass}
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs tracking-[0.2em] text-ink/50 uppercase mb-3">
+                      {t.rent.maxRent}
+                    </label>
+                    <input
+                      type="number"
+                      value={maxRent}
+                      onChange={(e) => setMaxRent(e.target.value)}
+                      placeholder="200,000"
+                      className={inputClass}
+                    />
+                  </div>
+                </div>
+
+                {/* 間取り選択 */}
                 <div>
-                  <label className="block text-sm font-bold text-gray-900 mb-3">
-                    {t.rent.maxRent}
+                  <label className="block text-xs tracking-[0.2em] text-ink/50 uppercase mb-3">
+                    {t.rent.layout}
                   </label>
-                  <input
-                    type="number"
-                    value={maxRent}
-                    onChange={(e) => setMaxRent(e.target.value)}
-                    placeholder="例: 200000"
-                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all text-base text-gray-900 bg-white"
-                  />
+                  <div className="grid grid-cols-4 md:grid-cols-8 gap-2">
+                    {['1R', '1K', '1DK', '1LDK', '2K', '2DK', '2LDK', '3LDK'].map((type) => (
+                      <button
+                        key={type}
+                        type="button"
+                        onClick={() => handleRoomToggle(type)}
+                        aria-pressed={selectedRooms.includes(type)}
+                        className={`py-2.5 text-sm border transition-colors duration-300 ${
+                          selectedRooms.includes(type)
+                            ? 'bg-ink text-washi border-ink'
+                            : 'bg-white/80 border-ink/15 text-ink/70 hover:border-ink/40'
+                        }`}
+                      >
+                        {type}
+                      </button>
+                    ))}
+                  </div>
                 </div>
-              </div>
 
-              {/* 間取り選択 */}
-              <div>
-                <label className="block text-sm font-bold text-gray-900 mb-3">
-                  {t.rent.layout}
-                </label>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                  {['1R', '1K', '1DK', '1LDK', '2K', '2DK', '2LDK', '3LDK'].map((type) => (
-                    <label 
-                      key={type} 
-                      className={`flex items-center justify-center space-x-2 p-3 border-2 rounded-lg cursor-pointer transition-all ${
-                        selectedRooms.includes(type)
-                          ? 'bg-primary-50 border-primary-500 text-primary-900 font-bold'
-                          : 'border-gray-300 hover:bg-gray-50 text-gray-900'
-                      }`}
-                    >
-                      <input 
-                        type="checkbox" 
-                        checked={selectedRooms.includes(type)}
-                        onChange={() => handleRoomToggle(type)}
-                        className="rounded text-primary-600 focus:ring-primary-500" 
-                      />
-                      <span className="text-base font-semibold">{type}</span>
-                    </label>
-                  ))}
+                {/* こだわり条件 */}
+                <div>
+                  <label className="block text-xs tracking-[0.2em] text-ink/50 uppercase mb-3">
+                    {t.rent.features}
+                  </label>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
+                    {['駅近（徒歩5分以内）', 'ペット可', 'バス・トイレ別', 'オートロック', '築浅（5年以内）', '駐車場あり'].map((condition) => (
+                      <label
+                        key={condition}
+                        className="flex items-center gap-3 py-2.5 px-4 bg-white/80 border border-ink/15 hover:border-ink/40 cursor-pointer transition-colors duration-300 text-sm text-ink/70"
+                      >
+                        <input type="checkbox" className="accent-ink" />
+                        {condition}
+                      </label>
+                    ))}
+                  </div>
                 </div>
-              </div>
 
-              {/* その他の条件 */}
-              <div>
-                <label className="block text-sm font-bold text-gray-900 mb-3">
-                  {t.rent.features}
-                </label>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                  {['駅近（徒歩5分以内）', 'ペット可', 'バス・トイレ別', 'オートロック', '築浅（5年以内）', '駐車場あり'].map((condition) => (
-                    <label 
-                      key={condition} 
-                      className="flex items-center space-x-2 p-3 border-2 border-gray-300 rounded-lg hover:bg-gray-50 cursor-pointer transition-all text-gray-900"
-                    >
-                      <input type="checkbox" className="rounded text-primary-600 focus:ring-primary-500" />
-                      <span className="text-sm font-semibold">{condition}</span>
-                    </label>
-                  ))}
-                </div>
+                {/* 検索ボタン */}
+                <button className="w-full bg-ink text-washi py-4 text-sm tracking-[0.25em] hover:bg-gold-800 transition-colors duration-500">
+                  {t.rent.searchButton}
+                </button>
               </div>
-
-              {/* 検索ボタン */}
-              <button className="w-full bg-gradient-to-r from-primary-600 to-primary-700 text-white py-4 rounded-lg font-bold text-lg hover:from-primary-700 hover:to-primary-800 transition-all shadow-lg hover:shadow-xl transform hover:scale-[1.02]">
-                {t.rent.searchButton}
-              </button>
             </div>
-          </Card>
+          </Reveal>
         </Container>
       </Section>
 
       {/* おすすめ物件 */}
       <Section background="gray" spacing="lg">
         <Container maxWidth="lg">
-          <Heading level={2} className="mb-8">{t.rent.recommended}</Heading>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {sampleProperties.map((property) => (
-              <Card key={property.id} padding="none" hover className="overflow-hidden">
-                {/* 物件画像（プレースホルダー） */}
-                <div className={`h-64 bg-gradient-to-br ${property.imageColor} flex items-center justify-center`}>
-                  <Text className="text-white text-2xl font-bold">物件画像</Text>
-                </div>
-                
-                {/* 物件情報 */}
-                <div className="p-6">
-                  <div className="flex items-baseline justify-between mb-3">
-                    <div>
-                      <span className="text-3xl font-bold text-gray-900">
-                        ¥{property.rent.toLocaleString()}
-                      </span>
-                      <span className="text-gray-600 ml-2">/ 月</span>
-                    </div>
+          <Reveal className="mb-14">
+            <p className="section-label mb-4">Pick Up</p>
+            <Heading level={2} className="text-ink">{t.rent.recommended}</Heading>
+          </Reveal>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-16">
+            {sampleProperties.map((property, index) => (
+              <Reveal key={property.id} delay={(index % 2) as 0 | 1}>
+                <article className="group">
+                  <div className="img-breathe relative overflow-hidden aspect-[4/3] mb-5 bg-gold-100">
+                    <div
+                      className="absolute inset-0 bg-cover bg-center"
+                      style={{ backgroundImage: `url('${property.image}')` }}
+                      role="img"
+                      aria-label={property.title}
+                    />
+                    <div className="absolute inset-0 bg-ink/10 group-hover:bg-ink/0 transition-colors duration-700" />
+                    <p className="absolute bottom-0 left-0 bg-ink/85 text-washi px-5 py-2.5 font-serif text-lg">
+                      ¥{property.rent.toLocaleString()}
+                      <span className="text-washi/50 text-xs ml-1.5">{t.rent.perMonth}</span>
+                    </p>
                   </div>
-                  
-                  <Heading level={4} className="mb-3">
+
+                  <Heading level={4} className="mb-3 text-ink">
                     {property.title}
                   </Heading>
-                  
-                  <div className="space-y-2 mb-4">
-                    <div className="flex items-center text-gray-600">
-                      <span className="text-lg mr-2">📍</span>
-                      <Text size="sm">{property.location} - {property.nearestStation}</Text>
-                    </div>
-                    <div className="flex items-center text-gray-600">
-                      <span className="text-lg mr-2">🏠</span>
-                      <Text size="sm">{property.rooms} / {property.area}㎡</Text>
-                    </div>
+
+                  <div className="text-ink/55 text-sm leading-relaxed mb-4 space-y-1">
+                    <p>{property.location} ｜ {property.nearestStation}</p>
+                    <p>{property.rooms} ／ {property.area}㎡</p>
                   </div>
-                  
-                  {/* 特徴タグ */}
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {property.features.map((feature, index) => (
-                      <span 
-                        key={index} 
-                        className="px-3 py-1 bg-primary-100 text-primary-800 text-xs font-medium rounded-full"
+
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {property.features.map((feature, i) => (
+                      <span
+                        key={i}
+                        className="px-3 py-1 border border-ink/15 text-ink/55 text-xs tracking-wide"
                       >
                         {feature}
                       </span>
                     ))}
                   </div>
-                  
-                  {/* アクションボタン */}
-                  <div className="grid grid-cols-2 gap-3">
-                    <button className="py-2 border-2 border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-medium">
-                      お気に入り
+
+                  <div className="flex gap-3">
+                    <button className="flex-1 py-2.5 border border-ink/25 text-ink/70 text-sm tracking-widest hover:border-ink hover:text-ink transition-colors duration-500">
+                      {t.rent.favorite}
                     </button>
-                    <button className="py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors font-medium">
-                      詳細を見る
+                    <button className="flex-1 py-2.5 bg-ink text-washi text-sm tracking-widest hover:bg-gold-800 transition-colors duration-500">
+                      {t.rent.viewDetails}
                     </button>
                   </div>
-                </div>
-              </Card>
+                </article>
+              </Reveal>
             ))}
           </div>
 
-          {/* もっと見るボタン */}
-          <div className="text-center mt-12">
-            <button className="px-8 py-3 border-2 border-primary-600 text-primary-600 rounded-lg font-bold hover:bg-primary-50 transition-colors">
-              もっと見る
+          <Reveal className="text-center mt-16">
+            <button className="inline-flex items-center gap-3 border border-ink/30 text-ink px-10 py-3.5 text-sm tracking-[0.2em] hover:bg-ink hover:text-washi transition-all duration-700">
+              {t.rent.loadMore}
             </button>
-          </div>
+          </Reveal>
         </Container>
       </Section>
 
       {/* 賃貸の流れ */}
       <Section background="white" spacing="lg">
         <Container maxWidth="lg">
-          <Heading level={2} align="center" className="mb-12">
-            賃貸物件ご契約の流れ
-          </Heading>
-          <div className="grid md:grid-cols-5 gap-6">
-            <StepCard number="1" title="物件検索" description="ご希望の条件で物件を検索" />
-            <StepCard number="2" title="内見予約" description="気になる物件の内見を予約" />
-            <StepCard number="3" title="入居申込" description="審査のため申込書を提出" />
-            <StepCard number="4" title="契約手続き" description="重要事項説明と契約締結" />
-            <StepCard number="5" title="入居開始" description="鍵の受け渡し・入居" />
+          <Reveal className="mb-14">
+            <p className="section-label mb-4">Flow</p>
+            <Heading level={2} className="text-ink">
+              {t.rent.rentalProcess}
+            </Heading>
+          </Reveal>
+          <div className="grid grid-cols-1 md:grid-cols-5 border-t border-l hairline">
+            {steps.map((step, i) => (
+              <Reveal key={i} delay={(i % 3) as 0 | 1 | 2} className="border-b border-r hairline p-7">
+                <span className="font-serif text-gold-400 text-xs tracking-[0.3em] block mb-5">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <Heading level={5} className="mb-2.5 text-ink">{step.title}</Heading>
+                <Text size="sm" color="light">{step.desc}</Text>
+              </Reveal>
+            ))}
           </div>
         </Container>
       </Section>
@@ -294,47 +299,24 @@ export default function RentPage() {
       {/* CTA */}
       <Section background="primary" spacing="md">
         <Container>
-          <div className="text-center">
-            <Heading level={3} align="center" className="mb-4 text-white">
-              お気軽にご相談ください
+          <Reveal className="text-center">
+            <Heading level={3} align="center" className="mb-4 text-washi">
+              {t.management.ctaTitle}
             </Heading>
-            <Text size="lg" className="mb-8 max-w-2xl mx-auto text-white/90">
-              物件に関するご質問や内見のご予約は、お電話またはお問い合わせフォームから
+            <Text size="base" className="mb-10 max-w-2xl mx-auto !text-washi/60">
+              {t.management.ctaDescription}
             </Text>
             <a
               href="/contact"
-              className="inline-block px-8 py-4 bg-white text-primary-600 rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors shadow-lg"
+              className="inline-flex items-center gap-3 bg-washi text-ink px-9 py-4 text-sm tracking-[0.2em] hover:bg-gold-200 transition-colors duration-700"
             >
-              お問い合わせはこちら
+              {t.management.ctaButton}
             </a>
-          </div>
+          </Reveal>
         </Container>
       </Section>
 
       <Footer />
     </main>
-  )
-}
-
-// ステップカード
-interface StepCardProps {
-  number: string
-  title: string
-  description: string
-}
-
-function StepCard({ number, title, description }: StepCardProps) {
-  return (
-    <div className="text-center">
-      <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-primary-600 to-primary-700 rounded-full flex items-center justify-center text-white text-2xl font-bold shadow-lg">
-        {number}
-      </div>
-      <Heading level={5} className="mb-2 text-gray-900">
-        {title}
-      </Heading>
-      <Text size="sm" color="light">
-        {description}
-      </Text>
-    </div>
   )
 }

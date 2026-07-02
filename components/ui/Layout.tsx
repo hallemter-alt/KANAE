@@ -17,7 +17,7 @@ export function Container({ children, className = '', maxWidth = 'xl' }: Contain
   }
 
   return (
-    <div className={`mx-auto px-4 sm:px-6 lg:px-8 ${maxWidthClasses[maxWidth]} ${className}`}>
+    <div className={`mx-auto px-5 sm:px-8 lg:px-10 ${maxWidthClasses[maxWidth]} ${className}`}>
       {children}
     </div>
   )
@@ -30,25 +30,26 @@ interface SectionProps {
   spacing?: 'sm' | 'md' | 'lg' | 'xl' | 'hero'
 }
 
-export function Section({ 
-  children, 
-  className = '', 
+export function Section({
+  children,
+  className = '',
   background = 'white',
   spacing = 'lg'
 }: SectionProps) {
+  // 静かな配色 — 和紙 / 亜麻 / 墨
   const backgroundClasses = {
-    white: 'bg-white',
-    gray: 'bg-gray-50',
-    primary: 'bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800 text-white',
-    gradient: 'bg-gradient-to-br from-primary-900 via-primary-800 to-gold-900 text-white',
+    white: 'bg-washi texture-paper',
+    gray: 'bg-gold-50 texture-paper',
+    primary: 'bg-ink text-washi',
+    gradient: 'bg-ink text-washi',
   }
 
   const spacingClasses = {
-    sm: 'py-8 sm:py-12',
-    md: 'py-12 sm:py-16',
-    lg: 'py-16 sm:py-24',
-    xl: 'py-24 sm:py-32',
-    hero: 'pt-32 pb-20',
+    sm: 'py-10 sm:py-14',
+    md: 'py-14 sm:py-20',
+    lg: 'py-20 sm:py-28',
+    xl: 'py-24 sm:py-36',
+    hero: 'pt-36 pb-20 sm:pt-44 sm:pb-28',
   }
 
   return (
@@ -69,12 +70,12 @@ export function Heading({ level = 2, children, className = '', align = 'left' }:
   const Tag = `h${level}` as 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
 
   const sizeClasses = {
-    1: 'text-4xl sm:text-5xl lg:text-6xl font-black',
-    2: 'text-3xl sm:text-4xl lg:text-5xl font-bold',
-    3: 'text-2xl sm:text-3xl lg:text-4xl font-bold',
-    4: 'text-xl sm:text-2xl lg:text-3xl font-bold',
-    5: 'text-lg sm:text-xl lg:text-2xl font-medium',
-    6: 'text-base sm:text-lg lg:text-xl font-medium',
+    1: 'text-3xl sm:text-4xl lg:text-5xl',
+    2: 'text-2xl sm:text-3xl lg:text-4xl',
+    3: 'text-xl sm:text-2xl lg:text-3xl',
+    4: 'text-lg sm:text-xl',
+    5: 'text-base sm:text-lg',
+    6: 'text-base',
   }
 
   const alignClasses = {
@@ -84,7 +85,7 @@ export function Heading({ level = 2, children, className = '', align = 'left' }:
   }
 
   return (
-    <Tag className={`${sizeClasses[level]} ${alignClasses[align]} ${className}`}>
+    <Tag className={`font-serif ${sizeClasses[level]} ${alignClasses[align]} ${className}`}>
       {children}
     </Tag>
   )
@@ -108,10 +109,10 @@ export function Text({ children, className = '', size = 'base', color = 'gray', 
   }
 
   const colorClasses = {
-    gray: 'text-gray-700',
-    dark: 'text-gray-900',
-    light: 'text-gray-500',
-    primary: 'text-primary-600',
+    gray: 'text-ink/70',
+    dark: 'text-ink',
+    light: 'text-ink/50',
+    primary: 'text-gold-700',
   }
 
   const weightClasses = {
@@ -121,7 +122,7 @@ export function Text({ children, className = '', size = 'base', color = 'gray', 
   }
 
   return (
-    <p className={`${sizeClasses[size]} ${colorClasses[color]} ${weightClasses[weight]} leading-relaxed ${className}`}>
+    <p className={`${sizeClasses[size]} ${colorClasses[color]} ${weightClasses[weight]} leading-loose ${className}`}>
       {children}
     </p>
   )
@@ -135,28 +136,28 @@ interface CardProps {
   hover?: boolean
 }
 
-export function Card({ 
-  children, 
-  className = '', 
-  padding = 'md', 
-  shadow = true,
-  hover = false 
+export function Card({
+  children,
+  className = '',
+  padding = 'md',
+  shadow = false,
+  hover = false
 }: CardProps) {
   const paddingClasses = {
     none: 'p-0',
     sm: 'p-4',
     md: 'p-6',
-    lg: 'p-8',
-    xl: 'p-10',
+    lg: 'p-8 md:p-10',
+    xl: 'p-10 md:p-12',
   }
 
   return (
-    <div 
+    <div
       className={`
-        bg-white rounded-xl 
+        bg-white/70 border hairline
         ${paddingClasses[padding]}
-        ${shadow ? 'shadow-lg' : ''}
-        ${hover ? 'hover:shadow-xl transition-shadow duration-200' : ''}
+        ${shadow ? 'shadow-sm' : ''}
+        ${hover ? 'hover:bg-white transition-colors duration-700' : ''}
         ${className}
       `}
     >
@@ -172,31 +173,31 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode
 }
 
-export function Button({ 
-  variant = 'primary', 
-  size = 'md', 
+export function Button({
+  variant = 'primary',
+  size = 'md',
   fullWidth = false,
-  children, 
+  children,
   className = '',
-  ...props 
+  ...props
 }: ButtonProps) {
   const variantClasses = {
-    primary: 'bg-gradient-to-r from-primary-600 to-primary-700 text-white hover:from-primary-700 hover:to-primary-800 shadow-lg',
-    secondary: 'bg-gradient-to-r from-gold-500 to-gold-600 text-white hover:from-gold-600 hover:to-gold-700 shadow-lg',
-    outline: 'border-2 border-primary-600 text-primary-600 hover:bg-primary-50',
-    ghost: 'text-gray-700 hover:bg-gray-100',
+    primary: 'bg-ink text-washi hover:bg-gold-800',
+    secondary: 'bg-gold-600 text-washi hover:bg-gold-700',
+    outline: 'border border-ink/40 text-ink hover:bg-ink hover:text-washi',
+    ghost: 'text-ink/70 hover:bg-ink/5',
   }
 
   const sizeClasses = {
-    sm: 'px-4 py-2 text-sm',
-    md: 'px-6 py-3 text-base',
-    lg: 'px-8 py-4 text-lg',
+    sm: 'px-5 py-2 text-xs',
+    md: 'px-7 py-3 text-sm',
+    lg: 'px-9 py-4 text-sm',
   }
 
   return (
     <button
       className={`
-        font-medium rounded-lg transition-all duration-200
+        tracking-[0.15em] transition-all duration-500
         disabled:opacity-50 disabled:cursor-not-allowed
         ${variantClasses[variant]}
         ${sizeClasses[size]}
@@ -218,21 +219,21 @@ interface BadgeProps {
 
 export function Badge({ children, variant = 'primary', size = 'md' }: BadgeProps) {
   const variantClasses = {
-    primary: 'bg-primary-100 text-primary-800',
-    success: 'bg-green-100 text-green-800',
-    warning: 'bg-gold-100 text-gold-800',
+    primary: 'bg-mist-light/40 text-mist-dark',
+    success: 'bg-pine-pale/30 text-pine-deep',
+    warning: 'bg-gold-200/60 text-gold-800',
     error: 'bg-red-100 text-red-800',
-    gray: 'bg-gray-100 text-gray-800',
+    gray: 'bg-ink/5 text-ink/70',
   }
 
   const sizeClasses = {
-    sm: 'px-2 py-1 text-xs',
-    md: 'px-3 py-1 text-sm',
-    lg: 'px-4 py-2 text-base',
+    sm: 'px-2.5 py-1 text-xs',
+    md: 'px-3 py-1 text-xs',
+    lg: 'px-4 py-1.5 text-sm',
   }
 
   return (
-    <span className={`inline-flex items-center rounded-full font-medium ${variantClasses[variant]} ${sizeClasses[size]}`}>
+    <span className={`inline-flex items-center tracking-wider ${variantClasses[variant]} ${sizeClasses[size]}`}>
       {children}
     </span>
   )

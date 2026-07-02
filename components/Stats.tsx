@@ -2,68 +2,74 @@
 
 import { useLanguage } from '@/contexts/LanguageContext';
 import { translations } from '@/lib/translations';
+import { IMAGES } from '@/lib/images';
+import Reveal from '@/components/Reveal';
+
+interface StatItem {
+  number: string;
+  label: string;
+  description: string;
+}
 
 export default function Stats() {
   const { locale } = useLanguage();
   const t = translations[locale];
 
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-50 to-gray-100 relative overflow-hidden">
-      {/* Background Decoration */}
-      <div className="absolute top-0 left-0 w-full h-full opacity-5">
-        <div className="absolute top-10 left-10 w-72 h-72 bg-primary-500 rounded-full filter blur-3xl"></div>
-        <div className="absolute bottom-10 right-10 w-96 h-96 bg-gold-500 rounded-full filter blur-3xl"></div>
-      </div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            {t.stats.title}
-          </h2>
-          <p className="text-xl text-gray-600">
-            {t.stats.subtitle}
-          </p>
-        </div>
-
-        {/* Stats Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {t.stats.items.map((stat: any, index: number) => (
-            <div
-              key={index}
-              className="bg-white rounded-2xl shadow-lg p-8 text-center transform hover:-translate-y-2 transition-all duration-300 hover:shadow-2xl"
-            >
-              <div className="mb-4">
-                <div className="text-5xl md:text-6xl font-black bg-gradient-to-r from-primary-600 to-gold-600 bg-clip-text text-transparent">
-                  {stat.number}
-                </div>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">
-                {stat.label}
-              </h3>
-              <p className="text-sm text-gray-600">
-                {stat.description}
-              </p>
+    <section className="relative py-24 md:py-36 bg-gold-100 texture-paper overflow-hidden">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          {/* 左 — 水辺の写真（静けさと時間の流れ） */}
+          <Reveal className="lg:col-span-5 lg:sticky lg:top-28">
+            <div className="img-breathe relative overflow-hidden aspect-[3/4]">
+              <div
+                className="absolute inset-0 bg-cover bg-center animate-water"
+                style={{ backgroundImage: `url('${IMAGES.pondStill}')`, transform: 'scale(1.06)' }}
+                role="img"
+                aria-label="静かな水面に映る木々"
+              />
             </div>
-          ))}
-        </div>
-
-        {/* Additional Info */}
-        <div className="mt-16 bg-white rounded-2xl shadow-xl p-8 md:p-12">
-          <div className="text-center mb-8">
-            <h3 className="text-3xl font-bold text-gray-900 mb-4">
-              {t.stats.banksTitle}
-            </h3>
-            <p className="text-gray-600">
-              {t.stats.banksSubtitle}
+            <p className="mt-4 text-ink/40 text-xs tracking-widest">
+              — {t.stats.subtitle}
             </p>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 text-center">
-            {t.stats.banks.map((bank: string, index: number) => (
-              <div key={index} className="p-4 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors border border-gray-200">
-                <p className="text-sm font-semibold text-gray-900">{bank}</p>
-              </div>
-            ))}
+          </Reveal>
+
+          {/* 右 — 実績 */}
+          <div className="lg:col-span-7">
+            <Reveal className="mb-14">
+              <p className="section-label mb-4">Track Record</p>
+              <h2 className="font-serif text-3xl md:text-4xl text-ink">
+                {t.stats.title}
+              </h2>
+            </Reveal>
+
+            <div className="border-t hairline">
+              {(t.stats.items as StatItem[]).map((stat, index) => (
+                <Reveal key={index} delay={(index % 3) as 0 | 1 | 2}>
+                  <div className="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-8 py-7 border-b hairline">
+                    <span className="font-serif text-4xl md:text-5xl text-ink tracking-tight shrink-0 sm:w-40">
+                      {stat.number}
+                    </span>
+                    <div>
+                      <p className="font-serif text-base md:text-lg text-ink mb-1">{stat.label}</p>
+                      <p className="text-ink/50 text-sm leading-relaxed">{stat.description}</p>
+                    </div>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+
+            {/* 取引銀行 */}
+            {t.stats.banks && (
+              <Reveal className="mt-12">
+                <p className="text-ink/40 text-xs tracking-[0.25em] uppercase mb-5">{t.stats.banksTitle}</p>
+                <div className="flex flex-wrap gap-x-8 gap-y-3">
+                  {(t.stats.banks as string[]).map((bank, i) => (
+                    <span key={i} className="text-ink/60 text-sm">{bank}</span>
+                  ))}
+                </div>
+              </Reveal>
+            )}
           </div>
         </div>
       </div>
