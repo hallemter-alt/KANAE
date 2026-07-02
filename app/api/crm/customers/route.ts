@@ -1,8 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { supabase } from '@/lib/supabase'
+import { supabase, isSupabaseConfigured } from '@/lib/supabase'
 
 // GET /api/crm/customers - 顧客一覧取得
 export async function GET(request: NextRequest) {
+  if (!isSupabaseConfigured) {
+    return NextResponse.json({
+      success: true,
+      customers: [],
+      pagination: { page: 1, limit: 20, total: 0, totalPages: 0 },
+      notice: 'Database is not configured yet.'
+    })
+  }
+
   try {
     const { searchParams } = new URL(request.url)
     const type = searchParams.get('type')
@@ -53,6 +62,10 @@ export async function GET(request: NextRequest) {
 
 // POST /api/crm/customers - 顧客新規登録
 export async function POST(request: NextRequest) {
+  if (!isSupabaseConfigured) {
+    return NextResponse.json({ error: 'Database is not configured' }, { status: 503 })
+  }
+
   try {
     const body = await request.json()
 

@@ -473,7 +473,7 @@ export const translations = {
       successTitle: '送信完了',
       successMessage: 'お問い合わせありがとうございます。担当者より3営業日以内にご連絡いたします。',
       errorTitle: '送信エラー',
-      errorMessage: '送信に失敗しました。お手数ですが、もう一度お試しください。',
+      errorMessage: '送信に失敗しました。お手数ですが、お電話（03-6914-3633）またはメール（info@kanae-tokyo.com）にてご連絡ください。',
       backToHome: 'ホームに戻る',
     },
     
@@ -1047,7 +1047,7 @@ export const translations = {
       successTitle: '提交成功',
       successMessage: '感谢您的咨询。我们的工作人员将在3个工作日内与您联系。',
       errorTitle: '提交失败',
-      errorMessage: '提交失败，请稍后再试。',
+      errorMessage: '提交失败。请通过电话（03-6914-3633）或邮件（info@kanae-tokyo.com）与我们联系。',
       backToHome: '返回首页',
     },
     
@@ -1676,7 +1676,7 @@ export const translations = {
       successTitle: 'Submitted Successfully',
       successMessage: 'Thank you for your inquiry. Our staff will contact you within 3 business days.',
       errorTitle: 'Submission Error',
-      errorMessage: 'Failed to submit. Please try again later.',
+      errorMessage: 'Failed to submit. Please contact us by phone (03-6914-3633) or email (info@kanae-tokyo.com).',
       backToHome: 'Back to Home',
     },
     
