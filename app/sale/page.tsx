@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import PageHero from '@/components/ui/PageHero';
@@ -8,6 +9,7 @@ import { Container, Section, Heading, Text } from '@/components/ui/Layout';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { translations } from '@/lib/translations';
 import { IMAGES } from '@/lib/images';
+import LineSelector from '@/components/search/LineSelector';
 
 const inputClass =
   'w-full px-4 py-3 bg-white/80 border hairline focus:border-ink/40 transition-colors text-sm text-ink placeholder:text-ink/35';
@@ -17,6 +19,7 @@ const propertyImages = [IMAGES.geometric, IMAGES.concreteColumns, IMAGES.windowL
 export default function SalePage() {
   const { locale } = useLanguage();
   const t = translations[locale];
+  const [selectedLines, setSelectedLines] = useState<string[]>([]);
 
   return (
     <main className="min-h-screen bg-washi">
@@ -68,12 +71,15 @@ export default function SalePage() {
                   </label>
                   <select className={inputClass}>
                     <option>{t.sale.locationPlaceholder}</option>
-                    <option>{locale === 'ja' ? '東京都' : locale === 'zh' ? '东京都' : 'Tokyo'}</option>
-                    <option>{locale === 'ja' ? '神奈川県' : locale === 'zh' ? '神奈川县' : 'Kanagawa'}</option>
-                    <option>{locale === 'ja' ? '千葉県' : locale === 'zh' ? '千叶县' : 'Chiba'}</option>
-                    <option>{locale === 'ja' ? '埼玉県' : locale === 'zh' ? '埼玉县' : 'Saitama'}</option>
+                    <option>{locale === 'ja' ? '東京都' : locale === 'zh' ? '東京都' : 'Tokyo'}</option>
+                    <option>{locale === 'ja' ? '神奈川県' : locale === 'zh' ? '神奈川縣' : 'Kanagawa'}</option>
+                    <option>{locale === 'ja' ? '千葉県' : locale === 'zh' ? '千葉縣' : 'Chiba'}</option>
+                    <option>{locale === 'ja' ? '埼玉県' : locale === 'zh' ? '埼玉縣' : 'Saitama'}</option>
                   </select>
                 </div>
+
+                {/* 沿線選択 */}
+                <LineSelector locale={locale} selected={selectedLines} onChange={setSelectedLines} />
 
                 {/* 価格範囲 */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -121,7 +127,7 @@ export default function SalePage() {
                       className="absolute inset-0 bg-cover bg-center"
                       style={{ backgroundImage: `url('${propertyImages[index]}')` }}
                       role="img"
-                      aria-label={`${locale === 'ja' ? 'サンプル物件' : locale === 'zh' ? '样板房源' : 'Sample Property'} ${property.id}`}
+                      aria-label={`${locale === 'ja' ? 'サンプル物件' : locale === 'zh' ? '樣板房源' : 'Sample Property'} ${property.id}`}
                     />
                     <div className="absolute inset-0 bg-ink/10 group-hover:bg-ink/0 transition-colors duration-700" />
                     <p className="absolute bottom-0 left-0 bg-ink/85 text-washi px-5 py-2.5 font-serif text-lg">
@@ -133,15 +139,15 @@ export default function SalePage() {
                     {property.type === 'apartment' ? t.sale.apartment : property.type === 'house' ? t.sale.house : t.sale.land}
                   </p>
                   <Heading level={4} className="mb-3 text-ink">
-                    {locale === 'ja' ? 'サンプル物件' : locale === 'zh' ? '样板房源' : 'Sample Property'} {property.id}
+                    {locale === 'ja' ? 'サンプル物件' : locale === 'zh' ? '樣板房源' : 'Sample Property'} {property.id}
                   </Heading>
                   <Text size="sm" color="light" className="mb-5">
-                    {locale === 'ja' ? '東京都世田谷区' : locale === 'zh' ? '东京都世田谷区' : 'Setagaya, Tokyo'} ／ {property.area}
+                    {locale === 'ja' ? '東京都世田谷区' : locale === 'zh' ? '東京都世田谷區' : 'Setagaya, Tokyo'} ／ {property.area}
                   </Text>
 
                   <div className="flex flex-wrap gap-2 mb-6">
                     <span className="px-3 py-1 border border-ink/15 text-ink/55 text-xs tracking-wide">
-                      {locale === 'ja' ? '駅近' : locale === 'zh' ? '近车站' : 'Near Station'}
+                      {locale === 'ja' ? '駅近' : locale === 'zh' ? '近車站' : 'Near Station'}
                     </span>
                     <span className="px-3 py-1 border border-ink/15 text-ink/55 text-xs tracking-wide">
                       {locale === 'ja' ? '南向き' : locale === 'zh' ? '朝南' : 'South-Facing'}

@@ -39,12 +39,12 @@ export const INVEST_PROPERTIES: InvestProperty[] = [
     slug: 'kagurazaka',
     name: {
       ja: '神楽坂駅 築浅1棟マンション',
-      zh: '神乐坂站 准新整栋公寓',
+      zh: '神樂坂站 準新整棟公寓',
       en: 'Kagurazaka Station — Nearly-New Whole Building',
     },
     catch: {
       ja: '牛込神楽坂駅 徒歩4分 — 地下1階を含む重厚なRC造14戸',
-      zh: '牛込神乐坂站步行4分钟 — 含地下1层的厚重RC造14户',
+      zh: '牛込神樂坂站步行4分鐘 — 含地下1層的厚重RC造14戶',
       en: '4 min walk to Ushigome-Kagurazaka — solid RC, 14 units incl. basement',
     },
     address: '東京都新宿区細工町1-15',
@@ -61,7 +61,7 @@ export const INVEST_PROPERTIES: InvestProperty[] = [
     built: { ja: '2024年3月', zh: '2024年3月', en: 'March 2024' },
     structure: {
       ja: '鉄筋コンクリート造 地上5階建 地下1階',
-      zh: '钢筋混凝土造 地上5层 地下1层',
+      zh: '鋼筋混凝土造 地上5層 地下1層',
       en: 'RC, 5 floors above ground + 1 basement',
     },
     units: 14,
@@ -82,12 +82,12 @@ export const INVEST_PROPERTIES: InvestProperty[] = [
     slug: 'shinjuku-wakaba',
     name: {
       ja: '新宿若葉 築浅1棟マンション',
-      zh: '新宿若叶 准新整栋公寓',
+      zh: '新宿若葉 準新整棟公寓',
       en: 'Shinjuku Wakaba — Nearly-New Whole Building',
     },
     catch: {
       ja: '四谷三丁目駅 徒歩7分 — 閑静な住宅地に佇む全10戸',
-      zh: '四谷三丁目站步行7分钟 — 静谧住宅区中的10户',
+      zh: '四谷三丁目站步行7分鐘 — 靜謐住宅區中的10戶',
       en: '7 min walk to Yotsuya-sanchome — 10 units in a quiet district',
     },
     address: '東京都新宿区若葉2丁目5-27',
@@ -100,7 +100,7 @@ export const INVEST_PROPERTIES: InvestProperty[] = [
     built: { ja: '2024年8月', zh: '2024年8月', en: 'August 2024' },
     structure: {
       ja: '鉄筋コンクリート造 5階建',
-      zh: '钢筋混凝土造 5层',
+      zh: '鋼筋混凝土造 5層',
       en: 'RC, 5 floors',
     },
     units: 10,
@@ -122,12 +122,12 @@ export const INVEST_PROPERTIES: InvestProperty[] = [
     slug: 'hatanodai',
     name: {
       ja: '旗の台 新築1棟マンション',
-      zh: '旗之台 新建整栋公寓',
+      zh: '旗之台 新建整棟公寓',
       en: 'Hatanodai — New Whole Building',
     },
     catch: {
       ja: '旗の台駅 徒歩5分 — 商業地域・容積率400%の新築15戸',
-      zh: '旗之台站步行5分钟 — 商业地域·容积率400%的新建15户',
+      zh: '旗之台站步行5分鐘 — 商業地域·容積率400%的新建15戶',
       en: '5 min walk to Hatanodai — new build, 15 units, FAR 400%',
     },
     address: '東京都品川区旗の台2丁目1',
@@ -140,7 +140,7 @@ export const INVEST_PROPERTIES: InvestProperty[] = [
     built: { ja: '2026年2月', zh: '2026年2月', en: 'February 2026' },
     structure: {
       ja: '鉄筋コンクリート造 地上5階建',
-      zh: '钢筋混凝土造 地上5层',
+      zh: '鋼筋混凝土造 地上5層',
       en: 'RC, 5 floors',
     },
     units: 15,
@@ -161,12 +161,12 @@ export const INVEST_PROPERTIES: InvestProperty[] = [
     slug: 'meguro-honcho',
     name: {
       ja: '目黒本町 築浅1棟マンション',
-      zh: '目黑本町 准新整栋公寓',
+      zh: '目黑本町 準新整棟公寓',
       en: 'Meguro Honcho — Nearly-New Whole Building',
     },
     catch: {
       ja: '西小山駅 徒歩10分 — ゆとりある敷地66坪・全15戸',
-      zh: '西小山站步行10分钟 — 宽裕用地66坪·15户',
+      zh: '西小山站步行10分鐘 — 寬裕用地66坪·15戶',
       en: '10 min walk to Nishi-koyama — generous 218㎡ site, 15 units',
     },
     address: '東京都目黒区目黒本町6丁目20番9号',
@@ -182,7 +182,7 @@ export const INVEST_PROPERTIES: InvestProperty[] = [
     built: { ja: '2025年3月', zh: '2025年3月', en: 'March 2025' },
     structure: {
       ja: '鉄筋コンクリート造 地上4階建',
-      zh: '钢筋混凝土造 地上4层',
+      zh: '鋼筋混凝土造 地上4層',
       en: 'RC, 4 floors',
     },
     units: 15,
@@ -203,12 +203,12 @@ export const INVEST_PROPERTIES: InvestProperty[] = [
     slug: 'senzoku',
     name: {
       ja: '洗足駅 新築1棟マンション',
-      zh: '洗足站 新建整栋公寓',
+      zh: '洗足站 新建整棟公寓',
       en: 'Senzoku Station — New Whole Building',
     },
     catch: {
       ja: '洗足駅 徒歩7分 — 近隣商業地域に建つ新築12戸',
-      zh: '洗足站步行7分钟 — 近邻商业地域的新建12户',
+      zh: '洗足站步行7分鐘 — 近鄰商業地域的新建12戶',
       en: '7 min walk to Senzoku — new build, 12 units',
     },
     address: '東京都目黒区洗足一丁目20-16',
@@ -224,7 +224,7 @@ export const INVEST_PROPERTIES: InvestProperty[] = [
     built: { ja: '2025年9月', zh: '2025年9月', en: 'September 2025' },
     structure: {
       ja: '鉄筋コンクリート造 5階建',
-      zh: '钢筋混凝土造 5层',
+      zh: '鋼筋混凝土造 5層',
       en: 'RC, 5 floors',
     },
     units: 12,
@@ -245,12 +245,12 @@ export const INVEST_PROPERTIES: InvestProperty[] = [
     slug: 'miyazakidai',
     name: {
       ja: '宮崎台駅 新築1棟マンション',
-      zh: '宫崎台站 新建整栋公寓',
+      zh: '宮崎台站 新建整棟公寓',
       en: 'Miyazakidai Station — New Whole Building',
     },
     catch: {
       ja: '宮崎台駅 徒歩10分 — 敷地169坪・全43戸の大型レジデンス',
-      zh: '宫崎台站步行10分钟 — 用地169坪·43户大型公寓',
+      zh: '宮崎台站步行10分鐘 — 用地169坪·43戶大型公寓',
       en: '10 min walk to Miyazakidai — large residence, 43 units on 560㎡ site',
     },
     address: '神奈川県川崎市宮前区宮崎3丁目',
@@ -266,7 +266,7 @@ export const INVEST_PROPERTIES: InvestProperty[] = [
     built: { ja: '2023年9月', zh: '2023年9月', en: 'September 2023' },
     structure: {
       ja: '鉄筋コンクリート造 地上4階 地下1階建',
-      zh: '钢筋混凝土造 地上4层 地下1层',
+      zh: '鋼筋混凝土造 地上4層 地下1層',
       en: 'RC, 4 floors above ground + 1 basement',
     },
     units: 43,
