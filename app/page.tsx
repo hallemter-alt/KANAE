@@ -3,6 +3,7 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Hero from '@/components/Hero';
+import Story from '@/components/Story';
 import Services from '@/components/Services';
 import Philosophy from '@/components/Philosophy';
 import Features from '@/components/Features';
@@ -14,6 +15,7 @@ export default function HomePage() {
     <main className="min-h-screen">
       <Navbar />
       <Hero />
+      <Story />
       <Services />
       <Philosophy />
       <Features />

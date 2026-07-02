@@ -2,27 +2,25 @@ import Link from 'next/link'
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
-      <div className="max-w-2xl w-full text-center">
-        <div className="mb-8">
-          <div className="text-9xl font-black text-primary-600 mb-4">404</div>
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            ページが見つかりません
-          </h1>
-          <p className="text-xl text-gray-600 mb-8">
-            お探しのページは存在しないか、移動した可能性があります。
-          </p>
-        </div>
+    <div className="min-h-screen bg-washi texture-paper flex items-center justify-center px-5">
+      <div className="max-w-xl w-full text-center animate-rise">
+        <p className="font-serif text-6xl md:text-7xl text-ink/15 tracking-[0.2em] mb-8">404</p>
+        <h1 className="font-serif text-2xl md:text-3xl text-ink mb-5">
+          ページが見つかりません
+        </h1>
+        <p className="text-ink/60 text-sm leading-loose mb-10">
+          お探しのページは存在しないか、移動した可能性があります。
+        </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link
             href="/"
-            className="px-8 py-4 bg-gradient-to-r from-primary-600 to-primary-700 text-white rounded-lg font-bold text-lg hover:from-primary-700 hover:to-primary-800 transition-all shadow-lg"
+            className="inline-flex items-center justify-center bg-ink text-washi px-9 py-3.5 text-sm tracking-[0.2em] hover:bg-gold-800 transition-colors duration-500"
           >
             ホームに戻る
           </Link>
           <Link
             href="/rent"
-            className="px-8 py-4 bg-white text-primary-600 border-2 border-primary-600 rounded-lg font-bold text-lg hover:bg-primary-50 transition-all"
+            className="inline-flex items-center justify-center border border-ink/30 text-ink px-9 py-3.5 text-sm tracking-[0.2em] hover:bg-ink hover:text-washi transition-all duration-500"
           >
             物件を探す
           </Link>

@@ -1,14 +1,12 @@
 export default function Loading() {
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-      <div className="text-center">
-        <div className="relative w-24 h-24 mx-auto mb-6">
-          {/* Spinner */}
-          <div className="absolute inset-0 border-4 border-primary-200 rounded-full"></div>
-          <div className="absolute inset-0 border-4 border-primary-600 rounded-full border-t-transparent animate-spin"></div>
-        </div>
-        <h2 className="text-2xl font-bold text-gray-900 mb-2">読み込み中</h2>
-        <p className="text-gray-600">少々お待ちください...</p>
+    <div className="min-h-screen bg-washi flex items-center justify-center">
+      <div className="text-center animate-slowfade">
+        <p className="font-serif text-ink/70 text-lg tracking-[0.5em] mb-4">KANAE</p>
+        <span className="block mx-auto w-16 h-px bg-ink/20 relative overflow-hidden">
+          <span className="absolute inset-y-0 left-0 w-1/3 bg-ink/60 animate-[loadslide_1.4s_ease-in-out_infinite]" />
+        </span>
+        <style>{`@keyframes loadslide { 0% { transform: translateX(-100%); } 100% { transform: translateX(400%); } }`}</style>
       </div>
     </div>
   )

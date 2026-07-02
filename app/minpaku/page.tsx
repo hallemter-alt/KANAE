@@ -1,16 +1,34 @@
 'use client';
 
+import { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import PageHero from '@/components/ui/PageHero';
+import Reveal from '@/components/Reveal';
 import { Container, Section, Heading, Text } from '@/components/ui/Layout';
-import { useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { translations } from '@/lib/translations';
+
+const inputClass =
+  'w-full px-4 py-3 bg-white/80 border hairline focus:border-ink/40 transition-colors text-sm text-ink placeholder:text-ink/35';
+const labelClass = 'block text-xs tracking-[0.2em] text-ink/50 uppercase mb-3';
+
+interface CalcResult {
+  grossRevenue: number;
+  managementFee: number;
+  cleaningFee: number;
+  utilities: number;
+  platformFee: number;
+  totalExpenses: number;
+  netRevenue: number;
+  bookedNights: number;
+  occupancyRate: string;
+}
 
 export default function MinpakuPage() {
   const { locale } = useLanguage();
   const t = translations[locale];
-  
+
   const [formData, setFormData] = useState({
     propertyType: t.sale.apartment,
     area: '',
@@ -20,7 +38,7 @@ export default function MinpakuPage() {
     management_fee: '25',
   });
 
-  const [result, setResult] = useState<any>(null);
+  const [result, setResult] = useState<CalcResult | null>(null);
 
   const handleCalculate = () => {
     const nightlyRate = parseFloat(formData.nightly_rate) || 10000;
@@ -50,243 +68,219 @@ export default function MinpakuPage() {
     });
   };
 
+  const services = [
+    { title: t.minpaku.service1, description: t.minpaku.service1Desc },
+    { title: t.minpaku.service2, description: t.minpaku.service2Desc },
+    { title: t.minpaku.service3, description: t.minpaku.service3Desc },
+    { title: t.minpaku.service4, description: t.minpaku.service4Desc },
+  ];
+
   return (
-    <main className="min-h-screen bg-gray-50">
+    <main className="min-h-screen bg-washi">
       <Navbar />
-      
-      {/* Hero Section with Dark Gradient */}
-      <Section background="gradient" spacing="hero">
-        <Container>
-          <div className="text-center">
-            <Heading level={1} align="center" className="mb-6 text-white">
-              {t.minpaku.title}
-            </Heading>
-            <Text size="xl" className="max-w-3xl mx-auto text-white/90">
-              {t.minpaku.subtitle}
-            </Text>
-          </div>
-        </Container>
-      </Section>
-      
-      <div className="container mx-auto px-4 py-16">
-        <div className="max-w-4xl mx-auto">
-          {/* Revenue Calculator */}
-          <div className="bg-white rounded-2xl shadow-xl p-8 mb-12">
-            <h2 className="text-2xl font-bold text-gray-900 mb-2">{t.minpaku.calculator}</h2>
-            <p className="text-gray-600 mb-6">{t.minpaku.calculatorDesc}</p>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-              {/* Property Type */}
-              <div>
-                <label className="block text-sm font-bold text-gray-900 mb-2">
-                  {t.minpaku.propertyType}
-                </label>
-                <select
-                  value={formData.propertyType}
-                  onChange={(e) => setFormData({ ...formData, propertyType: e.target.value })}
-                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-gray-900 bg-white"
-                >
-                  <option className="text-gray-900">{t.sale.apartment}</option>
-                  <option className="text-gray-900">{t.sale.house}</option>
-                </select>
+
+      <PageHero
+        label="Vacation Rental"
+        title={t.minpaku.title}
+        subtitle={t.minpaku.subtitle}
+        image="lightStripes"
+        alt="窓の格子から差す光の縞"
+      />
+
+      {/* 収益シミュレーター */}
+      <Section background="white" spacing="lg">
+        <Container maxWidth="lg">
+          <Reveal>
+            <div className="border hairline bg-gold-50/60 p-7 md:p-12">
+              <p className="section-label mb-3">Simulator</p>
+              <Heading level={3} className="mb-3 text-ink">{t.minpaku.calculator}</Heading>
+              <Text size="sm" color="light" className="mb-10">{t.minpaku.calculatorDesc}</Text>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div>
+                  <label className={labelClass}>{t.minpaku.propertyType}</label>
+                  <select
+                    value={formData.propertyType}
+                    onChange={(e) => setFormData({ ...formData, propertyType: e.target.value })}
+                    className={inputClass}
+                  >
+                    <option>{t.sale.apartment}</option>
+                    <option>{t.sale.house}</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className={labelClass}>{t.minpaku.area}</label>
+                  <input
+                    type="number"
+                    value={formData.area}
+                    onChange={(e) => setFormData({ ...formData, area: e.target.value })}
+                    placeholder={t.minpaku.areaPlaceholder}
+                    className={inputClass}
+                  />
+                </div>
+
+                <div>
+                  <label className={labelClass}>{t.minpaku.rooms}</label>
+                  <select
+                    value={formData.rooms}
+                    onChange={(e) => setFormData({ ...formData, rooms: e.target.value })}
+                    className={inputClass}
+                  >
+                    <option>1R</option>
+                    <option>1K</option>
+                    <option>1LDK</option>
+                    <option>2LDK</option>
+                    <option>3LDK</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className={labelClass}>{t.minpaku.nightlyRate}</label>
+                  <input
+                    type="number"
+                    value={formData.nightly_rate}
+                    onChange={(e) => setFormData({ ...formData, nightly_rate: e.target.value })}
+                    placeholder={t.minpaku.nightlyRatePlaceholder}
+                    className={inputClass}
+                  />
+                </div>
+
+                <div>
+                  <label className={labelClass}>{t.minpaku.occupancyRate}</label>
+                  <input
+                    type="number"
+                    value={formData.occupancy_rate}
+                    onChange={(e) => setFormData({ ...formData, occupancy_rate: e.target.value })}
+                    placeholder={t.minpaku.occupancyRatePlaceholder}
+                    className={inputClass}
+                  />
+                </div>
+
+                <div>
+                  <label className={labelClass}>{t.minpaku.managementFee}</label>
+                  <input
+                    type="number"
+                    value={formData.management_fee}
+                    onChange={(e) => setFormData({ ...formData, management_fee: e.target.value })}
+                    placeholder={t.minpaku.managementFeePlaceholder}
+                    className={inputClass}
+                  />
+                </div>
               </div>
 
-              {/* Area */}
-              <div>
-                <label className="block text-sm font-bold text-gray-900 mb-2">
-                  {t.minpaku.area}
-                </label>
-                <input
-                  type="number"
-                  value={formData.area}
-                  onChange={(e) => setFormData({ ...formData, area: e.target.value })}
-                  placeholder={t.minpaku.areaPlaceholder}
-                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-gray-900 bg-white"
-                />
-              </div>
-
-              {/* Layout */}
-              <div>
-                <label className="block text-sm font-bold text-gray-900 mb-2">
-                  {t.minpaku.rooms}
-                </label>
-                <select
-                  value={formData.rooms}
-                  onChange={(e) => setFormData({ ...formData, rooms: e.target.value })}
-                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-gray-900 bg-white"
-                >
-                  <option className="text-gray-900">1R</option>
-                  <option className="text-gray-900">1K</option>
-                  <option className="text-gray-900">1LDK</option>
-                  <option className="text-gray-900">2LDK</option>
-                  <option className="text-gray-900">3LDK</option>
-                </select>
-              </div>
-
-              {/* Nightly Rate */}
-              <div>
-                <label className="block text-sm font-bold text-gray-900 mb-2">
-                  {t.minpaku.nightlyRate}
-                </label>
-                <input
-                  type="number"
-                  value={formData.nightly_rate}
-                  onChange={(e) => setFormData({ ...formData, nightly_rate: e.target.value })}
-                  placeholder={t.minpaku.nightlyRatePlaceholder}
-                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-gray-900 bg-white"
-                />
-              </div>
-
-              {/* Occupancy Rate */}
-              <div>
-                <label className="block text-sm font-bold text-gray-900 mb-2">
-                  {t.minpaku.occupancyRate}
-                </label>
-                <input
-                  type="number"
-                  value={formData.occupancy_rate}
-                  onChange={(e) => setFormData({ ...formData, occupancy_rate: e.target.value })}
-                  placeholder={t.minpaku.occupancyRatePlaceholder}
-                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-gray-900 bg-white"
-                />
-              </div>
-
-              {/* Management Fee */}
-              <div>
-                <label className="block text-sm font-bold text-gray-900 mb-2">
-                  {t.minpaku.managementFee}
-                </label>
-                <input
-                  type="number"
-                  value={formData.management_fee}
-                  onChange={(e) => setFormData({ ...formData, management_fee: e.target.value })}
-                  placeholder={t.minpaku.managementFeePlaceholder}
-                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-gray-900 bg-white"
-                />
-              </div>
+              <button
+                onClick={handleCalculate}
+                className="w-full bg-ink text-washi py-4 text-sm tracking-[0.25em] hover:bg-gold-800 transition-colors duration-500"
+              >
+                {t.minpaku.calculate}
+              </button>
             </div>
+          </Reveal>
 
-            <button
-              onClick={handleCalculate}
-              className="w-full bg-gradient-to-r from-primary-600 to-primary-700 text-white py-4 rounded-lg font-bold hover:from-primary-700 hover:to-primary-800 transition-all shadow-lg"
-            >
-              {t.minpaku.calculate}
-            </button>
-          </div>
-
-          {/* Results */}
+          {/* シミュレーション結果 */}
           {result && (
-            <div className="bg-white rounded-2xl shadow-xl p-8 mb-12">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">{t.minpaku.results}</h2>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {/* Income */}
+            <div className="mt-12 border hairline p-7 md:p-12 animate-rise">
+              <p className="section-label mb-3">Result</p>
+              <Heading level={3} className="mb-10 text-ink">{t.minpaku.results}</Heading>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-14 gap-y-10">
+                {/* 収入 */}
                 <div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-4">{t.minpaku.income}</h3>
-                  <div className="space-y-3">
-                    <div className="flex justify-between items-center p-3 bg-green-50 rounded-lg">
-                      <span className="text-gray-700">{t.minpaku.grossRevenue}</span>
-                      <span className="text-lg font-bold text-green-700">
-                        ¥{result.grossRevenue.toLocaleString()}
-                      </span>
-                    </div>
-                    <div className="flex justify-between items-center p-3 bg-gray-100 rounded-lg border border-gray-200">
-                      <span className="text-gray-700 font-medium">{t.minpaku.bookedNights}</span>
-                      <span className="text-gray-900 font-semibold">
-                        {result.bookedNights} {t.minpaku.nights}
-                      </span>
-                    </div>
-                  </div>
+                  <Heading level={5} className="mb-4 text-ink pb-3 border-b hairline">{t.minpaku.income}</Heading>
+                  <dl>
+                    <ResultRow label={t.minpaku.grossRevenue} value={`¥${result.grossRevenue.toLocaleString()}`} highlight="positive" />
+                    <ResultRow label={t.minpaku.bookedNights} value={`${result.bookedNights} ${t.minpaku.nights}`} />
+                  </dl>
                 </div>
 
-                {/* Expenses */}
+                {/* 支出 */}
                 <div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-4">{t.minpaku.expenses}</h3>
-                  <div className="space-y-3">
-                    <div className="flex justify-between items-center p-3 bg-gray-100 rounded-lg border border-gray-200">
-                      <span className="text-gray-700 font-medium">{t.minpaku.managementFeeLabel}</span>
-                      <span className="text-gray-900 font-semibold">
-                        ¥{result.managementFee.toLocaleString()}
-                      </span>
-                    </div>
-                    <div className="flex justify-between items-center p-3 bg-gray-100 rounded-lg border border-gray-200">
-                      <span className="text-gray-700 font-medium">{t.minpaku.cleaningFee}</span>
-                      <span className="text-gray-900 font-semibold">
-                        ¥{result.cleaningFee.toLocaleString()}
-                      </span>
-                    </div>
-                    <div className="flex justify-between items-center p-3 bg-gray-100 rounded-lg border border-gray-200">
-                      <span className="text-gray-700 font-medium">{t.minpaku.utilities}</span>
-                      <span className="text-gray-900 font-semibold">
-                        ¥{result.utilities.toLocaleString()}
-                      </span>
-                    </div>
-                    <div className="flex justify-between items-center p-3 bg-gray-100 rounded-lg border border-gray-200">
-                      <span className="text-gray-700 font-medium">{t.minpaku.platformFee}</span>
-                      <span className="text-gray-900 font-semibold">
-                        ¥{result.platformFee.toLocaleString()}
-                      </span>
-                    </div>
-                    <div className="flex justify-between items-center p-3 bg-red-50 rounded-lg">
-                      <span className="text-gray-700">{t.minpaku.totalExpenses}</span>
-                      <span className="text-lg font-bold text-red-700">
-                        ¥{result.totalExpenses.toLocaleString()}
-                      </span>
-                    </div>
-                  </div>
+                  <Heading level={5} className="mb-4 text-ink pb-3 border-b hairline">{t.minpaku.expenses}</Heading>
+                  <dl>
+                    <ResultRow label={t.minpaku.managementFeeLabel} value={`¥${result.managementFee.toLocaleString()}`} />
+                    <ResultRow label={t.minpaku.cleaningFee} value={`¥${result.cleaningFee.toLocaleString()}`} />
+                    <ResultRow label={t.minpaku.utilities} value={`¥${result.utilities.toLocaleString()}`} />
+                    <ResultRow label={t.minpaku.platformFee} value={`¥${result.platformFee.toLocaleString()}`} />
+                    <ResultRow label={t.minpaku.totalExpenses} value={`¥${result.totalExpenses.toLocaleString()}`} highlight="negative" />
+                  </dl>
                 </div>
               </div>
 
-              {/* Net Revenue */}
-              <div className="mt-6 p-6 bg-gradient-to-r from-primary-900 to-gold-900 rounded-xl">
-                <div className="flex justify-between items-center">
-                  <span className="text-xl font-bold text-white">{t.minpaku.netRevenue}</span>
-                  <span className="text-3xl font-bold text-gold-300">
-                    ¥{result.netRevenue.toLocaleString()} {t.minpaku.perMonth}
-                  </span>
-                </div>
+              {/* 純利益 */}
+              <div className="mt-10 bg-ink text-washi px-7 py-7 md:px-10 flex flex-col sm:flex-row justify-between sm:items-center gap-3">
+                <span className="font-serif text-lg tracking-widest">{t.minpaku.netRevenue}</span>
+                <span className="font-serif text-2xl md:text-3xl text-gold-300">
+                  ¥{result.netRevenue.toLocaleString()}
+                  <span className="text-washi/50 text-sm ml-2">{t.minpaku.perMonth}</span>
+                </span>
               </div>
             </div>
           )}
+        </Container>
+      </Section>
 
-          {/* Services */}
-          <div className="bg-white rounded-2xl shadow-xl p-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">{t.minpaku.servicesTitle}</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {[
-                {
-                  title: t.minpaku.service1,
-                  description: t.minpaku.service1Desc,
-                  icon: '🔗'
-                },
-                {
-                  title: t.minpaku.service2,
-                  description: t.minpaku.service2Desc,
-                  icon: '🌍'
-                },
-                {
-                  title: t.minpaku.service3,
-                  description: t.minpaku.service3Desc,
-                  icon: '✨'
-                },
-                {
-                  title: t.minpaku.service4,
-                  description: t.minpaku.service4Desc,
-                  icon: '📈'
-                }
-              ].map((service, index) => (
-                <div key={index} className="p-6 border-2 border-gray-200 rounded-xl hover:border-primary-500 transition-colors">
-                  <div className="text-4xl mb-3">{service.icon}</div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-2">{service.title}</h3>
-                  <p className="text-gray-600">{service.description}</p>
-                </div>
-              ))}
-            </div>
+      {/* サービス内容 */}
+      <Section background="gray" spacing="lg">
+        <Container maxWidth="lg">
+          <Reveal className="mb-14">
+            <p className="section-label mb-4">Services</p>
+            <Heading level={2} className="text-ink">{t.minpaku.servicesTitle}</Heading>
+          </Reveal>
+          <div className="grid grid-cols-1 md:grid-cols-2 border-t border-l hairline">
+            {services.map((service, index) => (
+              <Reveal
+                key={index}
+                delay={(index % 2) as 0 | 1}
+                className="border-b border-r hairline p-8 md:p-10 hover:bg-white/60 transition-colors duration-700"
+              >
+                <span className="font-serif text-gold-400 text-xs tracking-[0.3em] block mb-5">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+                <Heading level={4} className="mb-3 text-ink">{service.title}</Heading>
+                <Text size="sm" color="light">{service.description}</Text>
+              </Reveal>
+            ))}
           </div>
-        </div>
-      </div>
+        </Container>
+      </Section>
+
+      {/* CTA */}
+      <Section background="primary" spacing="md">
+        <Container>
+          <Reveal className="text-center">
+            <Heading level={3} align="center" className="mb-4 text-washi">
+              {t.management.ctaTitle}
+            </Heading>
+            <Text size="base" className="mb-10 max-w-2xl mx-auto !text-washi/60">
+              {t.management.ctaDescription}
+            </Text>
+            <a
+              href="/contact"
+              className="inline-flex items-center gap-3 bg-washi text-ink px-9 py-4 text-sm tracking-[0.2em] hover:bg-gold-200 transition-colors duration-700"
+            >
+              {t.management.ctaButton}
+            </a>
+          </Reveal>
+        </Container>
+      </Section>
 
       <Footer />
     </main>
+  );
+}
+
+function ResultRow({ label, value, highlight }: { label: string; value: string; highlight?: 'positive' | 'negative' }) {
+  return (
+    <div className="flex justify-between items-baseline gap-4 py-3 border-b hairline">
+      <dt className="text-ink/55 text-sm">{label}</dt>
+      <dd
+        className={`font-serif text-base md:text-lg ${
+          highlight === 'positive' ? 'text-pine-deep' : highlight === 'negative' ? 'text-gold-800' : 'text-ink'
+        }`}
+      >
+        {value}
+      </dd>
+    </div>
   );
 }

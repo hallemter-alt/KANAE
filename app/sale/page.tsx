@@ -2,147 +2,181 @@
 
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import PageHero from '@/components/ui/PageHero';
+import Reveal from '@/components/Reveal';
 import { Container, Section, Heading, Text } from '@/components/ui/Layout';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { translations } from '@/lib/translations';
+import { IMAGES } from '@/lib/images';
+
+const inputClass =
+  'w-full px-4 py-3 bg-white/80 border hairline focus:border-ink/40 transition-colors text-sm text-ink placeholder:text-ink/35';
+
+const propertyImages = [IMAGES.geometric, IMAGES.concreteColumns, IMAGES.windowLight, IMAGES.pavementFog];
 
 export default function SalePage() {
   const { locale } = useLanguage();
   const t = translations[locale];
 
   return (
-    <main className="min-h-screen bg-gray-50">
+    <main className="min-h-screen bg-washi">
       <Navbar />
-      
-      {/* Hero Section with Dark Gradient */}
-      <Section background="gradient" spacing="hero">
-        <Container>
-          <div className="text-center">
-            <Heading level={1} align="center" className="mb-6 text-white">
-              {t.sale.title}
-            </Heading>
-            <Text size="xl" className="max-w-3xl mx-auto text-white/90">
-              {t.sale.subtitle}
-            </Text>
+
+      <PageHero
+        label="For Sale"
+        title={t.sale.title}
+        subtitle={t.sale.subtitle}
+        image="geometric"
+        alt="陰影の美しいミニマルな建築"
+      />
+
+      {/* 検索 */}
+      <Section background="white" spacing="lg">
+        <Container maxWidth="lg">
+          <Reveal>
+            <div className="border hairline bg-gold-50/60 p-7 md:p-12">
+              <p className="section-label mb-3">Search</p>
+              <Heading level={3} className="mb-10 text-ink">{t.sale.searchTitle}</Heading>
+
+              <div className="space-y-8">
+                {/* 物件種別 */}
+                <div>
+                  <label className="block text-xs tracking-[0.2em] text-ink/50 uppercase mb-3">
+                    {t.sale.propertyType}
+                  </label>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                    {[
+                      { key: 'apartment', label: t.sale.apartment },
+                      { key: 'house', label: t.sale.house },
+                      { key: 'land', label: t.sale.land },
+                    ].map((type) => (
+                      <label
+                        key={type.key}
+                        className="flex items-center gap-3 py-3 px-4 bg-white/80 border border-ink/15 hover:border-ink/40 cursor-pointer transition-colors duration-300 text-sm text-ink/70"
+                      >
+                        <input type="radio" name="propertyType" className="accent-ink" />
+                        {type.label}
+                      </label>
+                    ))}
+                  </div>
+                </div>
+
+                {/* エリア */}
+                <div>
+                  <label className="block text-xs tracking-[0.2em] text-ink/50 uppercase mb-3">
+                    {t.sale.location}
+                  </label>
+                  <select className={inputClass}>
+                    <option>{t.sale.locationPlaceholder}</option>
+                    <option>{locale === 'ja' ? '東京都' : locale === 'zh' ? '东京都' : 'Tokyo'}</option>
+                    <option>{locale === 'ja' ? '神奈川県' : locale === 'zh' ? '神奈川县' : 'Kanagawa'}</option>
+                    <option>{locale === 'ja' ? '千葉県' : locale === 'zh' ? '千叶县' : 'Chiba'}</option>
+                    <option>{locale === 'ja' ? '埼玉県' : locale === 'zh' ? '埼玉县' : 'Saitama'}</option>
+                  </select>
+                </div>
+
+                {/* 価格範囲 */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                  <div>
+                    <label className="block text-xs tracking-[0.2em] text-ink/50 uppercase mb-3">
+                      {t.sale.minPrice}
+                    </label>
+                    <input type="number" placeholder={t.sale.pricePlaceholder} className={inputClass} />
+                  </div>
+                  <div>
+                    <label className="block text-xs tracking-[0.2em] text-ink/50 uppercase mb-3">
+                      {t.sale.maxPrice}
+                    </label>
+                    <input type="number" placeholder="100,000,000" className={inputClass} />
+                  </div>
+                </div>
+
+                <button className="w-full bg-ink text-washi py-4 text-sm tracking-[0.25em] hover:bg-gold-800 transition-colors duration-500">
+                  {t.sale.searchButton}
+                </button>
+              </div>
+            </div>
+          </Reveal>
+        </Container>
+      </Section>
+
+      {/* おすすめ物件 */}
+      <Section background="gray" spacing="lg">
+        <Container maxWidth="lg">
+          <Reveal className="mb-14">
+            <p className="section-label mb-4">Pick Up</p>
+            <Heading level={2} className="text-ink">{t.rent.recommended}</Heading>
+          </Reveal>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-16">
+            {[
+              { id: 1, type: 'apartment', price: '58,000,000', area: '70㎡' },
+              { id: 2, type: 'house', price: '72,000,000', area: '120㎡' },
+              { id: 3, type: 'apartment', price: '45,000,000', area: '65㎡' },
+              { id: 4, type: 'land', price: '30,000,000', area: '100㎡' },
+            ].map((property, index) => (
+              <Reveal key={property.id} delay={(index % 2) as 0 | 1}>
+                <article className="group">
+                  <div className="img-breathe relative overflow-hidden aspect-[4/3] mb-5 bg-gold-100">
+                    <div
+                      className="absolute inset-0 bg-cover bg-center"
+                      style={{ backgroundImage: `url('${propertyImages[index]}')` }}
+                      role="img"
+                      aria-label={`${locale === 'ja' ? 'サンプル物件' : locale === 'zh' ? '样板房源' : 'Sample Property'} ${property.id}`}
+                    />
+                    <div className="absolute inset-0 bg-ink/10 group-hover:bg-ink/0 transition-colors duration-700" />
+                    <p className="absolute bottom-0 left-0 bg-ink/85 text-washi px-5 py-2.5 font-serif text-lg">
+                      ¥{property.price}
+                    </p>
+                  </div>
+
+                  <p className="text-gold-600 text-xs tracking-[0.2em] uppercase mb-2">
+                    {property.type === 'apartment' ? t.sale.apartment : property.type === 'house' ? t.sale.house : t.sale.land}
+                  </p>
+                  <Heading level={4} className="mb-3 text-ink">
+                    {locale === 'ja' ? 'サンプル物件' : locale === 'zh' ? '样板房源' : 'Sample Property'} {property.id}
+                  </Heading>
+                  <Text size="sm" color="light" className="mb-5">
+                    {locale === 'ja' ? '東京都世田谷区' : locale === 'zh' ? '东京都世田谷区' : 'Setagaya, Tokyo'} ／ {property.area}
+                  </Text>
+
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    <span className="px-3 py-1 border border-ink/15 text-ink/55 text-xs tracking-wide">
+                      {locale === 'ja' ? '駅近' : locale === 'zh' ? '近车站' : 'Near Station'}
+                    </span>
+                    <span className="px-3 py-1 border border-ink/15 text-ink/55 text-xs tracking-wide">
+                      {locale === 'ja' ? '南向き' : locale === 'zh' ? '朝南' : 'South-Facing'}
+                    </span>
+                  </div>
+
+                  <button className="w-full py-2.5 bg-ink text-washi text-sm tracking-widest hover:bg-gold-800 transition-colors duration-500">
+                    {t.rent.viewDetails}
+                  </button>
+                </article>
+              </Reveal>
+            ))}
           </div>
         </Container>
       </Section>
-      
-      <div className="container mx-auto px-4 py-16">
-        <div className="max-w-4xl mx-auto">
 
-          {/* Search Section */}
-          <div className="bg-white rounded-2xl shadow-xl p-8 mb-12">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">{t.sale.searchTitle}</h2>
-            
-            <div className="space-y-6">
-              {/* Property Type */}
-              <div>
-                <label className="block text-sm font-bold text-gray-900 mb-2">
-                  {t.sale.propertyType}
-                </label>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  {[
-                    { key: 'apartment', label: t.sale.apartment },
-                    { key: 'house', label: t.sale.house },
-                    { key: 'land', label: t.sale.land }
-                  ].map((type) => (
-                    <label key={type.key} className="flex items-center space-x-2 p-4 border-2 border-gray-300 rounded-lg hover:border-primary-500 cursor-pointer transition-colors">
-                      <input type="radio" name="propertyType" className="text-primary-600 focus:ring-primary-500" />
-                      <span className="text-gray-900 font-semibold">{type.label}</span>
-                    </label>
-                  ))}
-                </div>
-              </div>
-
-              {/* Location */}
-              <div>
-                <label className="block text-sm font-bold text-gray-900 mb-2">
-                  {t.sale.location}
-                </label>
-                <select className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-gray-900 bg-white">
-                  <option className="text-gray-900">{t.sale.locationPlaceholder}</option>
-                  <option className="text-gray-900">{locale === 'ja' ? '東京都' : locale === 'zh' ? '东京都' : 'Tokyo'}</option>
-                  <option className="text-gray-900">{locale === 'ja' ? '神奈川県' : locale === 'zh' ? '神奈川县' : 'Kanagawa'}</option>
-                  <option className="text-gray-900">{locale === 'ja' ? '千葉県' : locale === 'zh' ? '千叶县' : 'Chiba'}</option>
-                  <option className="text-gray-900">{locale === 'ja' ? '埼玉県' : locale === 'zh' ? '埼玉县' : 'Saitama'}</option>
-                </select>
-              </div>
-
-              {/* Price Range */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-bold text-gray-900 mb-2">
-                    {t.sale.minPrice}
-                  </label>
-                  <input
-                    type="number"
-                    placeholder={t.sale.pricePlaceholder}
-                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-gray-900 bg-white"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-bold text-gray-900 mb-2">
-                    {t.sale.maxPrice}
-                  </label>
-                  <input
-                    type="number"
-                    placeholder="100000000"
-                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-gray-900 bg-white"
-                  />
-                </div>
-              </div>
-
-              {/* Search Button */}
-              <button className="w-full bg-gradient-to-r from-primary-600 to-primary-700 text-white py-4 rounded-lg font-bold hover:from-primary-700 hover:to-primary-800 transition-all shadow-lg">
-                {t.sale.searchButton}
-              </button>
-            </div>
-          </div>
-
-          {/* Featured Properties */}
-          <div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">{t.rent.recommended}</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {[
-                { id: 1, type: 'apartment', price: '58,000,000', area: '70㎡' },
-                { id: 2, type: 'house', price: '72,000,000', area: '120㎡' },
-                { id: 3, type: 'apartment', price: '45,000,000', area: '65㎡' },
-                { id: 4, type: 'land', price: '30,000,000', area: '100㎡' },
-              ].map((property) => (
-                <div key={property.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                  <div className="h-48 bg-gradient-to-br from-gold-400 to-gold-600" />
-                  <div className="p-6">
-                    <div className="inline-block px-3 py-1 bg-primary-100 text-primary-800 text-sm rounded-full mb-2">
-                      {property.type === 'apartment' ? t.sale.apartment : property.type === 'house' ? t.sale.house : t.sale.land}
-                    </div>
-                    <div className="text-2xl font-bold text-gray-900 mb-2">
-                      {locale === 'ja' ? `¥${property.price}` : locale === 'zh' ? `¥${property.price}` : `¥${property.price}`}
-                    </div>
-                    <h3 className="text-lg font-semibold text-gray-800 mb-2">
-                      {locale === 'ja' ? 'サンプル物件' : locale === 'zh' ? '样板房源' : 'Sample Property'} {property.id}
-                    </h3>
-                    <p className="text-gray-600 text-sm mb-4">
-                      {locale === 'ja' ? '東京都世田谷区' : locale === 'zh' ? '东京都世田谷区' : 'Setagaya, Tokyo'} / {property.area}
-                    </p>
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      <span className="px-3 py-1 bg-amber-100 text-amber-800 text-xs rounded-full">
-                        {locale === 'ja' ? '駅近' : locale === 'zh' ? '近车站' : 'Near Station'}
-                      </span>
-                      <span className="px-3 py-1 bg-green-100 text-green-800 text-xs rounded-full">
-                        {locale === 'ja' ? '南向き' : locale === 'zh' ? '朝南' : 'South-Facing'}
-                      </span>
-                    </div>
-                    <button className="w-full bg-gray-900 text-white py-2 rounded-lg hover:bg-gray-800 transition-colors">
-                      {t.rent.viewDetails}
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
+      {/* CTA */}
+      <Section background="primary" spacing="md">
+        <Container>
+          <Reveal className="text-center">
+            <Heading level={3} align="center" className="mb-4 text-washi">
+              {t.management.ctaTitle}
+            </Heading>
+            <Text size="base" className="mb-10 max-w-2xl mx-auto !text-washi/60">
+              {t.management.ctaDescription}
+            </Text>
+            <a
+              href="/contact"
+              className="inline-flex items-center gap-3 bg-washi text-ink px-9 py-4 text-sm tracking-[0.2em] hover:bg-gold-200 transition-colors duration-700"
+            >
+              {t.management.ctaButton}
+            </a>
+          </Reveal>
+        </Container>
+      </Section>
 
       <Footer />
     </main>
