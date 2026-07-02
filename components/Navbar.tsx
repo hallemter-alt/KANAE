@@ -34,8 +34,10 @@ export default function Navbar() {
   const links = [
     { href: '/rent', label: t.nav.rent },
     { href: '/sale', label: t.nav.sale },
+    { href: '/invest', label: t.nav.properties },
     { href: '/management', label: t.nav.management },
     { href: '/minpaku', label: t.nav.minpaku },
+    { href: '/market', label: t.nav.market },
     { href: '/about', label: t.nav.about },
     { href: '/philosophy', label: t.nav.philosophy },
   ];
@@ -71,12 +73,12 @@ export default function Navbar() {
           </Link>
 
           {/* デスクトップ・ナビ */}
-          <div className="hidden lg:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-5 xl:gap-7">
             {links.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`link-quiet text-sm tracking-widest transition-colors duration-500 ${
+                className={`link-quiet text-[13px] xl:text-sm tracking-wider xl:tracking-widest whitespace-nowrap transition-colors duration-500 ${
                   solid ? 'text-ink/80 hover:text-ink' : 'text-washi/90 hover:text-washi'
                 }`}
               >

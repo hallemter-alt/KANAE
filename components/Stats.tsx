@@ -24,9 +24,9 @@ export default function Stats() {
             <div className="img-breathe relative overflow-hidden aspect-[3/4]">
               <div
                 className="absolute inset-0 bg-cover bg-center animate-water"
-                style={{ backgroundImage: `url('${IMAGES.pondStill}')`, transform: 'scale(1.06)' }}
+                style={{ backgroundImage: `url('${IMAGES.engawa}')`, transform: 'scale(1.06)' }}
                 role="img"
-                aria-label="静かな水面に映る木々"
+                aria-label="縁側から眺める日本庭園 — 空間と時間の対話"
               />
             </div>
             <p className="mt-4 text-ink/40 text-xs tracking-widest">
