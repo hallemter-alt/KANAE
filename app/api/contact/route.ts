@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { supabase } from '@/lib/supabase'
+import { supabase, isSupabaseConfigured } from '@/lib/supabase'
 
 export async function POST(request: NextRequest) {
   try {
@@ -42,28 +42,48 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Save to database
-    const { data, error } = await supabase
-      .from('inquiries')
-      .insert({
-        name: body.name,
-        email: body.email,
-        phone: body.phone,
-        type: inquiryType,
-        message: body.message,
-        property_id: body.property_id,
-        customer_id: body.customer_id,
-        status: 'pending'
-      })
-      .select()
-      .single()
-
-    if (error) {
-      console.error('Database error:', error)
+    // 問合せを失わないため、DB・メールのいずれのチャネルも利用できない場合は明確にエラーを返す
+    if (!isSupabaseConfigured && !process.env.RESEND_API_KEY) {
+      console.error('Contact form: neither Supabase nor Resend is configured')
       return NextResponse.json(
-        { success: false, error: 'Failed to save inquiry', details: error.message },
-        { status: 500 }
+        {
+          success: false,
+          error: '現在フォームをご利用いただけません。お電話（03-6914-3633）またはメール（info@kanae-tokyo.com）にてご連絡ください。',
+        },
+        { status: 503 }
       )
+    }
+
+    // Save to database (if configured)
+    let data = null
+    if (isSupabaseConfigured) {
+      const { data: inserted, error } = await supabase
+        .from('inquiries')
+        .insert({
+          name: body.name,
+          email: body.email,
+          phone: body.phone,
+          type: inquiryType,
+          message: body.message,
+          property_id: body.property_id,
+          customer_id: body.customer_id,
+          status: 'pending'
+        })
+        .select()
+        .single()
+
+      if (error) {
+        console.error('Database error:', error)
+        // メール送信が可能なら続行、不可能ならエラー
+        if (!process.env.RESEND_API_KEY) {
+          return NextResponse.json(
+            { success: false, error: 'Failed to save inquiry', details: error.message },
+            { status: 500 }
+          )
+        }
+      } else {
+        data = inserted
+      }
     }
 
     // Send email notification (optional, requires Resend API key)

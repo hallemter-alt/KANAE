@@ -1,11 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { supabase } from '@/lib/supabase'
+import { supabase, isSupabaseConfigured } from '@/lib/supabase'
 
 // GET /api/inquiries/:id - 問合せ詳細取得
 export async function GET(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  if (!isSupabaseConfigured) {
+    return NextResponse.json({ error: 'Inquiry not found' }, { status: 404 })
+  }
+
   try {
     const { id } = await params
     const { data, error } = await supabase
@@ -38,6 +42,10 @@ export async function PUT(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  if (!isSupabaseConfigured) {
+    return NextResponse.json({ error: 'Database is not configured' }, { status: 503 })
+  }
+
   try {
     const { id } = await params
     const body = await request.json()

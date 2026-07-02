@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { supabase } from '@/lib/supabase'
+import { supabase, isSupabaseConfigured } from '@/lib/supabase'
 
 // Edge Runtime 配置以獲得更快的響應
 export const runtime = 'nodejs' // Supabase需要Node.js runtime
@@ -7,6 +7,16 @@ export const dynamic = 'force-dynamic' // 始終動態生成
 
 // GET /api/properties - 物件一覧取得・検索
 export async function GET(request: NextRequest) {
+  // データベース未設定時は空のリストを返す（グレースフルデグラデーション）
+  if (!isSupabaseConfigured) {
+    return NextResponse.json({
+      success: true,
+      properties: [],
+      pagination: { page: 1, limit: 20, total: 0, totalPages: 0 },
+      notice: 'Database is not configured yet.'
+    })
+  }
+
   try {
     const { searchParams } = new URL(request.url)
     const type = searchParams.get('type')
@@ -76,6 +86,10 @@ export async function GET(request: NextRequest) {
 
 // POST /api/properties - 物件新規登録
 export async function POST(request: NextRequest) {
+  if (!isSupabaseConfigured) {
+    return NextResponse.json({ error: 'Database is not configured' }, { status: 503 })
+  }
+
   try {
     const body = await request.json()
 
