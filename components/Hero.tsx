@@ -11,17 +11,23 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-[100svh] flex items-end overflow-hidden bg-ink">
-      {/* 背景 — 光が差し込む建築 */}
-      <div className="absolute inset-0">
-        <div
-          className="absolute inset-0 bg-cover bg-center animate-slowfade"
-          style={{ backgroundImage: `url('${IMAGES.windowLight}')` }}
-          role="img"
-          aria-label="窓から差し込む静かな光"
-        />
+      {/* 背景 — 循環する雰囲気動画（金色の光・木の影・山霧） */}
+      <div className="absolute inset-0 animate-slowfade">
+        <video
+          className="hero-video"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          poster={IMAGES.heroAmbientPoster}
+          aria-hidden="true"
+        >
+          <source src={IMAGES.heroAmbientVideo} type="video/mp4" />
+        </video>
         {/* 静かな暗幕 — 文字の可読性のため */}
         <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-ink/30" />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink/50 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-ink/55 to-transparent" />
       </div>
 
       {/* 縦書きの社是 — 日本の趣（装飾） */}
