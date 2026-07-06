@@ -8,10 +8,11 @@ import { IMAGES } from '@/lib/images';
 
 /**
  * ヒーロー — 3D カード輪播（墨・清水コンクリートの単色）
- * 参照画像の構成を再現：中央のカードを軸に、左右へ重なりながら扇状に広がるカード群。
- * ・ホバー = 拡大＋内容の露出（キャプション表示）
- * ・クリック / 矢印 = 左右へスライド
- * ・中央の縦軸線＋上下ラベル、下部にページネーション、RANDOM / LINEAR 切替
+ * 中央のカードを軸に、左右へ緩やかに重なるカバーフロー。
+ * ・中央カード = 鮮明（グレー抜け）
+ * ・両脇 = 奥へ退き、わずかに暗く/ぼかす
+ * ・ホバー = そっと持ち上がり、内容が露出（キャプション表示）
+ * ・クリック / 矢印 / ドット = スライド、キーボード対応、自動再生
  */
 
 type CardDef = { src: string; caption: string };
@@ -20,12 +21,11 @@ export default function Hero() {
   const { locale } = useLanguage();
   const t = translations[locale];
 
-  // 参照画像の各カード内容（高精細・単色に整えた素材）
   const captions =
     locale === 'ja'
       ? ['設計の素描', '素材の肌理', '陶の器', '住まいの食卓', '対話の余白', '光の室内', '緑の気配']
       : locale === 'zh'
-      ? ['设计草图', '材料肌理', '陶器', '生活餐桌', '对话留白', '光的室内', '绿意', ]
+      ? ['设计草图', '材料肌理', '陶器', '生活餐桌', '对话留白', '光的室内', '绿意']
       : ['Sketches', 'Material', 'Vessel', 'Dining', 'Dialogue', 'Interior', 'Green'];
 
   const cards: CardDef[] = IMAGES.heroCards.map((src, i) => ({
@@ -36,6 +36,7 @@ export default function Hero() {
   const N = cards.length;
   const [active, setActive] = useState(Math.floor(N / 2));
   const [mode, setMode] = useState<'linear' | 'random'>('linear');
+  const [paused, setPaused] = useState(false);
   const timer = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const go = useCallback(
@@ -53,10 +54,9 @@ export default function Hero() {
   );
 
   // 自動再生（静かなリズム）— ホバー中は停止
-  const [paused, setPaused] = useState(false);
   useEffect(() => {
     if (paused) return;
-    timer.current = setInterval(() => go(1), 4200);
+    timer.current = setInterval(() => go(1), 5000);
     return () => {
       if (timer.current) clearInterval(timer.current);
     };
@@ -72,33 +72,34 @@ export default function Hero() {
     return () => window.removeEventListener('keydown', onKey);
   }, [go]);
 
-  // カードの 3D 位置を算出（中央からの相対距離で扇状に配置）
-  const cardStyle = (i: number) => {
-    // 循環距離（-N/2 .. N/2）
+  // カバーフローの位置を算出（循環距離で扇状に）
+  const cardStyle = (i: number): React.CSSProperties => {
     let d = i - active;
     if (d > N / 2) d -= N;
     if (d < -N / 2) d += N;
     const abs = Math.abs(d);
 
-    const x = d * 190; // 横方向のずれ
-    const z = -abs * 160; // 奥行き
-    const rotY = d * -16; // Y 軸回転（扇）
-    const scale = Math.max(0.68, 1 - abs * 0.09);
-    const opacity = Math.max(0, 1 - abs * 0.22);
+    // 中央から離れるほど：横へ寄せ・奥へ退き・回転・縮小・減光
+    const x = d * 58; // %（カード幅基準の重なり）
+    const z = -abs * 130; // 奥行き
+    const rotY = d * -22; // Y 軸回転
+    const scale = Math.max(0.7, 1 - abs * 0.12);
+    const opacity = abs > 3 ? 0 : Math.max(0.28, 1 - abs * 0.26);
     const zIndex = 100 - abs;
-    const blur = abs > 2 ? Math.min((abs - 2) * 1.2, 3) : 0;
+    const blur = abs >= 2 ? Math.min((abs - 1) * 1.6, 4) : 0;
 
     return {
-      transform: `translate(-50%, -50%) translate3d(${x}px, 0, ${z}px) rotateY(${rotY}deg) scale(${scale})`,
+      transform: `translate(-50%, -50%) translateX(${x}%) translateZ(${z}px) rotateY(${rotY}deg) scale(${scale})`,
       opacity,
       zIndex,
       filter: blur ? `blur(${blur}px)` : undefined,
-    } as React.CSSProperties;
+      pointerEvents: abs > 3 ? 'none' : 'auto',
+    };
   };
 
   return (
     <section className="relative min-h-[100svh] flex flex-col items-center justify-center overflow-hidden bg-washi texture-concrete">
-      {/* トップラベル（社是の英訳）— 中央軸の上 */}
+      {/* トップラベル */}
       <div className="relative z-30 pt-28 md:pt-24 text-center animate-slowfade" aria-hidden="true">
         <p className="text-ink/55 text-[10px] md:text-xs tracking-[0.4em] uppercase font-serif">
           Kanae Real Estate — Tokyo
@@ -107,18 +108,18 @@ export default function Hero() {
 
       {/* 3D ステージ */}
       <div
-        className="hero-stage relative z-20 w-full flex-1 flex items-center justify-center"
+        className="hero-stage relative z-20 w-full flex-1 flex items-center justify-center py-6"
         onMouseEnter={() => setPaused(true)}
         onMouseLeave={() => setPaused(false)}
       >
         {/* 中央の縦軸線 */}
         <div
-          className="absolute left-1/2 top-[16%] bottom-[16%] w-px bg-ink/20 -translate-x-1/2 z-10"
+          className="pointer-events-none absolute left-1/2 top-[10%] bottom-[10%] w-px bg-ink/12 -translate-x-1/2 z-0"
           aria-hidden="true"
         />
 
-        {/* カード群 */}
-        <div className="relative w-full h-[52vh] md:h-[56vh] max-h-[560px]">
+        {/* カード群 — 高さは vh 基準で比例、上限あり */}
+        <div className="hero-track relative w-full h-[44vh] sm:h-[46vh] md:h-[48vh] max-h-[440px]">
           {cards.map((card, i) => {
             const isActive = i === active;
             return (
@@ -128,7 +129,7 @@ export default function Hero() {
                 onClick={() => (isActive ? undefined : setActive(i))}
                 aria-label={card.caption}
                 aria-current={isActive}
-                className={`hero-card group block w-[38vw] sm:w-[240px] md:w-[260px] h-[46vh] md:h-[50vh] max-h-[480px] overflow-hidden bg-ink/5 shadow-[0_24px_60px_-24px_rgba(28,28,27,0.55)] focus:outline-none ${
+                className={`hero-card group block h-full aspect-[3/4] overflow-hidden rounded-sm bg-ink/5 shadow-[0_30px_70px_-30px_rgba(28,28,27,0.6)] focus:outline-none focus-visible:ring-2 focus-visible:ring-ink/40 ${
                   isActive ? 'is-active cursor-default' : 'cursor-pointer'
                 }`}
                 style={cardStyle(i)}
@@ -141,12 +142,16 @@ export default function Hero() {
                   loading={i === active ? 'eager' : 'lazy'}
                   draggable={false}
                 />
-                {/* 内容の露出 — アクティブカードのホバー時にキャプション */}
-                <div className="hero-card-caption absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-ink/80 to-transparent">
-                  <p className="text-washi text-xs tracking-[0.25em] uppercase">{card.caption}</p>
+                {/* 内容の露出 — アクティブカードのホバー時 */}
+                <div className="hero-card-caption absolute inset-x-0 bottom-0 p-4 md:p-5 bg-gradient-to-t from-ink/85 via-ink/30 to-transparent">
+                  <p className="text-washi text-[11px] md:text-xs tracking-[0.3em] uppercase">
+                    {card.caption}
+                  </p>
                 </div>
-                {/* 非アクティブカードの薄膜 */}
-                {!isActive && <div className="absolute inset-0 bg-washi/25" aria-hidden="true" />}
+                {/* 非アクティブカードの薄膜（沈める） */}
+                {!isActive && (
+                  <div className="hero-card-veil absolute inset-0 bg-washi/30" aria-hidden="true" />
+                )}
               </button>
             );
           })}
@@ -157,7 +162,7 @@ export default function Hero() {
           type="button"
           onClick={() => go(-1)}
           aria-label="Previous"
-          className="absolute left-3 md:left-8 top-1/2 -translate-y-1/2 z-30 w-11 h-11 md:w-12 md:h-12 rounded-full border border-ink/25 bg-washi/60 backdrop-blur-sm flex items-center justify-center text-ink/70 hover:text-ink hover:border-ink/50 transition-colors duration-500"
+          className="absolute left-3 md:left-10 top-1/2 -translate-y-1/2 z-30 w-11 h-11 md:w-12 md:h-12 rounded-full border border-ink/25 bg-washi/70 backdrop-blur-sm flex items-center justify-center text-ink/70 hover:text-ink hover:border-ink/50 hover:bg-washi transition-all duration-500"
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M15 18l-6-6 6-6" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
@@ -167,7 +172,7 @@ export default function Hero() {
           type="button"
           onClick={() => go(1)}
           aria-label="Next"
-          className="absolute right-3 md:right-8 top-1/2 -translate-y-1/2 z-30 w-11 h-11 md:w-12 md:h-12 rounded-full border border-ink/25 bg-washi/60 backdrop-blur-sm flex items-center justify-center text-ink/70 hover:text-ink hover:border-ink/50 transition-colors duration-500"
+          className="absolute right-3 md:right-10 top-1/2 -translate-y-1/2 z-30 w-11 h-11 md:w-12 md:h-12 rounded-full border border-ink/25 bg-washi/70 backdrop-blur-sm flex items-center justify-center text-ink/70 hover:text-ink hover:border-ink/50 hover:bg-washi transition-all duration-500"
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M9 6l6 6-6 6" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
@@ -175,16 +180,16 @@ export default function Hero() {
         </button>
       </div>
 
-      {/* ボトムラベル（中央軸の下） */}
+      {/* ボトムラベル */}
       <p
-        className="relative z-30 text-ink/55 text-[10px] md:text-xs tracking-[0.4em] uppercase font-serif mb-6"
+        className="relative z-30 text-ink/55 text-[10px] md:text-xs tracking-[0.4em] uppercase font-serif mb-5"
         aria-hidden="true"
       >
         Architecture &amp; People
       </p>
 
       {/* 見出し・CTA */}
-      <div className="relative z-30 w-full max-w-3xl mx-auto px-5 text-center pb-6">
+      <div className="relative z-30 w-full max-w-3xl mx-auto px-5 text-center pb-5">
         <h1 className="animate-rise font-serif text-ink text-2xl sm:text-3xl md:text-4xl leading-[1.5] mb-6">
           {t.hero.title}
           <span className="block text-ink/75 mt-1">{t.hero.subtitle}</span>
