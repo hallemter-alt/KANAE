@@ -83,13 +83,13 @@ export default function InvestPage() {
     <main className="min-h-screen bg-washi">
       <Navbar />
 
-      {/* Hero — 木漏れ日のテラス（ユーザー提供ムード素材） */}
+      {/* Hero — 水辺に佇むミニマルな邸宅（ユーザー提供・4K WEBP） */}
       <section className="relative min-h-[56svh] flex items-end">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: "url('/assets/site/hero-invest.webp')" }}
           role="img"
-          aria-label="樹影の落ちる静かなテラス"
+          aria-label="夕暮れの水辺に佇む邸宅"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/35 to-ink/15" />
         <div className="relative w-full max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 pb-14 pt-40">
