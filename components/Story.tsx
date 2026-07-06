@@ -21,7 +21,7 @@ export default function Story() {
   ];
 
   return (
-    <section className="py-24 md:py-36 bg-gold-50 texture-paper overflow-hidden">
+    <section className="py-24 md:py-36 bg-washi-warm texture-concrete overflow-hidden">
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
         {/* 導入 */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 mb-20 md:mb-28">
@@ -58,7 +58,7 @@ export default function Story() {
             <Reveal delay={1} className="col-span-7">
               <figure className="img-breathe relative overflow-hidden aspect-[3/4]">
                 <div
-                  className="absolute inset-0 bg-cover bg-center"
+                  className="absolute inset-0 bg-cover bg-center grayscale-[0.4] hover:grayscale-0 transition-[filter] duration-700"
                   style={{ backgroundImage: `url('${IMAGES.storyKomorebi}')` }}
                   role="img"
                   aria-label={s.caption1}
@@ -69,7 +69,7 @@ export default function Story() {
             <Reveal delay={2} className="col-span-5 mt-16 md:mt-24">
               <figure className="img-breathe relative overflow-hidden aspect-[3/4]">
                 <div
-                  className="absolute inset-0 bg-cover bg-center"
+                  className="absolute inset-0 bg-cover bg-center grayscale-[0.4] hover:grayscale-0 transition-[filter] duration-700"
                   style={{ backgroundImage: `url('${IMAGES.storyWood}')` }}
                   role="img"
                   aria-label={s.caption2}
@@ -80,7 +80,7 @@ export default function Story() {
             <Reveal delay={2} className="col-span-8 col-start-3 -mt-4 md:-mt-8">
               <figure className="img-breathe relative overflow-hidden aspect-[16/9]">
                 <div
-                  className="absolute inset-0 bg-cover bg-center"
+                  className="absolute inset-0 bg-cover bg-center grayscale-[0.4] hover:grayscale-0 transition-[filter] duration-700"
                   style={{ backgroundImage: `url('${IMAGES.storyMoss}')` }}
                   role="img"
                   aria-label={s.caption3}

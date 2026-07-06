@@ -24,7 +24,7 @@ export default function Dialogue() {
   ];
 
   return (
-    <section className="relative bg-washi texture-paper overflow-hidden">
+    <section className="relative bg-washi texture-concrete overflow-hidden">
       {/* 導入 */}
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 pt-24 md:pt-36 pb-8 md:pb-16">
         <Reveal className="max-w-2xl">
@@ -58,7 +58,7 @@ export default function Dialogue() {
                 }`}
               >
                 <div
-                  className="absolute inset-0 bg-cover bg-center parallax-media"
+                  className="absolute inset-0 bg-cover bg-center parallax-media grayscale-[0.35] hover:grayscale-0 transition-[filter] duration-700"
                   style={{ backgroundImage: `url('${image.src}')` }}
                   role="img"
                   aria-label={image.alt}
