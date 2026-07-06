@@ -64,9 +64,9 @@ export default function AboutPage() {
             </Heading>
           </Reveal>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-            <Reveal className="lg:col-span-5 lg:sticky lg:top-28" delay={1}>
-              <figure className="img-breathe relative overflow-hidden aspect-[3/4]">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:items-stretch">
+            <Reveal className="lg:col-span-5" delay={1}>
+              <figure className="img-breathe relative overflow-hidden aspect-[3/4] lg:aspect-auto lg:h-full lg:min-h-[28rem]">
                 <div
                   className="absolute inset-0 bg-cover bg-center"
                   style={{ backgroundImage: `url('${IMAGES.windowLight}')` }}
