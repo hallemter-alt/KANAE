@@ -25,80 +25,80 @@ export default function Dialogue() {
 
   return (
     <section className="relative bg-washi texture-concrete overflow-hidden">
-      {/* 導入 */}
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 pt-24 md:pt-36 pb-8 md:pb-16">
-        <Reveal className="max-w-2xl">
-          <p className="section-label mb-5">{d.label}</p>
-          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-ink leading-[1.45] mb-8 whitespace-pre-line">
-            {d.title}
-          </h2>
-          <p className="font-serif text-ink/70 text-base md:text-lg leading-loose">
-            {d.lead}
-          </p>
-        </Reveal>
-      </div>
+      <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-10">
+        {/* 導入 */}
+        <div className="pt-24 md:pt-32 pb-6 md:pb-12">
+          <Reveal className="max-w-2xl">
+            <p className="section-label mb-5">{d.label}</p>
+            <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl text-ink leading-[1.45] mb-6 whitespace-pre-line">
+              {d.title}
+            </h2>
+            <p className="font-serif text-ink/70 text-base md:text-lg leading-loose">
+              {d.lead}
+            </p>
+          </Reveal>
+        </div>
 
-      {/* 情景 — 一主題一画面、左右交互 */}
-      <div className="flex flex-col">
-        {d.items.map((item, index) => {
-          const isEven = index % 2 === 0; // 偶数: 画像右・文字左
-          const image = images[index];
+        {/* 情景 — 一主題一画面、左右交互（比例を抑え、閲覧しやすく） */}
+        <div className="flex flex-col divide-y divide-ink/10">
+          {d.items.map((item, index) => {
+            const isEven = index % 2 === 0; // 偶数: 画像右・文字左
+            const image = images[index];
 
-          return (
-            <div
-              key={index}
-              className="relative grid grid-cols-1 lg:grid-cols-12 items-center gap-y-8 lg:gap-x-4 py-12 md:py-20"
-            >
-              {/* 画像 */}
-              <Reveal
-                variant="media"
-                as="figure"
-                className={`img-breathe relative overflow-hidden aspect-[3/4] md:aspect-[4/5] lg:aspect-[3/4] lg:col-span-7 ${
-                  isEven ? 'lg:col-start-6' : 'lg:col-start-1'
-                }`}
+            return (
+              <div
+                key={index}
+                className="relative grid grid-cols-1 md:grid-cols-12 items-center gap-y-6 md:gap-x-8 lg:gap-x-12 py-10 md:py-14"
               >
-                <div
-                  className="absolute inset-0 bg-cover bg-center parallax-media grayscale-[0.35] hover:grayscale-0 transition-[filter] duration-700"
-                  style={{ backgroundImage: `url('${image.src}')` }}
-                  role="img"
-                  aria-label={image.alt}
-                  data-parallax
-                />
-                {/* 番号 — 静かな添え */}
-                <span
-                  className="absolute top-5 left-5 font-serif text-washi/85 text-xs tracking-[0.35em]"
-                  aria-hidden="true"
+                {/* 画像 — 高さを比例で抑え、横長寄りに */}
+                <Reveal
+                  variant="media"
+                  as="figure"
+                  className={`img-breathe relative overflow-hidden aspect-[4/3] md:aspect-[3/2] md:col-span-6 ${
+                    isEven ? 'md:col-start-7 md:order-2' : 'md:col-start-1'
+                  }`}
                 >
-                  {String(index + 1).padStart(2, '0')}
-                </span>
-              </Reveal>
+                  <div
+                    className="absolute inset-0 bg-cover bg-center parallax-media grayscale-[0.35] hover:grayscale-0 transition-[filter] duration-700"
+                    style={{ backgroundImage: `url('${image.src}')` }}
+                    role="img"
+                    aria-label={image.alt}
+                    data-parallax
+                  />
+                  <span
+                    className="absolute top-4 left-4 font-serif text-washi/85 text-xs tracking-[0.35em]"
+                    aria-hidden="true"
+                  >
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                </Reveal>
 
-              {/* 文字 — 必ず余白側に、画像とは重ねない */}
-              <Reveal
-                variant={isEven ? 'text-left' : 'text'}
-                className={`relative z-10 lg:col-span-5 ${
-                  isEven
-                    ? 'lg:col-start-1 lg:pr-8 lg:text-left'
-                    : 'lg:col-start-8 lg:pl-8'
-                }`}
-              >
-                <p className="text-xs tracking-[0.3em] uppercase text-gold-600 mb-5">
-                  {item.eyebrow}
-                </p>
-                <h3 className="font-serif text-2xl md:text-3xl text-ink leading-snug mb-5">
-                  {item.title}
-                </h3>
-                <p className="text-ink/60 text-sm md:text-base leading-loose max-w-md">
-                  {item.text}
-                </p>
-                <span
-                  className="mt-8 inline-block w-12 h-px bg-gold-500/60"
-                  aria-hidden="true"
-                />
-              </Reveal>
-            </div>
-          );
-        })}
+                {/* 文字 */}
+                <Reveal
+                  variant={isEven ? 'text-left' : 'text'}
+                  className={`relative z-10 md:col-span-5 ${
+                    isEven ? 'md:col-start-1 md:order-1' : 'md:col-start-8'
+                  }`}
+                >
+                  <p className="text-xs tracking-[0.3em] uppercase text-gold-600 mb-4">
+                    {item.eyebrow}
+                  </p>
+                  <h3 className="font-serif text-xl md:text-2xl text-ink leading-snug mb-4">
+                    {item.title}
+                  </h3>
+                  <p className="text-ink/60 text-sm md:text-base leading-loose max-w-md">
+                    {item.text}
+                  </p>
+                  <span
+                    className="mt-6 inline-block w-12 h-px bg-gold-500/60"
+                    aria-hidden="true"
+                  />
+                </Reveal>
+              </div>
+            );
+          })}
+        </div>
+        <div className="pb-16 md:pb-24" aria-hidden="true" />
       </div>
     </section>
   );
