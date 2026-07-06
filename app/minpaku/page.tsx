@@ -83,8 +83,8 @@ export default function MinpakuPage() {
         label="Vacation Rental"
         title={t.minpaku.title}
         subtitle={t.minpaku.subtitle}
-        image="lightStripes"
-        alt="窓の格子から差す光の縞"
+        image="minpakuHero"
+        alt="光あふれる和モダンな宿泊空間"
       />
 
       {/* 収益シミュレーター */}

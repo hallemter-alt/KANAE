@@ -10,7 +10,8 @@ export const IMAGES = {
   geometric: '/assets/site/geometric.webp', // 4K高精細化（ローカル）
   pavementFog: '/assets/site/pavementFog.webp', // 4K高精細化（ローカル・再制作）
   windowLight: '/assets/site/windowLight.webp', // 4K高精細化（ローカル）
-  lightStripes: '/assets/site/hero-minpaku.webp', // 4K再制作（民泊ヒーロー・ローカル）
+  lightStripes: '/assets/site/hero-minpaku.webp', // 4K再制作（旧・民泊ヒーロー、現在未使用）
+  minpakuHero: '/assets/site/hero-minpaku-villa.webp', // 和モダンな宿泊空間 — 4K WEBP（民泊ヒーロー）
   biophilic: '/assets/site/biophilic.webp', // 高精細（ローカル）
 
   // 水
