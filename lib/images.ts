@@ -10,8 +10,7 @@ export const IMAGES = {
   geometric: '/assets/site/geometric.webp', // 4K高精細化（ローカル）
   pavementFog: '/assets/site/pavementFog.webp', // 4K高精細化（ローカル・再制作）
   windowLight: '/assets/site/windowLight.webp', // 4K高精細化（ローカル）
-  lightStripes:
-    'https://sspark.genspark.ai/cfimages?u1=WKVCoZGI8otKC5LPZTD5u1sEjPXGIOP5vnuqeTiGKDGe7ju0JdD9c7exJLm3raga8YeTJ3ONgIPweZN%2FWj%2FZOoADnsRcnY4SbaRgvcAnvXNzQveEZrIiZU7fyNIX1CfDl3Tj&u2=rhLVKniTCfmOtUVr&width=2560',
+  lightStripes: '/assets/site/hero-minpaku.webp', // 4K再制作（民泊ヒーロー・ローカル）
   biophilic: '/assets/site/biophilic.webp', // 高精細（ローカル）
 
   // 水

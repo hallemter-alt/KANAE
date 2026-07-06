@@ -87,7 +87,7 @@ export default function InvestPage() {
       <section className="relative min-h-[56svh] flex items-end">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/assets/mood/tree-shadow-terrace.jpg')" }}
+          style={{ backgroundImage: "url('/assets/site/hero-invest.webp')" }}
           role="img"
           aria-label="樹影の落ちる静かなテラス"
         />

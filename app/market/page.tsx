@@ -85,7 +85,7 @@ export default function MarketPage() {
       <section className="relative min-h-[56svh] flex items-end">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/assets/mood/water-ripple.jpg')" }}
+          style={{ backgroundImage: "url('/assets/site/hero-market.webp')" }}
           role="img"
           aria-label="静かな水面に広がる波紋"
         />
