@@ -8,12 +8,12 @@
    ================================================================ */
 
 :root {
-  --ink: 33, 32, 31;          /* #21201f 墨 */
-  --washi: 246, 247, 244;     /* #f6f7f4 和紙 */
-  --linen: 228, 222, 212;     /* #e4ded4 亜麻 */
-  --stone: 148, 135, 125;     /* #94877d 砂岩 */
-  --pine: 122, 133, 124;      /* #7a857c 松煙 */
-  --mist: 128, 138, 146;      /* #808a92 霧 */
+  --ink: 28, 28, 27;          /* #1c1c1b 墨 */
+  --washi: 220, 219, 216;     /* #dcdbd8 清水コンクリート灰 */
+  --linen: 198, 196, 191;     /* #c6c4bf 石灰 */
+  --stone: 132, 125, 116;     /* #847d74 古木・石の陰 */
+  --pine: 124, 122, 118;      /* #7c7a76 石の無彩灰 */
+  --mist: 138, 137, 135;      /* #8a8987 霧（無彩） */
 
   --ease-quiet: cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -73,10 +73,27 @@ p {
 
 /* 罫線 — 細く控えめに */
 .hairline {
-  border-color: rgba(33, 32, 31, 0.12);
+  border-color: rgba(28, 28, 27, 0.14);
 }
 .hairline-light {
-  border-color: rgba(246, 247, 244, 0.18);
+  border-color: rgba(220, 219, 216, 0.18);
+}
+
+/* ---------- 素材の肌理（コンクリート・石・木） ---------- */
+/* 打ち放しコンクリートの微細な斑（背景に敷く） */
+.texture-concrete {
+  position: relative;
+}
+.texture-concrete::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='c'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6 0.65' numOctaves='3' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23c)' opacity='0.08'/%3E%3C/svg%3E"),
+    radial-gradient(120% 90% at 30% 10%, rgba(28,28,27,0.05), transparent 60%);
 }
 
 /* 縦書き（日本語の趣） */
@@ -199,18 +216,46 @@ p {
   }
 }
 
-/* ---------- 動画ヒーロー ---------- */
-.hero-video {
+/* ---------- ヒーロー 3D カード輪播 ---------- */
+.hero-stage {
+  perspective: 1600px;
+  perspective-origin: 50% 50%;
+}
+.hero-card {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  /* 静かな色調に寄せる */
-  filter: saturate(0.96) contrast(1.02);
+  top: 50%;
+  left: 50%;
+  transform-style: preserve-3d;
+  transition:
+    transform 0.85s var(--ease-quiet),
+    opacity 0.85s var(--ease-quiet),
+    filter 0.85s var(--ease-quiet);
+  will-change: transform, opacity, filter;
+}
+.hero-card-media {
+  filter: grayscale(1) contrast(1.06);
+  transition: filter 0.7s var(--ease-quiet), transform 0.7s var(--ease-quiet);
+}
+.hero-card.is-active .hero-card-media {
+  filter: grayscale(0.15) contrast(1.04);
+}
+/* ホバー時の拡大 + 内容の露出 */
+.hero-card.is-active:hover .hero-card-media {
+  transform: scale(1.05);
+  filter: grayscale(0) contrast(1.02);
+}
+.hero-card-caption {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.5s var(--ease-quiet), transform 0.5s var(--ease-quiet);
+}
+.hero-card.is-active:hover .hero-card-caption {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .hero-card { transition: opacity 0.4s linear; }
   .reveal { opacity: 1; transform: none; }
 }
 
@@ -258,17 +303,17 @@ a:focus-visible {
   background: rgb(var(--washi));
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(33, 32, 31, 0.25);
+  background: rgba(28, 28, 27, 0.28);
   border-radius: 5px;
   border: 2px solid rgb(var(--washi));
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(33, 32, 31, 0.4);
+  background: rgba(28, 28, 27, 0.45);
 }
 
 /* ---------- 選択色 ---------- */
 ::selection {
-  background: rgba(122, 133, 124, 0.3);
+  background: rgba(124, 122, 118, 0.32);
 }
 
 @layer utilities {
@@ -277,7 +322,7 @@ a:focus-visible {
   }
   /* セクション見出し用の小さなラベル */
   .section-label {
-    @apply font-serif text-xs tracking-widest2 uppercase text-gold-600;
+    @apply font-serif text-xs tracking-widest2 uppercase text-gold-700;
   }
 }
 
