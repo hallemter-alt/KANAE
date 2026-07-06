@@ -229,12 +229,19 @@ p {
   top: 50%;
   left: 50%;
   transform-style: preserve-3d;
+  /* 緩入→加速→減速して着地（momentum）。少しの行き過ぎで手応えを出す */
+  --ease-momentum: cubic-bezier(0.62, -0.28, 0.28, 1.28);
   transition:
-    transform 0.9s var(--ease-quiet),
-    opacity 0.9s var(--ease-quiet),
-    filter 0.9s var(--ease-quiet),
+    transform 0.72s var(--ease-momentum),
+    opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+    filter 0.6s cubic-bezier(0.4, 0, 0.2, 1),
     box-shadow 0.6s var(--ease-quiet);
   will-change: transform, opacity, filter;
+}
+/* 高速で連打しても引っかからない：遷移中は次を待たず素早く追従 */
+.hero-track.is-rushing .hero-card {
+  transition-duration: 0.42s;
+  transition-timing-function: cubic-bezier(0.34, 0.02, 0.24, 1);
 }
 .hero-card-media {
   filter: grayscale(1) contrast(1.05);
