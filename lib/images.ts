@@ -3,24 +3,16 @@
 
 export const IMAGES = {
   // 建築 / 光と影
-  concreteShadow:
-    'https://sspark.genspark.ai/cfimages?u1=%2B%2BaxCjSrnSLGl2y9yI97wNOeWEHe16F9%2Fl0WgMBLFg%2FKZJCV2PLekDxM7moLoinECodI%2FVMxgxE8sZFqKQdmYsZC7g53b55ehMT%2FpQiIro1EW88sBaTs5FpsenBkshzw4lHrHDyY3p3SFLO8TusVVNNTwzVQbevZpp4J4tTivg%3D%3D&u2=S6W7%2ByttjtnWva7R&width=2560',
-  lightOnWall:
-    'https://sspark.genspark.ai/cfimages?u1=8W4Oj1HgYX1CWqV7%2Fxwh%2F0HJrrZtQtb9p2JYh9Fohn7OyxaOMmmfZKGGBxsn5vA7dgKjvJxIi1fuZpC0uUyPQsJ1Qgkd7tu30pQt4srj&u2=FF25Xf8qp7Ua1zJP&width=2560',
-  corridor:
-    'https://sspark.genspark.ai/cfimages?u1=ZTgKiQU7dbIEZB2Z3zC2KybYhKazbCpYlPE8gtPEc8VSSKXgeoZS3NkRK3BP9qtyZBIiUO3EuphCuQuM%2BCcxdjykIJVyyHMkW6VqCCDhBxYgh%2FYBymUjSXw6%2BAHuGPl6SZPiKEaIuujuEbA%3D&u2=lMF7KQtkdieLxPCg&width=2560',
-  concreteColumns:
-    'https://sspark.genspark.ai/cfimages?u1=%2FJTX2qX2hXXtSDfIKpOYVfr1f%2F%2Bus5z0D06QBtNq7Z%2BcF3%2Bk%2FqOnWY9nzN5MJmUdLNnN6jA9q9kOua%2FhulIjMlABd2dRymeSd9KoX6GF%2Bhuw7xRS5PbiH1alByau8hTsc8v3kx0a&u2=aAPhhsYm1aOztw%2B%2F&width=2560',
-  geometric:
-    'https://sspark.genspark.ai/cfimages?u1=XaP4xh82I2J4mR4fZzhXXSOlrjC9DsbJmqm0Xw0CoqDBWBHDvnmBWpLWSCIZHlCjw5D4Ry00EKf4k%2B5kgGQg%2BqHPHQvfH1UJYoYcDXkcLvgTT5bdQSnJj2BTpcsLcweptAwO%2FlWFkFhqeM7pOdwENA%3D%3D&u2=lbxsuLo0d83yTDkE&width=2560',
-  pavementFog:
-    'https://sspark.genspark.ai/cfimages?u1=rnlvPcBkKqlUkPSR02tytUyEaE0VanSQT2P7JcYXIJ0vrNqIrdswRhjP%2BzDCb4HbT1HZ%2Fg8Q3%2BQuz5JGDH7oomyu1jfiNi%2Bupp76TqycE6FNycUsGMihSdZ8sUAfvjOh4KXpos9T8n7uQ7XUl3HTYZxPoEFUVI8%3D&u2=tC5BsWZ%2BiWgtommP&width=2560',
-  windowLight:
-    'https://sspark.genspark.ai/cfimages?u1=RZtsrOjrUIhXpzS0GFXLvuVFUE4sr4QDKQrjQW1J0esSQ6Pjy%2FmxkcTBY49ataBdRcPKMGklpulKqaZLHwKe%2BTQ0zTchmvhfTNBljCT4OLeydM3nfTr7fEQI%2FWgm&u2=aYmHZboWyhhexQWF&width=2560',
+  concreteShadow: '/assets/site/concreteShadow.webp', // 4K高精細化（ローカル）
+  lightOnWall: '/assets/site/lightOnWall.webp', // 4K高精細化（ローカル）
+  corridor: '/assets/site/corridor.webp', // 4K高精細化（ローカル・再制作）
+  concreteColumns: '/assets/site/concreteColumns.webp', // 4K高精細化（ローカル）
+  geometric: '/assets/site/geometric.webp', // 4K高精細化（ローカル）
+  pavementFog: '/assets/site/pavementFog.webp', // 4K高精細化（ローカル・再制作）
+  windowLight: '/assets/site/windowLight.webp', // 4K高精細化（ローカル）
   lightStripes:
     'https://sspark.genspark.ai/cfimages?u1=WKVCoZGI8otKC5LPZTD5u1sEjPXGIOP5vnuqeTiGKDGe7ju0JdD9c7exJLm3raga8YeTJ3ONgIPweZN%2FWj%2FZOoADnsRcnY4SbaRgvcAnvXNzQveEZrIiZU7fyNIX1CfDl3Tj&u2=rhLVKniTCfmOtUVr&width=2560',
-  biophilic:
-    'https://sspark.genspark.ai/cfimages?u1=dJdRQcNKdmeBnuMWvSnBtYHd8IUUlPC3qt9GgPJUsI0tOcsrQwKkzle9I2KuautyPsgjBA1UJiLa01CoykKuwkcQptpTMAT0b6zGLCuSsQn0eTfOUPd099aVffAFjXpknFvIBrxOHYxQ9Jl1zkxGsNXzyVmO2dGHBA%3D%3D&u2=EhM9kwCQTS5iSMrM&width=2560',
+  biophilic: '/assets/site/biophilic.webp', // 高精細（ローカル）
 
   // 水
   pondStill:
@@ -39,8 +31,7 @@ export const IMAGES = {
   // 日本庭園 / 侘寂 — 空間と時間の対話
   mossLantern:
     'https://sspark.genspark.ai/cfimages?u1=sIZ47wh9aH7l%2B%2BAJAeZ12MjoVL1%2FkT7%2Btbwuo6avOWdQeRxB6l5u1FHXJXpmBJIMFAvtVA9yNVRLZca%2BB%2BtCdG83yEn6dKuVp7GSCOfT5AQe8gsir5eQauyuItMdSHG6hDfExud%2B07ut1ZXqfuCVjCB3CDy2gcyCRAU9DPXTEIzf2KoH13CVxtM9vyGryWXruAMTPIRDwxkEjrtW8S3LUxnNsgDTf59A%2BXzZcMhf1Tq49kANkOdAcfkozUl3mDPBng2%2Fd0UsJr8ri%2Fma9ifcQuIvyB0z52R5bg%3D%3D&u2=07msEj76ksbq8fqD&width=2560',
-  engawa:
-    'https://sspark.genspark.ai/cfimages?u1=4LKgF1my56PfU3CgarSZbE1zQmgp8kLWS6FeYvOauMDEW4cyOo0audzemCIgxs8%2Fimx%2F%2FH6QOT2QfHL%2F1KEDkjAwcLgBmPZxgret&u2=OKH8qKaCZnFgiZeR&width=2560',
+  engawa: '/assets/site/engawa.webp', // 高精細（ローカル）
   zenCourtyard:
     'https://sspark.genspark.ai/cfimages?u1=E6QsdaBuowMhx%2BrOyjygpW4tJiJCwG6JvgEsIc2k5PHTkx%2BRX1qpIpFVQyEftjmkP9F7x9oMf0kxxkHYhtOGIr02ASc%2BeFlD7dH8agjfTjWI4I32vhwQL0IEzRTsvnfW8OZtjIubJZckeQElFUeBGBgY8C%2FJOV0BI03Uw28R7d3f&u2=MGFxdsBLXPSBWZ%2Bu&width=2560',
 
@@ -61,22 +52,19 @@ export const IMAGES = {
 
   // 住まいの物語 — 4K再制作（クリーン・高精細）
   storyKomorebi: '/assets/dialogue/story-komorebi.webp',
-  storyWood: '/assets/dialogue/story-wood.webp',
-  storyMoss: '/assets/dialogue/story-moss.webp',
+  storyWood: '/assets/dialogue/story-wood.webp', // 木の年輪と苔（4K・ユーザー提供）
+  storyMoss: '/assets/dialogue/story-water.webp', // 蹲踞（つくばい）滴る水（4K・ユーザー提供）
 
   // 植物 / 苔 / 庭
-  mossPost:
-    'https://sspark.genspark.ai/cfimages?u1=Unu3VhzEo%2BEb0PbiUnks8TNazEyzgpPHtFxxST1hLbzF7c83i%2BYbs1J4jxAMnBGbB9KRN1csQil%2Brhdyoq4q3wmVtKZu5l7IPtZeX1Z2&u2=iSFWU%2BJ1%2FwIufRJp&width=2560',
+  mossPost: '/assets/site/mossPost.webp', // 4K高精細化（ローカル）
   kyotoGarden:
     'https://sspark.genspark.ai/cfimages?u1=RWLXJkVsLan5eqYdZANF0CcbYC%2B8YuVcI2oWZqGa2%2Flli9vRb4t7%2Bhmf4xXjVTUkKfEDyrZI9gHDV217QEd3rwDZ4qetr3H6GVB1NO3y8s07d5Cp4EB6YPewBfwy%2Fafn2n8GTZ5PM0%2BoyEWwUJbJdSMPANU9i20%3D&u2=3AirLmRmK9ZbzkSJ&width=2560',
 
   // 光 / 木漏れ日
-  komorebi:
-    'https://sspark.genspark.ai/cfimages?u1=F%2BmsOkj%2FK7Zr%2FVa%2FUcTJMYT%2F73g0jJQ%2BbKRpF1sGEYFUBqykXUKc2poVOz8LVJOxlg%2BaQZlgbzm6SvfNHlAMReDEemNLZEKVhgSlHezwK8pNVTA2wAmJBIEgIb4rYpg%2BXFc%3D&u2=srfZ1A3YdvXhXgTL&width=2560',
+  komorebi: '/assets/site/komorebi.webp', // 4K高精細化（ローカル）
   komorebi2:
     'https://sspark.genspark.ai/cfimages?u1=3GGaUwMrbD28lCl0z2Cn55m05CF%2FQ4O3HoXgBngaL26AsJS%2FnRd3%2FxNfXMTTlFJYylW%2BQnTM7iukVd5QU7fEXwe%2Fm4zlyv1W6p8tb78hIdot9uVh7rPVpW5Y8%2FTb4764lC7ONl38&u2=JAL%2BHwK%2BkymLSvfl&width=2560',
-  forestLight:
-    'https://sspark.genspark.ai/cfimages?u1=D1Hp4QNIRgdrE92Zj0kixWhFF3HT2qLz4%2BnLWuSbL37m0IopRDZcR0fIDzW8RTaC8BM4LQsEhfUxEse%2FafP1M0dNMnMQ48GkeBJ9AQ4vEA%3D%3D&u2=lZezkZFz%2B6mKfhmq&width=2560',
+  forestLight: '/assets/site/forestLight.webp', // 4K高精細化（ローカル）
 } as const
 
 export type ImageKey = keyof typeof IMAGES
