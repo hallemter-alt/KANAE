@@ -39,8 +39,27 @@ export default function Hero() {
   const [paused, setPaused] = useState(false);
   const timer = useRef<ReturnType<typeof setInterval> | null>(null);
 
+  // 高速切替の検出：短時間で連続操作すると「加速」モードに切替える
+  const trackRef = useRef<HTMLDivElement | null>(null);
+  const lastGo = useRef<number>(0);
+  const rushTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const markRush = useCallback(() => {
+    const now = Date.now();
+    const track = trackRef.current;
+    if (track && now - lastGo.current < 380) {
+      track.classList.add('is-rushing');
+      if (rushTimeout.current) clearTimeout(rushTimeout.current);
+      rushTimeout.current = setTimeout(() => {
+        track.classList.remove('is-rushing');
+      }, 520);
+    }
+    lastGo.current = now;
+  }, []);
+
   const go = useCallback(
     (dir: number) => {
+      markRush();
       setActive((prev) => {
         if (mode === 'random') {
           let n = prev;
@@ -50,7 +69,15 @@ export default function Hero() {
         return (prev + dir + N) % N;
       });
     },
-    [N, mode]
+    [N, mode, markRush]
+  );
+
+  const jumpTo = useCallback(
+    (i: number) => {
+      markRush();
+      setActive(i);
+    },
+    [markRush]
   );
 
   // 自動再生（静かなリズム）— ホバー中は停止
@@ -72,6 +99,13 @@ export default function Hero() {
     return () => window.removeEventListener('keydown', onKey);
   }, [go]);
 
+  // 後片付け
+  useEffect(() => {
+    return () => {
+      if (rushTimeout.current) clearTimeout(rushTimeout.current);
+    };
+  }, []);
+
   // カバーフローの位置を算出（循環距離で扇状に）
   const cardStyle = (i: number): React.CSSProperties => {
     let d = i - active;
@@ -79,14 +113,14 @@ export default function Hero() {
     if (d < -N / 2) d += N;
     const abs = Math.abs(d);
 
-    // 中央から離れるほど：横へ寄せ・奥へ退き・回転・縮小・減光
-    const x = d * 58; // %（カード幅基準の重なり）
-    const z = -abs * 130; // 奥行き
-    const rotY = d * -22; // Y 軸回転
-    const scale = Math.max(0.7, 1 - abs * 0.12);
-    const opacity = abs > 3 ? 0 : Math.max(0.28, 1 - abs * 0.26);
+    // 中央から離れるほど：横へ寄せ・奥へ退き・回転・縮小・減光（効果をはっきりと）
+    const x = d * 62; // %（カード幅基準の重なり）
+    const z = -abs * 175; // 奥行き（深く）
+    const rotY = d * -30; // Y 軸回転（強め）
+    const scale = Math.max(0.62, 1 - abs * 0.15);
+    const opacity = abs > 3 ? 0 : Math.max(0.25, 1 - abs * 0.28);
     const zIndex = 100 - abs;
-    const blur = abs >= 2 ? Math.min((abs - 1) * 1.6, 4) : 0;
+    const blur = abs >= 2 ? Math.min((abs - 1) * 1.8, 5) : 0;
 
     return {
       transform: `translate(-50%, -50%) translateX(${x}%) translateZ(${z}px) rotateY(${rotY}deg) scale(${scale})`,
@@ -119,14 +153,14 @@ export default function Hero() {
         />
 
         {/* カード群 — 高さは vh 基準で比例、上限あり */}
-        <div className="hero-track relative w-full h-[44vh] sm:h-[46vh] md:h-[48vh] max-h-[440px]">
+        <div ref={trackRef} className="hero-track relative w-full h-[44vh] sm:h-[46vh] md:h-[48vh] max-h-[440px]">
           {cards.map((card, i) => {
             const isActive = i === active;
             return (
               <button
                 key={i}
                 type="button"
-                onClick={() => (isActive ? undefined : setActive(i))}
+                onClick={() => (isActive ? undefined : jumpTo(i))}
                 aria-label={card.caption}
                 aria-current={isActive}
                 className={`hero-card group block h-full aspect-[3/4] overflow-hidden rounded-sm bg-ink/5 shadow-[0_30px_70px_-30px_rgba(28,28,27,0.6)] focus:outline-none focus-visible:ring-2 focus-visible:ring-ink/40 ${
@@ -219,7 +253,7 @@ export default function Hero() {
             <button
               key={i}
               type="button"
-              onClick={() => setActive(i)}
+              onClick={() => jumpTo(i)}
               aria-label={`Go to card ${i + 1}`}
               aria-selected={i === active}
               className={`rounded-full transition-all duration-500 ${
