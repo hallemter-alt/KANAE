@@ -216,69 +216,7 @@ p {
   }
 }
 
-/* ---------- ヒーロー 3D カード輪播（カバーフロー） ---------- */
-.hero-stage {
-  perspective: 1500px;
-  perspective-origin: 50% 46%;
-}
-.hero-track {
-  transform-style: preserve-3d;
-}
-.hero-card {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform-style: preserve-3d;
-  /* 緩入→加速→減速して着地（momentum）。少しの行き過ぎで手応えを出す */
-  --ease-momentum: cubic-bezier(0.62, -0.28, 0.28, 1.28);
-  transition:
-    transform 0.72s var(--ease-momentum),
-    opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
-    filter 0.6s cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 0.6s var(--ease-quiet);
-  will-change: transform, opacity, filter;
-}
-/* 高速で連打しても引っかからない：遷移中は次を待たず素早く追従 */
-.hero-track.is-rushing .hero-card {
-  transition-duration: 0.42s;
-  transition-timing-function: cubic-bezier(0.34, 0.02, 0.24, 1);
-}
-.hero-card-media {
-  filter: grayscale(1) contrast(1.05);
-  transition: filter 0.7s var(--ease-quiet), transform 0.9s var(--ease-quiet);
-}
-.hero-card-veil {
-  transition: opacity 0.7s var(--ease-quiet);
-}
-/* 中央（アクティブ）カード：グレー抜け */
-.hero-card.is-active .hero-card-media {
-  filter: grayscale(0.12) contrast(1.03);
-}
-/* ホバー時：そっと持ち上がり、鮮明に、影を深く */
-.hero-card:hover .hero-card-veil {
-  opacity: 0;
-}
-.hero-card:hover .hero-card-media {
-  transform: scale(1.06);
-  filter: grayscale(0) contrast(1.02);
-}
-.hero-card.is-active:hover {
-  box-shadow: 0 40px 90px -34px rgba(28, 28, 27, 0.72);
-}
-/* 内容の露出 — 任意のカードのホバーで */
-.hero-card-caption {
-  opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 0.55s var(--ease-quiet), transform 0.55s var(--ease-quiet);
-}
-.hero-card:hover .hero-card-caption {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .hero-card { transition: opacity 0.4s linear; }
-  .hero-card-media { transition: filter 0.4s linear; }
   .reveal { opacity: 1; transform: none; }
 }
 

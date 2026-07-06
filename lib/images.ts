@@ -56,16 +56,8 @@ export const IMAGES = {
   dialogueStones: '/assets/dialogue/03-stones.webp',
   dialogueVase: '/assets/dialogue/04-vase.webp',
 
-  // ヒーロー 3D カード — 参照画像の内容を高精細・単色（墨）に整えた素材
-  heroCards: [
-    '/assets/hero/01-sketch.webp',
-    '/assets/hero/02-material.webp',
-    '/assets/hero/03-vase.webp',
-    '/assets/hero/04-dining.webp',
-    '/assets/hero/05-gallery.webp',
-    '/assets/hero/06-interior.webp',
-    '/assets/hero/07-plant.webp',
-  ],
+  // ヒーロー — 固定の一枚（墨黒）。4K に高精細化した清水コンクリートと光の情景
+  heroFixed: '/assets/hero/window-light.webp',
 
   // 住まいの物語 — 4K再制作（クリーン・高精細）
   storyKomorebi: '/assets/dialogue/story-komorebi.webp',
