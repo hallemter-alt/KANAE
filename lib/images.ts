@@ -56,6 +56,7 @@ export const IMAGES = {
 
   // 植物 / 苔 / 庭
   mossPost: '/assets/site/mossPost.webp', // 4K高精細化（ローカル）
+  mossHero: '/assets/site/moss-hero.webp', // 苔むした石 — 4K WEBP（ユーザー提供・経営理念/理念ヒーロー）
   kyotoGarden:
     'https://sspark.genspark.ai/cfimages?u1=RWLXJkVsLan5eqYdZANF0CcbYC%2B8YuVcI2oWZqGa2%2Flli9vRb4t7%2Bhmf4xXjVTUkKfEDyrZI9gHDV217QEd3rwDZ4qetr3H6GVB1NO3y8s07d5Cp4EB6YPewBfwy%2Fafn2n8GTZ5PM0%2BoyEWwUJbJdSMPANU9i20%3D&u2=3AirLmRmK9ZbzkSJ&width=2560',
 

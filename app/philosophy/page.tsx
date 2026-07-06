@@ -22,7 +22,7 @@ export default function PhilosophyPage() {
         label="Philosophy"
         title={t.philosophy.heroTitle}
         subtitle={t.philosophy.heroSubtitle}
-        image="mossPost"
+        image="mossHero"
         alt="苔むした石 — 静かに積み重なる時間"
       />
 

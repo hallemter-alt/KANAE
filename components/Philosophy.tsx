@@ -17,11 +17,11 @@ export default function Philosophy() {
 
   return (
     <section className="relative py-24 md:py-36 bg-ink text-washi overflow-hidden">
-      {/* 背景 — 苔むした石（歳月の痕跡） */}
+      {/* 背景 — 苔むした石（歳月の痕跡）4K WEBP */}
       <div className="absolute inset-0 opacity-[0.14]" aria-hidden="true">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url('${IMAGES.mossPost}')` }}
+          style={{ backgroundImage: `url('${IMAGES.mossHero}')` }}
         />
       </div>
       <div className="absolute inset-0 bg-gradient-to-b from-ink via-transparent to-ink" aria-hidden="true" />
