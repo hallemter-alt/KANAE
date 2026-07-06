@@ -59,7 +59,7 @@ export default function Story() {
               <figure className="img-breathe relative overflow-hidden aspect-[3/4]">
                 <div
                   className="absolute inset-0 bg-cover bg-center"
-                  style={{ backgroundImage: `url('${IMAGES.komorebi2}')` }}
+                  style={{ backgroundImage: `url('${IMAGES.storyKomorebi}')` }}
                   role="img"
                   aria-label={s.caption1}
                 />
@@ -70,7 +70,7 @@ export default function Story() {
               <figure className="img-breathe relative overflow-hidden aspect-[3/4]">
                 <div
                   className="absolute inset-0 bg-cover bg-center"
-                  style={{ backgroundImage: `url('${IMAGES.woodGrain}')` }}
+                  style={{ backgroundImage: `url('${IMAGES.storyWood}')` }}
                   role="img"
                   aria-label={s.caption2}
                 />
@@ -81,7 +81,7 @@ export default function Story() {
               <figure className="img-breathe relative overflow-hidden aspect-[16/9]">
                 <div
                   className="absolute inset-0 bg-cover bg-center"
-                  style={{ backgroundImage: `url('${IMAGES.mossLantern}')` }}
+                  style={{ backgroundImage: `url('${IMAGES.storyMoss}')` }}
                   role="img"
                   aria-label={s.caption3}
                 />

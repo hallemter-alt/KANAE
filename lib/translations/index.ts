@@ -45,26 +45,60 @@ export const translations = {
       caption2: '素材の肌理 — 歳月が刻む表情',
       caption3: '苔むす石 — 静かに積み重なる時間',
     },
-    
+
+    // 建築と人の対話 — 空間の哲学
+    dialogue: {
+      label: 'Architecture & People',
+      title: '建築と人は、\n静かに語り合う',
+      lead: '空間は、そこに生きる人の気配を映します。誰かが置いた一脚の椅子、ふと生けられた一枝の緑。建築と人と自然のあいだに生まれる、声なき対話に耳を澄ませる。',
+      items: [
+        {
+          eyebrow: '人の痕跡 — 余白',
+          title: '誰かが、ここにいた',
+          text: '一脚の椅子、掛けられた一枚の布。人が去ったあとも、空間には温もりと気配が残ります。余白とは、その記憶が呼吸する場所です。',
+        },
+        {
+          eyebrow: '心と空間の対話',
+          title: '小さな庭に、大きな自然を見る',
+          text: '掃き清められた砂の波紋、静かに佇む石。手を加えることで、かえって自然の広がりが立ち上がる。内省へと導く、秩序のなかの静けさ。',
+        },
+        {
+          eyebrow: '素材の誠実 — 歳月',
+          title: '石は語らず、時を刻む',
+          text: '磨かれない石の肌理、光が描く陰影。素材はありのままの姿で、地質の時間と歳月の重みを静かに物語ります。',
+        },
+        {
+          eyebrow: '設計と自然の共生',
+          title: '削るほど、余白が生きる',
+          text: '整えられた器と、割れた石、芽吹く一枝。人の手による意匠と、自然のほころびが響き合う。最小限の介入が、かたちを引き立てます。',
+        },
+      ],
+    },
+
     // サービス
     services: {
       title: '事業内容',
       subtitle: '4つの事業で、お客様の幸福を実現します',
       learnMore: '詳しく見る',
+      dialogueLead: '事業のかたちは違っても、私たちが見つめるのはいつも同じ——建築と人が交わす、静かな対話です。',
       rent: {
         title: '賃貸事業',
+        philosophy: '人と、はじまりの場所をつなぐ',
         description: 'エリア・沿線・賃料・間取りなど、お客様のニーズに合わせた物件検索サービス',
       },
       sale: {
         title: '売買事業',
+        philosophy: '暮らしの器を、次の人生へ受け渡す',
         description: 'マンション・戸建・土地・投資用物件まで、幅広い不動産売買のサポート',
       },
       management: {
         title: '管理事業',
+        philosophy: '歳月とともに、住まいの価値を守り育てる',
         description: '賃貸物件の総合管理サービスで、オーナー様の資産価値を守ります',
       },
       minpaku: {
         title: '民泊事業',
+        philosophy: '訪れる人と、この土地の時間を結ぶ',
         description: 'OneStep PMS連動で、民泊運営を完全サポート。収益最大化を実現',
       },
       stats: {
@@ -620,26 +654,60 @@ export const translations = {
       caption2: '材質肌理 — 歲月鐫刻的表情',
       caption3: '苔石靜默 — 悄然沉澱的時光',
     },
+
+    // 建築與人的對話 — 空間哲學
+    dialogue: {
+      label: 'Architecture & People',
+      title: '建築與人，\n靜靜地對話',
+      lead: '空間，映照着生活其中的人的氣息。有人擺放的一把椅子，隨手插起的一枝綠意。在建築、人與自然之間，聆聽那無聲的對話。',
+      items: [
+        {
+          eyebrow: '人的痕跡 — 留白',
+          title: '曾有人，在此停留',
+          text: '一把椅子，一方垂落的布。即使人已離去，空間依舊留存着溫度與氣息。留白，正是這份記憶得以呼吸的地方。',
+        },
+        {
+          eyebrow: '心與空間的對話',
+          title: '於方寸之庭，見天地之大',
+          text: '掃淨的砂石波紋，靜立的一方頑石。正因有了人的用心，自然的遼闊反而升起。這是秩序之中，引人內省的靜謐。',
+        },
+        {
+          eyebrow: '材質的誠實 — 歲月',
+          title: '石不言語，卻鐫刻時光',
+          text: '未經打磨的石之肌理，光影勾勒的明暗。材質以本來的樣貌，靜靜訴說着地質的時間與歲月的重量。',
+        },
+        {
+          eyebrow: '設計與自然的共生',
+          title: '愈是刪減，留白愈顯生機',
+          text: '雅緻的器皿、開裂的石塊、初萌的枝芽。人手的匠意，與自然的殘缺彼此呼應。最低限度的介入，最能襯托形之本真。',
+        },
+      ],
+    },
     
     // 服务
     services: {
       title: '業務內容',
       subtitle: '通過四大業務，實現客戶的幸福',
       learnMore: '瞭解更多',
+      dialogueLead: '業務的形態各異，我們凝望的卻始終如一——建築與人之間，那場靜謐的對話。',
       rent: {
         title: '租賃業務',
+        philosophy: '為人，連結起點之所',
         description: '根據地區、線路、租金、戶型等，為客戶提供符合需求的房源搜索服務',
       },
       sale: {
         title: '買賣業務',
+        philosophy: '將生活的容器，交付予下一段人生',
         description: '從公寓、獨棟、土地到投資用物業，提供全方位的房地產買賣支持',
       },
       management: {
         title: '管理業務',
+        philosophy: '伴隨歲月，守護並培育住所的價值',
         description: '提供租賃物業的綜合管理服務，守護業主的資產價值',
       },
       minpaku: {
         title: '民宿業務',
+        philosophy: '讓來訪之人，與這片土地的時光相繫',
         description: '通過OneStep PMS聯動，全面支持民宿運營，實現收益最大化',
       },
       stats: {
@@ -1193,26 +1261,60 @@ export const translations = {
       caption2: 'Texture — expressions carved by years',
       caption3: 'Mossed stone — time quietly accumulating',
     },
+
+    // Architecture & People — the philosophy of space
+    dialogue: {
+      label: 'Architecture & People',
+      title: 'Architecture and people,\nin quiet dialogue',
+      lead: 'A space reflects the presence of those who live within it. A single chair someone left behind, a sprig of green casually placed. Between architecture, people, and nature, we listen for the wordless dialogue.',
+      items: [
+        {
+          eyebrow: 'Human Traces — Negative Space',
+          title: 'Someone was here',
+          text: 'A single chair, a draped cloth. Even after one departs, warmth and presence linger in the room. Negative space is where that memory breathes.',
+        },
+        {
+          eyebrow: 'Mind & Space in Dialogue',
+          title: 'A great nature within a small garden',
+          text: 'Ripples raked into sand, a stone standing still. Through the act of tending, the vastness of nature rises instead. A stillness within order that draws one inward.',
+        },
+        {
+          eyebrow: 'Honesty of Material — Time',
+          title: 'Stone speaks not, yet marks time',
+          text: 'The grain of unpolished stone, shadows drawn by light. In its raw form, material quietly tells of geological time and the weight of years.',
+        },
+        {
+          eyebrow: 'Design in Harmony with Nature',
+          title: 'The more you pare away, the more space lives',
+          text: 'A refined vessel, a fractured stone, a budding branch. The intent of the human hand resonates with nature\u2019s imperfection. Minimal intervention lets form come alive.',
+        },
+      ],
+    },
     
     // Services
     services: {
       title: 'Our Services',
       subtitle: 'Four Business Areas to Realize Customer Happiness',
       learnMore: 'Learn More',
+      dialogueLead: 'The forms of our work may differ, yet what we look to is always the same \u2014 the quiet dialogue exchanged between architecture and people.',
       rent: {
         title: 'Rental Business',
+        philosophy: 'Connecting people to where beginnings take root',
         description: 'Property search service tailored to customer needs by area, transit line, rent, layout, etc.',
       },
       sale: {
         title: 'Sales Business',
+        philosophy: 'Passing the vessel of living on to the next life',
         description: 'Comprehensive support for real estate transactions from condos, houses, land to investment properties',
       },
       management: {
         title: 'Management Business',
+        philosophy: 'Guarding and nurturing a home\u2019s value through the years',
         description: 'Comprehensive management services for rental properties to protect owner asset value',
       },
       minpaku: {
         title: 'Vacation Rental Business',
+        philosophy: 'Binding each visitor to the time of this land',
         description: 'Full support for vacation rental operations with OneStep PMS integration to maximize revenue',
       },
       stats: {

@@ -50,6 +50,19 @@ export const IMAGES = {
   moodTerrace: '/assets/mood/tree-shadow-terrace.jpg',
   moodGreenBath: '/assets/mood/green-bath-light.jpg',
 
+  // 建築と人の対話 — 4K再制作（クリーン・高精細）
+  dialogueVeranda: '/assets/dialogue/01-veranda.webp',
+  dialogueZen: '/assets/dialogue/02-zen-garden.webp',
+  dialogueStones: '/assets/dialogue/03-stones.webp',
+  dialogueVase: '/assets/dialogue/04-vase.webp',
+  heroAmbientVideo: '/assets/dialogue/hero-ambient.mp4',
+  heroAmbientPoster: '/assets/dialogue/hero-poster.jpg',
+
+  // 住まいの物語 — 4K再制作（クリーン・高精細）
+  storyKomorebi: '/assets/dialogue/story-komorebi.webp',
+  storyWood: '/assets/dialogue/story-wood.webp',
+  storyMoss: '/assets/dialogue/story-moss.webp',
+
   // 植物 / 苔 / 庭
   mossPost:
     'https://sspark.genspark.ai/cfimages?u1=Unu3VhzEo%2BEb0PbiUnks8TNazEyzgpPHtFxxST1hLbzF7c83i%2BYbs1J4jxAMnBGbB9KRN1csQil%2Brhdyoq4q3wmVtKZu5l7IPtZeX1Z2&u2=iSFWU%2BJ1%2FwIufRJp&width=2560',
