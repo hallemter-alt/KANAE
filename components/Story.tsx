@@ -53,9 +53,10 @@ export default function Story() {
             </div>
           </Reveal>
 
-          {/* 写真コラージュ — ずらした配置で静かなリズムを */}
-          <div className="lg:col-span-7 grid grid-cols-12 gap-4 md:gap-6 items-start">
-            <Reveal delay={1} className="col-span-7">
+          {/* 写真コラージュ — ずらした配置で静かなリズムを（文字と画像は重ねない） */}
+          <div className="lg:col-span-7 grid grid-cols-2 gap-x-4 md:gap-x-6 gap-y-8 md:gap-y-12 items-start">
+            {/* 木漏れ日 */}
+            <Reveal delay={1} className="col-span-1">
               <figure className="img-breathe relative overflow-hidden aspect-[3/4]">
                 <div
                   className="absolute inset-0 bg-cover bg-center grayscale-[0.4] hover:grayscale-0 transition-[filter] duration-700"
@@ -64,29 +65,31 @@ export default function Story() {
                   aria-label={s.caption1}
                 />
               </figure>
-              <figcaption className="mt-3 text-ink/40 text-xs tracking-widest">{s.caption1}</figcaption>
+              <figcaption className="mt-3 text-ink/45 text-xs tracking-widest">{s.caption1}</figcaption>
             </Reveal>
-            <Reveal delay={2} className="col-span-5 mt-16 md:mt-24">
+            {/* 素材の肌理 — 木の年輪（ユーザー提供・4K） */}
+            <Reveal delay={2} className="col-span-1 mt-10 md:mt-16">
               <figure className="img-breathe relative overflow-hidden aspect-[3/4]">
                 <div
-                  className="absolute inset-0 bg-cover bg-center grayscale-[0.4] hover:grayscale-0 transition-[filter] duration-700"
+                  className="absolute inset-0 bg-cover bg-center grayscale-[0.25] hover:grayscale-0 transition-[filter] duration-700"
                   style={{ backgroundImage: `url('${IMAGES.storyWood}')` }}
                   role="img"
                   aria-label={s.caption2}
                 />
               </figure>
-              <figcaption className="mt-3 text-ink/40 text-xs tracking-widest">{s.caption2}</figcaption>
+              <figcaption className="mt-3 text-ink/45 text-xs tracking-widest">{s.caption2}</figcaption>
             </Reveal>
-            <Reveal delay={2} className="col-span-8 col-start-3 -mt-4 md:-mt-8">
-              <figure className="img-breathe relative overflow-hidden aspect-[16/9]">
+            {/* 苔むす石 — 蹲踞の水（ユーザー提供・4K、縦構図） */}
+            <Reveal delay={2} className="col-span-2 mt-2 md:mt-4">
+              <figure className="img-breathe relative overflow-hidden aspect-[16/10]">
                 <div
-                  className="absolute inset-0 bg-cover bg-center grayscale-[0.4] hover:grayscale-0 transition-[filter] duration-700"
-                  style={{ backgroundImage: `url('${IMAGES.storyMoss}')` }}
+                  className="absolute inset-0 bg-cover bg-center grayscale-[0.3] hover:grayscale-0 transition-[filter] duration-700"
+                  style={{ backgroundImage: `url('${IMAGES.storyMoss}')`, backgroundPosition: 'center 35%' }}
                   role="img"
                   aria-label={s.caption3}
                 />
               </figure>
-              <figcaption className="mt-3 text-ink/40 text-xs tracking-widest text-right">{s.caption3}</figcaption>
+              <figcaption className="mt-3 text-ink/45 text-xs tracking-widest text-right">{s.caption3}</figcaption>
             </Reveal>
           </div>
         </div>
