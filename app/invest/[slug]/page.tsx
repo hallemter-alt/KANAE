@@ -297,12 +297,19 @@ export default function InvestDetailPage() {
         </div>
       </section>
 
-      {/* 免責 + CTA */}
+      {/* 免責 + CTA — 桜の散らしている動画背景 */}
       <section className="bg-ink relative overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center opacity-20"
-          style={{ backgroundImage: "url('/assets/mood/blossom-court.jpg')" }}
-        />
+        <video
+          className="absolute inset-0 w-full h-full object-cover opacity-25"
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster="/assets/mood/blossom-scatter-poster.jpg"
+        >
+          <source src="/assets/mood/blossom-scatter.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/20 to-ink/40" />
         <div className="relative max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 py-20 lg:py-28">
           <Reveal className="text-center">
             <h2 className="font-serif text-2xl lg:text-3xl text-washi mb-4">{s.contactTitle}</h2>

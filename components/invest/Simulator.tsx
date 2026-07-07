@@ -141,6 +141,7 @@ function Field({
   step = 1,
   suffix,
   note,
+  className = '',
 }: {
   label: string
   k: keyof SimInput
@@ -149,9 +150,10 @@ function Field({
   step?: number
   suffix: string
   note?: string
+  className?: string
 }) {
   return (
-    <div>
+    <div className={className}>
       <label className={labelCls} htmlFor={`sim-${k}`}>
         {label}
       </label>
@@ -257,7 +259,7 @@ export default function Simulator({ property }: { property: InvestProperty }) {
   }, [inp])
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
       {/* 入力 */}
       <div className="lg:col-span-5">
         <div className="border border-ink/10 bg-gold-50/70 p-6 lg:p-8">
@@ -267,13 +269,13 @@ export default function Simulator({ property }: { property: InvestProperty }) {
             <Field label={s.downPayment} k="downMan" value={inp.downMan} onChange={set('downMan')} step={100} suffix={s.manYen} />
             <Field label={s.loanRate} k="rate" value={inp.rate} onChange={set('rate')} step={0.05} suffix="%" />
             <Field label={s.loanYears} k="yearsLoan" value={inp.yearsLoan} onChange={set('yearsLoan')} step={1} suffix={s.years} />
-            <Field label={s.purchaseCost} k="purchaseCostRatio" value={inp.purchaseCostRatio} onChange={set('purchaseCostRatio')} step={0.5} suffix="%" note={s.purchaseCostNote} />
+            <Field label={s.purchaseCost} k="purchaseCostRatio" value={inp.purchaseCostRatio} onChange={set('purchaseCostRatio')} step={0.5} suffix="%" note={s.purchaseCostNote} className="col-span-2" />
           </div>
           <p className="font-serif text-xs tracking-widest2 uppercase text-gold-600 mb-6">{s.operation}</p>
           <div className="grid grid-cols-2 gap-x-4 gap-y-5">
             <Field label={s.grossYield} k="grossYield" value={inp.grossYield} onChange={set('grossYield')} step={0.05} suffix="%" />
             <Field label={s.occupancy} k="occupancy" value={inp.occupancy} onChange={set('occupancy')} step={1} suffix="%" />
-            <Field label={s.expenseRatio} k="expenseRatio" value={inp.expenseRatio} onChange={set('expenseRatio')} step={1} suffix="%" note={s.expenseNote} />
+            <Field label={s.expenseRatio} k="expenseRatio" value={inp.expenseRatio} onChange={set('expenseRatio')} step={1} suffix="%" note={s.expenseNote} className="col-span-2" />
           </div>
           <button
             onClick={() => setInp(defaults)}
@@ -286,6 +288,7 @@ export default function Simulator({ property }: { property: InvestProperty }) {
 
       {/* 結果 */}
       <div className="lg:col-span-7">
+        <div className="border border-ink/10 bg-white/60 p-6 lg:p-8">
         <p className="font-serif text-xs tracking-widest2 uppercase text-gold-600 mb-6">{s.results}</p>
 
         {/* 主要指標 */}
@@ -337,6 +340,7 @@ export default function Simulator({ property }: { property: InvestProperty }) {
         </div>
 
         <p className="mt-8 text-ink/40 text-[11px] leading-relaxed">{s.disclaimer}</p>
+        </div>
       </div>
     </div>
   )
