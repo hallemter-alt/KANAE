@@ -1,7 +1,7 @@
 'use client'
 
 // 収益シミュレーション — 一棟収益物件用
-// 購入条件・運営条件を入力し、年間収支と長期キャッシュフローを試算する
+// 購入条件・運営条件・詳細条件を入力し、年間収支と長期キャッシュフローを試算する
 
 import { useMemo, useState } from 'react'
 import { useLanguage } from '@/contexts/LanguageContext'
@@ -12,6 +12,7 @@ const L = {
   ja: {
     purchase: '購入条件',
     operation: '運営条件',
+    detail: '詳細条件',
     price: '物件価格',
     downPayment: '自己資金',
     loanRate: '借入金利（年）',
@@ -23,18 +24,33 @@ const L = {
     expenseNote: '管理費・修繕・固定資産税等の年間賃料に対する割合',
     purchaseCost: '購入諸費用率',
     purchaseCostNote: '仲介手数料・登記・不動産取得税等（物件価格比）',
+    rentGrowth: '賃料上昇率（年）',
+    propertyTax: '固定資産税等（年）',
+    maintenanceRatio: '修繕積立金率',
+    rebuildYear: '大規模修繕想定年',
+    detailNote:
+      '※賃料上昇率は30年推移に反映。大規模修繕年には物件価格の5%を計上します。',
+    scenario: 'シナリオ',
+    conservative: '保守的',
+    standard: '標準',
+    aggressive: '積極的',
     results: '試算結果',
     annualRent: '満室想定年間賃料',
     effectiveRent: '実効賃料収入（稼働率考慮）',
     opex: '年間運営経費',
+    propertyTaxRow: '固定資産税等',
+    maintenanceReserve: '修繕積立金',
     noi: 'NOI（純収益）',
     noiYield: 'NOI利回り',
     loanAmount: '借入金額',
     annualDebt: '年間返済額',
+    monthlyDebt: '月額返済',
     cashFlow: '税引前キャッシュフロー（年）',
     monthlyCF: '（月あたり',
     totalInvestment: '総投資額（諸費用込）',
     cashOnCash: '自己資金利回り（CCR）',
+    ltv: 'LTV（借入比率）',
+    downRatio: '自己資金比率',
     chartTitle: '累積キャッシュフローの推移（30年）',
     chartCum: '累積税引前CF',
     chartBalance: 'ローン残高',
@@ -46,6 +62,7 @@ const L = {
   zh: {
     purchase: '購買條件',
     operation: '運營條件',
+    detail: '詳細條件',
     price: '物業價格',
     downPayment: '自有資金',
     loanRate: '貸款利率（年）',
@@ -57,18 +74,33 @@ const L = {
     expenseNote: '管理費·修繕·固定資產稅等佔年租金的比例',
     purchaseCost: '購買雜費率',
     purchaseCostNote: '中介費·登記·不動產取得稅等（佔物業價格）',
+    rentGrowth: '租金上漲率（年）',
+    propertyTax: '固定資產稅等（年）',
+    maintenanceRatio: '修繕積存金率',
+    rebuildYear: '大規模修繕預定年',
+    detailNote:
+      '※租金上漲率反映於30年推移。大規模修繕年計提物業價格的5%。',
+    scenario: '情境',
+    conservative: '保守',
+    standard: '標準',
+    aggressive: '積極',
     results: '試算結果',
     annualRent: '滿室預計年租金',
     effectiveRent: '實際租金收入（考慮入住率）',
     opex: '年運營費用',
+    propertyTaxRow: '固定資產稅等',
+    maintenanceReserve: '修繕積存金',
     noi: 'NOI（淨收益）',
     noiYield: 'NOI收益率',
     loanAmount: '貸款金額',
     annualDebt: '年還款額',
+    monthlyDebt: '月還款',
     cashFlow: '稅前現金流（年）',
     monthlyCF: '（每月約',
     totalInvestment: '總投資額（含雜費）',
     cashOnCash: '自有資金收益率（CCR）',
+    ltv: 'LTV（貸款比率）',
+    downRatio: '自有資金比率',
     chartTitle: '累計現金流推移（30年）',
     chartCum: '累計稅前現金流',
     chartBalance: '貸款餘額',
@@ -80,6 +112,7 @@ const L = {
   en: {
     purchase: 'Purchase Terms',
     operation: 'Operating Assumptions',
+    detail: 'Detailed Assumptions',
     price: 'Property Price',
     downPayment: 'Down Payment',
     loanRate: 'Interest Rate (p.a.)',
@@ -91,18 +124,33 @@ const L = {
     expenseNote: 'Management, repairs, property tax etc. as % of annual rent',
     purchaseCost: 'Acquisition Cost Ratio',
     purchaseCostNote: 'Brokerage, registration, acquisition tax etc. (% of price)',
+    rentGrowth: 'Rent Growth (p.a.)',
+    propertyTax: 'Property Tax (p.a.)',
+    maintenanceRatio: 'Maintenance Reserve',
+    rebuildYear: 'Major Repair Year',
+    detailNote:
+      '※Rent growth applied to 30-yr projection. 5% of price charged at major repair year.',
+    scenario: 'Scenario',
+    conservative: 'Conservative',
+    standard: 'Standard',
+    aggressive: 'Aggressive',
     results: 'Results',
     annualRent: 'Full-Occupancy Annual Rent',
     effectiveRent: 'Effective Rental Income',
     opex: 'Annual Operating Expenses',
+    propertyTaxRow: 'Property Tax etc.',
+    maintenanceReserve: 'Maintenance Reserve',
     noi: 'NOI (Net Operating Income)',
     noiYield: 'NOI Yield',
     loanAmount: 'Loan Amount',
     annualDebt: 'Annual Debt Service',
+    monthlyDebt: 'Monthly Payment',
     cashFlow: 'Pre-Tax Cash Flow (Annual)',
     monthlyCF: '(approx. monthly',
     totalInvestment: 'Total Investment (incl. costs)',
     cashOnCash: 'Cash-on-Cash Return',
+    ltv: 'LTV (Loan-to-Value)',
+    downRatio: 'Down Payment Ratio',
     chartTitle: 'Cumulative Cash Flow — 30 Years',
     chartCum: 'Cumulative Pre-Tax CF',
     chartBalance: 'Loan Balance',
@@ -126,6 +174,10 @@ interface SimInput {
   occupancy: number // %
   expenseRatio: number // %
   purchaseCostRatio: number // %
+  rentGrowth: number // %
+  propertyTaxMan: number // 万円/年
+  maintenanceRatio: number // %
+  rebuildYear: number // 年
 }
 
 const inputCls =
@@ -203,15 +255,31 @@ export default function Simulator({ property }: { property: InvestProperty }) {
       occupancy: 95,
       expenseRatio: 20,
       purchaseCostRatio: 7,
+      rentGrowth: 0,
+      propertyTaxMan: Math.round((property.price * 0.003) / 10000),
+      maintenanceRatio: 5,
+      rebuildYear: 15,
     }),
     [property]
   )
 
   const [inp, setInp] = useState<SimInput>(defaults)
+  const [activePreset, setActivePreset] = useState<string>('standard')
 
   const set = (k: keyof SimInput) => (e: React.ChangeEvent<HTMLInputElement>) => {
     const v = parseFloat(e.target.value)
     setInp((prev) => ({ ...prev, [k]: Number.isFinite(v) ? v : 0 }))
+    setActivePreset('')
+  }
+
+  const applyPreset = (preset: 'conservative' | 'standard' | 'aggressive') => {
+    const scenarios: Record<string, Partial<SimInput>> = {
+      conservative: { occupancy: 90, expenseRatio: 25, rentGrowth: 0, maintenanceRatio: 8, rebuildYear: 12 },
+      standard: { occupancy: 95, expenseRatio: 20, rentGrowth: 0, maintenanceRatio: 5, rebuildYear: 15 },
+      aggressive: { occupancy: 97, expenseRatio: 18, rentGrowth: 2, maintenanceRatio: 4, rebuildYear: 20 },
+    }
+    setInp((prev) => ({ ...prev, ...scenarios[preset] }))
+    setActivePreset(preset)
   }
 
   const calc = useMemo(() => {
@@ -222,7 +290,9 @@ export default function Simulator({ property }: { property: InvestProperty }) {
     const annualRentFull = (price * inp.grossYield) / 100
     const effectiveRent = (annualRentFull * inp.occupancy) / 100
     const opex = (effectiveRent * inp.expenseRatio) / 100
-    const noi = effectiveRent - opex
+    const propertyTax = inp.propertyTaxMan * 10000
+    const maintenance = (effectiveRent * inp.maintenanceRatio) / 100
+    const noi = effectiveRent - opex - propertyTax - maintenance
 
     // 元利均等返済
     const r = inp.rate / 100 / 12
@@ -233,36 +303,68 @@ export default function Simulator({ property }: { property: InvestProperty }) {
     const totalInvestment = down + purchaseCost
     const ccr = totalInvestment > 0 ? (cf / totalInvestment) * 100 : 0
     const noiYield = price > 0 ? (noi / price) * 100 : 0
+    const ltv = price > 0 ? (loan / price) * 100 : 0
+    const downRatio = price > 0 ? (down / price) * 100 : 0
 
-    // 30年キャッシュフロー曲線 + ローン残高
+    // 30年キャッシュフロー曲線 + ローン残高（賃料上昇・大規模修繕反映）
     const cumCF: SeriesPoint[] = []
     const balance: SeriesPoint[] = []
     let bal = loan
     let cum = -totalInvestment
+    const rebuildCost = price * 0.05
     for (let yr = 0; yr <= 30; yr++) {
       if (yr > 0) {
-        // 1年分返済して残高更新
         for (let m = 0; m < 12; m++) {
           if (bal <= 0) break
           const interest = bal * r
           const principal = Math.min(monthlyPay - interest, bal)
           bal -= principal
         }
+        const yearRent = effectiveRent * Math.pow(1 + inp.rentGrowth / 100, yr - 1)
+        const yearOpex = (yearRent * inp.expenseRatio) / 100
+        const yearMaintenance = (yearRent * inp.maintenanceRatio) / 100
+        const yearNoi = yearRent - yearOpex - propertyTax - yearMaintenance
         const debtThisYear = yr <= inp.yearsLoan ? annualDebt : 0
-        cum += noi - debtThisYear
+        let yearCf = yearNoi - debtThisYear
+        if (yr === inp.rebuildYear) yearCf -= rebuildCost
+        cum += yearCf
       }
       cumCF.push({ label: `${yr}`, value: Math.round(cum / 10000) })
       balance.push({ label: `${yr}`, value: Math.round(Math.max(bal, 0) / 10000) })
     }
 
-    return { annualRentFull, effectiveRent, opex, noi, loan, annualDebt, cf, totalInvestment, ccr, noiYield, cumCF, balance }
+    return { annualRentFull, effectiveRent, opex, propertyTax, maintenance, noi, loan, annualDebt, monthlyPay, cf, totalInvestment, ccr, noiYield, ltv, downRatio, cumCF, balance }
   }, [inp])
 
+  const presetBtn = (key: 'conservative' | 'standard' | 'aggressive', label: string) => (
+    <button
+      onClick={() => applyPreset(key)}
+      className={`px-3 py-1.5 text-[11px] tracking-widest border transition-all duration-300 ${
+        activePreset === key
+          ? 'border-ink bg-ink text-washi'
+          : 'border-ink/20 text-ink/50 hover:border-ink/50 hover:text-ink/80'
+      }`}
+    >
+      {label}
+    </button>
+  )
+
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-stretch">
       {/* 入力 */}
-      <div className="lg:col-span-5">
-        <div className="border border-ink/10 bg-gold-50/70 p-6 lg:p-8">
+      <div className="lg:col-span-5 flex">
+        <div className="border border-ink/10 bg-gold-50/70 p-6 lg:p-8 flex flex-col w-full">
+          {/* シナリオ */}
+          <div className="mb-7">
+            <p className="font-serif text-xs tracking-widest2 uppercase text-gold-600 mb-3">{s.scenario}</p>
+            <div className="flex gap-2">
+              {presetBtn('conservative', s.conservative)}
+              {presetBtn('standard', s.standard)}
+              {presetBtn('aggressive', s.aggressive)}
+            </div>
+          </div>
+
+          {/* 購入条件 */}
           <p className="font-serif text-xs tracking-widest2 uppercase text-gold-600 mb-6">{s.purchase}</p>
           <div className="grid grid-cols-2 gap-x-4 gap-y-5 mb-10">
             <Field label={s.price} k="priceMan" value={inp.priceMan} onChange={set('priceMan')} step={100} suffix={s.manYen} />
@@ -271,28 +373,62 @@ export default function Simulator({ property }: { property: InvestProperty }) {
             <Field label={s.loanYears} k="yearsLoan" value={inp.yearsLoan} onChange={set('yearsLoan')} step={1} suffix={s.years} />
             <Field label={s.purchaseCost} k="purchaseCostRatio" value={inp.purchaseCostRatio} onChange={set('purchaseCostRatio')} step={0.5} suffix="%" note={s.purchaseCostNote} className="col-span-2" />
           </div>
+
+          {/* 運営条件 */}
           <p className="font-serif text-xs tracking-widest2 uppercase text-gold-600 mb-6">{s.operation}</p>
-          <div className="grid grid-cols-2 gap-x-4 gap-y-5">
+          <div className="grid grid-cols-2 gap-x-4 gap-y-5 mb-10">
             <Field label={s.grossYield} k="grossYield" value={inp.grossYield} onChange={set('grossYield')} step={0.05} suffix="%" />
             <Field label={s.occupancy} k="occupancy" value={inp.occupancy} onChange={set('occupancy')} step={1} suffix="%" />
             <Field label={s.expenseRatio} k="expenseRatio" value={inp.expenseRatio} onChange={set('expenseRatio')} step={1} suffix="%" note={s.expenseNote} className="col-span-2" />
           </div>
-          <button
-            onClick={() => setInp(defaults)}
-            className="mt-8 text-ink/45 hover:text-ink text-xs tracking-widest underline underline-offset-4 decoration-ink/25 transition-colors"
-          >
-            {s.reset}
-          </button>
+
+          {/* 詳細条件 */}
+          <p className="font-serif text-xs tracking-widest2 uppercase text-gold-600 mb-6">{s.detail}</p>
+          <div className="grid grid-cols-2 gap-x-4 gap-y-5 mb-3">
+            <Field label={s.rentGrowth} k="rentGrowth" value={inp.rentGrowth} onChange={set('rentGrowth')} step={0.1} suffix="%" />
+            <Field label={s.propertyTax} k="propertyTaxMan" value={inp.propertyTaxMan} onChange={set('propertyTaxMan')} step={10} suffix={s.manYen} />
+            <Field label={s.maintenanceRatio} k="maintenanceRatio" value={inp.maintenanceRatio} onChange={set('maintenanceRatio')} step={1} suffix="%" />
+            <Field label={s.rebuildYear} k="rebuildYear" value={inp.rebuildYear} onChange={set('rebuildYear')} step={1} suffix={s.years} />
+          </div>
+          <p className="text-ink/35 text-[10.5px] leading-snug mb-8">{s.detailNote}</p>
+
+          {/* 派生指標 */}
+          <div className="pt-6 border-t border-ink/10">
+            <div className="grid grid-cols-3 gap-4 text-center">
+              <div>
+                <p className="text-[10px] tracking-widest text-ink/40 mb-1.5">{s.ltv}</p>
+                <p className="font-serif text-base text-ink/80">{calc.ltv.toFixed(0)}%</p>
+              </div>
+              <div>
+                <p className="text-[10px] tracking-widest text-ink/40 mb-1.5">{s.downRatio}</p>
+                <p className="font-serif text-base text-ink/80">{calc.downRatio.toFixed(0)}%</p>
+              </div>
+              <div>
+                <p className="text-[10px] tracking-widest text-ink/40 mb-1.5">{s.monthlyDebt}</p>
+                <p className="font-serif text-base text-ink/80">{manYen(calc.monthlyPay)}{s.manYen}</p>
+              </div>
+            </div>
+          </div>
+
+          {/* リセット — 最下部に固定 */}
+          <div className="mt-auto pt-8">
+            <button
+              onClick={() => { setInp(defaults); setActivePreset('standard') }}
+              className="text-ink/45 hover:text-ink text-xs tracking-widest underline underline-offset-4 decoration-ink/25 transition-colors"
+            >
+              {s.reset}
+            </button>
+          </div>
         </div>
       </div>
 
       {/* 結果 */}
-      <div className="lg:col-span-7">
-        <div className="border border-ink/10 bg-white/60 p-6 lg:p-8">
+      <div className="lg:col-span-7 flex">
+        <div className="border border-ink/10 bg-white/60 p-6 lg:p-8 w-full">
         <p className="font-serif text-xs tracking-widest2 uppercase text-gold-600 mb-6">{s.results}</p>
 
         {/* 主要指標 */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-px bg-ink/10 border border-ink/10 mb-8">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-px bg-ink/10 border border-ink/10 mb-4">
           {[
             { label: s.cashFlow, v: calc.cf, fmt: (x: number) => `${manYen(x)}${s.manYen}` },
             { label: s.cashOnCash, v: calc.ccr, fmt: (x: number) => `${x.toFixed(2)}%` },
@@ -307,11 +443,25 @@ export default function Simulator({ property }: { property: InvestProperty }) {
           ))}
         </div>
 
+        {/* 補助指標 */}
+        <div className="grid grid-cols-2 gap-px bg-ink/10 border border-ink/10 mb-8">
+          <div className="bg-white/80 px-4 py-3 text-center">
+            <p className="text-[10.5px] tracking-widest text-ink/45 mb-1">{s.ltv}</p>
+            <p className="font-serif text-lg text-ink/80">{calc.ltv.toFixed(1)}%</p>
+          </div>
+          <div className="bg-white/80 px-4 py-3 text-center">
+            <p className="text-[10.5px] tracking-widest text-ink/45 mb-1">{s.downRatio}</p>
+            <p className="font-serif text-lg text-ink/80">{calc.downRatio.toFixed(1)}%</p>
+          </div>
+        </div>
+
         {/* 明細 */}
         <dl className="mb-12 border-t border-ink/10">
           <ResultRow label={s.annualRent} value={`${manYen(calc.annualRentFull)}${s.manYen}`} />
           <ResultRow label={s.effectiveRent} value={`${manYen(calc.effectiveRent)}${s.manYen}`} />
           <ResultRow label={s.opex} value={`-${manYen(calc.opex)}${s.manYen}`} />
+          <ResultRow label={s.propertyTaxRow} value={`-${manYen(calc.propertyTax)}${s.manYen}`} />
+          <ResultRow label={s.maintenanceReserve} value={`-${manYen(calc.maintenance)}${s.manYen}`} />
           <ResultRow label={s.noi} value={`${manYen(calc.noi)}${s.manYen}`} strong />
           <ResultRow label={s.loanAmount} value={`${manYen(calc.loan)}${s.manYen}`} />
           <ResultRow label={s.annualDebt} value={`-${manYen(calc.annualDebt)}${s.manYen}`} />
