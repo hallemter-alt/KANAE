@@ -1,12 +1,12 @@
 'use client'
 
-import { useState } from 'react'
 import Link from 'next/link'
 import { useParams, notFound } from 'next/navigation'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import Reveal from '@/components/Reveal'
 import Simulator from '@/components/invest/Simulator'
+import PropertyGallery from '@/components/invest/PropertyGallery'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { getInvestProperty, formatOku, annualRent } from '@/lib/invest'
 
@@ -129,13 +129,10 @@ export default function InvestDetailPage() {
   const s = L[locale]
   const slug = typeof params.slug === 'string' ? params.slug : ''
   const p = getInvestProperty(slug)
-  const [activePhoto, setActivePhoto] = useState(1)
 
   if (!p) {
     notFound()
   }
-
-  const photos = Array.from({ length: p.photoCount }, (_, i) => i + 1)
 
   const rows: Array<[string, string]> = [
     [s.address, p.address],
@@ -199,7 +196,7 @@ export default function InvestDetailPage() {
         </div>
       </section>
 
-      {/* ギャラリー */}
+      {/* ギャラリー — ライトボックス・左右切替対応 */}
       <section className="bg-washi texture-paper">
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 py-16 lg:py-24">
           <Reveal>
@@ -207,33 +204,7 @@ export default function InvestDetailPage() {
             <h2 className="font-serif text-2xl lg:text-3xl text-ink mb-10">{s.gallery}</h2>
           </Reveal>
           <Reveal delay={1}>
-            <figure className="img-breathe relative overflow-hidden aspect-[16/10] mb-4">
-              <div
-                className="absolute inset-0 bg-cover bg-center transition-opacity duration-700"
-                style={{
-                  backgroundImage: `url('/assets/invest/${p.slug}/${String(activePhoto).padStart(2, '0')}.jpg')`,
-                }}
-                role="img"
-                aria-label={`${p.name[locale]} — ${activePhoto}`}
-              />
-            </figure>
-            <div className="grid grid-cols-4 sm:grid-cols-8 gap-2">
-              {photos.map((n) => (
-                <button
-                  key={n}
-                  onClick={() => setActivePhoto(n)}
-                  aria-pressed={activePhoto === n}
-                  className={`relative overflow-hidden aspect-[4/3] border transition-all duration-300 ${
-                    activePhoto === n ? 'border-ink opacity-100' : 'border-transparent opacity-55 hover:opacity-90'
-                  }`}
-                >
-                  <span
-                    className="absolute inset-0 bg-cover bg-center"
-                    style={{ backgroundImage: `url('/assets/invest/${p.slug}/${String(n).padStart(2, '0')}.jpg')` }}
-                  />
-                </button>
-              ))}
-            </div>
+            <PropertyGallery property={p} />
           </Reveal>
         </div>
       </section>
@@ -297,7 +268,7 @@ export default function InvestDetailPage() {
         </div>
       </section>
 
-      {/* 免責 + CTA — 桜の散らしている動画背景 */}
+      {/* 免責 + CTA — 桜の散らしている動画背景（再生速度を落として漂いを自然に） */}
       <section className="bg-ink relative overflow-hidden">
         <video
           className="absolute inset-0 w-full h-full object-cover opacity-25"
@@ -306,6 +277,9 @@ export default function InvestDetailPage() {
           muted
           playsInline
           poster="/assets/mood/blossom-scatter-poster.jpg"
+          onLoadedMetadata={(e) => {
+            e.currentTarget.playbackRate = 0.55
+          }}
         >
           <source src="/assets/mood/blossom-scatter.mp4" type="video/mp4" />
         </video>
