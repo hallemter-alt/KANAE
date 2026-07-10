@@ -27,6 +27,9 @@ const L = {
     simulator: '各物件ページで収益シミュレーションをご利用いただけます',
     cta: 'ご相談・資料請求',
     ctaText: '物件詳細資料・レントロールは個別にご案内しております。',
+    unpublished: '未公開物件',
+    unpublishedText: '詳細情報は非公開です。ご関心をお寄せいただきありがとうございます。',
+    inquireOnly: 'お問い合わせにてご案内',
   },
   zh: {
     label: 'Investment',
@@ -47,6 +50,9 @@ const L = {
     simulator: '每個物業頁面均提供收益模擬計算功能',
     cta: '諮詢·索取資料',
     ctaText: '物業詳細資料及租金明細表（Rent Roll）可單獨提供。',
+    unpublished: '未公開物件',
+    unpublishedText: '詳細資訊為非公開。感謝您的關注。',
+    inquireOnly: '請透過諮詢了解詳情',
   },
   en: {
     label: 'Investment',
@@ -67,6 +73,9 @@ const L = {
     simulator: 'An income simulator is available on each property page',
     cta: 'Inquiry & Materials',
     ctaText: 'Detailed property documents and rent rolls are available upon request.',
+    unpublished: 'Private Listing',
+    unpublishedText: 'Detailed information is not publicly available. Thank you for your interest.',
+    inquireOnly: 'Available by inquiry',
   },
 } as const
 
@@ -123,23 +132,37 @@ export default function InvestPage() {
                   href={`/invest/${p.slug}`}
                   className="group block border border-ink/10 bg-white/60 hover:border-ink/30 transition-colors duration-500"
                 >
-                  {/* 写真 */}
+                  {/* 写真 or 未公開プレースホルダー */}
                   <figure className="relative overflow-hidden aspect-[5/4]">
-                    <div
-                      className="absolute inset-0 bg-cover bg-center transition-transform duration-[1600ms] ease-quiet group-hover:scale-[1.04]"
-                      style={{ backgroundImage: `url('/assets/invest/${p.slug}/01.jpg')` }}
-                    />
-                    <div className="absolute top-4 left-4 flex gap-2">
-                      <span className="bg-ink/80 text-washi text-[11px] tracking-widest px-3 py-1.5">
-                        {p.badge === 'new' ? s.badgeNew : s.badgeNearlyNew}
-                      </span>
-                    </div>
-                    <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-ink/70 to-transparent px-5 pt-10 pb-4 flex items-end justify-between">
-                      <span className="font-serif text-washi text-xl tracking-wide">{formatOku(p.price)}</span>
-                      <span className="text-washi/85 text-sm tracking-widest">
-                        {s.yield} {p.grossYield.toFixed(1)}%
-                      </span>
-                    </div>
+                    {p.published ? (
+                      <>
+                        <div
+                          className="absolute inset-0 bg-cover bg-center transition-transform duration-[1600ms] ease-quiet group-hover:scale-[1.04]"
+                          style={{ backgroundImage: `url('/assets/invest/${p.slug}/01.jpg')` }}
+                        />
+                        <div className="absolute top-4 left-4 flex gap-2">
+                          <span className="bg-ink/80 text-washi text-[11px] tracking-widest px-3 py-1.5">
+                            {p.badge === 'new' ? s.badgeNew : s.badgeNearlyNew}
+                          </span>
+                        </div>
+                        <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-ink/70 to-transparent px-5 pt-10 pb-4 flex items-end justify-between">
+                          <span className="font-serif text-washi text-xl tracking-wide">{formatOku(p.price)}</span>
+                          <span className="text-washi/85 text-sm tracking-widest">
+                            {s.yield} {p.grossYield.toFixed(1)}%
+                          </span>
+                        </div>
+                      </>
+                    ) : (
+                      <div className="absolute inset-0 bg-ink/90 flex flex-col items-center justify-center text-center px-6">
+                        <span className="font-serif text-washi/90 text-base tracking-widest2 mb-3">
+                          {s.unpublished}
+                        </span>
+                        <span className="inline-block w-10 h-px bg-gold-500/60 mb-3" />
+                        <span className="text-washi/45 text-[11px] tracking-widest leading-relaxed">
+                          {s.unpublishedText}
+                        </span>
+                      </div>
+                    )}
                   </figure>
 
                   {/* 情報 */}
@@ -152,21 +175,29 @@ export default function InvestPage() {
                     </h2>
                     <p className="text-ink/55 text-sm leading-relaxed mb-5">{p.catch[locale]}</p>
 
-                    <dl className="grid grid-cols-3 gap-px bg-ink/10 border border-ink/10 text-center">
-                      {[
-                        [s.units, `${p.units}${s.unitsSuffix}`],
-                        [s.built, p.built[locale]],
-                        [s.annualIncome, yen(annualRent(p), locale)],
-                      ].map(([k, v]) => (
-                        <div key={k} className="bg-white/80 px-2 py-3">
-                          <dt className="text-[10px] tracking-widest text-ink/40 mb-1">{k}</dt>
-                          <dd className="text-[13px] text-ink/80">{v}</dd>
-                        </div>
-                      ))}
-                    </dl>
+                    {p.published ? (
+                      <dl className="grid grid-cols-3 gap-px bg-ink/10 border border-ink/10 text-center">
+                        {[
+                          [s.units, `${p.units}${s.unitsSuffix}`],
+                          [s.built, p.built[locale]],
+                          [s.annualIncome, yen(annualRent(p), locale)],
+                        ].map(([k, v]) => (
+                          <div key={k} className="bg-white/80 px-2 py-3">
+                            <dt className="text-[10px] tracking-widest text-ink/40 mb-1">{k}</dt>
+                            <dd className="text-[13px] text-ink/80">{v}</dd>
+                          </div>
+                        ))}
+                      </dl>
+                    ) : (
+                      <div className="border border-ink/10 bg-gold-50/50 px-4 py-4 text-center">
+                        <p className="text-ink/45 text-xs tracking-widest leading-relaxed">
+                          {s.inquireOnly}
+                        </p>
+                      </div>
+                    )}
 
                     <p className="mt-5 inline-flex items-center gap-3 text-ink/60 text-xs tracking-widest group-hover:text-ink transition-colors">
-                      {s.view}
+                      {p.published ? s.view : s.cta}
                       <span className="inline-block w-8 h-px bg-ink/30 group-hover:w-12 group-hover:bg-ink/60 transition-all duration-500" />
                     </p>
                   </div>

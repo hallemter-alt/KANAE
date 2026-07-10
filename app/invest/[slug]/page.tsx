@@ -45,6 +45,10 @@ const L = {
     contactBtn: 'お問い合わせ',
     disclaimer:
       '※掲載内容と現況が異なる場合は、現況を優先させて頂きます。※掲載の写真に含まれる家具等は価格に含まれておりません。※表面利回りは想定年収÷販売価格で算出したものであり、公租公課その他の諸費用控除前です。賃料収入を保証するものではありません。',
+    unpublished: '未公開物件',
+    unpublishedLead: 'こちらの物件は現在未公開です。詳細情報は個別のご案内となります。',
+    unpublishedNote: '物件概要・写真・収益シミュレーションは、お問い合わせ後にご提供いたします。',
+    inquireBtn: 'お問い合わせにて詳細をご案内',
   },
   zh: {
     back: '返回物業一覽',
@@ -80,6 +84,10 @@ const L = {
     contactBtn: '聯繫我們',
     disclaimer:
       '※如刊載內容與現狀不符，以現狀為準。※照片中的家具等不包含在價格內。※表面收益率=預計年收入÷銷售價格，未扣除稅費及其他費用，不構成租金收入保證。',
+    unpublished: '未公開物件',
+    unpublishedLead: '此物件目前為非公開。詳細資訊將個別提供。',
+    unpublishedNote: '物業概要、照片及收益模擬將於諮詢後提供。',
+    inquireBtn: '透過諮詢了解詳情',
   },
   en: {
     back: 'Back to Properties',
@@ -115,6 +123,10 @@ const L = {
     contactBtn: 'Contact Us',
     disclaimer:
       '* Current conditions take precedence over listed content. * Furniture shown in photos is not included. * Gross yield = estimated annual income ÷ price, before taxes and expenses. Rental income is not guaranteed.',
+    unpublished: 'Private Listing',
+    unpublishedLead: 'This property is currently not publicly listed. Details are available by individual inquiry.',
+    unpublishedNote: 'Property overview, photos, and income simulation will be provided upon inquiry.',
+    inquireBtn: 'Request details by inquiry',
   },
 } as const
 
@@ -158,15 +170,24 @@ export default function InvestDetailPage() {
     <main className="min-h-screen bg-washi">
       <Navbar />
 
-      {/* Hero — メイン写真 */}
+      {/* Hero — メイン写真（未公開物件は墨色プレースホルダー） */}
       <section className="relative min-h-[60svh] flex items-end">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url('/assets/invest/${p.slug}/01.jpg')` }}
-          role="img"
-          aria-label={p.name[locale]}
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/30 to-ink/10" />
+        {p.published ? (
+          <>
+            <div
+              className="absolute inset-0 bg-cover bg-center"
+              style={{ backgroundImage: `url('/assets/invest/${p.slug}/01.jpg')` }}
+              role="img"
+              aria-label={p.name[locale]}
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/30 to-ink/10" />
+          </>
+        ) : (
+          <>
+            <div className="absolute inset-0 bg-ink" />
+            <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/70 to-ink/40" />
+          </>
+        )}
         <div className="relative w-full max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 pb-12 pt-44">
           <Link
             href="/invest"
@@ -179,94 +200,123 @@ export default function InvestDetailPage() {
             {p.name[locale]}
           </h1>
           <p className="animate-rise text-washi/70 text-sm sm:text-base tracking-wide mb-8">{p.catch[locale]}</p>
-          <div className="animate-rise flex flex-wrap gap-x-10 gap-y-3">
-            <div>
-              <p className="text-washi/50 text-[11px] tracking-widest mb-1">{s.price}</p>
-              <p className="font-serif text-washi text-2xl lg:text-3xl">{formatOku(p.price)}</p>
+          {p.published ? (
+            <div className="animate-rise flex flex-wrap gap-x-10 gap-y-3">
+              <div>
+                <p className="text-washi/50 text-[11px] tracking-widest mb-1">{s.price}</p>
+                <p className="font-serif text-washi text-2xl lg:text-3xl">{formatOku(p.price)}</p>
+              </div>
+              <div>
+                <p className="text-washi/50 text-[11px] tracking-widest mb-1">{s.yield}</p>
+                <p className="font-serif text-washi text-2xl lg:text-3xl">{p.grossYield.toFixed(2)}%</p>
+              </div>
+              <div>
+                <p className="text-washi/50 text-[11px] tracking-widest mb-1">{s.annualIncome}</p>
+                <p className="font-serif text-washi text-2xl lg:text-3xl">{yenMan(annualRent(p), locale)}</p>
+              </div>
             </div>
-            <div>
-              <p className="text-washi/50 text-[11px] tracking-widest mb-1">{s.yield}</p>
-              <p className="font-serif text-washi text-2xl lg:text-3xl">{p.grossYield.toFixed(2)}%</p>
-            </div>
-            <div>
-              <p className="text-washi/50 text-[11px] tracking-widest mb-1">{s.annualIncome}</p>
-              <p className="font-serif text-washi text-2xl lg:text-3xl">{yenMan(annualRent(p), locale)}</p>
-            </div>
-          </div>
+          ) : (
+            <p className="animate-rise font-serif text-washi/80 text-lg lg:text-xl tracking-widest">
+              {s.unpublished}
+            </p>
+          )}
         </div>
       </section>
 
-      {/* ギャラリー — ライトボックス・左右切替対応 */}
-      <section className="bg-washi texture-paper">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 py-16 lg:py-24">
-          <Reveal>
-            <p className="section-label mb-3">Gallery</p>
-            <h2 className="font-serif text-2xl lg:text-3xl text-ink mb-10">{s.gallery}</h2>
-          </Reveal>
-          <Reveal delay={1}>
-            <PropertyGallery property={p} />
-          </Reveal>
-        </div>
-      </section>
-
-      {/* 概要 + 交通 */}
-      <section className="bg-gold-50">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 py-16 lg:py-24">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
-            <div className="lg:col-span-7">
+      {p.published ? (
+        <>
+          {/* ギャラリー — ライトボックス・左右切替対応 */}
+          <section className="bg-washi texture-paper">
+            <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 py-16 lg:py-24">
               <Reveal>
-                <p className="section-label mb-3">Overview</p>
-                <h2 className="font-serif text-2xl lg:text-3xl text-ink mb-10">{s.overview}</h2>
+                <p className="section-label mb-3">Gallery</p>
+                <h2 className="font-serif text-2xl lg:text-3xl text-ink mb-10">{s.gallery}</h2>
               </Reveal>
               <Reveal delay={1}>
-                <dl className="border-t border-ink/15">
-                  {rows.map(([k, v]) => (
-                    <div key={k} className="grid grid-cols-3 gap-4 py-4 border-b border-ink/10">
-                      <dt className="text-ink/45 text-[13px] tracking-wide pt-0.5">{k}</dt>
-                      <dd className="col-span-2 text-ink/85 text-[14px] leading-relaxed">{v}</dd>
-                    </div>
-                  ))}
-                </dl>
+                <PropertyGallery property={p} />
               </Reveal>
             </div>
-            <div className="lg:col-span-5">
-              <Reveal delay={1}>
-                <p className="section-label mb-3">Access</p>
-                <h2 className="font-serif text-2xl lg:text-3xl text-ink mb-10">{s.location}</h2>
-                <ul className="space-y-4 mb-10">
-                  {p.access.map((a) => (
-                    <li key={a} className="flex items-start gap-3 text-ink/75 text-sm leading-relaxed">
-                      <span className="mt-2.5 inline-block w-4 h-px bg-gold-500 shrink-0" />
-                      {a}
-                    </li>
-                  ))}
-                </ul>
-                <div className="border border-ink/10 overflow-hidden">
-                  <iframe
-                    title={`${p.name[locale]} map`}
-                    src={`https://www.google.com/maps?q=${encodeURIComponent(p.address)}&output=embed`}
-                    className="w-full h-72 grayscale-[0.85] contrast-[0.92] opacity-90"
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                  />
-                </div>
-              </Reveal>
-            </div>
-          </div>
-        </div>
-      </section>
+          </section>
 
-      {/* 収益シミュレーション */}
-      <section className="bg-washi texture-paper" id="simulator">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 py-16 lg:py-24">
-          <Reveal>
-            <p className="section-label mb-3">Simulation</p>
-            <h2 className="font-serif text-2xl lg:text-3xl text-ink mb-2">{s.simTitle}</h2>
-            <p className="text-ink/50 text-sm mb-12">— {s.simSubtitle}</p>
-          </Reveal>
-          <Simulator property={p} />
-        </div>
-      </section>
+          {/* 概要 + 交通 */}
+          <section className="bg-gold-50">
+            <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 py-16 lg:py-24">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+                <div className="lg:col-span-7">
+                  <Reveal>
+                    <p className="section-label mb-3">Overview</p>
+                    <h2 className="font-serif text-2xl lg:text-3xl text-ink mb-10">{s.overview}</h2>
+                  </Reveal>
+                  <Reveal delay={1}>
+                    <dl className="border-t border-ink/15">
+                      {rows.map(([k, v]) => (
+                        <div key={k} className="grid grid-cols-3 gap-4 py-4 border-b border-ink/10">
+                          <dt className="text-ink/45 text-[13px] tracking-wide pt-0.5">{k}</dt>
+                          <dd className="col-span-2 text-ink/85 text-[14px] leading-relaxed">{v}</dd>
+                        </div>
+                      ))}
+                    </dl>
+                  </Reveal>
+                </div>
+                <div className="lg:col-span-5">
+                  <Reveal delay={1}>
+                    <p className="section-label mb-3">Access</p>
+                    <h2 className="font-serif text-2xl lg:text-3xl text-ink mb-10">{s.location}</h2>
+                    <ul className="space-y-4 mb-10">
+                      {p.access.map((a) => (
+                        <li key={a} className="flex items-start gap-3 text-ink/75 text-sm leading-relaxed">
+                          <span className="mt-2.5 inline-block w-4 h-px bg-gold-500 shrink-0" />
+                          {a}
+                        </li>
+                      ))}
+                    </ul>
+                    <div className="border border-ink/10 overflow-hidden">
+                      <iframe
+                        title={`${p.name[locale]} map`}
+                        src={`https://www.google.com/maps?q=${encodeURIComponent(p.address)}&output=embed`}
+                        className="w-full h-72 grayscale-[0.85] contrast-[0.92] opacity-90"
+                        loading="lazy"
+                        referrerPolicy="no-referrer-when-downgrade"
+                      />
+                    </div>
+                  </Reveal>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* 収益シミュレーション */}
+          <section className="bg-washi texture-paper" id="simulator">
+            <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 py-16 lg:py-24">
+              <Reveal>
+                <p className="section-label mb-3">Simulation</p>
+                <h2 className="font-serif text-2xl lg:text-3xl text-ink mb-2">{s.simTitle}</h2>
+                <p className="text-ink/50 text-sm mb-12">— {s.simSubtitle}</p>
+              </Reveal>
+              <Simulator property={p} />
+            </div>
+          </section>
+        </>
+      ) : (
+        /* 未公開物件 — お問い合わせへ誘導 */
+        <section className="bg-washi texture-paper">
+          <div className="max-w-3xl mx-auto px-5 sm:px-8 lg:px-10 py-20 lg:py-28 text-center">
+            <Reveal>
+              <span className="inline-block font-serif text-[11px] tracking-widest2 uppercase text-gold-600 mb-6">
+                {s.unpublished}
+              </span>
+              <p className="text-ink/75 leading-loose text-[15px] mb-6">{s.unpublishedLead}</p>
+              <p className="text-ink/45 text-sm leading-relaxed mb-12">{s.unpublishedNote}</p>
+              <Link
+                href="/contact"
+                className="inline-block border border-ink/40 text-ink text-sm tracking-widest px-10 py-4 hover:bg-ink hover:text-washi transition-colors duration-500"
+              >
+                {s.inquireBtn}
+              </Link>
+            </Reveal>
+          </div>
+        </section>
+      )}
 
       {/* 免責 + CTA — 桜の散らしている動画背景（再生速度を落として漂いを自然に） */}
       <section className="bg-ink relative overflow-hidden">
@@ -294,9 +344,11 @@ export default function InvestDetailPage() {
             >
               {s.contactBtn}
             </Link>
-            <p className="mt-14 text-washi/35 text-[11px] leading-relaxed max-w-3xl mx-auto text-left">
-              {s.disclaimer}
-            </p>
+            {p.published && (
+              <p className="mt-14 text-washi/35 text-[11px] leading-relaxed max-w-3xl mx-auto text-left">
+                {s.disclaimer}
+              </p>
+            )}
           </Reveal>
         </div>
       </section>
