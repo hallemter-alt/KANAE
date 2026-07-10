@@ -32,6 +32,8 @@ export interface InvestProperty {
   /** 新築 or 築浅 */
   badge: 'new' | 'nearlyNew'
   area23: boolean
+  /** 公開状態（false = 未公開物件、詳細情報を非表示） */
+  published: boolean
 }
 
 export const INVEST_PROPERTIES: InvestProperty[] = [
@@ -47,7 +49,7 @@ export const INVEST_PROPERTIES: InvestProperty[] = [
       zh: '牛込神樂坂站步行4分鐘 — 含地下1層的厚重RC造14戶',
       en: '4 min walk to Ushigome-Kagurazaka — solid RC, 14 units incl. basement',
     },
-    address: '東京都新宿区細工町1-15',
+    address: '東京都新宿区細工町1丁目',
     access: [
       '都営大江戸線「牛込神楽坂」駅 徒歩4分',
       '東京メトロ東西線「神楽坂」駅 徒歩8分',
@@ -72,11 +74,12 @@ export const INVEST_PROPERTIES: InvestProperty[] = [
     far: '200%・300%',
     designer: '北尾一顕建築設計事務所',
     builder: '株式会社ヨシナガ工業',
-    transaction: '売主',
+    transaction: '媒介',
     updated: '2025年8月1日',
     photoCount: 8,
     badge: 'nearlyNew',
     area23: true,
+    published: false,
   },
   {
     slug: 'shinjuku-wakaba',
@@ -90,7 +93,7 @@ export const INVEST_PROPERTIES: InvestProperty[] = [
       zh: '四谷三丁目站步行7分鐘 — 靜謐住宅區中的10戶',
       en: '7 min walk to Yotsuya-sanchome — 10 units in a quiet district',
     },
-    address: '東京都新宿区若葉2丁目5-27',
+    address: '東京都新宿区若葉2丁目',
     access: ['東京メトロ丸ノ内線「四谷三丁目」駅 徒歩7分'],
     price: 843000000,
     grossYield: 3.7,
@@ -111,12 +114,13 @@ export const INVEST_PROPERTIES: InvestProperty[] = [
     far: '300%',
     designer: '株式会社スミト一級建築事務所',
     builder: '株式会社嶋工務店',
-    transaction: '売主',
+    transaction: '媒介',
     remarks: '私道持ち分あり、共同住宅＋長屋',
     updated: '2025年8月1日',
     photoCount: 8,
     badge: 'nearlyNew',
     area23: true,
+    published: false,
   },
   {
     slug: 'hatanodai',
@@ -130,7 +134,7 @@ export const INVEST_PROPERTIES: InvestProperty[] = [
       zh: '旗之台站步行5分鐘 — 商業地域·容積率400%的新建15戶',
       en: '5 min walk to Hatanodai — new build, 15 units, FAR 400%',
     },
-    address: '東京都品川区旗の台2丁目1',
+    address: '東京都品川区旗の台2丁目',
     access: ['東急池上線・東急大井町線「旗の台」駅 徒歩5分'],
     price: 1115000000,
     grossYield: 4.0,
@@ -151,11 +155,12 @@ export const INVEST_PROPERTIES: InvestProperty[] = [
     far: '400%／300%',
     designer: '合同会社オー・アイ・ディー アーキテクツ',
     builder: '株式会社明豊エンジニアリング',
-    transaction: '売主',
+    transaction: '媒介',
     updated: '2026年4月5日',
     photoCount: 8,
     badge: 'new',
     area23: true,
+    published: false,
   },
   {
     slug: 'meguro-honcho',
@@ -169,7 +174,7 @@ export const INVEST_PROPERTIES: InvestProperty[] = [
       zh: '西小山站步行10分鐘 — 寬裕用地66坪·15戶',
       en: '10 min walk to Nishi-koyama — generous 218㎡ site, 15 units',
     },
-    address: '東京都目黒区目黒本町6丁目20番9号',
+    address: '東京都目黒区目黒本町6丁目',
     access: [
       '東急目黒線「西小山」駅 徒歩10分',
       '東急目黒線「武蔵小山」駅 徒歩14分',
@@ -193,11 +198,12 @@ export const INVEST_PROPERTIES: InvestProperty[] = [
     far: '200%',
     designer: '株式会社ランディックス',
     builder: 'イズアーク株式会社',
-    transaction: '売主',
+    transaction: '媒介',
     updated: '2026年1月21日',
     photoCount: 8,
     badge: 'nearlyNew',
     area23: true,
+    published: false,
   },
   {
     slug: 'senzoku',
@@ -211,7 +217,7 @@ export const INVEST_PROPERTIES: InvestProperty[] = [
       zh: '洗足站步行7分鐘 — 近鄰商業地域的新建12戶',
       en: '7 min walk to Senzoku — new build, 12 units',
     },
-    address: '東京都目黒区洗足一丁目20-16',
+    address: '東京都目黒区洗足一丁目',
     access: [
       '東急目黒線「洗足」駅 徒歩7分',
       '東急目黒線「西小山」駅 徒歩8分',
@@ -235,11 +241,12 @@ export const INVEST_PROPERTIES: InvestProperty[] = [
     far: '300%',
     designer: '(株)曽我建築設計事務所',
     builder: '(株)池田山エステート',
-    transaction: '売主',
+    transaction: '媒介',
     updated: '2026年2月25日',
     photoCount: 8,
     badge: 'new',
     area23: true,
+    published: false,
   },
   {
     slug: 'miyazakidai',
@@ -275,11 +282,12 @@ export const INVEST_PROPERTIES: InvestProperty[] = [
     otherZoning: '準防火地域',
     bcr: '60%',
     far: '200%',
-    transaction: '売主',
+    transaction: '媒介',
     updated: '2024年1月30日',
     photoCount: 8,
     badge: 'new',
     area23: false,
+    published: false,
   },
 ]
 
