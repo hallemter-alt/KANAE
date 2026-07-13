@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, ReactNode } from 'react';
+import React, { useEffect, useRef, ReactNode } from 'react';
 
 type RevealVariant = 'rise' | 'media' | 'text' | 'text-left' | 'stagger';
 
@@ -25,7 +25,7 @@ export default function Reveal({
   as = 'div',
   variant = 'rise',
 }: RevealProps) {
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const el = ref.current;
@@ -47,7 +47,7 @@ export default function Reveal({
     return () => observer.disconnect();
   }, []);
 
-  const Tag = as as 'div';
+  const Tag = as as React.ElementType;
 
   const baseClass =
     variant === 'media'
@@ -63,7 +63,8 @@ export default function Reveal({
   const delayClass = variant === 'rise' && delay ? ` reveal-delay-${delay}` : '';
 
   return (
-    <Tag ref={ref} className={`${baseClass}${delayClass} ${className}`}>
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    <Tag ref={ref as any} className={`${baseClass}${delayClass} ${className}`}>
       {children}
     </Tag>
   );
