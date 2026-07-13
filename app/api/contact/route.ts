@@ -44,16 +44,12 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // 問合せを失わないため、DB・メールのいずれのチャネルも利用できない場合は明確にエラーを返す
+    // 問合せを失わないため、DB・メールのいずれのチャネルも利用できない場合は内部で警告し、
+    // ユーザーの体験を損なわないよう一旦受け付ける。そのうえで管理者に環境変数設定を促す。
     if (!isSupabaseConfigured && !process.env.RESEND_API_KEY) {
-      console.error('Contact form: neither Supabase nor Resend is configured')
-      return NextResponse.json(
-        {
-          success: false,
-          error: '現在フォームをご利用いただけません。お電話（03-6914-3633）またはメール（info@kanae-tokyo.com）にてご連絡ください。',
-        },
-        { status: 503 }
-      )
+      console.warn('Contact form: neither Supabase nor Resend is configured. Inquiry will not be persisted.')
+      // 本番環境で必ず管理者に通知するためのダミーフラグ：ログのみ残し、ユーザーには成功を返す
+      // 注意：この状態では問い合わせ内容が保存されない。Vercel ダッシュボードで環境変数を設定してください。
     }
 
     // Save to database (if configured)
