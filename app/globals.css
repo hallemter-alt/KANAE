@@ -150,6 +150,11 @@ p {
     animation: riseIn 1.2s var(--ease-quiet) 0.8s both;
   }
 
+  @keyframes loadslide {
+    0%   { transform: translateX(-100%); }
+    100% { transform: translateX(400%); }
+  }
+
   /* 水面のゆらぎ（ごく控えめ） */
   @keyframes waterDrift {
     0%, 100% { transform: translateY(0); }

@@ -306,16 +306,16 @@ export default function RentPage() {
         <Container>
           <Reveal className="text-center">
             <Heading level={3} align="center" className="mb-4 text-washi">
-              {t.management.ctaTitle}
+              {t.cta.title}<span className="text-gold-300">{t.cta.subtitle}</span>
             </Heading>
             <Text size="base" className="mb-10 max-w-2xl mx-auto !text-washi/60">
-              {t.management.ctaDescription}
+              {t.cta.description}
             </Text>
             <a
               href="/contact"
               className="inline-flex items-center gap-3 bg-washi text-ink px-9 py-4 text-sm tracking-[0.2em] hover:bg-gold-200 transition-colors duration-700"
             >
-              {t.management.ctaButton}
+              {t.nav.contact}
             </a>
           </Reveal>
         </Container>

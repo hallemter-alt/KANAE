@@ -33,8 +33,10 @@ export async function POST(request: NextRequest) {
     }
 
     // Validate inquiry type
-    const validTypes = ['viewing', 'inquiry', 'application']
+    const validTypes = ['viewing', 'inquiry', 'application', 'other']
     const inquiryType = body.type || 'inquiry'
+    // 'other' はDBのENUM型に合わせて 'inquiry' として保存するが、バリデーションは通す
+    const dbInquiryType = inquiryType === 'other' ? 'inquiry' : inquiryType
     if (!validTypes.includes(inquiryType)) {
       return NextResponse.json(
         { success: false, error: 'Invalid inquiry type' },
@@ -63,7 +65,7 @@ export async function POST(request: NextRequest) {
           name: body.name,
           email: body.email,
           phone: body.phone,
-          type: inquiryType,
+          type: dbInquiryType,
           message: body.message,
           property_id: body.property_id,
           customer_id: body.customer_id,
@@ -107,7 +109,7 @@ export async function POST(request: NextRequest) {
               <p><strong>問合せ種別：</strong>${inquiryType}</p>
               ${body.property_id ? `<p><strong>物件ID：</strong>${body.property_id}</p>` : ''}
               <p><strong>メッセージ：</strong></p>
-              <p>${body.message}</p>
+              <p>${body.message.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#x27;').replace(/\n/g, '<br>')}</p>
               <hr>
               <p><small>送信日時：${new Date().toLocaleString('ja-JP')}</small></p>
             `,

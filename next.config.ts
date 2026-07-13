@@ -5,11 +5,14 @@ const nextConfig: NextConfig = {
   
   // 圖片優化配置
   images: {
-    domains: ['images.unsplash.com'],
     remotePatterns: [
       {
         protocol: 'https',
         hostname: 'images.unsplash.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'sspark.genspark.ai',
       },
     ],
     // Vercel 圖片優化配置
