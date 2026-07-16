@@ -26,6 +26,7 @@ export const translations = {
       learnMore: '詳しく見る',
       searchRent: '賃貸物件を探す',
       searchSale: '売買物件を探す',
+      searchInvest: '投資物件を探す',
       searchMinpaku: '民泊運営相談',
       searchPlaceholder: 'エリア、沿線、駅名で検索',
       searchButton: '検索',
@@ -537,8 +538,8 @@ export const translations = {
     
     // 投資物件検索
     properties: {
-      title: '物件情報',
-      subtitle: '賃貸・売買・投資物件を一つの窓口で統合検索',
+      title: '投資物件情報',
+      subtitle: '投資物件を中心に、賃貸・売買・投資物件を一つの窓口でご提案します。',
       label: 'Properties',
       all: 'すべて',
       rent: '賃貸',
@@ -663,6 +664,7 @@ export const translations = {
       learnMore: '瞭解更多',
       searchRent: '搜索租賃房源',
       searchSale: '搜索買賣房源',
+      searchInvest: '搜索投資房源',
       searchMinpaku: '民宿運營諮詢',
       searchPlaceholder: '按地區、線路、車站搜索',
       searchButton: '搜索',
@@ -1174,8 +1176,8 @@ export const translations = {
     
     // 投资物业搜索
     properties: {
-      title: '物業資訊',
-      subtitle: '租賃、買賣、投資物業統合搜索',
+      title: '投資物業資訊',
+      subtitle: '租賃、買賣、投資物業統合搜索，以投資物業為主推薦',
       label: 'Properties',
       all: '全部',
       rent: '租賃',
@@ -1298,6 +1300,7 @@ export const translations = {
       learnMore: 'Learn More',
       searchRent: 'Search Rental Properties',
       searchSale: 'Search Properties for Sale',
+      searchInvest: 'Search Investment Properties',
       searchMinpaku: 'Vacation Rental Consultation',
       searchPlaceholder: 'Search by area, line, or station',
       searchButton: 'Search',
@@ -1554,8 +1557,8 @@ export const translations = {
     
     // Investment Property Search
     properties: {
-      title: 'Property Information',
-      subtitle: 'Unified search for rental, sales, and investment properties',
+      title: 'Investment Property Information',
+      subtitle: 'Unified search for rental, sales, and investment properties, with a focus on investment properties',
       label: 'Properties',
       all: 'All',
       rent: 'Rental',

@@ -145,7 +145,7 @@ export default function PropertiesPage() {
   const t = translations[locale]
   const p = t.properties
 
-  const [activeTab, setActiveTab] = useState<'all' | PropertyKind>('all')
+  const [activeTab, setActiveTab] = useState<'all' | PropertyKind>('invest')
   const [searchKeyword, setSearchKeyword] = useState('')
   const [selectedArea, setSelectedArea] = useState('')
   const [minPrice, setMinPrice] = useState('')
@@ -264,11 +264,16 @@ export default function PropertiesPage() {
     return result
   }, [allProperties, activeTab, searchKeyword, selectedArea, minPrice, maxPrice])
 
-  const tabs: { key: 'all' | PropertyKind; label: string }[] = [
-    { key: 'all', label: p.all },
+  const subNavItems: { key: PropertyKind; label: string; href: string }[] = [
+    { key: 'invest', label: p.invest, href: '/invest' },
+    { key: 'rent', label: p.rent, href: '/rent' },
+    { key: 'sale', label: p.sale, href: '/sale' },
+  ]
+
+  const tabs: { key: PropertyKind; label: string }[] = [
+    { key: 'invest', label: p.invest },
     { key: 'rent', label: p.rent },
     { key: 'sale', label: p.sale },
-    { key: 'invest', label: p.invest },
   ]
 
   const badgeText = {
@@ -391,22 +396,32 @@ export default function PropertiesPage() {
             </Heading>
           </Reveal>
 
-          {/* タブ */}
+          {/* 物件種別ナビゲーション（ページ内） */}
           <Reveal className="mb-10">
-            <div className="flex flex-wrap gap-3 border-b hairline pb-5">
-              {tabs.map((tab) => (
-                <button
-                  key={tab.key}
-                  onClick={() => setActiveTab(tab.key)}
-                  className={`px-6 py-2.5 text-sm tracking-widest transition-colors duration-500 border ${
-                    activeTab === tab.key
-                      ? 'bg-ink text-washi border-ink'
-                      : 'bg-white/60 text-ink/70 border-ink/15 hover:border-ink/40'
-                  }`}
-                >
-                  {tab.label}
-                </button>
-              ))}
+            <div className="border hairline bg-white/70">
+              <div className="flex flex-wrap">
+                {subNavItems.map((item) => {
+                  const isActive = activeTab === item.key
+                  return (
+                    <Link
+                      key={item.key}
+                      href={item.href}
+                      onClick={(e) => {
+                        e.preventDefault()
+                        setActiveTab(item.key)
+                        window.scrollTo({ top: 0, behavior: 'smooth' })
+                      }}
+                      className={`flex-1 min-w-[8rem] py-4 text-sm tracking-widest text-center transition-colors duration-500 border-r hairline last:border-r-0 ${
+                        isActive
+                          ? 'bg-ink text-washi'
+                          : 'bg-white/40 text-ink/70 hover:bg-white/80 hover:text-ink'
+                      }`}
+                    >
+                      {item.label}
+                    </Link>
+                  )
+                })}
+              </div>
             </div>
           </Reveal>
 
