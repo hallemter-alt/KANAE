@@ -39,6 +39,11 @@ const nextConfig: NextConfig = {
         destination: '/',
         permanent: true,
       },
+      {
+        source: '/properties',
+        destination: '/rent',
+        permanent: true,
+      },
     ];
   },
   
