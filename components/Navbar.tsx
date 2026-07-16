@@ -45,8 +45,6 @@ export default function Navbar() {
     { href: '/philosophy', label: t.nav.philosophy },
   ];
 
-  const [isPropertyMenuOpen, setIsPropertyMenuOpen] = useState(false);
-
   const solid = isScrolled || isMobileMenuOpen;
 
   return (
@@ -79,43 +77,14 @@ export default function Navbar() {
 
           {/* デスクトップ・ナビ */}
           <div className="hidden lg:flex items-center gap-5 xl:gap-7">
-            <div
-              className="relative"
-              onMouseEnter={() => setIsPropertyMenuOpen(true)}
-              onMouseLeave={() => setIsPropertyMenuOpen(false)}
+            <Link
+              href="/properties"
+              className={`link-quiet text-[13px] xl:text-sm tracking-wider xl:tracking-widest whitespace-nowrap transition-colors duration-500 ${
+                solid ? 'text-ink/80 hover:text-ink' : 'text-washi/90 hover:text-washi'
+              }`}
             >
-              <button
-                className={`link-quiet flex items-center gap-1.5 text-[13px] xl:text-sm tracking-wider xl:tracking-widest whitespace-nowrap transition-colors duration-500 ${
-                  solid ? 'text-ink/80 hover:text-ink' : 'text-washi/90 hover:text-washi'
-                }`}
-                aria-expanded={isPropertyMenuOpen}
-                aria-haspopup="true"
-              >
-                {t.nav.propertyInfo}
-                <span className={`block w-1.5 h-1.5 border-r border-b transform transition-transform duration-300 ${
-                  isPropertyMenuOpen ? '-rotate-135' : 'rotate-45'
-                } ${solid ? 'border-ink/70' : 'border-washi/80'}`} />
-              </button>
-              {isPropertyMenuOpen && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2">
-                  <div className={`border hairline shadow-lg px-2 py-2 min-w-[10rem] ${
-                    solid ? 'bg-washi/95 backdrop-blur-md' : 'bg-ink/90 backdrop-blur-md'
-                  }`}>
-                    {propertyLinks.map((link) => (
-                      <Link
-                        key={link.href}
-                        href={link.href}
-                        className={`block px-4 py-2.5 text-[13px] tracking-wider whitespace-nowrap transition-colors duration-300 ${
-                          solid ? 'text-ink/80 hover:bg-ink/5 hover:text-ink' : 'text-washi/90 hover:bg-washi/10 hover:text-washi'
-                        }`}
-                      >
-                        {link.label}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
+              {t.nav.propertyInfo}
+            </Link>
             {otherLinks.map((link) => (
               <Link
                 key={link.href}
@@ -190,21 +159,13 @@ export default function Navbar() {
             <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="py-3.5 border-b hairline font-serif text-lg text-ink tracking-widest">
               {t.nav.home}
             </Link>
-            <div className="py-3.5 border-b hairline">
-              <p className="font-serif text-lg text-ink tracking-widest">{t.nav.propertyInfo}</p>
-              <div className="mt-2 pl-4 flex flex-col gap-1">
-                {propertyLinks.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="py-2.5 text-ink/70 text-base tracking-wider hover:text-ink transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-              </div>
-            </div>
+            <Link
+              href="/properties"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="py-3.5 border-b hairline font-serif text-lg text-ink tracking-widest"
+            >
+              {t.nav.propertyInfo}
+            </Link>
             {otherLinks.map((link) => (
               <Link
                 key={link.href}
