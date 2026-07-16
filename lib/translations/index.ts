@@ -4,8 +4,10 @@ export const translations = {
     // ナビゲーション
     nav: {
       home: 'ホーム',
+      propertyInfo: '物件情報',
       rent: '賃貸',
       sale: '売買',
+      invest: '投資物件',
       properties: '投資物件',
       management: '管理',
       minpaku: '民泊',
@@ -639,8 +641,10 @@ export const translations = {
     // 导航
     nav: {
       home: '首頁',
+      propertyInfo: '物件資訊',
       rent: '租賃',
       sale: '買賣',
+      invest: '投資物業',
       properties: '投資物業',
       management: '管理',
       minpaku: '民宿',
@@ -1272,8 +1276,10 @@ export const translations = {
     // Navigation
     nav: {
       home: 'Home',
+      propertyInfo: 'Property Info',
       rent: 'Rental',
       sale: 'Sales',
+      invest: 'Investment Properties',
       properties: 'Investment Properties',
       management: 'Management',
       minpaku: 'Vacation Rental',
