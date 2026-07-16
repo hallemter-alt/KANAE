@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { translations } from '@/lib/translations';
@@ -13,6 +14,13 @@ import { IMAGES } from '@/lib/images';
 export default function Hero() {
   const { locale } = useLanguage();
   const t = translations[locale];
+  const [isSearchMenuOpen, setIsSearchMenuOpen] = useState(false);
+
+  const searchLinks = [
+    { href: '/rent', label: t.hero.searchRent },
+    { href: '/sale', label: t.hero.searchSale },
+    { href: '/invest', label: t.hero.searchInvest },
+  ];
 
   return (
     <section className="relative min-h-[100svh] flex items-end overflow-hidden bg-ink">
@@ -57,16 +65,40 @@ export default function Hero() {
           </p>
 
           <div className="animate-rise-late flex flex-col sm:flex-row gap-4">
-            <Link
-              href="/rent"
-              className="group inline-flex items-center justify-center gap-3 border border-washi/60 text-washi px-9 py-4 text-sm tracking-[0.2em] hover:bg-washi hover:text-ink transition-all duration-700"
+            <div
+              className="relative"
+              onMouseEnter={() => setIsSearchMenuOpen(true)}
+              onMouseLeave={() => setIsSearchMenuOpen(false)}
             >
-              <span>{t.hero.cta}</span>
-              <span
-                className="inline-block w-6 h-px bg-current group-hover:w-9 transition-all duration-500"
-                aria-hidden="true"
-              />
-            </Link>
+              <button
+                className="group inline-flex items-center justify-center gap-3 border border-washi/60 text-washi px-9 py-4 text-sm tracking-[0.2em] hover:bg-washi hover:text-ink transition-all duration-700"
+                aria-expanded={isSearchMenuOpen}
+                aria-haspopup="true"
+              >
+                <span>{t.hero.cta}</span>
+                <span
+                  className={`inline-block h-px bg-current transition-all duration-500 ${
+                    isSearchMenuOpen ? 'w-9' : 'w-6 group-hover:w-9'
+                  }`}
+                  aria-hidden="true"
+                />
+              </button>
+              {isSearchMenuOpen && (
+                <div className="absolute top-full left-0 sm:left-1/2 sm:-translate-x-1/2 pt-2">
+                  <div className="border border-washi/20 bg-ink/95 backdrop-blur-md shadow-lg px-2 py-2 min-w-[12rem]">
+                    {searchLinks.map((link) => (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        className="block px-4 py-2.5 text-[13px] text-washi/90 tracking-wider whitespace-nowrap hover:bg-washi/10 hover:text-washi transition-colors duration-300"
+                      >
+                        {link.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
             <Link
               href="/about"
               className="group inline-flex items-center justify-center gap-3 text-washi/80 px-4 py-4 text-sm tracking-[0.2em] hover:text-washi transition-colors duration-500"
