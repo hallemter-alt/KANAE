@@ -37,6 +37,14 @@ export default function Navbar() {
     { href: '/invest', label: t.nav.invest },
   ];
 
+  const otherLinks = [
+    { href: '/management', label: t.nav.management },
+    { href: '/minpaku', label: t.nav.minpaku },
+    { href: '/market', label: t.nav.market },
+    { href: '/about', label: t.nav.about },
+    { href: '/philosophy', label: t.nav.philosophy },
+  ];
+
   const [isPropertyMenuOpen, setIsPropertyMenuOpen] = useState(false);
 
   const solid = isScrolled || isMobileMenuOpen;
@@ -108,6 +116,17 @@ export default function Navbar() {
                 </div>
               )}
             </div>
+            {otherLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`link-quiet text-[13px] xl:text-sm tracking-wider xl:tracking-widest whitespace-nowrap transition-colors duration-500 ${
+                  solid ? 'text-ink/80 hover:text-ink' : 'text-washi/90 hover:text-washi'
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))}
           </div>
 
           {/* 言語 & お問い合わせ */}
@@ -186,6 +205,16 @@ export default function Navbar() {
                 ))}
               </div>
             </div>
+            {otherLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="py-3.5 border-b hairline font-serif text-lg text-ink tracking-widest"
+              >
+                {link.label}
+              </Link>
+            ))}
             <div className="flex gap-2 mt-8">
               {LOCALES.map((l) => (
                 <button
