@@ -31,12 +31,6 @@ export default function Navbar() {
     return () => { document.body.style.overflow = ''; };
   }, [isMobileMenuOpen]);
 
-  const propertyLinks = [
-    { href: '/rent', label: t.nav.rent },
-    { href: '/sale', label: t.nav.sale },
-    { href: '/invest', label: t.nav.invest },
-  ];
-
   const otherLinks = [
     { href: '/management', label: t.nav.management },
     { href: '/minpaku', label: t.nav.minpaku },

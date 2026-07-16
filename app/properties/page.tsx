@@ -264,6 +264,12 @@ export default function PropertiesPage() {
     return result
   }, [allProperties, activeTab, searchKeyword, selectedArea, minPrice, maxPrice])
 
+  const subNavItems: { key: PropertyKind; label: string; href: string }[] = [
+    { key: 'invest', label: p.invest, href: '/invest' },
+    { key: 'rent', label: p.rent, href: '/rent' },
+    { key: 'sale', label: p.sale, href: '/sale' },
+  ]
+
   const tabs: { key: PropertyKind; label: string }[] = [
     { key: 'invest', label: p.invest },
     { key: 'rent', label: p.rent },
@@ -390,23 +396,31 @@ export default function PropertiesPage() {
             </Heading>
           </Reveal>
 
-          {/* 物件種別ナビゲーション */}
+          {/* 物件種別ナビゲーション（ページ内） */}
           <Reveal className="mb-10">
             <div className="border hairline bg-white/70">
               <div className="flex flex-wrap">
-                {tabs.map((tab) => (
-                  <button
-                    key={tab.key}
-                    onClick={() => setActiveTab(tab.key)}
-                    className={`flex-1 min-w-[8rem] py-4 text-sm tracking-widest transition-colors duration-500 border-r hairline last:border-r-0 ${
-                      activeTab === tab.key
-                        ? 'bg-ink text-washi'
-                        : 'bg-white/40 text-ink/70 hover:bg-white/80 hover:text-ink'
-                    }`}
-                  >
-                    {tab.label}
-                  </button>
-                ))}
+                {subNavItems.map((item) => {
+                  const isActive = activeTab === item.key
+                  return (
+                    <Link
+                      key={item.key}
+                      href={item.href}
+                      onClick={(e) => {
+                        e.preventDefault()
+                        setActiveTab(item.key)
+                        window.scrollTo({ top: 0, behavior: 'smooth' })
+                      }}
+                      className={`flex-1 min-w-[8rem] py-4 text-sm tracking-widest text-center transition-colors duration-500 border-r hairline last:border-r-0 ${
+                        isActive
+                          ? 'bg-ink text-washi'
+                          : 'bg-white/40 text-ink/70 hover:bg-white/80 hover:text-ink'
+                      }`}
+                    >
+                      {item.label}
+                    </Link>
+                  )
+                })}
               </div>
             </div>
           </Reveal>

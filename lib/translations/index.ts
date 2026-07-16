@@ -539,7 +539,7 @@ export const translations = {
     // 投資物件検索
     properties: {
       title: '投資物件情報',
-      subtitle: '賃貸・売買・投資物件を一つの窓口で検索。投資物件を中心にご提案します。',
+      subtitle: '投資物件を中心に、賃貸・売買・投資物件を一つの窓口でご提案します。',
       label: 'Properties',
       all: 'すべて',
       rent: '賃貸',
