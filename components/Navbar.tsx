@@ -32,9 +32,7 @@ export default function Navbar() {
   }, [isMobileMenuOpen]);
 
   const links = [
-    { href: '/rent', label: t.nav.rent },
-    { href: '/sale', label: t.nav.sale },
-    { href: '/invest', label: t.nav.properties },
+    { href: '/properties', label: t.nav.properties },
     { href: '/management', label: t.nav.management },
     { href: '/minpaku', label: t.nav.minpaku },
     { href: '/market', label: t.nav.market },
