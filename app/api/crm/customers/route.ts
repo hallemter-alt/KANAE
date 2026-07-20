@@ -1,24 +1,24 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { supabase, isSupabaseConfigured } from '@/lib/supabase'
+import { requireAdmin, getServiceSupabase } from '@/lib/apiAuth'
+import { sanitizeSearch, parsePage, parseLimit } from '@/lib/apiUtils'
 
-// GET /api/crm/customers - 顧客一覧取得
+// GET /api/crm/customers - 顧客一覧取得（管理者専用）
 export async function GET(request: NextRequest) {
-  if (!isSupabaseConfigured) {
-    return NextResponse.json({
-      success: true,
-      customers: [],
-      pagination: { page: 1, limit: 20, total: 0, totalPages: 0 },
-      notice: 'Database is not configured yet.'
-    })
+  const authError = requireAdmin(request)
+  if (authError) return authError
+
+  const supabase = getServiceSupabase()
+  if (!supabase) {
+    return NextResponse.json({ error: 'Database is not configured' }, { status: 503 })
   }
 
   try {
     const { searchParams } = new URL(request.url)
     const type = searchParams.get('type')
     const status = searchParams.get('status')
-    const search = searchParams.get('search')
-    const page = parseInt(searchParams.get('page') || '1')
-    const limit = parseInt(searchParams.get('limit') || '20')
+    const search = sanitizeSearch(searchParams.get('search'))
+    const page = parsePage(searchParams.get('page'))
+    const limit = parseLimit(searchParams.get('limit'))
     const offset = (page - 1) * limit
 
     // クエリビルダー
@@ -60,9 +60,13 @@ export async function GET(request: NextRequest) {
   }
 }
 
-// POST /api/crm/customers - 顧客新規登録
+// POST /api/crm/customers - 顧客新規登録（管理者専用）
 export async function POST(request: NextRequest) {
-  if (!isSupabaseConfigured) {
+  const authError = requireAdmin(request)
+  if (authError) return authError
+
+  const supabase = getServiceSupabase()
+  if (!supabase) {
     return NextResponse.json({ error: 'Database is not configured' }, { status: 503 })
   }
 

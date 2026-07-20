@@ -1,7 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { supabase, isSupabaseConfigured } from '@/lib/supabase'
+import { requireAdmin, getServiceSupabase } from '@/lib/apiAuth'
 
-// GET /api/properties/:id - 物件詳細取得
+// GET /api/properties/:id - 物件詳細取得（公開）
+// ※問合せ・お気に入り・顧客情報は個人情報のため含めない。
+//   それらを含む詳細は管理系エンドポイント（/api/crm/customers/:id 等）で取得すること。
 export async function GET(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
@@ -14,15 +17,9 @@ export async function GET(
     const { id } = await params
     const { data, error } = await supabase
       .from('properties')
-      .select(`
-        *,
-        inquiries (*),
-        property_favorites (
-          *,
-          customer:customers (*)
-        )
-      `)
+      .select('*')
       .eq('id', id)
+      .neq('status', 'hidden') // 非公開物件は返さない
       .single()
 
     if (error) {
@@ -40,12 +37,16 @@ export async function GET(
   }
 }
 
-// PUT /api/properties/:id - 物件更新
+// PUT /api/properties/:id - 物件更新（管理者専用）
 export async function PUT(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
-  if (!isSupabaseConfigured) {
+  const authError = requireAdmin(request)
+  if (authError) return authError
+
+  const supabase = getServiceSupabase()
+  if (!supabase) {
     return NextResponse.json({ error: 'Database is not configured' }, { status: 503 })
   }
 
@@ -103,12 +104,16 @@ export async function PUT(
   }
 }
 
-// DELETE /api/properties/:id - 物件削除
+// DELETE /api/properties/:id - 物件削除（管理者専用）
 export async function DELETE(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
-  if (!isSupabaseConfigured) {
+  const authError = requireAdmin(request)
+  if (authError) return authError
+
+  const supabase = getServiceSupabase()
+  if (!supabase) {
     return NextResponse.json({ error: 'Database is not configured' }, { status: 503 })
   }
 

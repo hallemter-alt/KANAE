@@ -1,11 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { supabase, isSupabaseConfigured } from '@/lib/supabase'
+import { requireAdmin, getServiceSupabase } from '@/lib/apiAuth'
+import { sanitizeSearch, parsePage, parseLimit } from '@/lib/apiUtils'
 
-// Edge Runtime 配置以獲得更快的響應
 export const runtime = 'nodejs' // Supabase需要Node.js runtime
 export const dynamic = 'force-dynamic' // 始終動態生成
 
-// GET /api/properties - 物件一覧取得・検索
+// 公開向けソート可能カラムのホワイトリスト
+const SORTABLE_COLUMNS = ['created_at', 'price', 'monthly_rent', 'area', 'building_age'] as const
+
+// GET /api/properties - 物件一覧取得・検索（公開：available のみ返す）
 export async function GET(request: NextRequest) {
   // データベース未設定時は空のリストを返す（グレースフルデグラデーション）
   if (!isSupabaseConfigured) {
@@ -23,29 +27,34 @@ export async function GET(request: NextRequest) {
     const minPrice = searchParams.get('minPrice')
     const maxPrice = searchParams.get('maxPrice')
     const rooms = searchParams.get('rooms')
-    const status = searchParams.get('status') || 'available'
-    const search = searchParams.get('search')
-    const sort = searchParams.get('sort') || 'created_at'
-    const order = searchParams.get('order') || 'desc'
-    const page = parseInt(searchParams.get('page') || '1')
-    const limit = parseInt(searchParams.get('limit') || '20')
+    const search = sanitizeSearch(searchParams.get('search'))
+    const page = parsePage(searchParams.get('page'))
+    const limit = parseLimit(searchParams.get('limit'))
     const offset = (page - 1) * limit
 
-    // クエリビルダー
+    // ソート指定はホワイトリストで検証（任意カラム名の注入防止）
+    const sortRaw = searchParams.get('sort') || 'created_at'
+    const sort = (SORTABLE_COLUMNS as readonly string[]).includes(sortRaw) ? sortRaw : 'created_at'
+    const ascending = searchParams.get('order') === 'asc'
+
+    // クエリビルダー（公開エンドポイントのため available 固定。
+    // status パラメータは受け付けず、rented/sold/hidden の物件は返さない）
     let query = supabase
       .from('properties')
       .select('*', { count: 'exact' })
-      .eq('status', status)
+      .eq('status', 'available')
 
     // フィルター適用
     if (type) {
       query = query.eq('type', type)
     }
     if (minPrice) {
-      query = query.gte('price', parseFloat(minPrice))
+      const n = parseFloat(minPrice)
+      if (Number.isFinite(n)) query = query.gte('price', n)
     }
     if (maxPrice) {
-      query = query.lte('price', parseFloat(maxPrice))
+      const n = parseFloat(maxPrice)
+      if (Number.isFinite(n)) query = query.lte('price', n)
     }
     if (rooms) {
       query = query.eq('rooms', rooms)
@@ -54,12 +63,8 @@ export async function GET(request: NextRequest) {
       query = query.or(`title.ilike.%${search}%,address.ilike.%${search}%,description.ilike.%${search}%`)
     }
 
-    // ソート
-    const ascending = order === 'asc'
-    query = query.order(sort, { ascending })
-
-    // ページネーション
-    query = query.range(offset, offset + limit - 1)
+    // ソート & ページネーション
+    query = query.order(sort, { ascending }).range(offset, offset + limit - 1)
 
     const { data, error, count } = await query
 
@@ -84,9 +89,13 @@ export async function GET(request: NextRequest) {
   }
 }
 
-// POST /api/properties - 物件新規登録
+// POST /api/properties - 物件新規登録（管理者専用）
 export async function POST(request: NextRequest) {
-  if (!isSupabaseConfigured) {
+  const authError = requireAdmin(request)
+  if (authError) return authError
+
+  const supabase = getServiceSupabase()
+  if (!supabase) {
     return NextResponse.json({ error: 'Database is not configured' }, { status: 503 })
   }
 
@@ -104,6 +113,11 @@ export async function POST(request: NextRequest) {
     // タイプのバリデーション
     if (!['rent', 'sale', 'minpaku'].includes(body.type)) {
       return NextResponse.json({ error: 'Invalid type. Must be rent, sale, or minpaku' }, { status: 400 })
+    }
+
+    // ステータスのバリデーション
+    if (body.status && !['available', 'rented', 'sold', 'hidden'].includes(body.status)) {
+      return NextResponse.json({ error: 'Invalid status' }, { status: 400 })
     }
 
     // データ挿入

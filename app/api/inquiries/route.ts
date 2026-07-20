@@ -1,23 +1,23 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { supabase, isSupabaseConfigured } from '@/lib/supabase'
+import { requireAdmin, getServiceSupabase } from '@/lib/apiAuth'
+import { parsePage, parseLimit } from '@/lib/apiUtils'
 
-// GET /api/inquiries - 問合せ一覧取得
+// GET /api/inquiries - 問合せ一覧取得（管理者専用：個人情報を含む）
 export async function GET(request: NextRequest) {
-  if (!isSupabaseConfigured) {
-    return NextResponse.json({
-      success: true,
-      inquiries: [],
-      pagination: { page: 1, limit: 20, total: 0, totalPages: 0 },
-      notice: 'Database is not configured yet.'
-    })
+  const authError = requireAdmin(request)
+  if (authError) return authError
+
+  const supabase = getServiceSupabase()
+  if (!supabase) {
+    return NextResponse.json({ error: 'Database is not configured' }, { status: 503 })
   }
 
   try {
     const { searchParams } = new URL(request.url)
     const status = searchParams.get('status')
     const type = searchParams.get('type')
-    const page = parseInt(searchParams.get('page') || '1')
-    const limit = parseInt(searchParams.get('limit') || '20')
+    const page = parsePage(searchParams.get('page'))
+    const limit = parseLimit(searchParams.get('limit'))
     const offset = (page - 1) * limit
 
     // クエリビルダー

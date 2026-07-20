@@ -1,13 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { supabase, isSupabaseConfigured } from '@/lib/supabase'
+import { requireAdmin, getServiceSupabase } from '@/lib/apiAuth'
 
-// GET /api/crm/customers/:id - 顧客詳細取得
+// GET /api/crm/customers/:id - 顧客詳細取得（管理者専用）
 export async function GET(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
-  if (!isSupabaseConfigured) {
-    return NextResponse.json({ error: 'Customer not found' }, { status: 404 })
+  const authError = requireAdmin(request)
+  if (authError) return authError
+
+  const supabase = getServiceSupabase()
+  if (!supabase) {
+    return NextResponse.json({ error: 'Database is not configured' }, { status: 503 })
   }
 
   try {
@@ -40,12 +44,16 @@ export async function GET(
   }
 }
 
-// PUT /api/crm/customers/:id - 顧客更新
+// PUT /api/crm/customers/:id - 顧客更新（管理者専用）
 export async function PUT(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
-  if (!isSupabaseConfigured) {
+  const authError = requireAdmin(request)
+  if (authError) return authError
+
+  const supabase = getServiceSupabase()
+  if (!supabase) {
     return NextResponse.json({ error: 'Database is not configured' }, { status: 503 })
   }
 
@@ -106,12 +114,16 @@ export async function PUT(
   }
 }
 
-// DELETE /api/crm/customers/:id - 顧客削除
+// DELETE /api/crm/customers/:id - 顧客削除（管理者専用）
 export async function DELETE(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
-  if (!isSupabaseConfigured) {
+  const authError = requireAdmin(request)
+  if (authError) return authError
+
+  const supabase = getServiceSupabase()
+  if (!supabase) {
     return NextResponse.json({ error: 'Database is not configured' }, { status: 503 })
   }
 
