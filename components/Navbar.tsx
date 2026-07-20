@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { translations, type Locale } from '@/lib/translations';
@@ -14,7 +14,10 @@ const LOCALES: { code: Locale; label: string }[] = [
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isPropertyDropdownOpen, setIsPropertyDropdownOpen] = useState(false);
+  const [isMobilePropertyOpen, setIsMobilePropertyOpen] = useState(false);
   const { locale, setLocale } = useLanguage();
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const t = translations[locale];
 
@@ -30,6 +33,23 @@ export default function Navbar() {
     document.body.style.overflow = isMobileMenuOpen ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
   }, [isMobileMenuOpen]);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsPropertyDropdownOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  const propertySubLinks = [
+    { href: '/rent', label: t.nav.rent },
+    { href: '/sale', label: t.nav.sale },
+    { href: '/properties', label: t.nav.invest },
+  ];
 
   const otherLinks = [
     { href: '/management', label: t.nav.management },
@@ -71,14 +91,49 @@ export default function Navbar() {
 
           {/* デスクトップ・ナビ */}
           <div className="hidden lg:flex items-center gap-5 xl:gap-7">
-            <Link
-              href="/properties"
-              className={`link-quiet text-[13px] xl:text-sm tracking-wider xl:tracking-widest whitespace-nowrap transition-colors duration-500 ${
-                solid ? 'text-ink/80 hover:text-ink' : 'text-washi/90 hover:text-washi'
-              }`}
-            >
-              {t.nav.propertyInfo}
-            </Link>
+            {/* 物件情報 ドロップダウン */}
+            <div className="relative" ref={dropdownRef}>
+              <button
+                onClick={() => setIsPropertyDropdownOpen(!isPropertyDropdownOpen)}
+                onMouseEnter={() => setIsPropertyDropdownOpen(true)}
+                className={`flex items-center gap-1 link-quiet text-[13px] xl:text-sm tracking-wider xl:tracking-widest whitespace-nowrap transition-colors duration-500 ${
+                  solid ? 'text-ink/80 hover:text-ink' : 'text-washi/90 hover:text-washi'
+                }`}
+              >
+                {t.nav.propertyInfo}
+                <svg
+                  className={`w-3 h-3 transition-transform duration-300 ${isPropertyDropdownOpen ? 'rotate-180' : ''}`}
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+
+              {/* ドロップダウンメニュー */}
+              <div
+                onMouseLeave={() => setIsPropertyDropdownOpen(false)}
+                className={`absolute top-full left-1/2 -translate-x-1/2 mt-2 w-40 bg-washi/98 backdrop-blur-md border hairline shadow-md transition-all duration-300 ${
+                  isPropertyDropdownOpen
+                    ? 'opacity-100 translate-y-0 pointer-events-auto'
+                    : 'opacity-0 -translate-y-2 pointer-events-none'
+                }`}
+              >
+                {propertySubLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setIsPropertyDropdownOpen(false)}
+                    className="block px-5 py-3 text-[12px] xl:text-[13px] tracking-widest text-ink/75 hover:text-ink hover:bg-ink/5 transition-colors duration-200 border-b hairline last:border-b-0"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
             {otherLinks.map((link) => (
               <Link
                 key={link.href}
@@ -153,13 +208,40 @@ export default function Navbar() {
             <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="py-3.5 border-b hairline font-serif text-lg text-ink tracking-widest">
               {t.nav.home}
             </Link>
-            <Link
-              href="/properties"
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="py-3.5 border-b hairline font-serif text-lg text-ink tracking-widest"
-            >
-              {t.nav.propertyInfo}
-            </Link>
+
+            {/* 物件情報 アコーディオン */}
+            <div className="border-b hairline">
+              <button
+                onClick={() => setIsMobilePropertyOpen(!isMobilePropertyOpen)}
+                className="w-full flex justify-between items-center py-3.5 font-serif text-lg text-ink tracking-widest"
+              >
+                {t.nav.propertyInfo}
+                <svg
+                  className={`w-4 h-4 transition-transform duration-300 ${isMobilePropertyOpen ? 'rotate-180' : ''}`}
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              {isMobilePropertyOpen && (
+                <div className="pb-2 pl-4 flex flex-col gap-1">
+                  {propertySubLinks.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="py-2.5 text-sm text-ink/70 tracking-widest hover:text-ink transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+
             {otherLinks.map((link) => (
               <Link
                 key={link.href}
