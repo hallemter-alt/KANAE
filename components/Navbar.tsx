@@ -48,7 +48,7 @@ export default function Navbar() {
   const propertySubLinks = [
     { href: '/rent', label: t.nav.rent },
     { href: '/sale', label: t.nav.sale },
-    { href: '/properties', label: t.nav.invest },
+    { href: '/invest', label: t.nav.invest },
   ];
 
   const otherLinks = [

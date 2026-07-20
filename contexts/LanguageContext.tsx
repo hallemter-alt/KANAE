@@ -22,6 +22,11 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     }
   }, [])
 
+  // <html lang> を現在の言語に同期（SEO・アクセシビリティ対応）
+  useEffect(() => {
+    document.documentElement.lang = locale === 'zh' ? 'zh-Hant' : locale
+  }, [locale])
+
   const setLocale = (newLocale: Locale) => {
     setLocaleState(newLocale)
     localStorage.setItem('locale', newLocale)
