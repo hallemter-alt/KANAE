@@ -9,7 +9,8 @@ export const dynamic = 'force-dynamic' // 始終動態生成
 // 公開向けソート可能カラムのホワイトリスト
 const SORTABLE_COLUMNS = ['created_at', 'price', 'monthly_rent', 'area', 'building_age'] as const
 
-// GET /api/properties - 物件一覧取得・検索（公開：available のみ返す）
+// GET /api/properties - 物件一覧取得・検索（公開）
+// status パラメータで絞り込み可能（デフォルト available）。物件情報は公開方針。
 export async function GET(request: NextRequest) {
   // データベース未設定時は空のリストを返す（グレースフルデグラデーション）
   if (!isSupabaseConfigured) {
@@ -27,6 +28,7 @@ export async function GET(request: NextRequest) {
     const minPrice = searchParams.get('minPrice')
     const maxPrice = searchParams.get('maxPrice')
     const rooms = searchParams.get('rooms')
+    const status = searchParams.get('status') || 'available'
     const search = sanitizeSearch(searchParams.get('search'))
     const page = parsePage(searchParams.get('page'))
     const limit = parseLimit(searchParams.get('limit'))
@@ -37,12 +39,11 @@ export async function GET(request: NextRequest) {
     const sort = (SORTABLE_COLUMNS as readonly string[]).includes(sortRaw) ? sortRaw : 'created_at'
     const ascending = searchParams.get('order') === 'asc'
 
-    // クエリビルダー（公開エンドポイントのため available 固定。
-    // status パラメータは受け付けず、rented/sold/hidden の物件は返さない）
+    // クエリビルダー
     let query = supabase
       .from('properties')
       .select('*', { count: 'exact' })
-      .eq('status', 'available')
+      .eq('status', status)
 
     // フィルター適用
     if (type) {

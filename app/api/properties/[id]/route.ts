@@ -3,7 +3,8 @@ import { supabase, isSupabaseConfigured } from '@/lib/supabase'
 import { requireAdmin, getServiceSupabase } from '@/lib/apiAuth'
 
 // GET /api/properties/:id - 物件詳細取得（公開）
-// ※問合せ・お気に入り・顧客情報は個人情報のため含めない。
+// ※物件情報は公開方針のため status に関係なく返す。
+//   ただし問合せ・お気に入り・顧客情報（個人情報）は含めない。
 //   それらを含む詳細は管理系エンドポイント（/api/crm/customers/:id 等）で取得すること。
 export async function GET(
   request: NextRequest,
@@ -19,7 +20,6 @@ export async function GET(
       .from('properties')
       .select('*')
       .eq('id', id)
-      .neq('status', 'hidden') // 非公開物件は返さない
       .single()
 
     if (error) {
