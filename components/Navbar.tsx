@@ -115,7 +115,7 @@ export default function Navbar() {
               {/* ドロップダウンメニュー */}
               <div
                 onMouseLeave={() => setIsPropertyDropdownOpen(false)}
-                className={`absolute top-full left-1/2 -translate-x-1/2 mt-2 w-40 bg-washi/98 backdrop-blur-md border hairline shadow-md transition-all duration-300 ${
+                className={`absolute top-full left-1/2 -translate-x-1/2 mt-3 w-44 bg-washi border hairline shadow-lg transition-all duration-300 z-50 ${
                   isPropertyDropdownOpen
                     ? 'opacity-100 translate-y-0 pointer-events-auto'
                     : 'opacity-0 -translate-y-2 pointer-events-none'
@@ -126,7 +126,7 @@ export default function Navbar() {
                     key={link.href}
                     href={link.href}
                     onClick={() => setIsPropertyDropdownOpen(false)}
-                    className="block px-5 py-3 text-[12px] xl:text-[13px] tracking-widest text-ink/75 hover:text-ink hover:bg-ink/5 transition-colors duration-200 border-b hairline last:border-b-0"
+                    className="block px-5 py-3.5 text-[12px] xl:text-[13px] tracking-widest text-ink/70 hover:text-ink hover:bg-stone/10 transition-colors duration-200 border-b hairline last:border-b-0"
                   >
                     {link.label}
                   </Link>

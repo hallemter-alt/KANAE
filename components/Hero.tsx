@@ -23,9 +23,10 @@ export default function Hero() {
   ];
 
   return (
-    <section className="relative min-h-[100svh] flex items-end overflow-hidden bg-ink">
-      {/* 背景 — 光が差し込む建築（固定・4K） */}
-      <div className="absolute inset-0">
+    /* overflow は設定しない — ドロップダウンが section 外へ延びる必要があるため */
+    <section className="relative min-h-[100svh] flex items-end bg-ink">
+      {/* 背景コンテナ — overflow-hidden をここに閉じ込める */}
+      <div className="absolute inset-0 overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center animate-slowfade"
           style={{ backgroundImage: `url('${IMAGES.heroFixed}')` }}
@@ -47,8 +48,8 @@ export default function Hero() {
         </p>
       </div>
 
-      {/* コンテンツ */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 pb-24 md:pb-32 pt-40">
+      {/* コンテンツ — ドロップダウン分の pb を追加 */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 pb-36 md:pb-44 pt-40">
         <div className="max-w-3xl">
           <p className="animate-rise text-washi/60 text-xs tracking-[0.4em] uppercase mb-6 font-serif">
             Kanae Real Estate — Tokyo
@@ -65,8 +66,10 @@ export default function Hero() {
           </p>
 
           <div className="animate-rise-late flex flex-col sm:flex-row gap-4">
+            {/* 物件を探す — ドロップダウン */}
             <div
               className="relative"
+              style={{ zIndex: 30 }}
               onMouseEnter={() => setIsSearchMenuOpen(true)}
               onMouseLeave={() => setIsSearchMenuOpen(false)}
             >
@@ -83,22 +86,33 @@ export default function Hero() {
                   aria-hidden="true"
                 />
               </button>
-              {isSearchMenuOpen && (
-                <div className="absolute top-full left-0 sm:left-1/2 sm:-translate-x-1/2 pt-2">
-                  <div className="border border-washi/20 bg-ink/95 backdrop-blur-md shadow-lg px-2 py-2 min-w-[12rem]">
-                    {searchLinks.map((link) => (
-                      <Link
-                        key={link.href}
-                        href={link.href}
-                        className="block px-4 py-2.5 text-[13px] text-washi/90 tracking-wider whitespace-nowrap hover:bg-washi/10 hover:text-washi transition-colors duration-300"
-                      >
-                        {link.label}
-                      </Link>
-                    ))}
-                  </div>
+
+              {/* ドロップダウンメニュー — transition でスムーズ表示 */}
+              <div
+                className={`absolute top-full left-0 sm:left-1/2 sm:-translate-x-1/2 pt-3 transition-all duration-300 ${
+                  isSearchMenuOpen
+                    ? 'opacity-100 translate-y-0 pointer-events-auto'
+                    : 'opacity-0 -translate-y-2 pointer-events-none'
+                }`}
+              >
+                <div className="border border-washi/25 bg-ink/96 backdrop-blur-md shadow-xl min-w-[14rem]">
+                  {searchLinks.map((link, i) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className={`flex items-center gap-3 px-6 py-4 text-[13px] text-washi/80 tracking-widest whitespace-nowrap hover:bg-washi/10 hover:text-washi transition-colors duration-200 ${
+                        i < searchLinks.length - 1 ? 'border-b border-washi/12' : ''
+                      }`}
+                    >
+                      {/* 小さなドット装飾 */}
+                      <span className="w-1 h-1 rounded-full bg-washi/40 flex-shrink-0" aria-hidden="true" />
+                      {link.label}
+                    </Link>
+                  ))}
                 </div>
-              )}
+              </div>
             </div>
+
             <Link
               href="/about"
               className="group inline-flex items-center justify-center gap-3 text-washi/80 px-4 py-4 text-sm tracking-[0.2em] hover:text-washi transition-colors duration-500"
