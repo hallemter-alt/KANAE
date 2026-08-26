@@ -174,7 +174,7 @@ export const products = [
   },
   {
     name: 'NALEXIBLE EasyStone',
-    slug: '/materials/products#stone-sheet',
+    slug: '/materials/products/easystone',
     image: '/assets/materials/images/product-easystone.webp',
     sourceUrl: 'https://www.nalexible.com/products-ClassID-43.html',
     tags: ['Natural stone', '1-3mm stone series', 'Interior / exterior'],
@@ -191,7 +191,7 @@ export const products = [
   },
   {
     name: 'NALEXIBLE Flexible Stone UV',
-    slug: '/materials/products#facade-alu',
+    slug: '/materials/products/flexible-stone-uv',
     image: '/assets/materials/images/product-flexible-stone-uv.webp',
     sourceUrl: 'https://www.nalexible.com/products-ClassID-41.html',
     tags: ['Flexible stone', 'UV surface', 'Thin stone'],
@@ -208,7 +208,7 @@ export const products = [
   },
   {
     name: 'NALEXIBLE w/Acoustic Molded Door',
-    slug: '/materials/products#acoustic-panel',
+    slug: '/materials/products/acoustic-molded-door',
     image: '/assets/materials/images/product-acoustic-door.webp',
     sourceUrl: 'https://www.nalexible.com/products-ClassID-47.html',
     tags: ['Acoustic', 'Molded door', 'Fiberboard'],
@@ -224,6 +224,88 @@ export const products = [
     },
   },
 ] as const;
+
+export const productDetailSlugs = ['easystone', 'flexible-stone-uv', 'acoustic-molded-door'] as const;
+export type ProductDetailSlug = typeof productDetailSlugs[number];
+
+type LocalizedString = Record<MaterialsLocale, string>;
+type LocalizedList = Record<MaterialsLocale, string[]>;
+
+export type ProductDetail = {
+  title: LocalizedString;
+  lead: LocalizedString;
+  applications: LocalizedList;
+  reviewPoints: LocalizedList;
+};
+
+export const productDetails: Record<ProductDetailSlug, ProductDetail> = {
+  easystone: {
+    title: {
+      ja: '天然石の質感を、軽量な薄型建材として扱う',
+      zh: '以輕量薄型建材方式導入天然石質感',
+      en: 'Natural-stone texture in a lightweight thin-material format',
+    },
+    lead: {
+      ja: 'EasyStone は、天然石を薄く扱いやすい建材へ転換する製品群です。重い石材をそのまま使いにくい改修・商業空間・家具面材などで、石の表情を活かしながら施工負荷を抑える採用検討につなげます。',
+      zh: 'EasyStone 將天然石轉化為更薄、更易導入的建材。適合在翻新、商業空間與家具面材等不便使用厚重石材的場景中，兼顧石材質感與施工負擔。',
+      en: 'EasyStone converts natural stone into a thinner and easier-to-handle building-material format. It supports adoption review for renovation, commercial interiors and panel or furniture surfaces where full-weight stone is difficult to use.',
+    },
+    applications: {
+      ja: ['ホテル・商業施設の壁面意匠', '既存建物の改修・リニューアル', '家具・什器・建具の表面材', '軽量下地への石材意匠付与'],
+      zh: ['飯店與商業設施牆面設計', '既有建築翻新與更新', '家具、什器、建具表面材', '輕量基底上的石材質感表現'],
+      en: ['Hotel and commercial wall finishes', 'Renovation and refurbishment projects', 'Furniture, fixture and door surface materials', 'Stone appearance on lightweight substrates'],
+    },
+    reviewPoints: {
+      ja: ['天然石柄・ロット差・サンプル確認', '下地材、接着方法、端部納まり', '内装・外装など使用環境ごとの条件', '数量、納期、輸入・保管条件'],
+      zh: ['天然石紋理、批次差異與樣品確認', '基底材料、黏貼方式與收邊處理', '依內裝／外裝使用環境確認條件', '數量、交期、進口與保管條件'],
+      en: ['Stone pattern, batch variation and sample review', 'Substrate, adhesive method and edge details', 'Interior/exterior environment requirements', 'Quantity, lead time, import and storage conditions'],
+    },
+  },
+  'flexible-stone-uv': {
+    title: {
+      ja: '曲面・軽量下地にも検討しやすい UV 仕上げ薄型石材',
+      zh: '適合曲面與輕量基底評估的 UV 表面薄型石材',
+      en: 'UV-finished thin stone for curved and lightweight substrate review',
+    },
+    lead: {
+      ja: 'Flexible Stone UV は、薄型天然石の意匠性に UV 仕上げを組み合わせた製品です。外装・内装の意匠材として、曲面、軽量パネル、改修下地など、従来石材では制約が出やすい部位での検討を支援します。',
+      zh: 'Flexible Stone UV 結合薄型天然石質感與 UV 表面處理。作為外裝與內裝設計材，可用於曲面、輕量面板與翻新基底等傳統石材受限的部位評估。',
+      en: 'Flexible Stone UV combines thin natural-stone expression with a UV-finished surface. It supports exterior and interior design-material review for curved surfaces, lightweight panels and renovation substrates where conventional stone may be constrained.',
+    },
+    applications: {
+      ja: ['外装・内装アクセントパネル', '曲面壁・柱まわりの意匠材', '軽量パネルへの貼付け', '店舗・宿泊施設の改修提案'],
+      zh: ['外裝與內裝重點牆面板', '曲面牆與柱面設計材', '輕量面板貼付用途', '店鋪與住宿設施翻新提案'],
+      en: ['Exterior and interior accent panels', 'Curved wall and column finishes', 'Lamination onto lightweight panels', 'Retail and hospitality refurbishment proposals'],
+    },
+    reviewPoints: {
+      ja: ['UV 仕上げ面の質感・耐候条件確認', '曲げ半径、下地追従性、接着仕様', '屋外利用時の下地・防水・端部設計', '柄展開と案件数量に応じた納期確認'],
+      zh: ['確認 UV 表面質感與耐候條件', '彎曲半徑、基底追隨性與黏貼規格', '戶外使用時的基底、防水與邊部設計', '依紋理選項與案件數量確認交期'],
+      en: ['UV surface texture and weathering conditions', 'Bending radius, substrate following and adhesive specification', 'Substrate, waterproofing and edge design for exterior use', 'Pattern selection and lead-time review by project quantity'],
+    },
+  },
+  'acoustic-molded-door': {
+    title: {
+      ja: '音環境に配慮した成形ドア・建具用途',
+      zh: '重視聲環境的成型門與建具用途',
+      en: 'Molded-door applications with acoustic considerations',
+    },
+    lead: {
+      ja: 'w/Acoustic Molded Door は、Natural Fibre Board を活用した成形ドア用途の製品群です。ホテル、集合住宅、オフィス、教育施設など、建具の意匠と音環境の両面を確認したい案件で、仕様検討の入口をつくります。',
+      zh: 'w/Acoustic Molded Door 是運用 Natural Fibre Board 的成型門用途產品。適合飯店、集合住宅、辦公室與教育設施等同時重視門片設計與聲環境的案件作為規格評估入口。',
+      en: 'w/Acoustic Molded Door is a molded-door product direction using Natural Fibre Board. It creates an entry point for specification review in hotels, multifamily housing, offices and education facilities where door design and acoustic comfort both matter.',
+    },
+    applications: {
+      ja: ['ホテル客室・共用部の建具', '集合住宅の室内ドア', 'オフィス・会議室まわり', '教育・医療施設の音環境配慮部位'],
+      zh: ['飯店客房與公共區域建具', '集合住宅室內門', '辦公室與會議室周邊', '教育與醫療設施中重視聲環境的部位'],
+      en: ['Hotel guestroom and common-area doors', 'Interior doors for multifamily housing', 'Office and meeting-room areas', 'Acoustic-sensitive areas in education and healthcare facilities'],
+    },
+    reviewPoints: {
+      ja: ['ドア構成、芯材、面材、金物条件', '必要な遮音・吸音目標の整理', 'サイズ、重量、取付条件の確認', '量産・OEM・共同開発の可能性'],
+      zh: ['門片構成、芯材、面材與五金條件', '整理所需隔音／吸音目標', '確認尺寸、重量與安裝條件', '量產、OEM 與共同開發可能性'],
+      en: ['Door composition, core, surface and hardware conditions', 'Required sound-insulation or absorption targets', 'Size, weight and installation requirements', 'Mass production, OEM and co-development potential'],
+    },
+  },
+};
 
 export const documents = [
   {

@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { INVEST_PROPERTIES } from "@/lib/invest";
+import { productDetails } from "@/lib/materialsContent";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://kanae-tau.vercel.app";
 
@@ -30,6 +31,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: route === "" ? 1 : 0.8,
   }));
 
+  const materialProductEntries: MetadataRoute.Sitemap = Object.keys(productDetails).map((slug) => ({
+    url: `${siteUrl}/materials/products/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: 0.75,
+  }));
+
   // 公開中の投資物件のみサイトマップに含める
   const investEntries: MetadataRoute.Sitemap = INVEST_PROPERTIES.filter(
     (p) => p.published
@@ -40,5 +48,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.9,
   }));
 
-  return [...staticEntries, ...investEntries];
+  return [...staticEntries, ...materialProductEntries, ...investEntries];
 }
