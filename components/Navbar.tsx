@@ -54,6 +54,7 @@ export default function Navbar() {
   const otherLinks = [
     { href: '/management', label: t.nav.management },
     { href: '/minpaku', label: t.nav.minpaku },
+    { href: '/materials', label: t.nav.materials },
     { href: '/market', label: t.nav.market },
     { href: '/about', label: t.nav.about },
     { href: '/philosophy', label: t.nav.philosophy },
