@@ -10,9 +10,31 @@ import { useLanguage } from '@/contexts/LanguageContext'
 import { translations } from '@/lib/translations'
 import { IMAGES } from '@/lib/images'
 
+const managementStatValues = {
+  ja: {
+    properties: '個別対応',
+    units: '200戸未満',
+    occupancyRate: '個別確認',
+    avgYears: '随時更新',
+  },
+  zh: {
+    properties: '個案對應',
+    units: '未滿200戶',
+    occupancyRate: '個別確認',
+    avgYears: '隨時更新',
+  },
+  en: {
+    properties: 'Case-by-case',
+    units: 'Under 200',
+    occupancyRate: 'By review',
+    avgYears: 'Updated',
+  },
+} as const
+
 export default function ManagementPage() {
   const { locale } = useLanguage()
   const t = translations[locale]
+  const stats = managementStatValues[locale]
   const [activeTab, setActiveTab] = useState<'owner' | 'tenant'>('owner')
 
   return (
@@ -161,12 +183,12 @@ export default function ManagementPage() {
                     </Heading>
                   </Reveal>
                   <div className="grid grid-cols-2 divide-x divide-ink/10 border-t border-b hairline">
-                    <StatCell number="250+" label={t.management.properties} />
-                    <StatCell number="1,500+" label={t.management.units} />
+                    <StatCell number={stats.properties} label={t.management.properties} />
+                    <StatCell number={stats.units} label={t.management.units} />
                   </div>
                   <div className="grid grid-cols-2 divide-x divide-ink/10 border-b hairline">
-                    <StatCell number="98%" label={t.management.occupancyRate} />
-                    <StatCell number="15年" label={t.management.avgYears} />
+                    <StatCell number={stats.occupancyRate} label={t.management.occupancyRate} />
+                    <StatCell number={stats.avgYears} label={t.management.avgYears} />
                   </div>
                 </div>
               </div>
