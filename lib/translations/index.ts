@@ -12,6 +12,7 @@ export const translations = {
       management: '管理',
       minpaku: '民泊',
       market: 'マーケット',
+      materials: '建材',
       about: '会社概要',
       philosophy: '企業理念',
       contact: 'お問い合わせ',
@@ -81,7 +82,7 @@ export const translations = {
     // サービス
     services: {
       title: '事業内容',
-      subtitle: '4つの事業で、お客様の幸福を実現します',
+      subtitle: '5つの事業で、お客様の幸福と価値創造を実現します',
       learnMore: '詳しく見る',
       dialogueLead: '事業のかたちは違っても、私たちが見つめるのはいつも同じ——建築と人が交わす、静かな対話です。',
       rent: {
@@ -103,6 +104,11 @@ export const translations = {
         title: '民泊事業',
         philosophy: '訪れる人と、この土地の時間を結ぶ',
         description: 'OneStep PMS連動で、民泊運営を完全サポート。収益最大化を実現',
+      },
+      materials: {
+        title: '建材・国際貿易事業',
+        philosophy: '素材と技術を、日本の建築へつなぐ',
+        description: 'NFB BOARDを旗艦商品に、海外建材技術の日本仕様化・技術評価・販売・共同開発を推進',
       },
       stats: {
         minpakuProperties: '民泊運営物件',
@@ -650,6 +656,7 @@ export const translations = {
       management: '管理',
       minpaku: '民宿',
       market: '市場洞察',
+      materials: '建材',
       about: '公司簡介',
       philosophy: '企業理念',
       contact: '聯繫我們',
@@ -719,7 +726,7 @@ export const translations = {
     // 服务
     services: {
       title: '業務內容',
-      subtitle: '通過四大業務，實現客戶的幸福',
+      subtitle: '透過五大業務，實現客戶幸福與價值創造',
       learnMore: '瞭解更多',
       dialogueLead: '業務的形態各異，我們凝望的卻始終如一——建築與人之間，那場靜謐的對話。',
       rent: {
@@ -741,6 +748,11 @@ export const translations = {
         title: '民宿業務',
         philosophy: '讓來訪之人，與這片土地的時光相繫',
         description: '通過OneStep PMS聯動，全面支持民宿運營，實現收益最大化',
+      },
+      materials: {
+        title: '建材・國際貿易事業',
+        philosophy: '把材料與技術連接到日本建築',
+        description: '以 NFB BOARD 為旗艦，推進海外建材技術的日本規格化、技術評估、銷售與共同開發',
       },
       stats: {
         minpakuProperties: '民宿運營物業',
@@ -1286,6 +1298,7 @@ export const translations = {
       management: 'Management',
       minpaku: 'Vacation Rental',
       market: 'Market Insight',
+      materials: 'Materials',
       about: 'About Us',
       philosophy: 'Philosophy',
       contact: 'Contact',
@@ -1355,7 +1368,7 @@ export const translations = {
     // Services
     services: {
       title: 'Our Services',
-      subtitle: 'Four Business Areas to Realize Customer Happiness',
+      subtitle: 'Five business areas to create customer happiness and lasting value',
       learnMore: 'Learn More',
       dialogueLead: 'The forms of our work may differ, yet what we look to is always the same \u2014 the quiet dialogue exchanged between architecture and people.',
       rent: {
@@ -1377,6 +1390,11 @@ export const translations = {
         title: 'Vacation Rental Business',
         philosophy: 'Binding each visitor to the time of this land',
         description: 'Full support for vacation rental operations with OneStep PMS integration to maximize revenue',
+      },
+      materials: {
+        title: 'Building Materials & Global Trade',
+        philosophy: 'Connecting materials and technology with Japanese architecture',
+        description: 'Positioning NFB BOARD as the flagship while localizing, evaluating, selling and co-developing global building technologies',
       },
       stats: {
         minpakuProperties: 'Vacation Rental Properties',

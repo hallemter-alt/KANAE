@@ -52,6 +52,15 @@ export default function Services() {
       image: IMAGES.biophilic,
       alt: '緑と共にある住まい',
     },
+    {
+      num: '05',
+      title: t.services.materials.title,
+      philosophy: t.services.materials.philosophy,
+      description: t.services.materials.description,
+      link: '/materials',
+      image: '/assets/materials/images/nfb-structure.webp',
+      alt: 'NALEXIBLE NFB BOARD 建材資料',
+    },
   ];
 
   return (
@@ -74,8 +83,8 @@ export default function Services() {
           </p>
         </Reveal>
 
-        {/* 事業 — 整然としたグリッド（2×2） */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-14 md:gap-y-20">
+        {/* 事業 — 整然としたグリッド */}
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-8 gap-y-14 md:gap-y-20">
           {services.map((service, index) => (
             <Reveal key={service.num} delay={(index % 2) as 0 | 1}>
               <Link href={service.link} className="group block">

@@ -35,6 +35,7 @@ export default function Footer() {
                 { href: '/invest', label: t.nav.properties },
                 { href: '/management', label: t.footer.managementBusiness },
                 { href: '/minpaku', label: t.footer.minpakuBusiness },
+                { href: '/materials', label: t.nav.materials },
                 { href: '/market', label: t.nav.market },
               ].map((item) => (
                 <li key={item.href}>
