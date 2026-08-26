@@ -10,9 +10,49 @@ import { MaterialsHero, MaterialsNav, MaterialsSection, SectionHeader } from '@/
 const inputClass = 'w-full px-4 py-3 bg-white/80 border hairline focus:border-ink/50 transition-colors text-sm text-ink placeholder:text-ink/35';
 const labelClass = 'block text-xs tracking-[0.2em] text-ink/50 uppercase mb-3';
 
+const contactPageCopy = {
+  ja: {
+    eyebrow: '建材 / 技術相談',
+    inquiryLabel: 'B2B 技術相談',
+    inquiryText: '建材採用は用途・下地・施工条件・性能要求によって確認事項が変わります。下記情報をいただけると、初回回答がスムーズです。',
+    checklist: ['用途（床 / 壁 / 建具 / 外装 / OEM）', '案件段階（情報収集 / 設計検討 / 試作 / 見積）', '必要資料（製品資料 / 試験データ / 特許 / サンプル）', '希望納期、数量、施工エリア'],
+    subject: '建材・国際貿易事業 問い合わせ',
+    companyLabel: '会社名',
+    topicLabel: '相談種別',
+    productLabel: '対象製品',
+    otherProduct: 'その他 / 未定',
+    sending: '送信中...',
+  },
+  zh: {
+    eyebrow: '建材 / 技術諮詢',
+    inquiryLabel: 'B2B 技術諮詢',
+    inquiryText: '建材採用會因用途、基層、施工條件與性能要求而有不同確認事項。提供以下資訊可協助我們更快回覆。',
+    checklist: ['用途（地板 / 牆面 / 建具 / 外裝 / OEM）', '案件階段（資訊收集 / 設計評估 / 試作 / 報價）', '所需資料（產品資料 / 測試數據 / 專利 / 樣品）', '希望交期、數量、施工區域'],
+    subject: '建材・國際貿易事業 諮詢',
+    companyLabel: '公司名',
+    topicLabel: '諮詢類型',
+    productLabel: '目標產品',
+    otherProduct: '其他 / 未定',
+    sending: '送出中...',
+  },
+  en: {
+    eyebrow: 'Materials / Consultation',
+    inquiryLabel: 'B2B Technical Consultation',
+    inquiryText: 'Adoption points vary by application, substrate, installation condition and performance requirement. Sharing the following details helps us respond more precisely.',
+    checklist: ['Application (floor / wall / door / facade / OEM)', 'Project stage (research / design review / prototype / quotation)', 'Required materials (product dossier / test data / patents / samples)', 'Target lead time, quantity and installation area'],
+    subject: 'Building Materials & Global Trade Inquiry',
+    companyLabel: 'Company',
+    topicLabel: 'Inquiry type',
+    productLabel: 'Target product',
+    otherProduct: 'Other / undecided',
+    sending: 'Sending...',
+  },
+} as const;
+
 export default function MaterialsContactPage() {
   const { locale } = useLanguage();
   const copy = materialCopy[locale];
+  const page = contactPageCopy[locale];
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
   const [form, setForm] = useState<{
     company: string;
@@ -40,15 +80,21 @@ export default function MaterialsContactPage() {
     }
   }, []);
 
+  useEffect(() => {
+    setForm((current) => (
+      (copy.contact.topics as readonly string[]).includes(current.topic) ? current : { ...current, topic: copy.contact.topics[0] }
+    ));
+  }, [copy.contact.topics]);
+
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setStatus('sending');
 
     const message = [
-      `【建材・国際貿易事業 問い合わせ】`,
-      `会社名: ${form.company}`,
-      `相談種別: ${form.topic}`,
-      `対象製品: ${form.product}`,
+      `【${page.subject}】`,
+      `${page.companyLabel}: ${form.company}`,
+      `${page.topicLabel}: ${form.topic}`,
+      `${page.productLabel}: ${form.product}`,
       '',
       form.message,
     ].join('\n');
@@ -77,18 +123,17 @@ export default function MaterialsContactPage() {
   return (
     <main className="min-h-screen bg-washi">
       <Navbar />
-      <MaterialsHero locale={locale} title={copy.contact.title} subtitle={copy.contact.subtitle} image="/assets/site/engawa.webp" eyebrow="Materials / Contact" />
+      <MaterialsHero locale={locale} title={copy.contact.title} subtitle={copy.contact.subtitle} image="/assets/materials/images/hero-products.webp" eyebrow={page.eyebrow} />
       <MaterialsNav locale={locale} />
 
       <MaterialsSection>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           <div className="lg:col-span-5">
-            <SectionHeader label="B2B Inquiry" title={copy.contact.formTitle} text="建材採用は用途・下地・施工条件・性能要求によって確認事項が変わります。下記情報をいただけると、初回回答がスムーズです。" />
+            <SectionHeader label={page.inquiryLabel} title={copy.contact.formTitle} text={page.inquiryText} />
             <div className="border hairline bg-white/40 p-7 space-y-4 text-sm text-ink/62 leading-loose">
-              <p>・用途（床 / 壁 / 建具 / 外装 / OEM）</p>
-              <p>・案件段階（情報収集 / 設計検討 / 試作 / 見積）</p>
-              <p>・必要資料（製品資料 / 試験データ / 特許 / サンプル）</p>
-              <p>・希望納期、数量、施工エリア</p>
+              {page.checklist.map((item) => (
+                <p key={item}>・{item}</p>
+              ))}
             </div>
           </div>
 
@@ -120,7 +165,7 @@ export default function MaterialsContactPage() {
                 <label className={labelClass}>{copy.contact.fields.product}</label>
                 <select className={inputClass} value={form.product} onChange={(e) => setForm({ ...form, product: e.target.value })}>
                   {products.map((product) => <option key={product.name}>{product.name}</option>)}
-                  <option>Other / 未定</option>
+                  <option>{page.otherProduct}</option>
                 </select>
               </div>
             </div>
@@ -131,7 +176,7 @@ export default function MaterialsContactPage() {
             </div>
 
             <button disabled={status === 'sending'} className="w-full bg-ink text-washi py-4 text-sm tracking-[0.25em] hover:bg-gold-800 disabled:opacity-60 transition-colors">
-              {status === 'sending' ? 'Sending...' : copy.contact.fields.submit}
+              {status === 'sending' ? page.sending : copy.contact.fields.submit}
             </button>
 
             {status === 'success' && <p className="text-sm text-ink/70 bg-washi p-4 border hairline">{copy.contact.success}</p>}

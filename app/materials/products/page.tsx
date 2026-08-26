@@ -10,24 +10,70 @@ import { MaterialsHero, MaterialsNav, MaterialsSection, SectionHeader } from '@/
 
 const anchors = ['nfb-board', 'stone-sheet', 'facade-alu', 'acoustic-panel'] as const;
 
+const productsPageCopy = {
+  ja: {
+    eyebrow: '建材 / 製品群',
+    lineLabel: '製品ラインナップ',
+    lineTitle: '採用検討しやすい製品情報',
+    lineText: '用途、特徴、関連資料、相談導線を揃え、設計・施工・販売の初期検討に必要な情報を確認しやすくします。',
+    supportLabel: '取扱方針',
+    supportTitle: '技術確認からサンプル相談まで',
+    supportText: '製品ごとに用途・施工条件・必要資料を確認し、案件に合わせた次のステップをご案内します。',
+    supportItems: [
+      { title: '製品理解', text: '用途、構成、施工条件を確認します。' },
+      { title: '技術資料', text: '試験資料や認証情報を整理します。' },
+      { title: '相談導線', text: 'サンプル、見積、共同開発へ接続します。' },
+    ],
+  },
+  zh: {
+    eyebrow: '建材 / 產品群',
+    lineLabel: '產品陣容',
+    lineTitle: '便於採用評估的產品資訊',
+    lineText: '統一整理用途、特點、相關資料與諮詢入口，方便設計、施工與銷售初期評估。',
+    supportLabel: '服務方式',
+    supportTitle: '從技術確認到樣品諮詢',
+    supportText: '依產品確認用途、施工條件與所需資料，並根據案件引導下一步。',
+    supportItems: [
+      { title: '產品理解', text: '確認用途、構成與施工條件。' },
+      { title: '技術資料', text: '整理測試資料與認證資訊。' },
+      { title: '諮詢入口', text: '連接樣品、報價與共同開發。' },
+    ],
+  },
+  en: {
+    eyebrow: 'Materials / Products',
+    lineLabel: 'Product Lineup',
+    lineTitle: 'Product information for adoption review',
+    lineText: 'Applications, characteristics, related documents and consultation paths are presented consistently for early design, construction and sales review.',
+    supportLabel: 'Support Policy',
+    supportTitle: 'From technical review to sample consultation',
+    supportText: 'We confirm applications, installation conditions and required documents by product, then guide the next step for each project.',
+    supportItems: [
+      { title: 'Product understanding', text: 'Confirm use cases, composition and installation conditions.' },
+      { title: 'Technical documents', text: 'Organize test materials and certification information.' },
+      { title: 'Consultation path', text: 'Connect samples, quotations and co-development.' },
+    ],
+  },
+} as const;
+
 export default function MaterialsProductsPage() {
   const { locale } = useLanguage();
   const copy = materialCopy[locale];
+  const page = productsPageCopy[locale];
 
   return (
     <main className="min-h-screen bg-washi">
       <Navbar />
-      <MaterialsHero locale={locale} title={copy.products.title} subtitle={copy.products.subtitle} image="/assets/materials/images/hero-products.webp" eyebrow="Materials / Product Database" />
+      <MaterialsHero locale={locale} title={copy.products.title} subtitle={copy.products.subtitle} image="/assets/materials/images/hero-products.webp" eyebrow={page.eyebrow} />
       <MaterialsNav locale={locale} />
 
       <MaterialsSection>
-        <SectionHeader label="Lineup" title="段階的に CMS 化する製品 DB" text="商品名、用途、性能根拠、技術資料、問い合わせ導線を同じフォーマットで管理し、第2期以降の拡張を容易にします。" />
+        <SectionHeader label={page.lineLabel} title={page.lineTitle} text={page.lineText} />
         <div className="space-y-10">
           {products.map((product, index) => (
             <Reveal key={product.name}>
               <article id={anchors[index]} className="grid grid-cols-1 lg:grid-cols-12 gap-0 border hairline bg-white/45 scroll-mt-36">
-                <div className="lg:col-span-5 min-h-[280px] bg-ink/10 overflow-hidden">
-                  <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
+                <div className="lg:col-span-5 aspect-[4/3] lg:aspect-auto lg:min-h-[320px] bg-white overflow-hidden flex items-center justify-center">
+                  <img src={product.image} alt={product.name} className="w-full h-full object-contain p-6" />
                 </div>
                 <div className="lg:col-span-7 p-7 md:p-10 flex flex-col justify-between">
                   <div>
@@ -52,13 +98,13 @@ export default function MaterialsProductsPage() {
       </MaterialsSection>
 
       <MaterialsSection dark>
-        <SectionHeader label="Roadmap" title="MVP 後の拡張イメージ" text="会員・EC・即時見積は第一期では後回しにし、まずは Product 理解 → 技術信頼 → 資料請求 → サンプル → 営業商談を成立させます。" light />
+        <SectionHeader label={page.supportLabel} title={page.supportTitle} text={page.supportText} light />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {['Product DB', 'Technical Library', 'CRM Pipeline'].map((item, index) => (
-            <div key={item} className="border border-washi/15 p-7">
+          {page.supportItems.map((item, index) => (
+            <div key={item.title} className="border border-washi/15 p-7">
               <p className="font-serif text-washi/35 text-sm tracking-[0.35em] mb-6">{String(index + 1).padStart(2, '0')}</p>
-              <h3 className="font-serif text-xl text-washi mb-4">{item}</h3>
-              <p className="text-sm leading-loose text-washi/56">構造化データとして扱い、資料・問い合わせ・商談履歴につなげる設計を前提にします。</p>
+              <h3 className="font-serif text-xl text-washi mb-4">{item.title}</h3>
+              <p className="text-sm leading-loose text-washi/56">{item.text}</p>
             </div>
           ))}
         </div>
