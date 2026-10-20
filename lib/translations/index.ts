@@ -16,6 +16,10 @@ export const translations = {
       about: '会社概要',
       philosophy: '企業理念',
       contact: 'お問い合わせ',
+      langJa: '日本語',
+      langZh: '中文',
+      langEn: 'EN',
+      companyNameValue: '株式会社KANAE',
     },
     
     // ヒーローセクション
@@ -660,6 +664,10 @@ export const translations = {
       about: '公司簡介',
       philosophy: '企業理念',
       contact: '聯繫我們',
+      langJa: '日語',
+      langZh: '中文',
+      langEn: '英語',
+      companyNameValue: '株式會社KANAE',
     },
     
     // 主视觉区
@@ -1302,6 +1310,10 @@ export const translations = {
       about: 'About Us',
       philosophy: 'Philosophy',
       contact: 'Contact',
+      langJa: 'Japanese',
+      langZh: 'Chinese',
+      langEn: 'English',
+      companyNameValue: 'KANAE CO., LTD.',
     },
     
     // Hero Section

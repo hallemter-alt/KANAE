@@ -5,10 +5,10 @@ import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { translations, type Locale } from '@/lib/translations';
 
-const LOCALES: { code: Locale; label: string }[] = [
-  { code: 'ja', label: '日本語' },
-  { code: 'zh', label: '中文' },
-  { code: 'en', label: 'EN' },
+const LOCALES: { code: Locale; labelKey: 'langJa' | 'langZh' | 'langEn' }[] = [
+  { code: 'ja', labelKey: 'langJa' },
+  { code: 'zh', labelKey: 'langZh' },
+  { code: 'en', labelKey: 'langEn' },
 ];
 
 export default function Navbar() {
@@ -61,6 +61,12 @@ export default function Navbar() {
   ];
 
   const solid = isScrolled || isMobileMenuOpen;
+  // 英語ラベルは日本語より大幅に長いため、字幅・字間を詰めて
+  // 言語切替（Japanese / Chinese / English）と Contact ボタンが収まるようにする
+  const enTight = locale === 'en';
+  const navLinkSizing = enTight
+    ? 'text-[12px] tracking-wide xl:text-[12.5px] xl:tracking-wider'
+    : 'text-[13px] xl:text-sm tracking-wider xl:tracking-widest';
 
   return (
     <nav
@@ -82,22 +88,23 @@ export default function Navbar() {
               KANAE
             </span>
             <span
-              className={`hidden sm:inline text-[10px] tracking-[0.25em] transition-colors duration-500 ${
+              className={`hidden sm:inline whitespace-nowrap shrink-0 text-[10px] tracking-[0.25em] transition-colors duration-500 ${
                 solid ? 'text-gold-600' : 'text-washi/70'
               }`}
             >
-              株式会社
+              {t.hero.companyType}
             </span>
           </Link>
 
-          {/* デスクトップ・ナビ — lg〜xl の狭い帯では余白を詰めて英語ラベルのはみ出しを抑える */}
-          <div className="hidden lg:flex items-center gap-3.5 xl:gap-7">
+          {/* デスクトップ・ナビ — lg〜xl の狭い帯では余白を詰めて英語ラベルのはみ出しを抑える
+              （英語時は言語切替 Japanese / Chinese / English が日本語表記より約60px広い） */}
+          <div className="hidden lg:flex items-center gap-3.5 xl:gap-5 2xl:gap-7">
             {/* 物件情報 ドロップダウン */}
             <div className="relative" ref={dropdownRef}>
               <button
                 onClick={() => setIsPropertyDropdownOpen(!isPropertyDropdownOpen)}
                 onMouseEnter={() => setIsPropertyDropdownOpen(true)}
-                className={`flex items-center gap-1 link-quiet text-[13px] xl:text-sm tracking-wider xl:tracking-widest whitespace-nowrap transition-colors duration-500 ${
+                className={`flex items-center gap-1 link-quiet ${navLinkSizing} whitespace-nowrap transition-colors duration-500 ${
                   solid ? 'text-ink/80 hover:text-ink' : 'text-washi/90 hover:text-washi'
                 }`}
               >
@@ -139,7 +146,7 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`link-quiet text-[13px] xl:text-sm tracking-wider xl:tracking-widest whitespace-nowrap transition-colors duration-500 ${
+                className={`link-quiet ${navLinkSizing} whitespace-nowrap transition-colors duration-500 ${
                   solid ? 'text-ink/80 hover:text-ink' : 'text-washi/90 hover:text-washi'
                 }`}
               >
@@ -164,7 +171,7 @@ export default function Navbar() {
                     }`}
                     aria-pressed={locale === l.code}
                   >
-                    {l.label}
+                    {t.nav[l.labelKey]}
                   </button>
                 </span>
               ))}
@@ -265,7 +272,7 @@ export default function Navbar() {
                       : 'border-ink/20 text-ink/70'
                   }`}
                 >
-                  {l.label}
+                  {t.nav[l.labelKey]}
                 </button>
               ))}
             </div>
