@@ -37,7 +37,7 @@ export default function AboutPage() {
           </Reveal>
           <Reveal>
             <dl className="border-t hairline">
-              <InfoRow label={t.about.companyName} value="株式会社ＫＡＮＡＥ" />
+              <InfoRow label={t.about.companyName} value={t.nav.companyNameValue} />
               <InfoRow label={t.about.representative} value="代表取締役 叶維舟" />
               <InfoRow label={t.about.established} value="令和3年7月5日（2021年7月5日）" />
               <InfoRow label={t.about.corporateNumber} value="0111-01-095676" />
