@@ -90,8 +90,8 @@ export default function Navbar() {
             </span>
           </Link>
 
-          {/* デスクトップ・ナビ */}
-          <div className="hidden lg:flex items-center gap-5 xl:gap-7">
+          {/* デスクトップ・ナビ — lg〜xl の狭い帯では余白を詰めて英語ラベルのはみ出しを抑える */}
+          <div className="hidden lg:flex items-center gap-3.5 xl:gap-7">
             {/* 物件情報 ドロップダウン */}
             <div className="relative" ref={dropdownRef}>
               <button
@@ -148,15 +148,16 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* 言語 & お問い合わせ */}
-          <div className="hidden lg:flex items-center gap-6">
-            <div className={`flex items-center gap-1 text-xs ${solid ? 'text-ink/50' : 'text-washi/60'}`}>
+          {/* 言語 & お問い合わせ — 言語切替は折り返し禁止・縮小禁止
+              （英語モードはナビリンクが長くなり、日本語ラベルが逐字改行されるのを防ぐ） */}
+          <div className="hidden lg:flex items-center gap-4 xl:gap-6 shrink-0">
+            <div className={`flex items-center gap-1 ml-3 text-xs whitespace-nowrap shrink-0 ${solid ? 'text-ink/50' : 'text-washi/60'}`}>
               {LOCALES.map((l, i) => (
-                <span key={l.code} className="flex items-center">
+                <span key={l.code} className="flex items-center whitespace-nowrap">
                   {i > 0 && <span className="mx-1.5 opacity-40">/</span>}
                   <button
                     onClick={() => setLocale(l.code)}
-                    className={`tracking-wider transition-colors duration-300 ${
+                    className={`whitespace-nowrap tracking-wider transition-colors duration-300 ${
                       locale === l.code
                         ? solid ? 'text-ink font-medium' : 'text-washi font-medium'
                         : 'hover:opacity-80'
@@ -170,7 +171,7 @@ export default function Navbar() {
             </div>
             <Link
               href="/contact"
-              className={`border px-6 py-2.5 text-sm tracking-widest transition-all duration-500 ${
+              className={`whitespace-nowrap shrink-0 border px-5 xl:px-6 py-2.5 text-sm tracking-widest transition-all duration-500 ${
                 solid
                   ? 'border-ink/30 text-ink hover:bg-ink hover:text-washi'
                   : 'border-washi/50 text-washi hover:bg-washi hover:text-ink'
