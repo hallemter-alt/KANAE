@@ -106,7 +106,7 @@ export default function MaterialsProductsPage() {
                   <div className="flex flex-col sm:flex-row gap-4">
                     <Link href={product.slug} className="border border-ink px-6 py-3 text-sm tracking-[0.22em] text-center text-ink hover:bg-ink hover:text-washi transition-colors">{index === 0 ? page.internalDetail : copy.common.learnMore}</Link>
                     <a href={product.sourceUrl} target="_blank" rel="noopener noreferrer" className="border border-ink/20 px-6 py-3 text-sm tracking-[0.22em] text-center text-ink/65 hover:border-ink transition-colors">{page.officialSource}</a>
-                    <Link href={`/materials/contact?product=${encodeURIComponent(product.name)}`} className="border border-ink/20 px-6 py-3 text-sm tracking-[0.22em] text-center text-ink/65 hover:border-ink transition-colors">{copy.common.sampleCta}</Link>
+                    <Link href={`/contact?business=materials&topic=sample&product=${encodeURIComponent(product.name)}`} className="border border-ink/20 px-6 py-3 text-sm tracking-[0.22em] text-center text-ink/65 hover:border-ink transition-colors">{copy.common.sampleCta}</Link>
                   </div>
                 </div>
               </article>

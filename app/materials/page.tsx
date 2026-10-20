@@ -172,7 +172,7 @@ export default function MaterialsPage() {
             <p className="section-label text-washi/45 mb-3">{page.nextLabel}</p>
             <h2 className="font-serif text-2xl md:text-3xl">{page.nextTitle}</h2>
           </div>
-          <Link href="/materials/contact" className="border border-washi/55 px-8 py-3 text-sm tracking-[0.25em] hover:bg-washi hover:text-ink transition-colors">
+          <Link href="/contact?business=materials" className="border border-washi/55 px-8 py-3 text-sm tracking-[0.25em] hover:bg-washi hover:text-ink transition-colors">
             {copy.common.contactCta}
           </Link>
         </div>

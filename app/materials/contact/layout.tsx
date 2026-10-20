@@ -1,10 +1,14 @@
-import type { Metadata } from 'next';
+import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: '技術相談・資料請求 | KANAE Materials',
-  description: 'B2B technical consultation, samples and document requests for KANAE building materials.',
-};
+  title: 'お問い合わせ',
+  alternates: { canonical: '/contact' },
+}
 
-export default function MaterialsContactLayout({ children }: { children: React.ReactNode }) {
-  return children;
+export default function MaterialsContactLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return children
 }

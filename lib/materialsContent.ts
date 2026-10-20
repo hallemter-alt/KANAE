@@ -8,7 +8,7 @@ export const materialLinks = [
   { href: '/materials/nfb-board/test-data', key: 'testData' },
   { href: '/materials/products', key: 'products' },
   { href: '/materials/documents', key: 'documents' },
-  { href: '/materials/contact', key: 'contact' },
+  { href: '/contact?business=materials', key: 'contact' },
 ] as const;
 
 export const materialCopy = {
