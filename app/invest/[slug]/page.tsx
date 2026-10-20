@@ -5,6 +5,7 @@ import { useParams, notFound } from 'next/navigation'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import Reveal from '@/components/Reveal'
+import PageHero from '@/components/ui/PageHero'
 import Simulator from '@/components/invest/Simulator'
 import PropertyGallery from '@/components/invest/PropertyGallery'
 import { useLanguage } from '@/contexts/LanguageContext'
@@ -170,58 +171,43 @@ export default function InvestDetailPage() {
     <main className="min-h-screen bg-washi">
       <Navbar />
 
-      {/* Hero — メイン写真（未公開物件は墨色プレースホルダー） */}
-      <section className="relative min-h-[60svh] flex items-end">
+      {/* Hero — メイン写真（未公開物件は墨色プレースホルダー）。詳細ページは size="lg" */}
+      <PageHero
+        size="lg"
+        label={undefined}
+        title={p.name[locale]}
+        subtitle={p.catch[locale]}
+        image={p.published ? `/assets/invest/${p.slug}/01.jpg` : 'concreteShadow'}
+        alt={p.published ? p.name[locale] : ''}
+      >
+        <Link
+          href="/invest"
+          className="animate-rise-late inline-flex items-center gap-2 text-washi/60 hover:text-washi text-xs tracking-widest mt-2 transition-colors"
+        >
+          <span className="inline-block w-6 h-px bg-washi/40" />
+          {s.back}
+        </Link>
         {p.published ? (
-          <>
-            <div
-              className="absolute inset-0 bg-cover bg-center"
-              style={{ backgroundImage: `url('/assets/invest/${p.slug}/01.jpg')` }}
-              role="img"
-              aria-label={p.name[locale]}
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/30 to-ink/10" />
-          </>
-        ) : (
-          <>
-            <div className="absolute inset-0 bg-ink" />
-            <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/70 to-ink/40" />
-          </>
-        )}
-        <div className="relative w-full max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 pb-12 pt-44">
-          <Link
-            href="/invest"
-            className="animate-rise inline-flex items-center gap-2 text-washi/60 hover:text-washi text-xs tracking-widest mb-6 transition-colors"
-          >
-            <span className="inline-block w-6 h-px bg-washi/40" />
-            {s.back}
-          </Link>
-          <h1 className="animate-rise font-serif text-3xl sm:text-4xl lg:text-5xl text-washi leading-snug mb-3">
-            {p.name[locale]}
-          </h1>
-          <p className="animate-rise text-washi/70 text-sm sm:text-base tracking-wide mb-8">{p.catch[locale]}</p>
-          {p.published ? (
-            <div className="animate-rise flex flex-wrap gap-x-10 gap-y-3">
-              <div>
-                <p className="text-washi/50 text-[11px] tracking-widest mb-1">{s.price}</p>
-                <p className="font-serif text-washi text-2xl lg:text-3xl">{formatOku(p.price)}</p>
-              </div>
-              <div>
-                <p className="text-washi/50 text-[11px] tracking-widest mb-1">{s.yield}</p>
-                <p className="font-serif text-washi text-2xl lg:text-3xl">{p.grossYield.toFixed(2)}%</p>
-              </div>
-              <div>
-                <p className="text-washi/50 text-[11px] tracking-widest mb-1">{s.annualIncome}</p>
-                <p className="font-serif text-washi text-2xl lg:text-3xl">{yenMan(annualRent(p), locale)}</p>
-              </div>
+          <div className="animate-rise-later flex flex-wrap gap-x-10 gap-y-3 mt-8">
+            <div>
+              <p className="text-washi/50 text-[11px] tracking-widest mb-1">{s.price}</p>
+              <p className="font-serif text-washi text-2xl lg:text-3xl">{formatOku(p.price)}</p>
             </div>
-          ) : (
-            <p className="animate-rise font-serif text-washi/80 text-lg lg:text-xl tracking-widest">
-              {s.unpublished}
-            </p>
-          )}
-        </div>
-      </section>
+            <div>
+              <p className="text-washi/50 text-[11px] tracking-widest mb-1">{s.yield}</p>
+              <p className="font-serif text-washi text-2xl lg:text-3xl">{p.grossYield.toFixed(2)}%</p>
+            </div>
+            <div>
+              <p className="text-washi/50 text-[11px] tracking-widest mb-1">{s.annualIncome}</p>
+              <p className="font-serif text-washi text-2xl lg:text-3xl">{yenMan(annualRent(p), locale)}</p>
+            </div>
+          </div>
+        ) : (
+          <p className="animate-rise-later font-serif text-washi/80 text-lg lg:text-xl tracking-widest mt-8">
+            {s.unpublished}
+          </p>
+        )}
+      </PageHero>
 
       {p.published ? (
         <>

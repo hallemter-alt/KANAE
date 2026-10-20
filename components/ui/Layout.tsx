@@ -27,7 +27,9 @@ interface SectionProps {
   children: React.ReactNode
   className?: string
   background?: 'white' | 'gray' | 'primary' | 'gradient'
-  spacing?: 'sm' | 'md' | 'lg' | 'xl' | 'hero'
+  // 注: かつて存在した 'hero' は廃止 — ページ上部のヒーローは
+  // components/ui/PageHero.tsx に一元化（高さ・余白・暗幕の唯一の基準）
+  spacing?: 'sm' | 'md' | 'lg' | 'xl'
 }
 
 export function Section({
@@ -49,7 +51,6 @@ export function Section({
     md: 'py-14 sm:py-20',
     lg: 'py-20 sm:py-28',
     xl: 'py-24 sm:py-36',
-    hero: 'pt-36 pb-20 sm:pt-44 sm:pb-28',
   }
 
   return (

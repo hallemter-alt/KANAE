@@ -3,8 +3,13 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import type { ReactNode } from 'react';
+import PageHero from '@/components/ui/PageHero';
 import { materialCopy, materialLinks, type MaterialsLocale } from '@/lib/materialsContent';
 
+/**
+ * 建材セクションのヒーロー — PageHero の薄いラッパー。
+ * 高さ・余白・暗幕は PageHero に一元化済み。ここでは CTA のみ追加する。
+ */
 export function MaterialsHero({
   locale,
   title,
@@ -21,32 +26,16 @@ export function MaterialsHero({
   const copy = materialCopy[locale];
 
   return (
-    <section className="relative min-h-[52svh] md:min-h-[60svh] flex items-end overflow-hidden bg-ink">
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-cover bg-center animate-slowfade" style={{ backgroundImage: `url('${image}')` }} />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/58 to-ink/10" />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/45 to-ink/25" />
+    <PageHero label={eyebrow ?? copy.common.label} title={title} subtitle={subtitle} image={image} sideShade>
+      <div className="animate-rise-later flex flex-col sm:flex-row gap-4 mt-8">
+        <Link href="/contact?business=materials" className="inline-flex justify-center border border-washi/60 text-washi px-6 py-3 text-xs tracking-[0.22em] hover:bg-washi hover:text-ink transition-colors duration-500">
+          {copy.common.contactCta}
+        </Link>
+        <Link href="/materials/documents" className="inline-flex justify-center border border-washi/20 text-washi/72 px-6 py-3 text-xs tracking-[0.22em] hover:border-washi/60 hover:text-washi transition-colors duration-500">
+          {copy.common.viewDocuments}
+        </Link>
       </div>
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 pb-14 md:pb-20 pt-36">
-        <p className="animate-rise font-serif text-washi/50 text-xs tracking-[0.4em] uppercase mb-5">
-          {eyebrow ?? copy.common.label}
-        </p>
-        <h1 className="animate-rise font-serif text-washi text-3xl md:text-4xl lg:text-5xl leading-[1.4] mb-5 max-w-3xl">
-          {title}
-        </h1>
-        <p className="animate-rise-late text-washi/65 text-sm md:text-base leading-loose max-w-2xl">
-          {subtitle}
-        </p>
-        <div className="animate-rise-later flex flex-col sm:flex-row gap-4 mt-8">
-          <Link href="/contact?business=materials" className="inline-flex justify-center border border-washi/60 text-washi px-6 py-3 text-xs tracking-[0.22em] hover:bg-washi hover:text-ink transition-colors duration-500">
-            {copy.common.contactCta}
-          </Link>
-          <Link href="/materials/documents" className="inline-flex justify-center border border-washi/20 text-washi/72 px-6 py-3 text-xs tracking-[0.22em] hover:border-washi/60 hover:text-washi transition-colors duration-500">
-            {copy.common.viewDocuments}
-          </Link>
-        </div>
-      </div>
-    </section>
+    </PageHero>
   );
 }
 

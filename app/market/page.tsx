@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import Reveal from '@/components/Reveal'
+import PageHero from '@/components/ui/PageHero'
 import { LineChart, BarChart } from '@/components/charts/AnimatedCharts'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { MARKET_DATASETS, MARKET_REPORTS } from '@/lib/marketData'
@@ -82,22 +83,14 @@ export default function MarketPage() {
       <Navbar />
 
       {/* Hero — 波紋（ユーザー提供ムード素材） */}
-      <section className="relative min-h-[56svh] flex items-end">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/assets/site/hero-market.webp')" }}
-          role="img"
-          aria-label="静かな水面に広がる波紋"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/35 to-ink/10" />
-        <div className="relative w-full max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 pb-14 pt-40">
-          <p className="animate-rise font-serif text-xs tracking-widest2 uppercase text-washi/60 mb-4">{s.label}</p>
-          <h1 className="animate-rise font-serif text-3xl sm:text-4xl lg:text-5xl text-washi leading-snug mb-3">
-            {s.title}
-          </h1>
-          <p className="animate-rise text-washi/70 text-sm sm:text-base tracking-wide">{s.subtitle}</p>
-        </div>
-      </section>
+      <PageHero
+        label={s.label}
+        title={s.title}
+        subtitle={s.subtitle}
+        image="/assets/site/hero-market.webp"
+        alt="静かな水面に広がる波紋"
+        sideShade
+      />
 
       {/* リード */}
       <section className="bg-washi texture-paper">
