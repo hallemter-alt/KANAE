@@ -38,7 +38,7 @@ export function MaterialsHero({
           {subtitle}
         </p>
         <div className="animate-rise-later flex flex-col sm:flex-row gap-4 mt-8">
-          <Link href="/materials/contact" className="inline-flex justify-center border border-washi/60 text-washi px-6 py-3 text-xs tracking-[0.22em] hover:bg-washi hover:text-ink transition-colors duration-500">
+          <Link href="/contact?business=materials" className="inline-flex justify-center border border-washi/60 text-washi px-6 py-3 text-xs tracking-[0.22em] hover:bg-washi hover:text-ink transition-colors duration-500">
             {copy.common.contactCta}
           </Link>
           <Link href="/materials/documents" className="inline-flex justify-center border border-washi/20 text-washi/72 px-6 py-3 text-xs tracking-[0.22em] hover:border-washi/60 hover:text-washi transition-colors duration-500">

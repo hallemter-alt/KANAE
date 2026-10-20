@@ -289,7 +289,7 @@ export default function ManagementPage() {
               {t.management.ctaDescription}
             </Text>
             <a
-              href="/contact"
+              href="/contact?business=management"
               className="inline-flex items-center gap-3 bg-washi text-ink px-9 py-4 text-sm tracking-[0.2em] hover:bg-gold-200 transition-colors duration-700"
             >
               {t.management.ctaButton}

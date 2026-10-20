@@ -17,7 +17,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/materials/nfb-board/test-data",
     "/materials/products",
     "/materials/documents",
-    "/materials/contact",
     "/market",
     "/about",
     "/philosophy",

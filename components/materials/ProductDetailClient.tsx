@@ -134,7 +134,7 @@ export default function ProductDetailClient({ slug }: { slug: string }) {
             <SectionHeader label={page.nextLabel} title={page.nextTitle} text={page.nextText} light />
           </div>
           <div className="lg:col-span-5 flex flex-col gap-4">
-            <Link href={`/materials/contact?product=${encodeURIComponent(product.name)}`} className="border border-washi/55 text-washi px-7 py-3 text-sm tracking-[0.22em] text-center hover:bg-washi hover:text-ink transition-colors">
+            <Link href={`/contact?business=materials&topic=sample&product=${encodeURIComponent(product.name)}`} className="border border-washi/55 text-washi px-7 py-3 text-sm tracking-[0.22em] text-center hover:bg-washi hover:text-ink transition-colors">
               {copy.common.sampleCta}
             </Link>
             <a href={product.sourceUrl} target="_blank" rel="noopener noreferrer" className="border border-washi/20 text-washi/72 px-7 py-3 text-sm tracking-[0.22em] text-center hover:border-washi/55 transition-colors">

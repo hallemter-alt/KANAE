@@ -223,7 +223,7 @@ export default function InvestPage() {
             <h2 className="font-serif text-2xl lg:text-3xl text-washi mb-4">{s.cta}</h2>
             <p className="text-washi/60 text-sm mb-10">{s.ctaText}</p>
             <Link
-              href="/contact"
+              href="/contact?business=invest"
               className="inline-block border border-washi/40 text-washi text-sm tracking-widest px-10 py-4 hover:bg-washi hover:text-ink transition-colors duration-500"
             >
               {s.cta}

@@ -256,7 +256,7 @@ export default function MinpakuPage() {
               {t.cta.description}
             </Text>
             <a
-              href="/contact"
+              href="/contact?business=minpaku"
               className="inline-flex items-center gap-3 bg-washi text-ink px-9 py-4 text-sm tracking-[0.2em] hover:bg-gold-200 transition-colors duration-700"
             >
               {t.nav.contact}

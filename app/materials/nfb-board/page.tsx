@@ -108,7 +108,7 @@ export default function NfbBoardPage() {
             <p className="text-washi/62 leading-loose mb-8">{page.reviewText}</p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/materials/nfb-board/test-data" className="border border-washi/55 text-washi px-7 py-3 text-sm tracking-[0.22em] text-center hover:bg-washi hover:text-ink transition-colors">{page.testData}</Link>
-              <Link href="/materials/contact" className="border border-washi/20 text-washi/72 px-7 py-3 text-sm tracking-[0.22em] text-center hover:border-washi/55 transition-colors">{copy.common.contactCta}</Link>
+              <Link href="/contact?business=materials&product=NALEXIBLE%20NFB%20BOARD" className="border border-washi/20 text-washi/72 px-7 py-3 text-sm tracking-[0.22em] text-center hover:border-washi/55 transition-colors">{copy.common.contactCta}</Link>
             </div>
           </Reveal>
         </div>

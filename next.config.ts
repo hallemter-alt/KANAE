@@ -35,6 +35,13 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        // Redirect before rendering so legacy URLs return a real HTTP 308.
+        // Next.js forwards the product/topic query parameters automatically.
+        source: '/materials/contact',
+        destination: '/contact?business=materials',
+        permanent: true,
+      },
+      {
         source: '/home',
         destination: '/',
         permanent: true,
